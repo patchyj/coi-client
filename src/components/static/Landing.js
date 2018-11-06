@@ -305,8 +305,10 @@ class Landing extends Component {
               Social butterfly? <br /> Tell us a story
             </h1>
             <h6 className="display-5">
-              <Link to="/register">Reach out</Link> to our community and see
-              what the fuss is about
+              <Link to="/register" className="reach-out">
+                Reach out
+              </Link>{" "}
+              to our community and see what the fuss is about
             </h6>
           </div>
         </div>

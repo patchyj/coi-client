@@ -137,7 +137,7 @@ table thead th {
     color: #dd3545; }
     .landing .section.section-white.with-stripe {
       background: linear-gradient(135deg, #e2e2e2 68%, #dd3545 69%, #e2e2e2 69%, #e2e2e2 80%, #e2e2e2 80%, #e2e2e2 100%); }
-    .landing .section.section-white a,
+    .landing .section.section-white a:not(.reach-out),
     .landing .section.section-white button {
       border: 1px solid #dd3545;
       background: #e2e2e2;
@@ -145,11 +145,11 @@ table thead th {
       transition: 0.2s;
       padding: 10px 15px;
       border-radius: 4px; }
-      .landing .section.section-white a:focus,
+      .landing .section.section-white a:not(.reach-out):focus,
       .landing .section.section-white button:focus {
         outline: none;
         box-shadow: none; }
-      .landing .section.section-white a:hover,
+      .landing .section.section-white a:not(.reach-out):hover,
       .landing .section.section-white button:hover {
         border: 1px solid #e2e2e2;
         background: #dd3545;

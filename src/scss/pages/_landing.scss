@@ -47,7 +47,7 @@
           $main-white 100%
         );
       }
-      a,
+      a:not(.reach-out),
       button {
         border: 1px solid $main-red;
         background: $main-white;

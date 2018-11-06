@@ -1,0 +1,70 @@
+.users {
+  .jumbotron {
+    .main-text {
+      background: rgba($main-grey, 0.8);
+      color: white;
+      width: 600px;
+      padding: 2rem;
+
+      .tagline {
+        position: relative;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        padding: 10px;
+        text-align: center;
+        &::before {
+          content: ",,";
+          position: absolute;
+          letter-spacing: -20px;
+          margin: 0;
+          font-size: 8em;
+          color: white;
+          top: -20px;
+          left: -10px;
+          transform: rotate(180deg);
+        }
+        &::after {
+          content: ",,";
+          position: absolute;
+          letter-spacing: -20px;
+          margin: 0;
+          font-size: 8em;
+          color: white;
+          top: -125px;
+          right: -10px;
+        }
+      }
+    }
+    &:first-child {
+      background-repeat: none !important;
+      background-size: cover !important;
+      background-position: center !important;
+      filter: brightness(50%);
+    }
+
+    i {
+      font-size: 1.6em;
+      padding-right: 0.8em;
+      margin-top: 20px;
+      color: $main-red;
+      transition: 0.2s;
+
+      &:hover {
+        color: lighten($main-red, 30%);
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  .profile_pic {
+    height: 300px;
+    width: 300px;
+    object-fit: contain;
+  }
+
+  .user-bio {
+    padding-top: 5px;
+    line-height: 2.5em;
+    text-align: justify;
+  }
+}

@@ -1,0 +1,23 @@
+.projects {
+  .display-4 {
+    font-size: 3rem !important;
+  }
+  form {
+    input[type="submit"] {
+      width: 100%;
+      padding: 15px;
+      background: $main-red;
+      color: $main-white;
+      cursor: pointer;
+      transition: 0.2s;
+
+      &:hover {
+        background: darken($main-red, 10%);
+      }
+    }
+    .form-control:focus {
+      border-color: none;
+      box-shadow: 0 0 0 0.2rem rgba($main-red, 0.2);
+    }
+  }
+}

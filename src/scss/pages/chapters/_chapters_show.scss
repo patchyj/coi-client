@@ -1,0 +1,39 @@
+.chapter {
+  .container {
+    max-width: 1320px;
+  }
+  .jumbotron {
+    height: 400px;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+
+    &.dash {
+      height: 200px;
+      background: darken($main-red, 20%) !important;
+    }
+
+    a {
+      color: $main-white;
+      &:hover {
+        color: darken($main-white, 20%);
+        text-decoration: none;
+      }
+    }
+  }
+
+  .jumbotron_h1 {
+    position: absolute;
+    transform: translateY(-100%);
+    color: $main-white;
+    padding: 3rem;
+  }
+
+  table {
+    filter: none;
+  }
+
+  table th {
+    border-top: 0;
+  }
+}

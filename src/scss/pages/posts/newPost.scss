@@ -1,0 +1,36 @@
+.newPost,
+.editPost {
+  form {
+    padding: 3em 0;
+
+    input,
+    textarea {
+      &:focus {
+        box-shadow: none;
+        outline: none;
+      }
+    }
+
+    &:focus {
+      outline: none !important;
+    }
+
+    textarea {
+      min-height: 300px;
+    }
+    input[type="submit"] {
+      background: none;
+      border: 1px solid $main-blue;
+      padding: 10px 10px;
+      color: $main-blue;
+      transition: 0.2s;
+      width: 100%;
+
+      &:hover {
+        background: $main-blue;
+        border: 1px solid darken($main-blue, 20%);
+        color: $main-white;
+      }
+    }
+  }
+}

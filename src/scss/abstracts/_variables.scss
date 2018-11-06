@@ -1,0 +1,37 @@
+$main-red: rgb(221, 53, 69);
+$main-white: rgb(226, 226, 226);
+$main-grey: rgb(57, 57, 57);
+$main-blue: rgb(31, 75, 134);
+
+// ======= GLOBAL CLASSES =======
+.bg-main-red {
+  background: $main-red;
+  color: $main-white;
+}
+.bg-main-red-darken {
+  background: darken($main-red, 20%);
+  color: $main-white;
+}
+
+.bg-main-white {
+  background: $main-white;
+}
+.bg-main-white-darken {
+  background: darken($main-white, 10%);
+  color: $main-white;
+}
+
+.bg-main-grey {
+  background: $main-grey;
+  color: $main-white;
+}
+.bg-main-grey-darken {
+  background: darken($main-grey, 10%);
+  color: $main-white;
+}
+
+.thead-red {
+  background: darken($main-red, 15%);
+  color: $main-white;
+  padding: 20px;
+}

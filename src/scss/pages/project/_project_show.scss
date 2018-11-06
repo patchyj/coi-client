@@ -1,0 +1,15 @@
+.project {
+  .crudLinks {
+    i {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      color: darken($main-white, 20%);
+      transition: 0.2s;
+
+      &:hover {
+        color: darken($main-white, 60%);
+      }
+    }
+    transform: translateY(20px);
+  }
+}

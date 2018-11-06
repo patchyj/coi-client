@@ -1,0 +1,45 @@
+.display-4-5 {
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: 1.4;
+  text-align: justify;
+}
+
+.table-striped tbody tr:nth-of-type(even) {
+  background: lighten($main-grey, 20%);
+  color: $main-white;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background: $main-grey;
+  color: $main-white;
+}
+
+.table-sm td {
+  padding: 0.5rem;
+}
+
+.table td,
+.table th,
+table thead th {
+  vertical-align: middle;
+  border-top: 0;
+  border-bottom: 0 !important;
+}
+
+.table a {
+  color: yellow;
+  &:hover {
+    text-decoration: none;
+    color: lighten(yellow, 40%);
+  }
+}
+
+.container-fluid {
+  padding: 0;
+}
+
+.jumbotron {
+  margin-bottom: 0;
+  border-radius: 0;
+}

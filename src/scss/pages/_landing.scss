@@ -1,0 +1,219 @@
+.landing {
+  h1 {
+    color: $main-red;
+  }
+  .section {
+    padding: 4em;
+    line-height: 1.8em;
+    text-align: center;
+
+    &.section-red {
+      background: $main-red;
+      background: linear-gradient(
+        135deg,
+        rgb(221, 53, 69) 50%,
+        rgb(147, 36, 109)
+      );
+      color: $main-white !important;
+
+      h1 {
+        color: $main-white !important;
+      }
+
+      .btn {
+        background: none;
+        border: 1px solid $main-white;
+        color: $main-white;
+        transition: 0.2s;
+
+        &:hover {
+          background: $main-white;
+          color: darken($main-red, 20%);
+        }
+      }
+    }
+    &.section-white {
+      background: $main-white;
+      color: $main-red;
+
+      &.with-stripe {
+        background: linear-gradient(
+          135deg,
+          $main-white 68%,
+          $main-red 69%,
+          $main-white 69%,
+          $main-white 80%,
+          $main-white 80%,
+          $main-white 100%
+        );
+      }
+      a,
+      button {
+        border: 1px solid $main-red;
+        background: $main-white;
+        color: $main-red;
+        transition: 0.2s;
+        padding: 10px 15px;
+        border-radius: 4px;
+
+        &:focus {
+          outline: none;
+          box-shadow: none;
+        }
+
+        &:hover {
+          border: 1px solid $main-white;
+          background: $main-red;
+          color: $main-white;
+          text-decoration: none;
+        }
+      }
+
+      .card {
+        background: none;
+        border: none;
+
+        .card-body {
+          padding: none !important;
+        }
+        .form-control {
+          background: #d4d4d4 !important;
+          border: 1px solid $main-red;
+          margin: 1em 0;
+
+          &::placeholder {
+            color: $main-grey;
+          }
+        }
+      }
+    }
+
+    .jumbotron {
+      background: transparent;
+    }
+  }
+
+  form {
+    input,
+    textarea {
+      border-radius: 0;
+      border: 0;
+    }
+    input[type="submit"] {
+      border: 1px solid $main-white;
+      background: $main-red;
+      color: $main-white;
+      transition: 0.2s;
+      overflow: hidden;
+
+      &:hover {
+        border: 1px solid $main-red;
+        background: $main-white;
+        color: $main-red;
+      }
+    }
+  }
+
+  .modal-dialog {
+    width: 100vw;
+    height: 100vh;
+    position: relative !important;
+    margin: auto;
+
+    .modal-content {
+      background: none !important;
+      border: none;
+    }
+
+    .modal-body {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+.main-logo {
+  background: url("../img/logo_v2.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 400px;
+  width: 400px;
+  transform: scale(1) translateX(50px);
+  filter: brightness(5);
+}
+
+.story-logo + h4 {
+  text-align: center;
+}
+
+.story-logo.roundup {
+  background: url("../img/barclays.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  object-fit: contain;
+  margin: auto;
+  height: 200px;
+  width: 400px;
+  transform: scale(0.6);
+}
+.story-logo.homeless {
+  background: url("../img/homeless.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin: auto;
+  height: 200px;
+  width: auto;
+  transform: scale(0.6);
+}
+.story-logo.ticketaid {
+  background: url("../img/ticketaid.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin: auto;
+  height: 200px;
+  width: 160px;
+  transform: scale(0.9);
+}
+.lightbulb {
+  background: url("../img/lightbulb.png");
+  filter: invert(100%);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin: auto;
+  height: 200px;
+  width: 200px;
+  // transform: scale(0.8);
+}
+.boat {
+  background: url("../img/boat.png");
+  filter: invert(100%);
+  transform: scaleX(-1);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin: auto;
+  height: 200px;
+  width: 400px;
+  // transform: scale(0.8);
+}
+.mailing {
+  background: url("../img/mailing.png");
+  // filter: hue-rotate(100deg);
+  transform: scale(1.3);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin: auto;
+  height: 200px;
+  width: 400px;
+  // transform: scale(0.8);
+}
+
+#map {
+  transform: translateX(-50%);
+  height: 400px;
+  margin: auto;
+  padding-left: 0;
+}

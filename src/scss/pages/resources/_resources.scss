@@ -1,0 +1,30 @@
+.resources {
+  [class*="col-"] {
+    padding: 0;
+  }
+
+  .list-group-item {
+    background: $main-grey;
+    transition: 0.1s;
+    border: none;
+    padding: 2em;
+    border-radius: 0;
+    width: 100%;
+
+    &.active {
+      background: darken($main-red, 20%);
+    }
+
+    &:hover {
+      background: darken($main-grey, 10%);
+    }
+
+    a {
+      color: $main-white;
+    }
+  }
+}
+
+.fade:not(.show) {
+  opacity: 1;
+}

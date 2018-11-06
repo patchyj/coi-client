@@ -1,0 +1,39 @@
+.form-signin {
+  .col-md-5 {
+    line-height: 2.6rem !important;
+  }
+
+  input,
+  select {
+    background: none;
+    border: 0;
+    border-bottom: 1px solid rgba($main-grey, 0.5);
+    transition: 0.2s;
+
+    &:focus {
+      // font-size: 0.6em;
+      box-shadow: none;
+      color: rgb(89, 162, 70);
+
+      &::placeholder {
+        color: rgb(126, 231, 100);
+      }
+    }
+  }
+  .btn-main-submit {
+    width: 100%;
+    background: $main-red;
+    padding: 0.6em 1.1em;
+    color: $main-white;
+    transition: 0.2s;
+
+    &:hover {
+      background: darken($main-red, 20%);
+    }
+  }
+}
+
+.list-group-item {
+  padding: 0;
+  border: 0;
+}

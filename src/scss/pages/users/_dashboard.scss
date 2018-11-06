@@ -1,0 +1,45 @@
+.dashboard {
+  .row {
+    margin: 0;
+  }
+  .profile_pic_container {
+    border: 5px solid $main-white;
+    position: absolute;
+    right: 50px;
+    transform: translateY(80%) scale(0.9);
+    width: 150px !important;
+    height: 150px !important;
+    background: black;
+
+    .profile_pic {
+      width: 100%;
+      height: 100%;
+      transition: 0.2s;
+    }
+    &:hover .profile_pic {
+      opacity: 0.8;
+
+      &::before {
+        content: "Hello";
+        color: black;
+        font-size: 2em;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+  .social {
+    a {
+      color: $main-grey;
+      margin: 15px 10px 15px 0;
+      transition: 0.1s;
+
+      &:hover {
+        color: rgb(120, 120, 120);
+      }
+    }
+  }
+}

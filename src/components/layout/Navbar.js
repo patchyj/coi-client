@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { logoutUser } from "../../actions/authActions";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import logo from "../../img/logo.png";
 
 class Navbar extends Component {
   onLogoutClick(e) {
@@ -86,7 +87,7 @@ class Navbar extends Component {
           <Link className="navbar-brand" to="/">
             <img
               className="img-responsive"
-              src={"/assets/img/logo.png"}
+              src={logo}
               height="23px"
               alt="logo"
             />

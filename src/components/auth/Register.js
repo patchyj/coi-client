@@ -9,38 +9,38 @@ import axios from "axios";
 class Register extends Component {
   constructor() {
     super();
-    this.state = {
-      first_name: "testy",
-      last_name: "mctesterson",
-      username: "jmcgregor",
-      organisation: "sparta",
-      profile_pic: "",
-      banner_pic: "",
-      chapter_id: 1,
-      linkedin_url: "jmcgregor",
-      twitter_url: "jmcgregor",
-      email: "jmcgregor@spartaglobal.com",
-      password: "password",
-      password_confirmation: "password",
-      errors: {},
-      chapters: []
-    };
     // this.state = {
-    //   first_name: "",
-    //   last_name: "",
-    //   username: "",
-    //   organisation: "",
+    //   first_name: "testy",
+    //   last_name: "mctesterson",
+    //   username: "jmcgregor",
+    //   organisation: "sparta",
     //   profile_pic: "",
     //   banner_pic: "",
-    //   chapter_id: null,
-    //   linkedin_url: "",
-    //   twitter_url: "",
-    //   email: "",
-    //   password: "",
-    //   password_confirmation: "",
+    //   chapter_id: 1,
+    //   linkedin_url: "jmcgregor",
+    //   twitter_url: "jmcgregor",
+    //   email: "jmcgregor@spartaglobal.com",
+    //   password: "password",
+    //   password_confirmation: "password",
     //   errors: {},
     //   chapters: []
     // };
+    this.state = {
+      first_name: "",
+      last_name: "",
+      username: "",
+      organisation: "",
+      profile_pic: "",
+      banner_pic: "",
+      chapter_id: null,
+      linkedin_url: "",
+      twitter_url: "",
+      email: "",
+      password: "",
+      password_confirmation: "",
+      errors: {},
+      chapters: []
+    };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }

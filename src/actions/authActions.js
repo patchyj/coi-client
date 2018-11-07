@@ -9,9 +9,15 @@ import {
 } from "./types";
 import Auth from "../validation/Auth.js";
 
+const config = {
+  headers: {
+    "Content-Type": "application/x-www-form-urlencoded"
+  }
+};
+
 export const registerUser = (userData, history) => dispatch => {
   axios
-    .post("/auth/register", userData)
+    .post("/auth/register", userData, config)
     .then(res => history.push("/login"))
     .catch(err =>
       dispatch({

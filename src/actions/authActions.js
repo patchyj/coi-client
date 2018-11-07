@@ -12,7 +12,7 @@ import Auth from "../validation/Auth.js";
 const config = {
   headers: {
     "Content-Type": "application/json",
-    "Access-Control-Allow-Origin": "https://patchyj.github.io/coi-client",
+    "Access-Control-Allow-Origin": "https://patchyj.github.io/coi-client/*",
     "Access-Control-Allow-Credentials": "true"
   }
 };
@@ -24,6 +24,7 @@ export const registerUser = (userData, history) => dispatch => {
     .catch(err =>
       dispatch({
         type: GET_ERRORS,
+        // Don't forget to add .data after response in case it breaks
         payload: err.response
       })
     );

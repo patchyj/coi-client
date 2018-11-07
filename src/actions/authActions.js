@@ -12,7 +12,7 @@ import Auth from "../validation/Auth.js";
 const config = {
   headers: {
     "Content-Type": "application/json",
-    "Access-Control-Allow-Origin": "https://patchyj.github.io/coi-client",
+    "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Credentials": "true"
   }
 };

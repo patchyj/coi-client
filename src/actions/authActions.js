@@ -19,7 +19,7 @@ const config = {
 
 export const registerUser = (userData, history) => dispatch => {
   axios
-    .post("/auth/register", userData, config)
+    .post("/auth/register", userData)
     .then(res => history.push("/login"))
     .catch(err =>
       dispatch({

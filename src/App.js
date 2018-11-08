@@ -79,9 +79,9 @@ if (localStorage.token) {
 setInterval(function() {
   console.log("hello");
   axios
-    .get("https://coyi-api.herokuapp.com/")
-    .then(res => console.log("GET request to https://coyi-api.herokuapp.com"))
-    .catch(err => console.log("GET request to https://coyi-api.herokuapp.com"));
+    .get("https://coyi-api.herokuapp.com/ping")
+    .then(res => console.log(res.data.message))
+    .catch(err => console.log(err));
 }, 3000); // every 5 minutes (300000)
 
 class App extends Component {

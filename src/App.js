@@ -13,7 +13,6 @@ import Auth from "./validation/Auth";
 import axios from "axios";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
 import jwtDecode from "jwt-decode";
-import http from "http";
 
 // ======= CSS =======
 import "./css/App.css";
@@ -78,8 +77,8 @@ if (localStorage.token) {
 }
 
 setInterval(function() {
-  http.get("https://coyi-api.herokuapp.com/");
-}, 300000); // every 5 minutes (300000)
+  axios.get("https://coyi-api.herokuapp.com/").then(res => console.log(res));
+}, 3000); // every 5 minutes (300000)
 
 class App extends Component {
   render() {

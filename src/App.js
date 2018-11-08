@@ -81,7 +81,7 @@ setInterval(function() {
     .get("https://coyi-api.herokuapp.com/ping")
     .then(res => console.log(res.data.message))
     .catch(err => console.log(err));
-}, 3000); // every 5 minutes (300000)
+}, 300000); // every 5 minutes (300000)
 
 class App extends Component {
   render() {

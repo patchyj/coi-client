@@ -31,6 +31,7 @@ export const registerUser = (userData, history) => dispatch => {
 };
 
 export const loginUser = (userData, config) => dispatch => {
+  console.log(config);
   console.log("config");
   axios
     .post("/auth/login", userData, config)

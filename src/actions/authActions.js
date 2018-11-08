@@ -30,8 +30,8 @@ export const registerUser = (userData, history) => dispatch => {
     );
 };
 
-export const loginUser = userData => dispatch => {
-  console.log(config);
+export const loginUser = (userData, config) => dispatch => {
+  console.log("config");
   axios
     .post("/auth/login", userData, config)
     .then(res => {

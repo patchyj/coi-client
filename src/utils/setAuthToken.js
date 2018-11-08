@@ -1,6 +1,6 @@
 // Set a default header for each request
 import axios from "axios";
-axios.defaults.baseURL = "https://coyi-api.herokuapp.com";
+axios.defaults.baseURL = "http://cors.io/?u=https://coyi-api.herokuapp.com";
 
 const setAuthToken = token => {
   if (token) {

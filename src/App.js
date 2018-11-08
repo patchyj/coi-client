@@ -77,6 +77,7 @@ if (localStorage.token) {
 }
 
 setInterval(function() {
+  console.log("hello");
   axios
     .get("https://coyi-api.herokuapp.com/")
     .then(res => console.log(res))

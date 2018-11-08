@@ -77,7 +77,6 @@ if (localStorage.token) {
 }
 
 setInterval(function() {
-  console.log("hello");
   axios
     .get("https://coyi-api.herokuapp.com/ping")
     .then(res => console.log(res.data))

@@ -12,7 +12,9 @@ import Auth from "../validation/Auth.js";
 const config = {
   headers: {
     "Content-Type": "application/json",
-    "Access-Control-Allow-Origin": `${process.env.PUBLIC_URL}`,
+    "Access-Control-Allow-Origin": `https://patchyj.github.io/${
+      process.env.PUBLIC_URL
+    }`,
     "Access-Control-Allow-Credentials": "true"
   }
 };

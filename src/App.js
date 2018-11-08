@@ -80,7 +80,7 @@ setInterval(function() {
   console.log("hello");
   axios
     .get("https://coyi-api.herokuapp.com/ping")
-    .then(res => console.log(res.data.message))
+    .then(res => console.log(res.data))
     .catch(err => console.log(err));
 }, 3000); // every 5 minutes (300000)
 

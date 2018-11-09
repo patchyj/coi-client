@@ -12,7 +12,7 @@ import Auth from "../validation/Auth.js";
 const config = {
   headers: {
     "Content-Type": "application/json",
-    // "Access-Control-Allow-Origin": `https://patchyj.github.io`,
+    "Access-Control-Allow-Origin": `*`,
     "Access-Control-Allow-Credentials": "true"
   }
 };
@@ -31,11 +31,11 @@ export const registerUser = (userData, history) => dispatch => {
 };
 
 export const loginUser = userData => dispatch => {
-  console.log("config");
-  console.log(config);
+  // console.log(config);
   axios
     .post("/auth/login", userData, config)
     .then(res => {
+      console.log(axios.defaults.headers);
       // Save to local storage
       const { access_token } = res.data;
       // Set Token to session storage
@@ -54,12 +54,13 @@ export const loginUser = userData => dispatch => {
         dispatch(setCurrentUser(decoded));
       }
     })
-    .catch(err =>
+    .catch(err => {
       dispatch({
         type: GET_ERRORS,
         payload: err.response
-      })
-    );
+      });
+      console.log(axios.defaults.headers);
+    });
 };
 
 // set logged in user

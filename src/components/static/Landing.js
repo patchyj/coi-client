@@ -143,10 +143,10 @@ class Landing extends Component {
         {/* Who are the circle */}
         <div className="container-fluid section section-red">
           <div className="row py-5">
-            <div className="col-md-4 py-5">
+            <div className="col-md-4 col-sm-12 py-5">
               <div className="main-logo" />
             </div>
-            <div className="col-md-6 offset-md-1">
+            <div className="col-md-6 col-sm-12 offset-md-1">
               <h3 className="display-4">
                 Who are the Circle of Intrapreneurs?
               </h3>

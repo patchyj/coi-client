@@ -1,0 +1,11 @@
+// Forgot Password
+.forgot-password {
+  .btn {
+    background: $main-red;
+    color: $main-white;
+
+    &:hover {
+      background: darken($main-red, 20%);
+    }
+  }
+}

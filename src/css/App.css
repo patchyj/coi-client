@@ -84,6 +84,15 @@ table thead th {
   .navbar .navbar-brand {
     transform: translateY(-2px); }
 
+.footer .list-group .list-group-item {
+  background: none; }
+  .footer .list-group .list-group-item a {
+    color: #6396db;
+    transition: 0.2s;
+    text-decoration: none; }
+    .footer .list-group .list-group-item a:hover {
+      color: #1f4b86; }
+
 .form-signin .col-md-5 {
   line-height: 2.6rem !important; }
 .form-signin input,
@@ -108,9 +117,19 @@ table thead th {
   .form-signin .btn-main-submit:hover {
     background: #931924; }
 
+a:hover {
+  text-decoration: none;
+  darkencolor: #1f4b86; }
+
 .list-group-item {
   padding: 0;
   border: 0; }
+
+.forgot-password .btn {
+  background: #dd3545;
+  color: #e2e2e2; }
+  .forgot-password .btn:hover {
+    background: #931924; }
 
 .landing h1 {
   color: #dd3545; }
@@ -122,7 +141,8 @@ table thead th {
     background: #dd3545;
     background: linear-gradient(135deg, #dd3545 50%, #93246d);
     color: #e2e2e2 !important; }
-    .landing .section.section-red h1 {
+    .landing .section.section-red h1,
+    .landing .section.section-red a {
       color: #e2e2e2 !important; }
     .landing .section.section-red .btn {
       background: none;
@@ -132,11 +152,29 @@ table thead th {
       .landing .section.section-red .btn:hover {
         background: #e2e2e2;
         color: #931924; }
+    .landing .section.section-red .card {
+      background: none;
+      border: none; }
+      .landing .section.section-red .card.card-body {
+        padding: 0 !important; }
+      .landing .section.section-red .card .form-control {
+        background: #d4d4d4 !important;
+        border: 1px solid #dd3545;
+        margin: 1em 0; }
+        .landing .section.section-red .card .form-control::placeholder {
+          color: #393939; }
   .landing .section.section-white {
     background: #e2e2e2;
     color: #dd3545; }
     .landing .section.section-white.with-stripe {
-      background: linear-gradient(135deg, #e2e2e2 68%, #dd3545 69%, #e2e2e2 69%, #e2e2e2 80%, #e2e2e2 80%, #e2e2e2 100%); }
+      background: linear-gradient(135deg, #dd3545 68%, #e2e2e2 69%, #dd3545 69%, #dd3545 80%, #dd3545 80%, #dd3545 100%); }
+    .landing .section.section-white .no-btn {
+      color: #3c0a0f !important;
+      border: 0 !important;
+      padding: 0 !important; }
+      .landing .section.section-white .no-btn:hover {
+        color: #dd3545 !important;
+        background: none !important; }
     .landing .section.section-white a:not(.reach-out),
     .landing .section.section-white button {
       border: 1px solid #dd3545;
@@ -155,19 +193,21 @@ table thead th {
         background: #dd3545;
         color: #e2e2e2;
         text-decoration: none; }
-    .landing .section.section-white .card {
-      background: none;
-      border: none; }
-      .landing .section.section-white .card .card-body {
-        padding: none !important; }
-      .landing .section.section-white .card .form-control {
-        background: #d4d4d4 !important;
-        border: 1px solid #dd3545;
-        margin: 1em 0; }
-        .landing .section.section-white .card .form-control::placeholder {
-          color: #393939; }
+  .landing .section.parallaxVideo {
+    height: 500px;
+    width: 100% !important;
+    padding: 0 !important; }
+    .landing .section.parallaxVideo video {
+      width: 100vw;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -999;
+      margin: 0 !important; }
   .landing .section .jumbotron {
     background: transparent; }
+.landing .stories button.btn {
+  margin: auto; }
 .landing form input,
 .landing form textarea {
   border-radius: 0;
@@ -206,38 +246,37 @@ table thead th {
   text-align: center; }
 
 .story-logo.roundup {
-  background: url("../img/barclays.png");
-  background-position: center;
+  background: url("../img/roundup_team.png");
+  background-position: center center;
   background-repeat: no-repeat;
+  background-size: contain;
   object-fit: contain;
   margin: auto;
-  height: 200px;
-  width: 400px;
-  transform: scale(0.6); }
+  height: 250px;
+  width: 400px; }
 
 .story-logo.homeless {
-  background: url("../img/homeless.png");
+  background: url("../img/sal mohammed.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
   margin: auto;
-  height: 200px;
-  width: auto;
-  transform: scale(0.6); }
+  height: 250px;
+  width: 250px;
+  border-radius: 50%; }
 
 .story-logo.ticketaid {
-  background: url("../img/ticketaid.png");
+  background: url("../img/matt o shea.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
   margin: auto;
-  height: 200px;
-  width: 160px;
-  transform: scale(0.9); }
+  height: 250px;
+  width: 250px;
+  border-radius: 50%; }
 
 .lightbulb {
   background: url("../img/lightbulb.png");
-  filter: invert(100%);
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -247,7 +286,6 @@ table thead th {
 
 .boat {
   background: url("../img/boat.png");
-  filter: invert(100%);
   transform: scaleX(-1);
   background-position: center;
   background-repeat: no-repeat;
@@ -256,21 +294,41 @@ table thead th {
   height: 200px;
   width: 400px; }
 
-.mailing {
-  background: url("../img/mailing.png");
-  transform: scale(1.3);
+.speech {
+  background: url("../img/speech.png");
+  transform: scaleX(1);
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
   margin: auto;
   height: 200px;
-  width: 400px; }
+  width: 500px; }
+
+.mailing {
+  background: url("../img/mailing.png");
+  filter: brightness(100);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin: auto;
+  height: 150px;
+  width: 300px;
+  transform: rotate(310deg) translate(-100px); }
 
 #map {
   transform: translateX(-50%);
   height: 400px;
   margin: auto;
   padding-left: 0; }
+  #map:focus {
+    outline: none !important; }
+  #map .leaflet-control-zoom {
+    font-size: 4em;
+    transform: translate(50%, 10px); }
+    #map .leaflet-control-zoom a {
+      padding: 15px; }
+  #map .leaflet-control-attribution {
+    display: none; }
 
 .projects .display-4 {
   font-size: 3rem !important; }

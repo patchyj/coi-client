@@ -1,9 +1,7 @@
 // Set a default header for each request
 import axios from "axios";
-axios.defaults.baseURL = "https://coyi-api.herokuapp.com";
-// axios.defaults.baseURL = "http://localhost:3001";
-// axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
-// axios.defaults.xsrfHeaderName = "X-CSRFToken";
+
+// axios.defaults.baseURL = "https://coyi-api.herokuapp.com"; // Uncomment when deploying
 
 const setAuthToken = token => {
   if (token) {

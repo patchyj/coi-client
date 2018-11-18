@@ -33,6 +33,13 @@
   }
 }
 
+a {
+  &:hover {
+    text-decoration: none;
+    darkencolor: $main-blue;
+  }
+}
+
 .list-group-item {
   padding: 0;
   border: 0;

@@ -10,7 +10,8 @@ class Login extends Component {
     super();
     this.state = {
       email: "",
-      password: ""
+      password: "",
+      errors: []
     };
 
     this.onChange = this.onChange.bind(this);
@@ -45,7 +46,7 @@ class Login extends Component {
   render() {
     const { errors } = this.state;
     return (
-      <div className="container py-5">
+      <div className="container py-3">
         <form
           className="form-signin col-md-6 offset-md-3 col-sm-4 offset-sm-4 py-5 my-5"
           onSubmit={this.onSubmit}

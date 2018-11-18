@@ -59,7 +59,6 @@ export const loginUser = userData => dispatch => {
         type: GET_ERRORS,
         payload: err.response
       });
-      console.log(axios.defaults.headers);
     });
 };
 

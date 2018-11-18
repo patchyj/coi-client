@@ -16,7 +16,8 @@
       );
       color: $main-white !important;
 
-      h1 {
+      h1,
+      a {
         color: $main-white !important;
       }
 
@@ -31,6 +32,23 @@
           color: darken($main-red, 20%);
         }
       }
+      .card {
+        background: none;
+        border: none;
+
+        &.card-body {
+          padding: 0 !important;
+        }
+        .form-control {
+          background: #d4d4d4 !important;
+          border: 1px solid $main-red;
+          margin: 1em 0;
+
+          &::placeholder {
+            color: $main-grey;
+          }
+        }
+      }
     }
     &.section-white {
       background: $main-white;
@@ -39,13 +57,23 @@
       &.with-stripe {
         background: linear-gradient(
           135deg,
-          $main-white 68%,
-          $main-red 69%,
+          $main-red 68%,
           $main-white 69%,
-          $main-white 80%,
-          $main-white 80%,
-          $main-white 100%
+          $main-red 69%,
+          $main-red 80%,
+          $main-red 80%,
+          $main-red 100%
         );
+      }
+      .no-btn {
+        color: darken($main-red, 40%) !important;
+        border: 0 !important;
+        padding: 0 !important;
+
+        &:hover {
+          color: $main-red !important;
+          background: none !important;
+        }
       }
       a:not(.reach-out),
       button {
@@ -68,28 +96,29 @@
           text-decoration: none;
         }
       }
-
-      .card {
-        background: none;
-        border: none;
-
-        .card-body {
-          padding: none !important;
-        }
-        .form-control {
-          background: #d4d4d4 !important;
-          border: 1px solid $main-red;
-          margin: 1em 0;
-
-          &::placeholder {
-            color: $main-grey;
-          }
-        }
+    }
+    &.parallaxVideo {
+      height: 500px;
+      width: 100% !important;
+      padding: 0 !important;
+      video {
+        width: 100vw;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: -999;
+        margin: 0 !important;
       }
     }
 
     .jumbotron {
       background: transparent;
+    }
+  }
+
+  .stories {
+    button.btn {
+      margin: auto;
     }
   }
 
@@ -146,38 +175,39 @@
 }
 
 .story-logo.roundup {
-  background: url("../img/barclays.png");
-  background-position: center;
+  background: url("../img/roundup_team.png");
+  background-position: center center;
   background-repeat: no-repeat;
+  background-size: contain;
   object-fit: contain;
   margin: auto;
-  height: 200px;
+  height: 250px;
   width: 400px;
-  transform: scale(0.6);
+  // border-radius: 50%;
 }
 .story-logo.homeless {
-  background: url("../img/homeless.png");
+  background: url("../img/sal mohammed.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
   margin: auto;
-  height: 200px;
-  width: auto;
-  transform: scale(0.6);
+  height: 250px;
+  width: 250px;
+  border-radius: 50%;
 }
 .story-logo.ticketaid {
-  background: url("../img/ticketaid.png");
+  background: url("../img/matt o shea.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
   margin: auto;
-  height: 200px;
-  width: 160px;
-  transform: scale(0.9);
+  height: 250px;
+  width: 250px;
+  border-radius: 50%;
 }
 .lightbulb {
   background: url("../img/lightbulb.png");
-  filter: invert(100%);
+  // filter: invert(100%);
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -188,7 +218,6 @@
 }
 .boat {
   background: url("../img/boat.png");
-  filter: invert(100%);
   transform: scaleX(-1);
   background-position: center;
   background-repeat: no-repeat;
@@ -196,19 +225,28 @@
   margin: auto;
   height: 200px;
   width: 400px;
-  // transform: scale(0.8);
 }
-.mailing {
-  background: url("../img/mailing.png");
-  // filter: hue-rotate(100deg);
-  transform: scale(1.3);
+.speech {
+  background: url("../img/speech.png");
+  transform: scaleX(1);
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
   margin: auto;
   height: 200px;
-  width: 400px;
-  // transform: scale(0.8);
+  width: 500px;
+}
+.mailing {
+  background: url("../img/mailing.png");
+  filter: brightness(100);
+  // transform: scale(1);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin: auto;
+  height: 150px;
+  width: 300px;
+  transform: rotate(310deg) translate(-100px);
 }
 
 #map {
@@ -216,4 +254,20 @@
   height: 400px;
   margin: auto;
   padding-left: 0;
+
+  &:focus {
+    outline: none !important;
+  }
+
+  .leaflet-control-zoom {
+    font-size: 4em;
+    transform: translate(50%, 10px);
+
+    a {
+      padding: 15px;
+    }
+  }
+  .leaflet-control-attribution {
+    display: none;
+  }
 }

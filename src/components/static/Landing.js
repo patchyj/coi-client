@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import MyMapComponent from "../Apis/GoogleMaps";
 import IFrameModal from "../common/IFrameModal";
+import bgVideo from "../../img/circle_talks.mp4";
 import {
   TwitterTimelineEmbed,
   TwitterShareButton,
@@ -36,6 +37,20 @@ class MailingForm extends Component {
           </small>
         </div>
       </form>
+    );
+  }
+}
+
+class YouTubeEmbed extends Component {
+  render() {
+    return (
+      <iframe
+        className="col-md-6 py-2"
+        src={this.props.src}
+        frameBorder="0"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+      />
     );
   }
 }
@@ -105,30 +120,27 @@ class Landing extends Component {
   }
   render() {
     return (
+      // Welcome
       <div className="landing container-fluid p-0 text-center section-red">
         <div className="container-fluid section section-red text-white py-5">
           <div className="container py-5">
             <div className="row py-5">
               <div className="col-sm-6 py-5">
-                <h1 className="display-3 text-left text-white">
-                  Welcome to the Circle of Intrapreneurs
+                <h1 className="display-2 text-left text-white pb-5">
+                  Welcome to the Circle of Intrapreneurs
                 </h1>
               </div>
               <div className="col-sm-6" />
             </div>
           </div>
         </div>
-
-        <div className="container-fluid section section-white">
-          <iframe
-            src="https://player.vimeo.com/video/277645964"
-            width="640"
-            height="360"
-            frameBorder="0"
-            allowFullScreen
-          />
+        {/* Circle Talks */}
+        <div className="container-fluid section parallaxVideo">
+          <video autoPlay muted loop>
+            <source src={bgVideo} type="video/mp4" />
+          </video>
         </div>
-
+        {/* Who are the circle */}
         <div className="container-fluid section section-red">
           <div className="row py-5">
             <div className="col-md-4 py-5">
@@ -158,13 +170,71 @@ class Landing extends Component {
             </div>
           </div>
         </div>
+        {/* Social media */}
+        <div className="container-fluid section section-white">
+          <div className="container">
+            <h1 className="display-4 py-5">Social Media</h1>
+            <div className="row">
+              <div className="col-md-6">
+                <h1 className="display-5">Twitter</h1>
+                <TwitterTimelineEmbed
+                  sourceType="URL"
+                  screenName="circleofyi"
+                  options={{ height: 800 }}
+                />
+              </div>
+              <div className="col-md-6">
+                <h1 className="display-5">More videos</h1>
+                <div className="row">
+                  <YouTubeEmbed src="https://www.youtube.com/embed/r47ac_6I7-Y" />
+                  <YouTubeEmbed src="https://www.youtube.com/embed/_gpJzy5hDfE" />
+                  <YouTubeEmbed src="https://www.youtube.com/embed/OD-9Mre-ycY" />
+                  <YouTubeEmbed src="https://www.youtube.com/embed/VJ2SapCw4Vs" />
+                  <YouTubeEmbed src="https://www.youtube.com/embed/O9vR7jUJq1w" />
+                  <YouTubeEmbed src="https://www.youtube.com/embed/T2NIHXKIKhw" />
+                  <YouTubeEmbed src="https://www.youtube.com/embed/sr9toTw725c" />
+                  <YouTubeEmbed src="https://www.youtube.com/embed/N2xf_yn-R0Y" />
+                  <YouTubeEmbed src="https://www.youtube.com/embed/B3WbQa_H4QM" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
+        {/* Mailing list */}
+        <div className="container-fluid section section-red">
+          <div className="jumbotron text-left">
+            <div className="row">
+              <div className="col-md-6">
+                <h1 className="display-4 py-5">Want to know more?</h1>
+                <h6 className="display-5">
+                  <a
+                    data-toggle="collapse"
+                    href="#mailingList"
+                    role="button"
+                    aria-expanded="false"
+                  >
+                    Join our mailing list <i className="fas fa-chevron-down" />
+                  </a>
+                </h6>
+                <div className="collapse mt-4" id="mailingList">
+                  <MailingForm />
+                </div>
+              </div>
+              <div className="col-md-6">
+                <div className="mailing" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Stories form our members */}
         <div className="container-fluid section section-white stories">
           <h3 className="display-4 py-5">Stories From Our Members</h3>
           <div className="row text-justify">
             <div className="col-md-4">
               <div className="story-logo roundup" />
-              <h4 className="py-2">Barclays Roundup</h4>
+              <h4 className="py-4">Barclays Roundup</h4>
               <p className="py-3">
                 RoundUp is a microdonation initiative conceived within Barclays
                 by intrapreneurs Tim Heard and David Spears, which allows
@@ -192,7 +262,7 @@ class Landing extends Component {
             </div>
             <div className="col-md-4">
               <div className="story-logo homeless" />
-              <h4 className="py-2">Connected Homeless</h4>
+              <h4 className="py-4">Connected Homeless</h4>
               <p className="py-3">
                 Connected Homeless is a digital platform created when he worked
                 at O2 by intrapreneur Sal Mohammed. It connects donors, homeless
@@ -207,7 +277,7 @@ class Landing extends Component {
               </p>
               <button
                 type="button"
-                className="btn"
+                className="btn text-center"
                 data-toggle="modal"
                 data-target="#O2Modal"
               >
@@ -221,7 +291,7 @@ class Landing extends Component {
             </div>
             <div className="col-md-4">
               <div className="story-logo ticketaid" />
-              <h4 className="py-2">TicketAid</h4>
+              <h4 className="py-4">TicketAid</h4>
               <p className="py-3">
                 TicketAid is a corporate ticket allocation website designed to
                 give employees access to exclusive tickets, that would otherwise
@@ -252,36 +322,14 @@ class Landing extends Component {
             </div>
           </div>
         </div>
+
+        {/* Hubs */}
         <div className="container-fluid section section-red map-container">
           <h1 className="display-4">Our Global Hubs</h1>
           <div id="map" className="container" />
         </div>
+        {/* Idea that can change the world */}
         <div className="container-fluid section section-white">
-          <div className="jumbotron text-left">
-            <div className="row">
-              <div className="col-md-6">
-                <h1 className="display-4 py-5">Want to know more?</h1>
-                <h6 className="display-5">
-                  <a
-                    data-toggle="collapse"
-                    href="#mailingList"
-                    role="button"
-                    aria-expanded="false"
-                  >
-                    Join our mailing list
-                  </a>
-                </h6>
-                <div className="collapse mt-4" id="mailingList">
-                  <MailingForm />
-                </div>
-              </div>
-              <div className="col-md-6">
-                <div className="mailing" />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="container-fluid section section-red">
           <div className="jumbotron">
             <div className="row">
               <div className="col-md-6">
@@ -292,27 +340,36 @@ class Landing extends Component {
                   Have an idea that you think can change the world?
                 </h1>
                 <h6 className="display-5">
-                  <Link to="/register">Become a member</Link> and tell us about
-                  it
+                  <Link to="/register" className="no-btn">
+                    Become a member
+                  </Link>{" "}
+                  and tell us about it
                 </h6>
               </div>
             </div>
           </div>
         </div>
-        <div className="container-fluid section section-white with-stripe">
-          <div className="jumbotron text-left">
-            <h1 className="display-4">
-              Social butterfly? <br /> Tell us a story
-            </h1>
-            <h6 className="display-5">
-              <Link to="/register" className="reach-out">
-                Reach out
-              </Link>{" "}
-              to our community and see what the fuss is about
-            </h6>
+        {/* Social butterfly */}
+        <div className="container-fluid section section-red with-stripe">
+          <div className="jumbotron row text-left">
+            <div className="col-md-6">
+              <h1 className="display-4">
+                Social butterfly? <br /> Tell us a story
+              </h1>
+              <h6 className="display-5">
+                <Link to="/register" className="reach-out">
+                  Reach out
+                </Link>{" "}
+                to our community and see what the fuss is about
+              </h6>
+            </div>
+            <div className="col-md-6">
+              <div className="speech" />
+            </div>
           </div>
         </div>
-        <div className="container-fluid section section-red">
+        {/* Oil tanker */}
+        <div className="container-fluid section section-white">
           <div className="jumbotron">
             <div className="row py-5">
               <div className="col-md-6">
@@ -329,24 +386,7 @@ class Landing extends Component {
             </div>
           </div>
         </div>
-        <div className="container-fluid section section-white">
-          <div className="container">
-            <h1 className="display-4 py-5">Social Media</h1>
-            <div className="row">
-              <div className="col-md-6">
-                <h1 className="display-5">Twitter</h1>
-                <TwitterTimelineEmbed
-                  sourceType="URL"
-                  screenName="circleofyi"
-                  options={{ height: 600 }}
-                />
-              </div>
-              <div className="col-md-6">
-                <h1 className="display-5">Podcasts</h1>
-              </div>
-            </div>
-          </div>
-        </div>
+        {/* feedback */}
         <div className="container-fluid section section-red">
           <h3 className="display-4 py-5">Have some feedback?</h3>
           <h3 className="display-5">Tell us how we can improve</h3>

@@ -7,7 +7,7 @@ class IFrameModal extends Component {
       <div
         className="modal fade"
         id={id}
-        tabindex="-1"
+        tabIndex="-1"
         role="dialog"
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
@@ -19,9 +19,9 @@ class IFrameModal extends Component {
                 width="942"
                 height="530"
                 src={url}
-                frameborder="0"
+                frameBorder="0"
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
+                allowFullScreen
               />
             </div>
           </div>

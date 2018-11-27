@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import Moment from "react-moment";
+import axios from "axios";
+import request from "request";
 import MyMapComponent from "../Apis/GoogleMaps";
 import IFrameModal from "../common/IFrameModal";
 import bgVideo from "../../img/circle_talks.mp4";
@@ -64,25 +66,41 @@ class EventbriteAPI extends Component {
 }
 
 class MailingForm extends Component {
-  onSubmit(e) {
-    e.preventDefault();
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      email: ""
+    };
+  }
+
+  onChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
   }
 
   render() {
     return (
-      <form className="card card-body" onSubmit={this.onSubmit.bind(this)}>
-        <div className="form-group">
+      <form className="card card-body">
+        {/*<div className="form-group">
           <input
+            onChange={this.onChange.bind(this)}
             className="form-control form-control-lg"
             type="email"
             placeholder="Enter your email"
+            name="email"
           />
           <input type="submit" className="btn" />
           <br />
           <small>
             We promise not to share your email with any third parties
           </small>
-        </div>
+        </div>*/}
+        <a
+          href="https://circleofyi.us13.list-manage.com/subscribe/post?u=6ddfb2318958e6bd7e6d9f028&id=d82e567ec0"
+          target="_blank"
+        >
+          Sign up to our newsletter
+        </a>
       </form>
     );
   }
@@ -321,17 +339,14 @@ class Landing extends Component {
                 <h1 className="display-4 py-5">Want to know more?</h1>
                 <h6 className="display-5">
                   <a
-                    data-toggle="collapse"
-                    href="#mailingList"
-                    role="button"
-                    aria-expanded="false"
+                    href="https://circleofyi.us13.list-manage.com/subscribe/post?u=6ddfb2318958e6bd7e6d9f028&id=d82e567ec0"
+                    target="_blank"
+                    className="btn"
                   >
-                    Join our mailing list <i className="fas fa-chevron-down" />
+                    Join our mailing list
                   </a>
                 </h6>
-                <div className="collapse mt-4" id="mailingList">
-                  <MailingForm />
-                </div>
+                <div className="collapse mt-4" id="mailingList" />
               </div>
               <div className="col-md-6">
                 <div className="mailing" />

@@ -145,6 +145,7 @@ a:hover {
     .landing .section.section-red a {
       color: #e2e2e2 !important; }
     .landing .section.section-red .btn {
+      font-weight: bold;
       background: none;
       border: 1px solid #e2e2e2;
       color: #e2e2e2;
@@ -162,7 +163,7 @@ a:hover {
         border: 1px solid #dd3545;
         margin: 1em 0; }
         .landing .section.section-red .card .form-control::placeholder {
-          color: #393939; }
+          color: black; }
   .landing .section.section-white {
     background: #e2e2e2;
     color: #dd3545; }
@@ -212,6 +213,23 @@ a:hover {
     background: transparent; }
 .landing .more-videos .carousel iframe {
   height: 400px; }
+.landing .more-videos .carousel-control-next,
+.landing .more-videos .carousel-control-prev {
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  top: 44%;
+  bottom: 0;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  color: #fff;
+  text-align: center;
+  background: black; }
 .landing .stories button.btn {
   margin: auto; }
 .landing form input,
@@ -257,11 +275,11 @@ a:hover {
 
 .main-logo {
   background: url("../img/logo_v2.svg");
-  background-position: center;
+  background-position: center center;
   background-repeat: no-repeat;
   height: 400px;
-  width: 400px;
-  transform: scale(1) translateX(50px); }
+  width: 100%;
+  margin: auto; }
 
 .story-logo + h4 {
   text-align: center; }
@@ -400,6 +418,12 @@ a:hover {
     padding: 10px; }
     .landing form .col-sm-12 {
       margin-top: 10px; } }
+@media only screen and (max-width: 540px) {
+  h1.display-2 {
+    font-size: 3rem !important; } }
+@media only screen and (max-width: 630px) {
+  h1.display-2 {
+    font-size: 4rem; } }
 @media only screen and (max-width: 1040px) {
   .landing .stories .row {
     text-align: center !important; }
@@ -409,6 +433,15 @@ a:hover {
     .landing .stories [class*="col-"] .btn {
       width: 80%;
       margin-bottom: 30px; }
+  .landing .info-text {
+    font-size: 1.4rem;
+    text-align: center;
+    padding-left: 15px;
+    padding-right: 15px; }
+    .landing .info-text ~ .btn {
+      width: 80%; }
+  .landing .middle-btn {
+    margin: 20px; }
   .landing .bulb-container .text-right {
     text-align: center !important; }
     .landing .bulb-container .text-right .display-4 {

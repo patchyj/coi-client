@@ -22,6 +22,7 @@
       }
 
       .btn {
+        font-weight: bold;
         background: none;
         border: 1px solid $main-white;
         color: $main-white;
@@ -45,7 +46,7 @@
           margin: 1em 0;
 
           &::placeholder {
-            color: $main-grey;
+            color: black;
           }
         }
       }
@@ -122,6 +123,24 @@
     .carousel iframe {
       height: 400px;
     }
+    .carousel-control-next,
+    .carousel-control-prev {
+      position: absolute;
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      top: 44%;
+      bottom: 0;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-align: center;
+      align-items: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      color: #fff;
+      text-align: center;
+      background: black;
+    }
   }
   .stories {
     button.btn {
@@ -193,11 +212,12 @@
 
 .main-logo {
   background: url("../img/logo_v2.svg");
-  background-position: center;
+  background-position: center center;
   background-repeat: no-repeat;
   height: 400px;
-  width: 400px;
-  transform: scale(1) translateX(50px);
+  width: 100%;
+  margin: auto;
+  // transform: scale(1) translateX(50px);
   // filter: brightness(5);
 }
 
@@ -393,6 +413,18 @@
   }
 }
 
+@media only screen and (max-width: 540px) {
+  h1.display-2 {
+    font-size: 3rem !important;
+  }
+}
+
+@media only screen and (max-width: 630px) {
+  h1.display-2 {
+    font-size: 4rem;
+  }
+}
+
 // Tablets
 @media only screen and (max-width: 1040px) {
   .landing {
@@ -409,6 +441,20 @@
           margin-bottom: 30px;
         }
       }
+    }
+
+    .info-text {
+      font-size: 1.4rem;
+      text-align: center;
+      padding-left: 15px;
+      padding-right: 15px;
+
+      & ~ .btn {
+        width: 80%;
+      }
+    }
+    .middle-btn {
+      margin: 20px;
     }
 
     .bulb-container {

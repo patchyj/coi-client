@@ -64,25 +64,25 @@ class FeedBackForm extends Component {
     return (
       <form onSubmit={this.onSubmit.bind(this)}>
         <div className="form-row py-3">
-          <div className="col">
+          <div className="col-md-6 col-sm-12">
             <input
               type="text"
-              name="firstName"
+              name="fullName"
               className="form-control"
-              placeholder="First name"
+              placeholder="Full name"
             />
           </div>
-          <div className="col">
+          <div className="col-md-6 col-sm-12">
             <input
-              type="text"
-              name="lastName"
+              type="email"
+              name="email"
               className="form-control"
-              placeholder="Last name"
+              placeholder="Email"
             />
           </div>
         </div>
         <div className="form-row py-3">
-          <div className="col">
+          <div className="col-md-12 col-sm-12">
             <textarea
               className="form-control"
               name="feedback"
@@ -93,7 +93,7 @@ class FeedBackForm extends Component {
           </div>
         </div>
         <div className="form-row py-3">
-          <div className="col">
+          <div className="col-md-12 col-sm-12">
             <input type="submit" className="form-control" value="Submit" />
           </div>
         </div>
@@ -150,7 +150,7 @@ class Landing extends Component {
               <h3 className="display-4">
                 Who are the Circle of Intrapreneurs?
               </h3>
-              <p className=" py-4">
+              <p className=" py-4 info-text">
                 A movement designed to inspire, guide, develop & deliver
                 purpose-driven business ideas from social intrapreneurs inside
                 corporate organisations globally.
@@ -165,7 +165,9 @@ class Landing extends Component {
                 Join us and together we can make business a force for good.
               </p>
               <a className="btn mx-1 px-3 py-2">Join Us</a>
-              <a className="btn mx-1 px-3 py-2">Download Our Report</a>
+              <a className="btn mx-1 px-3 py-2 middle-btn">
+                Download Our Report
+              </a>
               <a className="btn mx-1 px-3 py-2">100 Day Challenge</a>
             </div>
           </div>
@@ -329,7 +331,7 @@ class Landing extends Component {
           <div id="map" className="container" />
         </div>
         {/* Idea that can change the world */}
-        <div className="container-fluid section section-white">
+        <div className="container-fluid section section-white bulb-container">
           <div className="jumbotron">
             <div className="row">
               <div className="col-md-6">

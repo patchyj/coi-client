@@ -151,7 +151,7 @@ a:hover {
       transition: 0.2s; }
       .landing .section.section-red .btn:hover {
         background: #e2e2e2;
-        color: #931924; }
+        color: #931924 !important; }
     .landing .section.section-red .card {
       background: none;
       border: none; }
@@ -330,6 +330,58 @@ a:hover {
   #map .leaflet-control-attribution {
     display: none; }
 
+@media only screen and (max-width: 340px) {
+  .landing .section {
+    padding: 0 !important; }
+    .landing .section h1 {
+      font-size: 2.8em;
+      text-align: center !important; }
+    .landing .section.section-red .display-4 {
+      font-size: 3.1rem !important; }
+    .landing .section.section-red .info-text {
+      font-size: 1.4rem;
+      text-align: center;
+      padding-left: 15px;
+      padding-right: 15px; }
+      .landing .section.section-red .info-text ~ .btn {
+        width: 80%; }
+    .landing .section.section-red .middle-btn {
+      margin: 20px; }
+    .landing .section.section-white .display-4 {
+      font-size: 2.6rem !important;
+      padding-bottom: 1rem !important; }
+    .landing .section.section-white.bulb-container .text-right {
+      text-align: center !important; }
+  .landing .main-logo {
+    width: 100%;
+    height: 235px;
+    transform: none; }
+  .landing .mailing {
+    transform: rotate(318deg) translate(40px, 29px);
+    height: 55px; }
+  .landing .parallaxVideo,
+  .landing .map-container {
+    display: none; }
+  .landing .stories .row {
+    text-align: center !important; }
+  .landing .stories .display-4 {
+    font-size: 2.9rem !important;
+    padding: 0; }
+  .landing .stories [class*="col-"] p {
+    padding: 20px 25px; }
+  .landing .stories [class*="col-"] .btn {
+    width: 80%;
+    margin-bottom: 30px; }
+  .landing .stories .story-logo {
+    width: 286px !important; }
+  .landing .speech,
+  .landing .boat {
+    width: 100% !important;
+    height: 110px !important; }
+  .landing form {
+    padding: 10px; }
+    .landing form .col-sm-12 {
+      margin-top: 10px; } }
 .projects .display-4 {
   font-size: 3rem !important; }
 .projects form input[type="submit"] {

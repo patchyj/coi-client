@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Moment from "react-moment";
 import MyMapComponent from "../Apis/GoogleMaps";
 import IFrameModal from "../common/IFrameModal";
 import bgVideo from "../../img/circle_talks.mp4";
@@ -15,6 +16,52 @@ import {
   TwitterOnAirButton
 } from "react-twitter-embed";
 import { Link } from "react-router-dom";
+
+class EventbriteAPI extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      events: []
+    };
+  }
+
+  async componentDidMount() {
+    const response = await fetch(
+      `https://www.eventbriteapi.com/v3/users/me/owned_events/?token=${"JNM32ETYOWZBMVPRI5TU"}`
+    );
+    const json = await response.json();
+    this.setState({ events: json.events });
+  }
+
+  render() {
+    console.log(this.state);
+    let events;
+    if (this.state.events.length > 0) {
+      events = this.state.events
+        .map((event, key) => {
+          return (
+            <a className="col-md-12" key={key} target="_blank" href={event.url}>
+              <div className="row">
+                <div className="col-sm-8">
+                  <h4>{event.name.text}</h4>
+                </div>
+                <div className="col-sm-4">
+                  <h5>
+                    <Moment format="HH:mm D MMM YYYY" withTitle>
+                      {event.start.local}
+                    </Moment>
+                  </h5>
+                </div>
+              </div>
+            </a>
+          );
+        })
+        .reverse();
+    }
+    return <div className="row eventBrite-container">{events}</div>;
+  }
+}
 
 class MailingForm extends Component {
   onSubmit(e) {
@@ -45,7 +92,7 @@ class YouTubeEmbed extends Component {
   render() {
     return (
       <iframe
-        className="col-md-6 py-2"
+        className="d-block w-100"
         src={this.props.src}
         frameBorder="0"
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
@@ -141,7 +188,7 @@ class Landing extends Component {
           </video>
         </div>
         {/* Who are the circle */}
-        <div className="container-fluid section section-red">
+        <div className="container-fluid section section-white">
           <div className="row py-5">
             <div className="col-md-4 col-sm-12 py-5">
               <div className="main-logo" />
@@ -172,33 +219,96 @@ class Landing extends Component {
             </div>
           </div>
         </div>
+        <div className="container-fluid section section-red more-videos">
+          <h1 className="display-5">More videos</h1>
+          <div
+            id="carouselExampleIndicators"
+            className="carousel slide col-md-8 offset-md-2"
+            data-ride="carousel"
+          >
+            <ol className="carousel-indicators">
+              <li
+                data-target="#carouselExampleIndicators"
+                data-slide-to="0"
+                className="active"
+              />
+              <li data-target="#carouselExampleIndicators" data-slide-to="1" />
+              <li data-target="#carouselExampleIndicators" data-slide-to="2" />
+              <li data-target="#carouselExampleIndicators" data-slide-to="3" />
+              <li data-target="#carouselExampleIndicators" data-slide-to="4" />
+              <li data-target="#carouselExampleIndicators" data-slide-to="5" />
+              <li data-target="#carouselExampleIndicators" data-slide-to="6" />
+              <li data-target="#carouselExampleIndicators" data-slide-to="7" />
+              <li data-target="#carouselExampleIndicators" data-slide-to="8" />
+              <li data-target="#carouselExampleIndicators" data-slide-to="9" />
+            </ol>
+            <div className="carousel-inner">
+              <div className="carousel-item active">
+                <YouTubeEmbed src="https://www.youtube.com/embed/B3WbQa_H4QM" />
+              </div>
+              <div className="carousel-item">
+                <YouTubeEmbed src="https://www.youtube.com/embed/r47ac_6I7-Y" />
+              </div>
+              <div className="carousel-item">
+                <YouTubeEmbed src="https://www.youtube.com/embed/_gpJzy5hDfE" />
+              </div>
+              <div className="carousel-item">
+                <YouTubeEmbed src="https://www.youtube.com/embed/OD-9Mre-ycY" />
+              </div>
+              <div className="carousel-item">
+                <YouTubeEmbed src="https://www.youtube.com/embed/VJ2SapCw4Vs" />
+              </div>
+              <div className="carousel-item">
+                <YouTubeEmbed src="https://www.youtube.com/embed/O9vR7jUJq1w" />
+              </div>
+              <div className="carousel-item">
+                <YouTubeEmbed src="https://www.youtube.com/embed/T2NIHXKIKhw" />
+              </div>
+              <div className="carousel-item">
+                <YouTubeEmbed src="https://www.youtube.com/embed/sr9toTw725c" />
+              </div>
+              <div className="carousel-item">
+                <YouTubeEmbed src="https://www.youtube.com/embed/N2xf_yn-R0Y" />
+              </div>
+              <div className="carousel-item">
+                <YouTubeEmbed src="https://www.youtube.com/embed/r47ac_6I7-Y" />
+              </div>
+            </div>
+            <a
+              className="carousel-control-prev"
+              href="#carouselExampleIndicators"
+              role="button"
+              data-slide="prev"
+            >
+              <span className="carousel-control-prev-icon" aria-hidden="true" />
+              <span className="sr-only">Previous</span>
+            </a>
+            <a
+              className="carousel-control-next"
+              href="#carouselExampleIndicators"
+              role="button"
+              data-slide="next"
+            >
+              <span className="carousel-control-next-icon" aria-hidden="true" />
+              <span className="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
         {/* Social media */}
         <div className="container-fluid section section-white">
-          <div className="container">
-            <h1 className="display-4 py-5">Social Media</h1>
-            <div className="row">
-              <div className="col-md-6">
-                <h1 className="display-5">Twitter</h1>
-                <TwitterTimelineEmbed
-                  sourceType="URL"
-                  screenName="circleofyi"
-                  options={{ height: 800 }}
-                />
-              </div>
-              <div className="col-md-6">
-                <h1 className="display-5">More videos</h1>
-                <div className="row">
-                  <YouTubeEmbed src="https://www.youtube.com/embed/r47ac_6I7-Y" />
-                  <YouTubeEmbed src="https://www.youtube.com/embed/_gpJzy5hDfE" />
-                  <YouTubeEmbed src="https://www.youtube.com/embed/OD-9Mre-ycY" />
-                  <YouTubeEmbed src="https://www.youtube.com/embed/VJ2SapCw4Vs" />
-                  <YouTubeEmbed src="https://www.youtube.com/embed/O9vR7jUJq1w" />
-                  <YouTubeEmbed src="https://www.youtube.com/embed/T2NIHXKIKhw" />
-                  <YouTubeEmbed src="https://www.youtube.com/embed/sr9toTw725c" />
-                  <YouTubeEmbed src="https://www.youtube.com/embed/N2xf_yn-R0Y" />
-                  <YouTubeEmbed src="https://www.youtube.com/embed/B3WbQa_H4QM" />
-                </div>
-              </div>
+          <h1 className="display-4 py-5">Social Media</h1>
+          <div className="row">
+            <div className="col-md-4">
+              <h1 className="display-5">Twitter</h1>
+              <TwitterTimelineEmbed
+                sourceType="URL"
+                screenName="circleofyi"
+                options={{ height: 800 }}
+              />
+            </div>
+            <div className="col-md-8">
+              <h1 className="display-5">Events</h1>
+              <EventbriteAPI />
             </div>
           </div>
         </div>
@@ -234,7 +344,7 @@ class Landing extends Component {
         <div className="container-fluid section section-white stories">
           <h3 className="display-4 py-5">Stories From Our Members</h3>
           <div className="row text-justify">
-            <div className="col-md-4">
+            <div className="col-md-4 col-sm-12">
               <div className="story-logo roundup" />
               <h4 className="py-4">Barclays Roundup</h4>
               <p className="py-3">
@@ -262,7 +372,7 @@ class Landing extends Component {
                 url="https://www.youtube.com/embed/cszDgqSjSwA"
               />
             </div>
-            <div className="col-md-4">
+            <div className="col-md-4 col-sm-12">
               <div className="story-logo homeless" />
               <h4 className="py-4">Connected Homeless</h4>
               <p className="py-3">
@@ -291,7 +401,7 @@ class Landing extends Component {
                 url="https://www.youtube.com/embed/G3JAvO6YL8E"
               />
             </div>
-            <div className="col-md-4">
+            <div className="col-md-4 col-sm-12">
               <div className="story-logo ticketaid" />
               <h4 className="py-4">TicketAid</h4>
               <p className="py-3">
@@ -374,10 +484,10 @@ class Landing extends Component {
         <div className="container-fluid section section-white">
           <div className="jumbotron">
             <div className="row py-5">
-              <div className="col-md-6">
+              <div className="col-md-5">
                 <div className="boat" />
               </div>
-              <div className="col-md-6 text-right">
+              <div className="col-md-6 offset-md-1 text-right">
                 <h1 className="display-4">
                   Want to know how to steer the oil tanker?
                 </h1>
@@ -393,7 +503,7 @@ class Landing extends Component {
           <h3 className="display-4 py-5">Have some feedback?</h3>
           <h3 className="display-5">Tell us how we can improve</h3>
           <div className="row">
-            <div className="col-md-4 offset-md-4">
+            <div className="col-md-6 offset-md-3">
               <FeedBackForm />
             </div>
           </div>

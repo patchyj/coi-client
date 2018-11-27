@@ -176,6 +176,7 @@ a:hover {
         color: #dd3545 !important;
         background: none !important; }
     .landing .section.section-white a:not(.reach-out),
+    .landing .section.section-white a:not(.eventBrite-link),
     .landing .section.section-white button {
       border: 1px solid #dd3545;
       background: #e2e2e2;
@@ -184,10 +185,12 @@ a:hover {
       padding: 10px 15px;
       border-radius: 4px; }
       .landing .section.section-white a:not(.reach-out):focus,
+      .landing .section.section-white a:not(.eventBrite-link):focus,
       .landing .section.section-white button:focus {
         outline: none;
         box-shadow: none; }
       .landing .section.section-white a:not(.reach-out):hover,
+      .landing .section.section-white a:not(.eventBrite-link):hover,
       .landing .section.section-white button:hover {
         border: 1px solid #e2e2e2;
         background: #dd3545;
@@ -200,12 +203,15 @@ a:hover {
     .landing .section.parallaxVideo video {
       width: 100vw;
       position: fixed;
-      top: 0;
-      left: 0;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       z-index: -999;
       margin: 0 !important; }
   .landing .section .jumbotron {
     background: transparent; }
+.landing .more-videos .carousel iframe {
+  height: 400px; }
 .landing .stories button.btn {
   margin: auto; }
 .landing form input,
@@ -232,6 +238,22 @@ a:hover {
     border: none; }
   .landing .modal-dialog .modal-body {
     transform: translateX(-50%); }
+.landing .eventBrite-container {
+  height: 800px;
+  overflow: scroll; }
+  .landing .eventBrite-container a {
+    margin: 10px auto !important;
+    text-align: left;
+    border: 1px solid #ec8c95 !important;
+    max-height: 200px;
+    overflow: hidden; }
+    .landing .eventBrite-container a > div {
+      padding: 20px !important; }
+    .landing .eventBrite-container a:hover {
+      background: #efefef !important;
+      box-shadow: 0 3px 7px #ec8c95;
+      color: #dd3545 !important;
+      border: 1px solid #e4616d !important; }
 
 .main-logo {
   background: url("../img/logo_v2.svg");
@@ -239,8 +261,7 @@ a:hover {
   background-repeat: no-repeat;
   height: 400px;
   width: 400px;
-  transform: scale(1) translateX(50px);
-  filter: brightness(5); }
+  transform: scale(1) translateX(50px); }
 
 .story-logo + h4 {
   text-align: center; }
@@ -252,8 +273,8 @@ a:hover {
   background-size: contain;
   object-fit: contain;
   margin: auto;
-  height: 250px;
-  width: 400px; }
+  height: 210px;
+  width: 350px; }
 
 .story-logo.homeless {
   background: url("../img/sal mohammed.jpg");
@@ -261,8 +282,8 @@ a:hover {
   background-repeat: no-repeat;
   background-size: contain;
   margin: auto;
-  height: 250px;
-  width: 250px;
+  height: 210px;
+  width: 210px;
   border-radius: 50%; }
 
 .story-logo.ticketaid {
@@ -271,8 +292,8 @@ a:hover {
   background-repeat: no-repeat;
   background-size: contain;
   margin: auto;
-  height: 250px;
-  width: 250px;
+  height: 210px;
+  width: 210px;
   border-radius: 50%; }
 
 .lightbulb {
@@ -369,9 +390,6 @@ a:hover {
     padding: 0; }
   .landing .stories [class*="col-"] p {
     padding: 20px 25px; }
-  .landing .stories [class*="col-"] .btn {
-    width: 80%;
-    margin-bottom: 30px; }
   .landing .stories .story-logo {
     width: 286px !important; }
   .landing .speech,
@@ -382,6 +400,21 @@ a:hover {
     padding: 10px; }
     .landing form .col-sm-12 {
       margin-top: 10px; } }
+@media only screen and (max-width: 1040px) {
+  .landing .stories .row {
+    text-align: center !important; }
+  .landing .stories [class*="col-"] {
+    flex: 0 0 100%;
+    max-width: 100%; }
+    .landing .stories [class*="col-"] .btn {
+      width: 80%;
+      margin-bottom: 30px; }
+  .landing .bulb-container .text-right {
+    text-align: center !important; }
+    .landing .bulb-container .text-right .display-4 {
+      font-size: 2.7rem; }
+  .landing .boat {
+    width: 300px; } }
 .projects .display-4 {
   font-size: 3rem !important; }
 .projects form input[type="submit"] {

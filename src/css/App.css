@@ -330,7 +330,7 @@ a:hover {
   #map .leaflet-control-attribution {
     display: none; }
 
-@media only screen and (max-width: 340px) {
+@media only screen and (max-width: 420px) {
   .landing .section {
     padding: 0 !important; }
     .landing .section h1 {

@@ -75,7 +75,8 @@ table thead th {
 .navbar {
   padding: 0 0.5em;
   background: #dd3545 !important;
-  padding-top: 0; }
+  padding-top: 0;
+  font-weight: bold; }
   .navbar .nav-link {
     transition: 0.2s;
     color: white !important; }
@@ -341,7 +342,7 @@ a:hover {
   background-size: contain;
   margin: auto;
   height: 200px;
-  width: 500px; }
+  width: 400px; }
 
 .mailing {
   background: url("../img/mailing.png");
@@ -493,24 +494,12 @@ a.card:hover {
     .project .crudLinks i:hover {
       color: #494949; }
 
-.resources [class*="col-"] {
-  padding: 0; }
-.resources .list-group-item {
-  background: #393939;
-  transition: 0.1s;
-  border: none;
-  padding: 2em;
-  border-radius: 0;
-  width: 100%; }
-  .resources .list-group-item.active {
-    background: #931924; }
-  .resources .list-group-item:hover {
-    background: #202020; }
-  .resources .list-group-item a {
-    color: #e2e2e2; }
-
-.fade:not(.show) {
-  opacity: 1; }
+.resources .nav-item {
+  width: 20%;
+  text-align: center;
+  font-weight: bold; }
+.resources .table a {
+  color: #393939; }
 
 .chapter .container {
   max-width: 1320px; }

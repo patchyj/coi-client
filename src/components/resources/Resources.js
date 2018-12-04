@@ -6,9 +6,16 @@ import resources from "./FiveC";
 class ResourceTable extends Component {
   render() {
     const rows = this.props.data.map((data, key) => {
-      console.log(
-        typeof data.url !== "string" ? data.url.length : "its a string"
-      );
+      let download;
+      if (typeof data.url === "string") {
+        download = (
+          <a href={data.url} download>
+            <i className="fas fa-download" />
+          </a>
+        );
+      } else {
+        download = "";
+      }
       return (
         <tr key={"row" + key}>
           <th scope="row">
@@ -22,11 +29,7 @@ class ResourceTable extends Component {
             <ResourceModal data={data} />
           </th>
           <td>{data.description}</td>
-          <td className="text-center">
-            <a href={data.url} download>
-              <i className="fas fa-download" />
-            </a>
-          </td>
+          <td className="text-center">{download}</td>
         </tr>
       );
     });

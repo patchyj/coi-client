@@ -8,7 +8,47 @@ class ResourceModal extends Component {
     this.state = {};
   }
   render() {
-    const { id, resource, description, download } = this.props.data;
+    const { id, resource, description, download, url } = this.props.data;
+    const uniqueID = resource.split(" ").join("");
+    let display;
+    if (typeof url === "string") {
+      display = <img src={url} className="img-fluid" />;
+    } else if (typeof url === "object") {
+      const slides = url.map((img, key) => {
+        return (
+          <div
+            className={`carousel-item ${key === 0 ? "active" : ""}`}
+            key={`carousel-key-${key}`}
+          >
+            <img className="d-block w-100" src={img} alt="carousel img" />
+          </div>
+        );
+      });
+
+      display = (
+        <div id={`${uniqueID}`} className="carousel slide" data-ride="carousel">
+          <div className="carousel-inner">{slides}</div>
+          <a
+            className="carousel-control-prev"
+            href={`#${uniqueID}`} // need to be unique
+            role="button"
+            data-slide="prev"
+          >
+            <i className="fas fa-chevron-left fa-2x" aria-hidden="true" />
+            <span className="sr-only">Previous</span>
+          </a>
+          <a
+            className="carousel-control-next"
+            href={`#${uniqueID}`} // need to be unique
+            role="button"
+            data-slide="next"
+          >
+            <i className="fas fa-chevron-right fa-2x" aria-hidden="true" />
+            <span className="sr-only">Next</span>
+          </a>
+        </div>
+      );
+    }
     return (
       <div
         className="modal fade"
@@ -20,30 +60,17 @@ class ResourceModal extends Component {
       >
         <div className="modal-dialog" role="document">
           <div className="modal-content">
-            <div className="modal-header">
+            <div className="modal-body">{display}</div>
+            <div className="modal-footer">
               <h5 className="modal-title" id="exampleModalLabel">
                 {resource}
               </h5>
-              <button
-                type="button"
-                className="close"
-                data-dismiss="modal"
-                aria-label="Close"
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div className="modal-body">...</div>
-            <div className="modal-footer">
               <button
                 type="button"
                 className="btn btn-secondary"
                 data-dismiss="modal"
               >
                 Close
-              </button>
-              <button type="button" className="btn btn-primary">
-                Save changes
               </button>
             </div>
           </div>

@@ -500,6 +500,20 @@ a.card:hover {
   font-weight: bold; }
 .resources .table a {
   color: #393939; }
+.resources .modal {
+  background: rgba(0, 0, 0, 0.69); }
+.resources .modal-dialog {
+  max-width: 80%; }
+  .resources .modal-dialog .modal-body {
+    text-align: center; }
+.resources .carousel-indicators li {
+  background-color: #393939; }
+.resources .carousel-control-prev,
+.resources .carousel-control-next {
+  width: 0; }
+  .resources .carousel-control-prev i,
+  .resources .carousel-control-next i {
+    color: #393939; }
 
 .chapter .container {
   max-width: 1320px; }

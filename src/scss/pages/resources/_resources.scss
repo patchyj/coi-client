@@ -10,4 +10,28 @@
       color: $main-grey;
     }
   }
+
+  .modal {
+    background: rgba(0, 0, 0, 0.69);
+  }
+
+  .modal-dialog {
+    max-width: 80%;
+    .modal-body {
+      text-align: center;
+    }
+  }
+
+  .carousel-indicators {
+    li {
+      background-color: $main-grey;
+    }
+  }
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 0;
+    i {
+      color: $main-grey;
+    }
+  }
 }

@@ -1,21 +1,24 @@
 import React, { Component } from "react";
 import SlideShow from "react-slideshow-ui";
 import ResourceModal from "../common/ResourceModal";
+import resources from "./FiveC";
 
-class Table extends Component {
+class ResourceTable extends Component {
   render() {
-    let rows = [];
-    //Inner loop to create rows
-    for (let j = 1; j < 4; j++) {
-      rows.push(
-        <tr>
+    const rows = this.props.data.map((data, key) => {
+      return (
+        <tr key={"row" + key}>
           <th scope="row">
-            <a className="btn" data-toggle="modal" data-target={`#modal-${j}`}>
-              Launch demo modal
+            <a
+              className="btn"
+              data-toggle="modal"
+              data-target={`#modal-${data.id}`}
+            >
+              {data.resource}
             </a>
-            <ResourceModal id={`${j}`} />
+            <ResourceModal data={data} />
           </th>
-          <td>Jacob</td>
+          <td>{data.description}</td>
           <td className="text-center">
             <a href="">
               <i className="fas fa-download" />
@@ -23,7 +26,7 @@ class Table extends Component {
           </td>
         </tr>
       );
-    }
+    });
 
     return (
       <table className="table table-hover">
@@ -54,57 +57,61 @@ class Resources extends Component {
   }
 
   render() {
-    const tabs = ["Convert", "Create", "Construct", "Commit", "Control"].map(
-      (tab, index) => {
-        return (
-          <a
-            className={`nav-item nav-link ${index === 0 ? "active" : ""}`}
-            id="nav-home-tab"
-            data-toggle="tab"
-            href="#nav-home"
-            role="tab"
-            aria-controls="nav-home"
-            aria-selected="true"
-          >
-            {tab}
-          </a>
-        );
-      }
-    );
+    const tabs = resources.map((resource, key) => {
+      return (
+        <a
+          className={`nav-item nav-link ${key === 0 ? "active" : ""}`}
+          id={`nav-${key}-tab`}
+          data-toggle="tab"
+          href={`#nav-${key}`}
+          role="tab"
+          key={key}
+          aria-controls={`nav-${key}`}
+          aria-selected="true"
+        >
+          {resource.name}
+        </a>
+      );
+    });
+    const panels = resources.map((resource, key) => {
+      return (
+        <div
+          className={`tab-pane fade show ${key === 0 ? "active" : ""}`}
+          id={`nav-${key}`}
+          role="tabpanel"
+          aria-labelledby={`nav-${key}-tab`}
+          key={`pane-${key}`}
+        >
+          <ResourceTable data={resources[key].data} />
+        </div>
+      );
+    });
     return (
       <div className="resources">
+        <div className="jumbotron jumbotron-fluid red-sections">
+          <div className="container py-5">
+            <h1>
+              <span className="display-4">Welcome to The Circle!</span>
+            </h1>
+            <p className="p-responsive">
+              Welcome to the resource page! Here you will find all the
+              information you need on The Circle of Young Intrapreneurs. We want
+              you to know every thing there is to know about us so if there is
+              any thing you can’t find here, please do contact us for more
+              information.
+            </p>
+          </div>
+        </div>
         <div className="container py-5">
-          <h1 className="display-4 py-5">Resources</h1>
+          {/* NAV */}
           <nav>
             <div className="nav nav-tabs" id="nav-tab" role="tablist">
               {tabs}
             </div>
           </nav>
+          {/* CONTENT */}
           <div className="tab-content" id="nav-tabContent">
-            <div
-              className="tab-pane fade show active"
-              id="nav-home"
-              role="tabpanel"
-              aria-labelledby="nav-home-tab"
-            >
-              <Table />
-            </div>
-            <div
-              className="tab-pane fade"
-              id="nav-profile"
-              role="tabpanel"
-              aria-labelledby="nav-profile-tab"
-            >
-              <Table />
-            </div>
-            <div
-              className="tab-pane fade"
-              id="nav-contact"
-              role="tabpanel"
-              aria-labelledby="nav-contact-tab"
-            >
-              <Table />
-            </div>
+            {panels}
           </div>
         </div>
       </div>

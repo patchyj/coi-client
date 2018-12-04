@@ -8,20 +8,21 @@ class ResourceModal extends Component {
     this.state = {};
   }
   render() {
+    const { id, resource, description, download } = this.props.data;
     return (
       <div
         className="modal fade"
-        id={`modal-${this.props.id}`}
-        tabindex="-1"
+        id={`modal-${id}`}
+        tabIndex="-1"
         role="dialog"
-        aria-labelledby={`modal-${this.props.id}`}
+        aria-labelledby={`modal-${id}`}
         aria-hidden="true"
       >
         <div className="modal-dialog" role="document">
           <div className="modal-content">
             <div className="modal-header">
               <h5 className="modal-title" id="exampleModalLabel">
-                Modal title {this.props.id}
+                {resource}
               </h5>
               <button
                 type="button"

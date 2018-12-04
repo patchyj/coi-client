@@ -5,14 +5,19 @@
   text-align: justify;
 }
 
-.table-striped tbody tr:nth-of-type(even) {
-  background: lighten($main-grey, 20%);
-  color: $main-white;
+.table-striped tbody tr:nth-of-type(odd) {
+  background: rgba(0, 0, 0, 0.05);
+  &:hover {
+    background: rgba(0, 0, 0, 0.1);
+  }
 }
 
-.table-striped tbody tr:nth-of-type(odd) {
-  background: $main-grey;
-  color: $main-white;
+.table-striped tbody tr:nth-of-type(even) {
+  background: lighten($main-grey, 60%);
+  // color: $main-white;
+  &:hover {
+    background: lighten($main-grey, 55%);
+  }
 }
 
 .table-sm td {
@@ -28,10 +33,10 @@ table thead th {
 }
 
 .table a {
-  color: yellow;
+  color: $main-grey;
   &:hover {
     text-decoration: none;
-    color: lighten(yellow, 40%);
+    color: darken($main-grey, 20%);
   }
 }
 

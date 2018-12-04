@@ -22,11 +22,10 @@ class AdminIndex extends Component {
 
   sortBy(key) {
     this.setState({
-      users: this.state.users.sort(
-        (a, b) =>
-          this.state.direction[key] === "asc"
-            ? parseInt(a[key], 10) - parseInt(b[key], 10)
-            : parseInt(b[key], 10) - parseInt(a[key], 10)
+      users: this.state.users.sort((a, b) =>
+        this.state.direction[key] === "asc"
+          ? parseInt(a[key], 10) - parseInt(b[key], 10)
+          : parseInt(b[key], 10) - parseInt(a[key], 10)
       ),
       direction: {
         [key]: this.state.direction[key] === "asc" ? "des" : "asc"
@@ -63,16 +62,10 @@ class AdminIndex extends Component {
   }
 
   render() {
-    return (
-      <div className="admin">
-        <div
-          className="jumbotron"
-          style={{ background: `url(${this.state.admin.banner_pic})` }}
-        />
-        <span className="jumbotron_h1 display-5 py-5 page-header">
-          Wecome back, {this.state.admin.first_name}!
-        </span>
+    let results;
 
+    if (this.state.users.length !== 0) {
+      results = (
         <table className="table table-striped table-sm table-hover text-center">
           <thead>
             <tr className="thead-red">
@@ -143,6 +136,21 @@ class AdminIndex extends Component {
             })}
           </tbody>
         </table>
+      );
+    } else {
+      results = <div className="spinner" />;
+    }
+    return (
+      <div className="admin">
+        <div
+          className="jumbotron"
+          style={{ background: `url(${this.state.admin.banner_pic})` }}
+        />
+        <span className="jumbotron_h1 display-5 py-5 page-header">
+          Wecome back, {this.state.admin.first_name}!
+        </span>
+
+        {results}
       </div>
     );
   }

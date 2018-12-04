@@ -96,9 +96,7 @@ class Chapter extends Component {
               <table className="table table-striped table-sm table-hover text-center">
                 <thead>
                   <tr className="thead-red">
-                    <th>#</th>
                     <th>Name</th>
-                    <th>Email</th>
                     <th>Organisation</th>
                     <th>Joined</th>
                     <th>Projects</th>
@@ -108,13 +106,11 @@ class Chapter extends Component {
                   {this.state.members.map((member, i) => {
                     return (
                       <tr key={i}>
-                        <td>{member.id}</td>
                         <td>
                           <Link to={`/users/${member.id}`}>
                             {member.first_name} {member.last_name}
                           </Link>
                         </td>
-                        <td>{member.email}</td>
                         <td>{member.organisation}</td>
                         <td>{member.joined}</td>
                         <td>{member.projects ? member.projects.length : ""}</td>

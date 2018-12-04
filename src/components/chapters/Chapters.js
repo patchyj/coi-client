@@ -25,19 +25,13 @@ class Chapters extends Component {
   }
 
   render() {
-    return (
-      <div className="chapters">
-        <div className="container-fluid">
-          <div
-            className="jumbotron"
-            style={{ background: `url(${circleMap})` }}
-          />
-          <span className="jumbotron_h1 display-4">Chapters</span>
-        </div>
+    let results;
+
+    if (this.state.chapters.length !== 0) {
+      results = (
         <table className="table table-striped table-sm table-hover text-center">
           <thead>
             <tr className="thead-red">
-              <th>#</th>
               <th>Chapter</th>
               <th>Country</th>
               <th>Formed</th>
@@ -45,10 +39,9 @@ class Chapters extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.state.chapters.map((chapter, i) => {
+            {this.state.chapters.map((chapter, key) => {
               return (
-                <tr key={i}>
-                  <td>{chapter.id}</td>
+                <tr key={key}>
                   <td>
                     <Link to={`/chapters/${chapter.id}`}>{chapter.city}</Link>
                   </td>
@@ -60,6 +53,21 @@ class Chapters extends Component {
             })}
           </tbody>
         </table>
+      );
+    } else {
+      results = <div className="spinner" />;
+    }
+
+    return (
+      <div className="chapters">
+        <div className="container-fluid">
+          <div
+            className="jumbotron"
+            style={{ background: `url(${circleMap})` }}
+          />
+          <span className="jumbotron_h1 display-4">Chapters</span>
+        </div>
+        {results}
       </div>
     );
   }

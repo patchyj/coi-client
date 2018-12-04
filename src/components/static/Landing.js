@@ -5,6 +5,7 @@ import request from "request";
 import MyMapComponent from "../Apis/GoogleMaps";
 import IFrameModal from "../common/IFrameModal";
 import bgVideo from "../../img/circle_talks.mp4";
+import whitePaper from "../../img/Circle Whitepaper1.pdf";
 import {
   TwitterTimelineEmbed,
   TwitterShareButton,
@@ -229,11 +230,23 @@ class Landing extends Component {
                 <br />
                 Join us and together we can make business a force for good.
               </p>
-              <a className="btn mx-1 px-3 py-2">Join Us</a>
-              <a className="btn mx-1 px-3 py-2 middle-btn">
+              <Link to="/register" className="btn mx-1 px-3 py-2">
+                Join Us
+              </Link>
+              <a
+                className="btn mx-1 px-3 py-2 middle-btn"
+                href={whitePaper}
+                download
+              >
                 Download Our Report
               </a>
-              <a className="btn mx-1 px-3 py-2">100 Day Challenge</a>
+              <a
+                className="btn mx-1 px-3 py-2"
+                href="https://circleofyi.us13.list-manage.com/subscribe?u=6ddfb2318958e6bd7e6d9f028&id=04cc3e3074"
+                target="_blank"
+              >
+                100 Day Challenge
+              </a>
             </div>
           </div>
         </div>

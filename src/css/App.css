@@ -494,12 +494,42 @@ a.card:hover {
     .project .crudLinks i:hover {
       color: #494949; }
 
+.resources .background {
+  background: url("../img/books.jpeg");
+  background-repeat: no-repeat;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100vw;
+  background-size: cover;
+  z-index: -999; }
+.resources .background-text {
+  position: fixed;
+  color: #e2e2e2;
+  transform: translateY(-150%);
+  width: 65%;
+  left: 100px;
+  z-index: -998; }
+.resources .jumbotron {
+  margin-top: 400px; }
 .resources .nav-item {
   width: 20%;
   text-align: center;
   font-weight: bold; }
-.resources .table a {
-  color: #393939; }
+.resources .p-responsive {
+  font-weight: 600; }
+.resources .table {
+  font-weight: 600; }
+  .resources .table thead {
+    background: #b9b9b9; }
+  .resources .table a {
+    font-weight: 600;
+    color: #393939; }
+  .resources .table i {
+    color: #dd3545; }
+  .resources .table .btn {
+    padding: 0; }
 .resources .modal {
   background: rgba(0, 0, 0, 0.69); }
 .resources .modal-dialog {
@@ -514,6 +544,20 @@ a.card:hover {
   .resources .carousel-control-prev i,
   .resources .carousel-control-next i {
     color: #393939; }
+.resources .nav-item {
+  background: #868686;
+  color: #e2e2e2;
+  border-radius: 0;
+  transition: 0.1s; }
+  .resources .nav-item.active {
+    color: #868686; }
+    .resources .nav-item.active:hover {
+      background: #afafaf;
+      color: #e2e2e2;
+      border: 0; }
+  .resources .nav-item:hover {
+    background: #6c6c6c;
+    border: 0; }
 
 .chapter .container {
   max-width: 1320px; }

@@ -1,13 +1,52 @@
 .resources {
+  .background {
+    background: url("../img/books.jpeg");
+    background-repeat: no-repeat;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100vw;
+    background-size: cover;
+    z-index: -999;
+  }
+  .background-text {
+    position: fixed;
+    color: $main-white;
+    transform: translateY(-150%);
+    width: 65%;
+    left: 100px;
+    z-index: -998;
+  }
+  .jumbotron {
+    margin-top: 400px;
+  }
   .nav-item {
     width: 20%;
     text-align: center;
     font-weight: bold;
   }
 
+  .p-responsive {
+    font-weight: 600;
+  }
+
   .table {
+    thead {
+      background: lighten($main-grey, 50%);
+    }
+    font-weight: 600;
     a {
+      font-weight: 600;
       color: $main-grey;
+    }
+
+    i {
+      color: $main-red;
+    }
+
+    .btn {
+      padding: 0;
     }
   }
 
@@ -32,6 +71,25 @@
     width: 0;
     i {
       color: $main-grey;
+    }
+  }
+
+  .nav-item {
+    background: lighten($main-grey, 30%);
+    color: $main-white;
+    border-radius: 0;
+    transition: 0.1s;
+    &.active {
+      color: lighten($main-grey, 30%);
+      &:hover {
+        background: darken($main-white, 20%);
+        color: $main-white;
+        border: 0;
+      }
+    }
+    &:hover {
+      background: lighten($main-grey, 20%);
+      border: 0;
     }
   }
 }

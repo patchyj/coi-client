@@ -60,14 +60,24 @@ class Chapters extends Component {
 
     return (
       <div className="chapters">
-        <div className="container-fluid">
-          <div
-            className="jumbotron"
-            style={{ background: `url(${circleMap})` }}
-          />
-          <span className="jumbotron_h1 display-4">Chapters</span>
+        <div className="background" />
+        <div className="background-text">
+          <h1 className="display-4">Chapters</h1>
+          <p className="p-responsive">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+          </p>
         </div>
-        {results}
+        <div className="container-fluid bg-main-white">
+          <div className="jumbotron jumbotron-fluid bg-main-white">
+            {results}
+          </div>
+        </div>
       </div>
     );
   }

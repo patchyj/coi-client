@@ -76,30 +76,39 @@ class Posts extends Component {
 
     return (
       <div className="posts">
-        <div className="jumbotron">
+        <div className="background" />
+        <div className="background-text">
           <h1 className="display-4">Posts</h1>
-          <h6>
-            <Link to="/posts/new">Have something to share?</Link>
-          </h6>
+          <p className="p-responsive">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
         </div>
-        <div className="row posts-row p-3 m-3 ">
-          <div className="col-md-10">{allPosts}</div>
-          <div className="col-md-2">
-            <div className="sidenav">
-              <nav className="nav flex-column">
-                <a className="nav-link active" target="_blank" href="#">
-                  <i className="fab fa-twitter" />
-                </a>
-                <a className="nav-link" target="_blank" href="#">
-                  <i className="fab fa-linkedin" />
-                </a>
-                <a className="nav-link" target="_blank" href="#">
-                  <i className="fab fa-facebook" />
-                </a>
-                <a className="nav-link" target="_blank" href="#">
-                  <i className="fab fa-instagram" />
-                </a>
-              </nav>
+        <div className="container-fluid bg-main-white">
+          <div className="jumbotron">
+            <h6 className="display-4-5 p-5">
+              <Link to="/posts/new">Have something to share?</Link>
+            </h6>
+          </div>
+          <div className="row posts-row p-3 m-3">
+            <div className="col-md-10">{allPosts}</div>
+            <div className="col-md-2">
+              <div className="sidenav">
+                <nav className="nav flex-column">
+                  <a className="nav-link active" target="_blank" href="#">
+                    <i className="fab fa-twitter" />
+                  </a>
+                  <a className="nav-link" target="_blank" href="#">
+                    <i className="fab fa-linkedin" />
+                  </a>
+                  <a className="nav-link" target="_blank" href="#">
+                    <i className="fab fa-facebook" />
+                  </a>
+                  <a className="nav-link" target="_blank" href="#">
+                    <i className="fab fa-instagram" />
+                  </a>
+                </nav>
+              </div>
             </div>
           </div>
         </div>

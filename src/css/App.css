@@ -275,20 +275,23 @@ a:hover {
     transform: translateX(-50%); }
 .landing .eventBrite-container {
   height: 800px;
-  overflow: scroll; }
+  overflow: scroll;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 10px; }
   .landing .eventBrite-container a {
-    margin: 10px auto !important;
     text-align: left;
     border: 1px solid #ec8c95 !important;
-    max-height: 200px;
-    overflow: hidden; }
+    background: #fff !important; }
     .landing .eventBrite-container a > div {
-      padding: 20px !important; }
+      padding: 10px !important; }
     .landing .eventBrite-container a:hover {
       background: #efefef !important;
       box-shadow: 0 3px 7px #ec8c95;
       color: #dd3545 !important;
       border: 1px solid #e4616d !important; }
+.landing .info-text {
+  font-family: 1.4rem; }
 
 .main-logo {
   background: url("../img/logo_v2.svg");
@@ -437,10 +440,16 @@ a:hover {
       margin-top: 10px; } }
 @media only screen and (max-width: 540px) {
   h1.display-2 {
-    font-size: 3rem !important; } }
+    font-size: 3rem !important; }
+
+  .eventBrite-container a {
+    grid-column: 1 !important; } }
 @media only screen and (max-width: 630px) {
   h1.display-2 {
-    font-size: 4rem; } }
+    font-size: 4rem; }
+
+  .eventBrite-container {
+    grid-template-columns: auto auto !important; } }
 @media only screen and (max-width: 1040px) {
   .landing .stories .row {
     text-align: center !important; }
@@ -483,6 +492,27 @@ a:hover {
 a.card:hover {
   text-decoration: none; }
 
+.projects .background {
+  background: url("../img/projectProposal.jpeg");
+  background-repeat: no-repeat;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100vw;
+  background-size: cover;
+  z-index: -999; }
+.projects .background-text {
+  position: fixed;
+  color: #e2e2e2;
+  transform: translateY(-150%);
+  width: 65%;
+  left: 100px;
+  z-index: -998; }
+.projects .jumbotron {
+  margin-top: 400px; }
+.projects .display-4-5 {
+  text-align: center !important; }
 .projects .card {
   max-height: 250px;
   overflow: hidden;
@@ -600,17 +630,28 @@ a.card:hover {
 .chapter table th {
   border-top: 0; }
 
-.chapters .jumbotron {
-  height: 300px;
-  background-position: center !important;
-  background-repeat: no-repeat !important;
-  background-size: cover !important;
-  filter: brightness(30%); }
-.chapters .jumbotron_h1 {
-  position: absolute;
-  transform: translateY(-150%);
+.chapters .background {
+  background: url("../img/map.png");
+  background-repeat: no-repeat;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100vw;
+  background-size: cover;
+  z-index: -999; }
+.chapters .background-text {
+  position: fixed;
   color: #e2e2e2;
-  padding: 3rem; }
+  transform: translateY(-150%);
+  width: 65%;
+  left: 100px;
+  z-index: -998; }
+.chapters .jumbotron {
+  margin-top: 400px;
+  padding: 0; }
+.chapters .table {
+  margin-bottom: 0; }
 
 .users .jumbotron .main-text {
   background: rgba(57, 57, 57, 0.8);
@@ -749,6 +790,28 @@ a.card:hover {
   padding: 10px 0;
   margin: 0; }
 
+.posts .background {
+  background: url("../img/blog.jpeg");
+  background-repeat: no-repeat;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100vw;
+  background-size: cover;
+  z-index: -999; }
+.posts .background-text {
+  position: fixed;
+  color: #e2e2e2;
+  transform: translateY(-150%);
+  width: 65%;
+  left: 100px;
+  z-index: -998; }
+.posts .jumbotron {
+  margin-top: 400px;
+  padding: 0; }
+.posts .display-4-5 {
+  text-align: center !important; }
 .posts .posts-row a:hover {
   text-decoration: none; }
 .posts .sidenav {

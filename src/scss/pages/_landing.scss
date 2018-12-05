@@ -188,16 +188,17 @@
   .eventBrite-container {
     height: 800px;
     overflow: scroll;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 10px;
 
     a {
-      margin: 10px auto !important;
       text-align: left;
       border: 1px solid lighten($main-red, 20%) !important;
-      max-height: 200px;
-      overflow: hidden;
+      background: #fff !important;
 
       & > div {
-        padding: 20px !important;
+        padding: 10px !important;
       }
 
       &:hover {
@@ -207,6 +208,9 @@
         border: 1px solid lighten($main-red, 10%) !important;
       }
     }
+  }
+  .info-text {
+    font-family: 1.4rem;
   }
 }
 
@@ -417,11 +421,17 @@
   h1.display-2 {
     font-size: 3rem !important;
   }
+  .eventBrite-container a {
+    grid-column: 1 !important;
+  }
 }
 
 @media only screen and (max-width: 630px) {
   h1.display-2 {
     font-size: 4rem;
+  }
+  .eventBrite-container {
+    grid-template-columns: auto auto !important;
   }
 }
 

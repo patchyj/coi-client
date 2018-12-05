@@ -44,18 +44,16 @@ class EventbriteAPI extends Component {
       events = this.state.events
         .map((event, key) => {
           return (
-            <a className="col-md-12" key={key} target="_blank" href={event.url}>
+            <a key={key} target="_blank" href={event.url}>
               <div className="row">
-                <div className="col-sm-8">
-                  <h4>{event.name.text}</h4>
-                </div>
-                <div className="col-sm-4">
-                  <h5>
-                    <Moment format="HH:mm D MMM YYYY" withTitle>
-                      {event.start.local}
-                    </Moment>
-                  </h5>
-                </div>
+                <p>{event.name.text}</p>
+              </div>
+              <div className="row">
+                <small>
+                  <Moment format="HH:mm D MMM YYYY" withTitle>
+                    {event.start.local}
+                  </Moment>
+                </small>
               </div>
             </a>
           );

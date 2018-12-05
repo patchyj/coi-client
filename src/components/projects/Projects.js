@@ -18,12 +18,10 @@ class Projects extends Component {
 
   render() {
     const { projects } = this.props.projects;
-    let projectList;
+    let results;
 
-    if (projects === "") {
-      projectList = "Loading";
-    } else {
-      projectList = projects.map((project, index) => {
+    if (projects.length !== 0) {
+      results = projects.map((project, index) => {
         return (
           <div className="col-md-4 p-3" key={index}>
             <Link to={`/projects/${project.id}`} className="card">
@@ -35,20 +33,42 @@ class Projects extends Component {
           </div>
         );
       });
+    } else {
+      results = <div className="spinner" />;
     }
 
     return (
-      <div className="projects container-fluid text-center">
-        <div className="jumbotron">
+      <div className="projects container-fluid ">
+        <div className="background" />
+        <div className="background-text">
           <h1 className="display-4">Projects</h1>
-          <h6>
-            Have an idea of your own? <br />
+          <p className="p-responsive">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+        </div>
+        <div className="jumbotron text-center">
+          <h6 className="display-4-5">
+            Have an idea of your own?{" "}
             <Link to="/projects/new">Tell us about it</Link>
           </h6>
         </div>
-        <div className="container text-center">
-          <div className="row" style={{ margin: "auto" }}>
-            {projectList}
+        <div className="container-fluid jumbotron-2 bg-main-white py-2">
+          <p className="display-4-5 mb-0 p-5">
+            Need inspiration? Browse through the proposals submitted by other
+            members of the Circle
+          </p>
+        </div>
+        <div className="container-fluid text-center bg-main-white-darken">
+          <div className="container">
+            <div className="row" style={{ margin: "auto" }}>
+              {results}
+            </div>
           </div>
         </div>
       </div>

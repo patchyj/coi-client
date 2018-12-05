@@ -5,6 +5,37 @@ a.card {
 }
 
 .projects {
+  .background {
+    background: url("../img/projectProposal.jpeg");
+    background-repeat: no-repeat;
+    // background-position: 0 -500px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100vw;
+    background-size: cover;
+    z-index: -999;
+  }
+  .background-text {
+    position: fixed;
+    color: $main-white;
+    transform: translateY(-150%);
+    width: 65%;
+    left: 100px;
+    z-index: -998;
+  }
+
+  .jumbotron {
+    margin-top: 400px;
+  }
+  .display-4-5 {
+    text-align: center !important;
+  }
+
+  .jumbotron-2 {
+  }
+
   .card {
     max-height: 250px;
     overflow: hidden;

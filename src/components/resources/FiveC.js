@@ -23,8 +23,7 @@ const resources = [
       {
         id: uuid(),
         resource: "Intro to Intrapreneurship",
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit",
         download: "",
         url: introToIntrapreneurship
       },
@@ -32,7 +31,7 @@ const resources = [
         id: uuid(),
         resource: "Socint Definition",
         description:
-          "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+          "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ",
         download: "",
         url: socintDef
       },
@@ -40,7 +39,7 @@ const resources = [
         id: uuid(),
         resource: "Intrapreneur Pain Points",
         description:
-          "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+          "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris",
         download: "",
         url: painPoints
       }
@@ -52,8 +51,7 @@ const resources = [
       {
         id: uuid(),
         resource: "Socint Triangle",
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+        description: "Nisi ut aliquip ex ea commodo consequat ",
         download: "",
         url: socintTriangle
       },
@@ -61,7 +59,7 @@ const resources = [
         id: uuid(),
         resource: "Email Elevator Pitching",
         description:
-          "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+          "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum",
         download: "",
         url: elevatorPitching
       },
@@ -69,7 +67,7 @@ const resources = [
         id: uuid(),
         resource: "Product Definition",
         description:
-          "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+          "dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident",
         download: "",
         url: productDef
       }
@@ -82,7 +80,7 @@ const resources = [
         id: uuid(),
         resource: "Roundup Original Pitch",
         description:
-          "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+          "Sunt in culpa qui officia deserunt mollit anim id est laborum",
         download: "",
         url: ruOriginalPitch
       },
@@ -90,7 +88,7 @@ const resources = [
         id: uuid(),
         resource: "Roundup Summary",
         description:
-          "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+          "Consectetur adipisicing elit, sed do eiusmod tempor incididunt",
         download: "",
         url: ruPitch
       }
@@ -103,7 +101,7 @@ const resources = [
         id: uuid(),
         resource: "Approaching a Senior Person",
         description:
-          "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+          "Dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation",
         download: "",
         url: seniorApproach
       },
@@ -111,7 +109,7 @@ const resources = [
         id: uuid(),
         resource: "Pitch Outcomes",
         description:
-          "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+          "Laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit",
         download: "",
         url: pitchOutcomes
       }

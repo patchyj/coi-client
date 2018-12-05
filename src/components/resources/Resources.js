@@ -57,9 +57,40 @@ class Resources extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeTab: ""
+      bgImage: 0,
+      bgText: 200,
+      bgTrigger: null
     };
   }
+
+  componentDidMount() {
+    const bgTrigger = document.getElementById("bgTrigger");
+    const bgText = document.getElementById("bgText");
+    this.setState({
+      bgImage: `${Math.floor(bgTrigger.getBoundingClientRect().top * 0.75) -
+        400}`,
+      bgText: `${Math.floor(bgText.getBoundingClientRect().top)}`
+    });
+    window.addEventListener("scroll", this.handleScroll);
+    console.log(bgText.getBoundingClientRect().top);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.handleScroll);
+  }
+
+  handleScroll = () => {
+    const bgTrigger = document.getElementById("bgTrigger");
+    this.setState({
+      bgTrigger: bgTrigger.getBoundingClientRect().top,
+      bgImage: `${Math.floor(bgTrigger.getBoundingClientRect().top * 0.75) -
+        400}`,
+      bgText: `${Math.floor(bgTrigger.getBoundingClientRect().top * 0.45)}`
+    });
+    // console.log(this.state.bgText);
+    const bgText = document.getElementById("bgText");
+    console.log(bgText.getBoundingClientRect().top);
+  };
 
   render() {
     const tabs = resources.map((resource, key) => {
@@ -93,8 +124,16 @@ class Resources extends Component {
     });
     return (
       <div className="resources">
-        <div className="background" />
-        <div className="background-text">
+        <div
+          className="background"
+          id="bgImage"
+          style={{ top: `${this.state.bgImage}px` }}
+        />
+        <div
+          className="background-text"
+          id="bgText"
+          style={{ top: `${this.state.bgText}px` }}
+        >
           <h1>
             <span className="display-4">Welcome to The Circle!</span>
           </h1>
@@ -105,7 +144,7 @@ class Resources extends Component {
             can’t find here, please do contact us for more information.
           </p>
         </div>
-        <div className="jumbotron jumbotron-fluid">
+        <div className="jumbotron jumbotron-fluid" id="bgTrigger">
           <div className="container py-5">
             <p className="p-responsive">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

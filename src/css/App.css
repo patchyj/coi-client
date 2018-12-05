@@ -553,7 +553,6 @@ a.card:hover {
 .resources .background-text {
   position: fixed;
   color: #e2e2e2;
-  transform: translateY(-150%);
   width: 65%;
   left: 100px;
   z-index: -998; }

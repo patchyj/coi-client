@@ -92,9 +92,6 @@ class Navbar extends Component {
               alt="logo"
             />
           </Link>
-          {isAuthenticated ? userLinks : ""}
-          {user.admin ? adminLinks : ""}
-          {user.chapter_lead ? leadLinks : ""}
           <button
             className="navbar-toggler"
             type="button"
@@ -107,7 +104,12 @@ class Navbar extends Component {
             <span className="navbar-toggler-icon" />
           </button>
           <div className="collapse navbar-collapse" id="navbarCollapse">
-            {isAuthenticated ? authLinks : guestLinks}
+            {isAuthenticated ? userLinks : ""}
+            {user.admin ? adminLinks : ""}
+            {user.chapter_lead ? leadLinks : ""}
+            <div className="collapse navbar-collapse" id="navbarCollapse">
+              {isAuthenticated ? authLinks : guestLinks}
+            </div>
           </div>
         </nav>
       </header>

@@ -43,7 +43,6 @@ class AdminIndex extends Component {
       axios
         .get("/users")
         .then(res => {
-          console.log(res);
           this.setState({ users: res.data });
         })
         .catch(err => {
@@ -52,7 +51,6 @@ class AdminIndex extends Component {
       axios
         .get("/profile")
         .then(res => {
-          console.log(res);
           this.setState({ admin: res.data.user });
         })
         .catch(err => {

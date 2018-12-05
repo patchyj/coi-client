@@ -31,11 +31,9 @@ export const registerUser = (userData, history) => dispatch => {
 };
 
 export const loginUser = userData => dispatch => {
-  // console.log(config);
   axios
     .post("/auth/login", userData, config)
     .then(res => {
-      console.log(axios.defaults.headers);
       // Save to local storage
       const { access_token } = res.data;
       // Set Token to session storage

@@ -19,8 +19,6 @@ import "./css/App.css";
 // ======= .. =======
 
 // ======= COMPONENTS =======
-// Private Route
-import PrivateRoute from "./components/common/PrivateRoute";
 // ------- layout -------
 import Navbar from "./components/layout/Navbar.js";
 import Footer from "./components/layout/Footer.js";

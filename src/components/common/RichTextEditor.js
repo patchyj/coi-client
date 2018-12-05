@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Editor, EditorState } from "draft-js";
 
-class RichTextEditor extends React.Component {
+class RichTextEditor extends Component {
   constructor(props) {
     super(props);
     this.state = { editorState: EditorState.createEmpty() };

@@ -36,7 +36,7 @@ class Posts extends Component {
                   <img
                     className="align-self-center mr-3"
                     src={post.author ? post.author.profile_pic : ""}
-                    alt="image"
+                    alt=""
                     style={{
                       width: "60px",
                       height: "60px",

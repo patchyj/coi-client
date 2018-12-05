@@ -1,8 +1,9 @@
 import React, { Component } from "react";
+import uuid from "uuid/v1";
 
 class IFrameModal extends Component {
   render() {
-    const { id, ariaLabel, title, url } = this.props;
+    const { id, url } = this.props;
     return (
       <div
         className="modal fade"
@@ -22,6 +23,7 @@ class IFrameModal extends Component {
                 frameBorder="0"
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
+                title={uuid()}
               />
             </div>
           </div>

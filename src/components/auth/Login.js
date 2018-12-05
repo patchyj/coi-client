@@ -11,7 +11,7 @@ class Login extends Component {
     this.state = {
       email: "",
       password: "",
-      errors: []
+      errors: {}
     };
 
     this.onChange = this.onChange.bind(this);
@@ -54,14 +54,22 @@ class Login extends Component {
           <img className="mb-4" src="" alt="" width="72" height="72" />
           <h1 className="display-5 mb-3 font-weight-normal">Welcome back</h1>
           <div className="form-group">
+            {errors.hasOwnProperty("statusText") ? (
+              <div className="display-5 text-danger">Invalid Credentials</div>
+            ) : (
+              ""
+            )}
             <label htmlFor="email">Email address</label>
             <input
               type="email"
               name="email"
-              className="form-control"
+              className={`form-control ${
+                errors.hasOwnProperty("statusText") ? "is-invalid" : ""
+              }`}
               placeholder="Email"
               value={this.state.email}
               onChange={this.onChange}
+              required
             />
           </div>
           <div className="form-group">
@@ -69,10 +77,14 @@ class Login extends Component {
             <input
               type="password"
               name="password"
-              className="form-control"
+              className={`form-control ${
+                errors.hasOwnProperty("statusText") ? "is-invalid" : ""
+              }`}
               placeholder="Password"
               value={this.state.password}
               onChange={this.onChange}
+              minlength="8"
+              required
             />
           </div>
           <button className="btn btn-main-submit" type="submit">

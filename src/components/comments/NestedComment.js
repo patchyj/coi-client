@@ -12,7 +12,7 @@ class NestedComment extends Component {
             <img
               className="align-self-start mr-3"
               src={comment.user.profile_pic}
-              alt="image"
+              alt="user profile"
               style={{ width: "40px" }}
             />
           </Link>

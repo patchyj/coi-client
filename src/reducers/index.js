@@ -1,7 +1,7 @@
 // ========= ROOT REDUCER =========
 import { combineReducers } from "redux";
 import authReducer from "./authReducer";
-import errorReducer from "./authReducer";
+import errorReducer from "./errorReducer";
 import projectReducer from "./projectReducer";
 import postReducer from "./postReducer";
 

@@ -54,7 +54,6 @@ class Comment extends Component {
         <div className="form-group-row">
           <textarea
             className="form-action"
-            name="commentBody"
             rows="2"
             name="body"
             value={this.state.body}
@@ -77,7 +76,7 @@ class Comment extends Component {
           <img
             className="align-self-start mr-3"
             src={comment.user.profile_pic}
-            alt="image"
+            alt=""
             style={{ width: "40px" }}
           />
         </Link>

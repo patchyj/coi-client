@@ -1,24 +1,11 @@
 import React, { Component } from "react";
 import Moment from "react-moment";
-import axios from "axios";
-import request from "request";
-import MyMapComponent from "../Apis/GoogleMaps";
 import IFrameModal from "../common/IFrameModal";
 import bgVideo from "../../img/circle_talks.mp4";
 import whitePaper from "../../img/Circle Whitepaper1.pdf";
-import {
-  TwitterTimelineEmbed,
-  TwitterShareButton,
-  TwitterFollowButton,
-  TwitterHashtagButton,
-  TwitterMentionButton,
-  TwitterTweetEmbed,
-  TwitterMomentShare,
-  TwitterDMButton,
-  TwitterVideoEmbed,
-  TwitterOnAirButton
-} from "react-twitter-embed";
+import { TwitterTimelineEmbed } from "react-twitter-embed";
 import { Link } from "react-router-dom";
+import uuid from "uuid/v1";
 
 class EventbriteAPI extends Component {
   constructor(props) {
@@ -44,7 +31,12 @@ class EventbriteAPI extends Component {
       events = this.state.events
         .map((event, key) => {
           return (
-            <a key={key} target="_blank" href={event.url}>
+            <a
+              key={key}
+              target="_blank"
+              rel="noopener noreferrer"
+              href={event.url}
+            >
               <div className="row">
                 <p>{event.name.text}</p>
               </div>
@@ -97,6 +89,7 @@ class MailingForm extends Component {
         <a
           href="https://circleofyi.us13.list-manage.com/subscribe/post?u=6ddfb2318958e6bd7e6d9f028&id=d82e567ec0"
           target="_blank"
+          rel="noopener noreferrer"
         >
           Sign up to our newsletter
         </a>
@@ -114,6 +107,7 @@ class YouTubeEmbed extends Component {
         frameBorder="0"
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
+        title={uuid()}
       />
     );
   }
@@ -242,6 +236,7 @@ class Landing extends Component {
                 className="btn mx-1 px-3 py-2"
                 href="https://circleofyi.us13.list-manage.com/subscribe?u=6ddfb2318958e6bd7e6d9f028&id=04cc3e3074"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 100 Day Challenge
               </a>
@@ -353,6 +348,7 @@ class Landing extends Component {
                     href="https://circleofyi.us13.list-manage.com/subscribe/post?u=6ddfb2318958e6bd7e6d9f028&id=d82e567ec0"
                     target="_blank"
                     className="btn"
+                    rel="noopener noreferrer"
                   >
                     Join our mailing list
                   </a>

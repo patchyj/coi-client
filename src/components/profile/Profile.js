@@ -1,11 +1,6 @@
 import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
-import PropTypes from "prop-types";
 import axios from "axios";
-import Auth from "../../validation/Auth";
 import Moment from "react-moment";
-import placeholder from "../../img/placeholder.jpeg";
-import { connect } from "react-redux";
 // Actions
 import { setUser } from "../../actions/authActions";
 
@@ -35,7 +30,6 @@ class Profile extends Component {
   }
 
   render() {
-    console.log(this.state.user);
     const {
       email,
       username,
@@ -61,14 +55,14 @@ class Profile extends Component {
               <img
                 className="card-img-top banner_pic"
                 src={banner_pic}
-                alt="Card image cap"
+                alt=""
                 style={{ height: "200px", objectFit: "cover" }}
               />
               <div className="profile_pic_container">
                 <img
                   className="img-responsive profile_pic"
                   src={profile_pic}
-                  alt="Card image cap"
+                  alt=""
                 />
               </div>
               <div className="card-body">

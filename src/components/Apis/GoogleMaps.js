@@ -1,5 +1,3 @@
-import React, { Component } from "react";
-
 const google = window.google;
 function initMap() {
   // Map markers. All are hard coded
@@ -247,8 +245,6 @@ function initMap() {
     LoadMap();
   };
   //images selected for map marker
-  var icon = "images/marker.png";
-
   //Load map function. Sets all map options and styles(color, border sizes)
   function LoadMap() {
     var mapOptions = {
@@ -422,7 +418,6 @@ function initMap() {
     var infoWindow = new google.maps.InfoWindow();
     //Loop through map marker data and place pegs
     for (var i = 0; i < markers.length; i++) {
-      // var icon = 'marker.png';
       var icon = "https://i.imgur.com/d2DM8vA.png";
       var data = markers[i];
       var myLatlng = new google.maps.LatLng(data.lat, data.lng);
@@ -466,3 +461,5 @@ function initMap() {
     }
   }
 }
+
+export default initMap;

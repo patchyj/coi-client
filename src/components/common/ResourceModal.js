@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 
 class ResourceModal extends Component {
   constructor(props) {
@@ -8,11 +7,11 @@ class ResourceModal extends Component {
     this.state = {};
   }
   render() {
-    const { id, resource, description, download, url } = this.props.data;
+    const { id, resource, url } = this.props.data;
     const uniqueID = resource.split(" ").join("");
     let display;
     if (typeof url === "string") {
-      display = <img src={url} className="img-fluid" />;
+      display = <img src={url} className="img-fluid" alt="" />;
     } else if (typeof url === "object") {
       const slides = url.map((img, key) => {
         return (
@@ -20,7 +19,7 @@ class ResourceModal extends Component {
             className={`carousel-item ${key === 0 ? "active" : ""}`}
             key={`carousel-key-${key}`}
           >
-            <img className="d-block w-100" src={img} alt="carousel img" />
+            <img className="d-block w-100" src={img} alt="" />
           </div>
         );
       });

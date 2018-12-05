@@ -1,18 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import {
-  TwitterTimelineEmbed,
-  TwitterShareButton,
-  TwitterFollowButton,
-  TwitterHashtagButton,
-  TwitterMentionButton,
-  TwitterTweetEmbed,
-  TwitterMomentShare,
-  TwitterDMButton,
-  TwitterVideoEmbed,
-  TwitterOnAirButton
-} from "react-twitter-embed";
+import { TwitterTimelineEmbed } from "react-twitter-embed";
 
 class Chapter extends Component {
   constructor(props) {

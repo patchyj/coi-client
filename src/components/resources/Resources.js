@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import SlideShow from "react-slideshow-ui";
 import ResourceModal from "../common/ResourceModal";
 import resources from "./FiveC";
 

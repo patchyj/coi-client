@@ -23,7 +23,8 @@ const resources = [
       {
         id: uuid(),
         resource: "Intro to Intrapreneurship",
-        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit",
+        description:
+          "A few slides which give a quick overview of intrapreneurship; useful when explaining what intrapreneurship is!",
         download: "",
         url: introToIntrapreneurship
       },
@@ -31,7 +32,7 @@ const resources = [
         id: uuid(),
         resource: "Socint Definition",
         description:
-          "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ",
+          "Our definition of social intrapreneurship; useful when explaining what a social intrapreneur is! ",
         download: "",
         url: socintDef
       },
@@ -39,7 +40,7 @@ const resources = [
         id: uuid(),
         resource: "Intrapreneur Pain Points",
         description:
-          "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris",
+          "6 key organisational hurdles intrapreneurs must overcome to deliver; useful to know what the difficult moments are from the start of the journey so you can plan for them! ",
         download: "",
         url: painPoints
       }
@@ -51,7 +52,8 @@ const resources = [
       {
         id: uuid(),
         resource: "Socint Triangle",
-        description: "Nisi ut aliquip ex ea commodo consequat ",
+        description:
+          "When creating your idea you must make sure that it hits all 3 corners of our social intrapreneurship triangle: a clear business case, clear social impact and something which a prospective customer would want/need ",
         download: "",
         url: socintTriangle
       },
@@ -59,15 +61,15 @@ const resources = [
         id: uuid(),
         resource: "Email Elevator Pitching",
         description:
-          "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum",
+          "After you have shaped your idea it is useful to be able to explain it quickly and effectively. This template will show you how to build an email elevator pitch based on our own experiences",
         download: "",
         url: elevatorPitching
       },
       {
         id: uuid(),
-        resource: "Product Definition",
+        resource: "Product Definition (Business Model Canvas) ",
         description:
-          "dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident",
+          "This template, based on the business model canvas, is useful for building your product idea out",
         download: "",
         url: productDef
       }
@@ -80,7 +82,7 @@ const resources = [
         id: uuid(),
         resource: "Roundup Original Pitch",
         description:
-          "Sunt in culpa qui officia deserunt mollit anim id est laborum",
+          "The original (successful) Barclays Roundup Pitch deck which won the Barclays Intrapreneur Challenge in 2015, receiving funding for the idea. This shows you what sort of information you should include in your funding pitch",
         download: "",
         url: ruOriginalPitch
       },
@@ -88,7 +90,7 @@ const resources = [
         id: uuid(),
         resource: "Roundup Summary",
         description:
-          "Consectetur adipisicing elit, sed do eiusmod tempor incididunt",
+          "This slide summarise how we pitched Barclays Roundup successfully",
         download: "",
         url: ruPitch
       }
@@ -101,7 +103,7 @@ const resources = [
         id: uuid(),
         resource: "Approaching a Senior Person",
         description:
-          "Dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation",
+          "A real life example of an email template we used (successfully) to approach senior individuals",
         download: "",
         url: seniorApproach
       },
@@ -109,7 +111,7 @@ const resources = [
         id: uuid(),
         resource: "Pitch Outcomes",
         description:
-          "Laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit",
+          "Ahead of your pitch review this slide of 'pitch outcomes' and work out what your 'ideal outcome' would be. Ensure that you are ready, in advance, to answer both which outcome you want and why",
         download: "",
         url: pitchOutcomes
       }
@@ -122,7 +124,7 @@ const resources = [
         id: uuid(),
         resource: "Roundup Pilot Review",
         description:
-          "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+          "The original review of the Barclays Roundup internal Pilot and proposal to move this from MVP into full launch (i.e. moving from 'Commit' to 'Control' Phase using our 5C project lifecycle",
         download: "",
         url: ruPilotReview
       }

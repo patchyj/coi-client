@@ -3,7 +3,7 @@ import { GET_ERRORS, GET_POSTS, GET_POST } from "./types";
 
 export const getPost = id => dispatch => {
   axios
-    .get(`/posts/${id}`)
+    .get(`/api/posts/${id}`)
     .then(res => {
       dispatch({
         type: GET_POST,
@@ -20,7 +20,7 @@ export const getPost = id => dispatch => {
 
 export const getPosts = () => dispatch => {
   axios
-    .get("/posts")
+    .get("/api/posts")
     .then(res => {
       dispatch({
         type: GET_POSTS,
@@ -37,7 +37,7 @@ export const getPosts = () => dispatch => {
 
 export const createPost = (newPost, history) => dispatch => {
   axios
-    .post("/posts", newPost)
+    .post("/api/posts", newPost)
     .then(res => {
       history.push(`/posts`);
     })
@@ -50,8 +50,9 @@ export const createPost = (newPost, history) => dispatch => {
 };
 
 export const editPost = (post, id, history) => dispatch => {
+  console.log(post);
   axios
-    .put(`/posts/${id}`, post)
+    .put(`/api/posts/${id}`, post)
     .then(res => {
       dispatch({
         type: GET_POST,
@@ -70,7 +71,7 @@ export const editPost = (post, id, history) => dispatch => {
 export const deletePost = id => dispatch => {
   if (window.confirm("Are you sure? This can not be undone!")) {
     axios
-      .delete(`/posts/${id}`)
+      .delete(`/api/posts/${id}`)
       .then(res =>
         dispatch({
           type: GET_POSTS,
@@ -88,7 +89,7 @@ export const deletePost = id => dispatch => {
 
 export const addComment = (newComment, history) => dispatch => {
   axios
-    .post(`/posts/${newComment.post_id}/comments`, newComment)
+    .post(`/api/posts/${newComment.post_id}/comments`, newComment)
     .then(res => {
       dispatch({
         type: GET_POSTS,

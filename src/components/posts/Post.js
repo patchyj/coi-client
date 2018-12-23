@@ -15,11 +15,9 @@ class Post extends Component {
       comments: []
     };
   }
-  componentWillMount() {
-    this.props.getPost(this.props.match.params.id);
-  }
 
   componentDidMount() {
+    this.props.getPost(this.props.match.params.id);
     window.scrollTo(0, 0);
   }
 
@@ -51,19 +49,19 @@ class Post extends Component {
     const { post, comments } = this.props.posts;
     const { admin } = this.props.auth.user;
 
-    let author, image;
+    let user, image;
 
-    if (post.author) {
-      author = (
-        <Link to={`/users/${post.author.id}`}>
-          {post.author.first_name} {post.author.last_name}
+    if (post.user) {
+      user = (
+        <Link to={`/users/${post.user._id}`}>
+          {post.user.firstName} {post.user.lastName}
         </Link>
       );
     }
 
     const crudLinks = (
       <div className="py-2">
-        <Link to={`/posts/${post.id}/edit`}>
+        <Link to={`/posts/${post._id}/edit`}>
           <i className="fas fa-edit" />
         </Link>
         <br />
@@ -77,7 +75,7 @@ class Post extends Component {
     return (
       <div className="post container-fluid p-3">
         <div className="row p-5">
-          <div className="col-6 p-2 text-right">
+          <div className="col-md-6 p-2 text-right">
             <h1>{post.title}</h1>
             <h4 className="tagline">
               <span className="quote">"</span>
@@ -85,22 +83,22 @@ class Post extends Component {
             </h4>
             <div className="row">
               <div className="col-5 offset-2 text-left">
-                <p>{post.author ? author : ""}</p>
+                <p>{post.user ? user : ""}</p>
               </div>
               <div className="col-5 text-right">
                 <span className="text-muted">
-                  <Moment format="HH:mm D MMM YYYY" withTitle>
+                  <Moment format="HH:mm D MMM YYYY" withtitle="true">
                     {post.created_at}
                   </Moment>
                 </span>
               </div>
             </div>
           </div>
-          <div className="col-5">{post.images ? image : ""}</div>
-          <div className="col-1">{admin ? crudLinks : ""}</div>
+          <div className="col-md-5 col-sm-12">{post.images ? image : ""}</div>
+          <div className="col-md-1 col-sm-12">{admin ? crudLinks : ""}</div>
         </div>
         <div className="row p-5">
-          <div className="col-8 offset-2">
+          <div className="col-md-8 col-sm-12 offset-md-2">
             <p className="text-justify">{post.body}</p>
           </div>
         </div>

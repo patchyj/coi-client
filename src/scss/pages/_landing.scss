@@ -76,6 +76,7 @@
           background: none !important;
         }
       }
+      a:not(.dowelldogood),
       a:not(.reach-out),
       a:not(.eventBrite-link),
       button {
@@ -96,6 +97,16 @@
           background: $main-red;
           color: $main-white;
           text-decoration: none;
+        }
+      }
+      .dowelldogood {
+        border: none !important;
+        color: blue !important;
+        padding: 0 !important;
+
+        &:hover {
+          background: none !important;
+          color: darken(blue, 20%) !important;
         }
       }
     }

@@ -193,6 +193,7 @@ a:hover {
       .landing .section.section-white .no-btn:hover {
         color: #dd3545 !important;
         background: none !important; }
+    .landing .section.section-white a:not(.dowelldogood),
     .landing .section.section-white a:not(.reach-out),
     .landing .section.section-white a:not(.eventBrite-link),
     .landing .section.section-white button {
@@ -202,11 +203,13 @@ a:hover {
       transition: 0.2s;
       padding: 10px 15px;
       border-radius: 4px; }
+      .landing .section.section-white a:not(.dowelldogood):focus,
       .landing .section.section-white a:not(.reach-out):focus,
       .landing .section.section-white a:not(.eventBrite-link):focus,
       .landing .section.section-white button:focus {
         outline: none;
         box-shadow: none; }
+      .landing .section.section-white a:not(.dowelldogood):hover,
       .landing .section.section-white a:not(.reach-out):hover,
       .landing .section.section-white a:not(.eventBrite-link):hover,
       .landing .section.section-white button:hover {
@@ -214,6 +217,13 @@ a:hover {
         background: #dd3545;
         color: #e2e2e2;
         text-decoration: none; }
+    .landing .section.section-white .dowelldogood {
+      border: none !important;
+      color: blue !important;
+      padding: 0 !important; }
+      .landing .section.section-white .dowelldogood:hover {
+        background: none !important;
+        color: #000099 !important; }
   .landing .section.parallaxVideo {
     height: 500px;
     width: 100% !important;
@@ -556,6 +566,8 @@ a.card:hover {
   width: 65%;
   left: 100px;
   z-index: -998; }
+.resources .jumbotron-fluid {
+  background: white; }
 .resources .jumbotron {
   margin-top: 400px; }
 .resources .nav-item {
@@ -563,11 +575,21 @@ a.card:hover {
   text-align: center;
   font-weight: bold; }
 .resources .p-responsive {
-  font-weight: 600; }
+  font-weight: 400; }
+  .resources .p-responsive.introText {
+    font-size: 1.5em; }
+  .resources .p-responsive .bold {
+    font-weight: 600; }
+.resources .circleTeam {
+  width: 300px;
+  text-align: center;
+  border: 0; }
 .resources .table {
   font-weight: 600; }
   .resources .table thead {
-    background: #b9b9b9; }
+    background: #dd3545;
+    color: white;
+    border-top: 1px solid white; }
   .resources .table a {
     font-weight: 600;
     color: #393939; }
@@ -577,8 +599,13 @@ a.card:hover {
     padding: 0; }
 .resources .modal {
   background: rgba(0, 0, 0, 0.69); }
+  .resources .modal .btn-secondary {
+    padding: 10px;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px; }
 .resources .modal-dialog {
-  max-width: 80%; }
+  max-width: 75%; }
   .resources .modal-dialog .modal-body {
     text-align: center; }
 .resources .carousel-indicators li {
@@ -588,20 +615,24 @@ a.card:hover {
   width: 0; }
   .resources .carousel-control-prev i,
   .resources .carousel-control-next i {
+    background: #931924;
+    padding: 15px 20px;
+    border-radius: 50%;
     color: #393939; }
 .resources .nav-item {
-  background: #868686;
+  background: #dd3545;
   color: #e2e2e2;
   border-radius: 0;
   transition: 0.1s; }
   .resources .nav-item.active {
-    color: #868686; }
+    color: #868686;
+    background: #e2e2e2; }
     .resources .nav-item.active:hover {
       background: #afafaf;
       color: #e2e2e2;
       border: 0; }
   .resources .nav-item:hover {
-    background: #6c6c6c;
+    background: #931924;
     border: 0; }
 
 .chapter .container {

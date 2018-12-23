@@ -1,13 +1,15 @@
-// ========= ROOT REDUCER =========
 import { combineReducers } from "redux";
-import authReducer from "./authReducer";
-import errorReducer from "./errorReducer";
-import projectReducer from "./projectReducer";
-import postReducer from "./postReducer";
+
+import AuthReducer from "./authReducer";
+import ErrorReducer from "./errorReducer";
+import ProfileReducer from "./profileReducer";
+import ProjectReducer from "./projectReducer";
+import PostsReducer from "./postsReducer";
 
 export default combineReducers({
-  auth: authReducer,
-  errors: errorReducer,
-  projects: projectReducer,
-  posts: postReducer
+  auth: AuthReducer,
+  errors: ErrorReducer,
+  profile: ProfileReducer,
+  projects: ProjectReducer,
+  posts: PostsReducer
 });

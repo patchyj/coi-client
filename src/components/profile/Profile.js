@@ -1,93 +1,70 @@
-import React, { Component } from "react";
-import axios from "axios";
-import Moment from "react-moment";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+// Redux
+import { connect } from 'react-redux';
+
 // Actions
-import { setUser } from "../../actions/authActions";
+import { getProfileByHandle } from '../../actions/profileAction';
+
+import Spinner from '../common/Spinner';
+
+// Profile Components
+import ProfileAbout from './ProfileAbout';
+import ProfileCreds from './ProfileCreds';
+import ProfileGithub from './ProfileGithub';
+import ProfileHeader from './ProfileHeader';
+
 
 class Profile extends Component {
-  constructor() {
-    super();
-    this.state = {
-      user: {}
-    };
-  }
 
-  componentWillMount() {
-    if (!localStorage.token) {
-      window.location.href = "/login";
+  componentDidMount(){
+    if (this.props.match.params.handle) {
+      this.props.getProfileByHandle(this.props.match.params.handle);
     }
   }
 
-  componentDidMount() {
-    axios({
-      url: "/profile",
-      method: "get"
-    })
-      .then(res => {
-        this.setState({ user: res.data.user });
-      })
-      .catch(err => console.log(err));
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.profile.profile === null && this.props.profile.loading) {
+      this.props.history.push('/not-found');
+    }
   }
 
-  render() {
-    const {
-      email,
-      username,
-      first_name,
-      last_name,
-      organisation,
-      chapter_lead,
-      admin,
-      twitter_url,
-      linkedin_url,
-      banner_pic,
-      profile_pic,
-      tagline,
-      bio,
-      updated_at
-    } = this.state.user;
+  render(){
+    const { profile, loading } = this.props.profile;
+    let profileContent;
 
-    return (
-      <div className="dashboard container-fluid">
-        <div className="row">
-          <div className="col-md-8 offset-md-2">
-            <div className="card m-3">
-              <img
-                className="card-img-top banner_pic"
-                src={banner_pic}
-                alt=""
-                style={{ height: "200px", objectFit: "cover" }}
-              />
-              <div className="profile_pic_container">
-                <img
-                  className="img-responsive profile_pic"
-                  src={profile_pic}
-                  alt=""
-                />
-              </div>
-              <div className="card-body">
-                <h1 className="card-title">
-                  {first_name} {last_name}
-                </h1>
-                <h2>{organisation}</h2>
-                <h3>{admin ? "Role : Admin" : ""}</h3>
-                <h3>{chapter_lead ? "Role : Chapter Lead" : ""}</h3>
-                <div className="social">
-                  <a href={`http://twitter.com/${twitter_url}`}>
-                    <i className="fab fa-twitter" />{" "}
-                  </a>
-                  <a href={`http://linkedin.com/${linkedin_url}`}>
-                    <i className="fab fa-linkedin-in" />{" "}
-                  </a>
-                </div>
-                <h5 className="card-text">{tagline}</h5>
-                <p className="card-text">{bio}</p>
-                <p className="card-text">
-                  <small className="text-muted">
-                    Last updated <Moment fromNow>{updated_at}</Moment>
-                  </small>
-                </p>
-              </div>
+    if (profile === null || loading) {
+      profileContent = <Spinner />
+    } else {
+      profileContent = (
+        <div className="">
+          <div className="row">
+            <div className="col-md-6">
+              <Link to='/Profiles' className="btn btn-light mb-3 float-left">Back to Profiles</Link>
+            </div>
+            <div className="col-md-6"></div>
+          </div>
+          <ProfileHeader profile={ profile }/>
+          <ProfileAbout profile={ profile }/>
+          <ProfileCreds
+            education={profile.education}
+            experience={profile.experience}
+          />
+          { profile.githubusername ? (
+            <ProfileGithub username={ profile.githubusername }/>
+          ) : null }
+
+        </div>
+      )
+    }
+
+    return(
+      <div className="profile">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12">
+              { profileContent }
             </div>
           </div>
         </div>
@@ -96,18 +73,13 @@ class Profile extends Component {
   }
 }
 
-// Profile.propTypes = {
-//   setUser: PropTypes.func.isRequired,
-//   auth: PropTypes.object.isRequired
-// };
-//
-// const mapStateToProps = state => ({
-//   auth: state.auth
-// });
-//
-// export default connect(
-//   mapStateToProps,
-//   { setUser }
-// )(Profile);
+Profile.propTypes = {
+  getProfileByHandle: PropTypes.func.isRequired,
+  profile: PropTypes.object.isRequired
+}
 
-export default Profile;
+const mapStateToProps = state => ({
+  profile: state.profile
+})
+
+export default connect(mapStateToProps, { getProfileByHandle } )(Profile);

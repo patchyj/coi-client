@@ -92,7 +92,7 @@ class Comment extends Component {
             </div>
             <div className="col-6 text-right">
               <span className="text-muted">
-                <Moment format="HH:mm D MMM YYYY" withTitle>
+                <Moment format="HH:mm D MMM YYYY" withtitle="true">
                   {comment.created_at}
                 </Moment>
               </span>

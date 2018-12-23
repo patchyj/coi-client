@@ -8,7 +8,8 @@ class ResourceModal extends Component {
   }
   render() {
     const { id, resource, url } = this.props.data;
-    const uniqueID = resource.split(" ").join("");
+    let uniqueID;
+    if (resource) resource.split(" ").join("");
     let display;
     if (typeof url === "string") {
       display = <img src={url} className="img-fluid" alt="" />;
@@ -69,7 +70,7 @@ class ResourceModal extends Component {
                 className="btn btn-secondary"
                 data-dismiss="modal"
               >
-                Close
+                X
               </button>
             </div>
           </div>

@@ -14,14 +14,25 @@ class User extends Component {
     };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     const id = this.props.match.params.id;
     axios
-      .get(`/users/${id}`)
+      .get(`/api/users/${id}`)
       .then(res => {
         this.setState({
-          user: res.data,
-          projects: res.data.projects
+          user: res.data
+        });
+      })
+      .catch(err => {
+        this.setState({
+          errors: err
+        });
+      });
+    axios
+      .get(`/api/users/${id}/projects`)
+      .then(res => {
+        this.setState({
+          projects: res.data
         });
       })
       .catch(err => {
@@ -34,74 +45,82 @@ class User extends Component {
 
   render() {
     const {
-      first_name,
-      last_name,
+      firstName,
+      lastName,
       organisation,
       email,
       username,
       chapter,
-      chapter_lead,
-      linkedin_url,
-      twitter_url,
-      banner_pic,
-      profile_pic,
+      chapterLead,
+      linkedinUrl,
+      twitterUrl,
+      bannerPic,
+      profilePic,
       joined,
       projects,
       bio,
       tagline,
-      updated_at
+      date
     } = this.state.user;
 
+    console.log(this.state.user);
+
     const jumotronStyle = {
-      background: `url(${banner_pic})`
+      background: `url(${bannerPic})`
     };
 
-    const projectList = (
-      <table className="table table-striped table-sm table-hover text-center">
-        <thead>
-          <tr className="thead-red">
-            <th>Title</th>
-            <th>Posted</th>
-          </tr>
-        </thead>
-        <tbody>
-          {this.state.projects.map((project, i) => {
-            return (
-              <tr key={i}>
-                <td>
-                  <Link to={`/projects/${project.id}`}>{project.title}</Link>
-                </td>
-                <td>
-                  <Moment format="D MMM YYYY" withTitle>
-                    {project.created_at}
-                  </Moment>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-    );
+    let projectList;
+
+    if (this.state.projects.length !== 0) {
+      projectList = (
+        <table className="table table-striped table-sm table-hover text-center">
+          <thead>
+            <tr className="thead-red">
+              <th>Title</th>
+              <th>Posted</th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.state.projects.map((project, i) => {
+              return (
+                <tr key={i}>
+                  <td>
+                    <Link to={`/projects/${project.id}`}>{project.title}</Link>
+                  </td>
+                  <td>
+                    <Moment format="D MMM YYYY" withtitle="true">
+                      {project.date}
+                    </Moment>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      );
+    } else {
+      projectList = <div className="spinner" />;
+    }
 
     return (
       <div className="users">
         <div className="jumbotron" style={jumotronStyle}>
           <div className="main-text">
             <h1 className="display-3">
-              {first_name} {last_name}
+              {firstName} {lastName}
             </h1>
             <h5 className="py-3 tagline">{tagline}</h5>
             <h3 className="">
               Member since{" "}
-              <Moment format="D MMM YYYY" withTitle>
-                {updated_at}
+              <Moment format="D MMM YYYY" withtitle="true">
+                {date}
               </Moment>
             </h3>
             <div className="">
-              <a href={`http://twitter.com/${twitter_url}`} target="_blank">
+              <a href={`http://twitter.com/${twitterUrl}`} target="_blank">
                 <i className="fab fa-twitter" />
               </a>
-              <a href={`http://linkedin.com${linkedin_url}`} target="_blank">
+              <a href={`http://linkedin.com${linkedinUrl}`} target="_blank">
                 <i className="fab fa-linkedin" />
               </a>
               <a href={`mailto:${email}`} target="_blank">
@@ -113,7 +132,7 @@ class User extends Component {
         <div className="jumbotron bg-main-red">
           <div className="row text-center">
             <div className="col-md-4">
-              <img src={profile_pic} alt="" className="profile_pic" />
+              <img src={profilePic} alt="" className="profile_pic" />
             </div>
             <div className="col-md-6">
               <p className="user-bio">{bio}</p>

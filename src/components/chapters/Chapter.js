@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { TwitterTimelineEmbed } from "react-twitter-embed";
+import Moment from "react-moment";
 
 class Chapter extends Component {
   constructor(props) {
@@ -19,7 +20,7 @@ class Chapter extends Component {
   componentDidMount() {
     const id = this.props.match.params.id;
     axios
-      .get(`/chapters/${id}`)
+      .get(`/api/chapters/${id}`)
       .then(res => {
         this.setState({
           chapter: res.data,
@@ -36,7 +37,8 @@ class Chapter extends Component {
   }
 
   render() {
-    const { city, twitter_url, formed, leads, banner_pic } = this.state.chapter;
+    const { city, twitter_url, date, leads, bannerPic } = this.state.chapter;
+    console.log(this.state);
     let leadList;
     if (leads) {
       leadList = leads.map((lead, key) => {
@@ -57,7 +59,7 @@ class Chapter extends Component {
       <div className="chapter">
         <div
           className="jumbotron"
-          style={{ background: `url(${banner_pic})` }}
+          style={{ background: `url(${bannerPic})` }}
         />
         <span className="jumbotron_h1 display-5 py-5 page-header">
           <h1 className="display-2"> {city}</h1>
@@ -67,7 +69,11 @@ class Chapter extends Component {
           <div className="row text-center">
             <div className="col-md-4">
               <h3>Formed</h3>
-              <h4 className="">{formed}</h4>
+              <h4 className="">
+                <Moment format="D MMM YYYY" withtitle="true">
+                  {date}
+                </Moment>
+              </h4>
             </div>
             <div className="col-md-4">
               <h3>Members</h3>
@@ -96,12 +102,16 @@ class Chapter extends Component {
                     return (
                       <tr key={i}>
                         <td>
-                          <Link to={`/users/${member.id}`}>
-                            {member.first_name} {member.last_name}
+                          <Link to={`/users/${member._id}`}>
+                            {member.firstName} {member.lastName}
                           </Link>
                         </td>
                         <td>{member.organisation}</td>
-                        <td>{member.joined}</td>
+                        <td>
+                          <Moment format="D MMM YYYY" withtitle="true">
+                            {member.date}
+                          </Moment>
+                        </td>
                         <td>{member.projects ? member.projects.length : ""}</td>
                       </tr>
                     );

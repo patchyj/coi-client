@@ -28,7 +28,7 @@ class EditPost extends Component {
       tagline: this.state.tagline,
       body: this.state.body,
       images: this.state.images,
-      user_id: this.props.auth.user.user_id
+      user: this.props.auth.user.id
     };
 
     this.props.editPost(updatedPost, match.params.id, history);
@@ -38,11 +38,10 @@ class EditPost extends Component {
     this.setState({ [e.target.name]: e.target.value });
   }
 
-  componentWillMount() {
+  componentDidMount() {
     const { id } = this.props.match.params;
-    this.props.getPost(id);
     axios
-      .get(`/posts/${id}`)
+      .get(`/api/posts/${id}`)
       .then(res => {
         console.log(res.data);
         this.setState({
@@ -60,7 +59,11 @@ class EditPost extends Component {
   render() {
     return (
       <div className="editPost">
-        <h1>Edit Post</h1>
+        <div className="jumbotron-fluid">
+          <div className="container">
+            <h1 className="display-5 py-5 text-center">Edit Post</h1>
+          </div>
+        </div>
         <div className="container">
           <div className="row">
             <div className="col-md-8 offset-md-2">

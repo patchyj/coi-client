@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 class Projects extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.getProjects();
   }
 
@@ -20,18 +20,20 @@ class Projects extends Component {
     let results;
 
     if (projects.length !== 0) {
-      results = projects.map((project, index) => {
-        return (
-          <div className="col-md-4 p-3" key={index}>
-            <Link to={`/projects/${project.id}`} className="card">
-              <div>
-                <h4 className="card-title">{project.title}</h4>
-                <div className="card-body">{project.intro}</div>
-              </div>
-            </Link>
-          </div>
-        );
-      });
+      results = projects
+        .map((project, index) => {
+          return (
+            <div className="col-md-4 p-3" key={index}>
+              <Link to={`/projects/${project._id}`} className="card">
+                <div>
+                  <h4 className="card-title">{project.title}</h4>
+                  <div className="card-body">{project.intro}</div>
+                </div>
+              </Link>
+            </div>
+          );
+        })
+        .reverse();
     } else {
       results = <div className="spinner" />;
     }

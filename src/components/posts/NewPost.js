@@ -27,7 +27,7 @@ class NewPost extends Component {
       tagline: this.state.tagline,
       body: this.state.body,
       images: this.state.images,
-      user_id: this.props.auth.user.user_id
+      user: this.props.auth.user.id
     };
 
     this.props.createPost(newPost, this.props.history);
@@ -41,7 +41,9 @@ class NewPost extends Component {
     return (
       <div className="newPost">
         <div className="jumbotron">
-          <h1 className="display-4">New Post</h1>
+          <div className="container">
+            <h1 className="display-4">New Post</h1>
+          </div>
         </div>
         <div className="container">
           <div className="row">
@@ -93,7 +95,8 @@ class NewPost extends Component {
 }
 
 NewPost.propTypes = {
-  posts: PropTypes.object.isRequired
+  posts: PropTypes.object.isRequired,
+  createPost: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({

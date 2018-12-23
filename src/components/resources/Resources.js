@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import ResourceModal from "../common/ResourceModal";
 import resources from "./FiveC";
+import timAndDavid from "../../img/roundup_team.png";
+import Carousel from "../common/Carousel";
+import projectLifecycle from "./slideshows/ProjectLifecycle";
 
 class ResourceTable extends Component {
   render() {
@@ -16,7 +19,7 @@ class ResourceTable extends Component {
         download = "";
       }
       return (
-        <tr key={"row" + key}>
+        <tr key={"row" + key} className="bg-main-white">
           <th scope="row">
             <a
               className="btn"
@@ -59,7 +62,9 @@ class Resources extends Component {
     this.state = {
       bgImage: 0,
       bgText: 200,
-      bgTrigger: null
+      bgTrigger: null,
+      numPages: 22,
+      pageNumber: 1
     };
   }
 
@@ -72,7 +77,6 @@ class Resources extends Component {
       bgText: `${Math.floor(bgText.getBoundingClientRect().top)}`
     });
     window.addEventListener("scroll", this.handleScroll);
-    console.log(bgText.getBoundingClientRect().top);
   }
 
   componentWillUnmount() {
@@ -87,12 +91,11 @@ class Resources extends Component {
         400}`,
       bgText: `${Math.floor(bgTrigger.getBoundingClientRect().top * 0.45)}`
     });
-    // console.log(this.state.bgText);
     const bgText = document.getElementById("bgText");
-    console.log(bgText.getBoundingClientRect().top);
   };
 
   render() {
+    const { pageNumber, numPages } = this.state;
     const tabs = resources.map((resource, key) => {
       return (
         <a
@@ -137,27 +140,50 @@ class Resources extends Component {
           <h1>
             <span className="display-4">Welcome to The Circle!</span>
           </h1>
-          <p className="p-responsive">
-            Welcome to the resource page! Here you will find all the information
-            you need on The Circle of Young Intrapreneurs. We want you to know
-            every thing there is to know about us so if there is any thing you
-            can’t find here, please do contact us for more information.
+          <p className="p-responsive introText">
+            Welcome to the inner Circle! You are joining a group of over 5000
+            inspiring leaders from around the world and we are here to help.{" "}
           </p>
         </div>
         <div className="jumbotron jumbotron-fluid" id="bgTrigger">
           <div className="container py-5">
             <p className="p-responsive">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
+              Here we aim to arm you with the tools and techniques required to
+              be an effective social intrapreneur based on our own journey and
+              the journeys of other inspiring intrapreneurs from the Circle
+              network. Below you will find a whole bunch of useful templates you
+              can utilise to help you define, develop and deliver ideas which
+              aim to profitably-do-good; certainly we wish we had these kind of
+              tools at our disposal when we started our own journey! We will
+              look to constantly update these templates and add new ones so do
+              check in regularly.{" "}
             </p>
+            <p className="p-responsive">
+              If you are earlier on in your journey, and are just conceiving an
+              idea, then please use the project submission form under the
+              "projects" tab so we can link you into your nearest Circle chapter
+              lead who can give you feedback and help you to both shape your
+              idea and take your first steps as a{" "}
+              <strong className="bold">social intrapreneur</strong>.{" "}
+            </p>
+            <p className="p-responsive">
+              We wish you every success with your journey; we'll be here to help
+              every step of the way{" "}
+            </p>
+            <p className="p-responsive">Tim, David and the Circle Team. </p>
+            <img
+              src={timAndDavid}
+              alt="The Circle Team"
+              className="circleTeam img-thumbnail"
+            />
           </div>
         </div>
-        <div className="container-fluid py-5 bg-main-white">
+        <div className="container-fluid py-5 bg-main-red">
+          <div className="container py-5">
+            <Carousel data={projectLifecycle} />
+          </div>
+        </div>
+        <div className="container-fluid py-5">
           <div className="container">
             {/* NAV */}
             <nav>

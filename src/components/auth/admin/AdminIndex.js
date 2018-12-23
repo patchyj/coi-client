@@ -1,9 +1,88 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import {
+  getUsers,
+  getCurrentUser,
+  setAdmin,
+  setLead
+} from "../../../actions/authAction";
 import PropTypes from "prop-types";
 import axios from "axios";
 import Moment from "react-moment";
+
+const AdminCheckBox = ({ role, onChange, name, id }) => {
+  let adminInput;
+  if (role === "admin") {
+    adminInput = (
+      <input
+        role={role}
+        type="checkbox"
+        aria-label="Checkbox for following text input"
+        defaultChecked={true}
+        onChange={onChange}
+        name={name}
+        id={id}
+      />
+    );
+  } else {
+    adminInput = (
+      <input
+        role={role}
+        type="checkbox"
+        aria-label="Checkbox for following text input"
+        defaultChecked={false}
+        onChange={onChange}
+        name={name}
+        id={id}
+      />
+    );
+  }
+  return (
+    <div className="input-group mb-3">
+      <div className="input-group-prepend">
+        <div className="input-group-text">{adminInput}</div>
+      </div>
+    </div>
+  );
+};
+
+const LeadCheckBox = ({ role, onChange, dataName, id, city }) => {
+  let leadInput;
+  if (role === "lead") {
+    leadInput = (
+      <input
+        role={role}
+        type="checkbox"
+        aria-label="Checkbox for following text input"
+        defaultChecked={true}
+        onChange={onChange}
+        data-name={dataName}
+        id={id}
+        data-city={city}
+      />
+    );
+  } else {
+    leadInput = (
+      <input
+        role={role}
+        type="checkbox"
+        aria-label="Checkbox for following text input"
+        defaultChecked={false}
+        onChange={onChange}
+        data-name={dataName}
+        data-city={city}
+      />
+    );
+  }
+  return (
+    <div className="input-group mb-3">
+      <div className="input-group-prepend">
+        <div className="input-group-text">{leadInput}</div>
+      </div>
+    </div>
+  );
+};
 
 class AdminIndex extends Component {
   constructor(props) {
@@ -14,7 +93,8 @@ class AdminIndex extends Component {
       users: [],
       direction: {
         chapter_id: "asc"
-      }
+      },
+      isAdmin: false
     };
 
     this.sortBy = this.sortBy.bind(this);
@@ -33,48 +113,83 @@ class AdminIndex extends Component {
     });
   }
 
-  componentWillMount() {
+  setAdminClick(e) {
+    const role = e.target.attributes.role.value;
+    if (role === "admin") {
+      const res = window.confirm(
+        `Are you sure you want to remove ${
+          e.target.attributes.name
+        }'s admin priveleges?'`
+      );
+      if (res) {
+        this.props.setAdmin(e.target.id, this.props.history);
+        window.location.reload();
+      } else {
+        window.location.reload();
+      }
+    } else {
+      const res = window.confirm(
+        `Are you sure you want to make ${e.target.attributes.name} an admin?`
+      );
+      if (res) {
+        this.props.setAdmin(e.target.id, this.props.history);
+        window.location.reload();
+      } else {
+        window.location.reload();
+      }
+    }
+  }
+
+  setLeadClick(e) {
+    console.log(e.target.attributes);
+    const role = e.target.attributes.role.value;
+    if (role === "lead") {
+      const res = window.confirm(
+        `Are you sure you want to remove ${
+          e.target.attributes["data-name"].value
+        } as a lead of ${e.target.attributes["data-city"].value}?'`
+      );
+      if (res) {
+        this.props.setLead(e.target.id, this.props.history);
+        window.location.reload();
+      } else {
+        window.location.reload();
+      }
+    } else {
+      const res = window.confirm(
+        `Are you sure you want to make ${
+          e.target.attributes["data-name"].value
+        } a lead of ${e.target.attributes["data-city"].value}?`
+      );
+      if (res) {
+        this.props.setLead(e.target.id, this.props.history);
+        window.location.reload();
+      } else {
+        window.location.reload();
+      }
+    }
+  }
+
+  componentDidMount() {
     const { user } = this.props.auth;
     if (!user.admin) {
       this.props.history.push("/profile");
     }
 
     if (user.admin) {
-      axios
-        .get("/users")
-        .then(res => {
-          this.setState({ users: res.data });
-        })
-        .catch(err => {
-          console.log(err);
-        });
-      axios
-        .get("/profile")
-        .then(res => {
-          this.setState({ admin: res.data.user });
-        })
-        .catch(err => {
-          console.log(err);
-        });
+      this.props.getUsers();
+      this.props.getCurrentUser();
     }
   }
 
   render() {
     let results;
 
-    if (this.state.users.length !== 0) {
+    if (this.props.auth.users.length !== 0) {
       results = (
-        <table className="table table-striped table-sm table-hover text-center">
+        <table className="table table-sm table-hover text-center">
           <thead>
             <tr className="thead-red">
-              <th>
-                #{" "}
-                <i
-                  className="fas fa-chevron-down"
-                  onClick={() => this.sortBy("id")}
-                  style={{ cursor: "pointer" }}
-                />
-              </th>
               <th>Member</th>
               <th>Email</th>
               <th>
@@ -95,40 +210,79 @@ class AdminIndex extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.state.users.map((user, i) => {
+            {this.props.auth.users.map((user, i) => {
               return (
                 <tr key={i}>
-                  <td>{user.id}</td>
                   <td>
-                    <Link to={`/users/${user.id}`}>
-                      {user.first_name} {user.last_name}
+                    <Link to={`/users/${user._id}`}>
+                      {user.firstName} {user.lastName}
                     </Link>
                   </td>
                   <td>{user.email}</td>
                   <td>
-                    <Link to={`/chapters/${user.chapter_id}`}>
-                      {user.chapter}
+                    <Link
+                      to={`/chapters/${user.chapter ? user.chapter._id : ""}`}
+                    >
+                      {`${user.chapter ? user.chapter.city : ""}`}
                     </Link>
                   </td>
                   <td>
-                    <Moment format="D MMM YYYY" withTitle>
+                    <Moment format="D MMM YYYY" withtitle="true">
                       {user.joined}
                     </Moment>
                   </td>
                   <td>{user.organisation}</td>
                   <td>
-                    <a href={`http://linkedin.com${user.linkedin_url}`}>
-                      {user.linkedin_url}
+                    <a href={`http://linkedin.com${user.linkedinUrl}`}>
+                      {user.linkedinUrl}
                     </a>
                   </td>
                   <td>
-                    <a href={`http://twitter.com${user.twitter_url}`}>
-                      {user.twitter_url}
+                    <a href={`http://twitter.com${user.twitterUrl}`}>
+                      {user.twitterUrl}
                     </a>
                   </td>
-                  <td>{user.admin ? "Yes" : "No"}</td>
-                  <td>{user.chapter_lead ? "Yes" : "No"}</td>
-                  <td>{user.projects.length}</td>
+                  <td>
+                    {user.admin ? (
+                      <AdminCheckBox
+                        role="admin"
+                        onChange={this.setAdminClick.bind(this)}
+                        name={`${user.firstName} ${user.lastName}`}
+                        id={user._id}
+                      />
+                    ) : (
+                      <AdminCheckBox
+                        role="user"
+                        onChange={this.setAdminClick.bind(this)}
+                        name={`${user.firstName} ${user.lastName}`}
+                        id={user._id}
+                      />
+                    )}
+                  </td>
+                  <td>
+                    {user.lead ? (
+                      <LeadCheckBox
+                        role="lead"
+                        onChange={this.setLeadClick.bind(this)}
+                        dataName={`${user.firstName} ${user.lastName}`}
+                        id={user._id}
+                        city={user.chapter ? user.chapter.city : ""}
+                      />
+                    ) : (
+                      <LeadCheckBox
+                        role="user"
+                        onChange={this.setLeadClick.bind(this)}
+                        dataName={`${user.firstName} ${user.lastName}`}
+                        id={user._id}
+                        city={user.chapter ? user.chapter.city : ""}
+                      />
+                    )}
+                  </td>
+                  <td>
+                    {user.projects == undefined || user.projects.length == 0
+                      ? "0"
+                      : "number"}
+                  </td>
                 </tr>
               );
             })}
@@ -142,10 +296,10 @@ class AdminIndex extends Component {
       <div className="admin">
         <div
           className="jumbotron"
-          style={{ background: `url(${this.state.admin.banner_pic})` }}
+          style={{ background: `url(${this.props.auth.user.bannerPic})` }}
         />
         <span className="jumbotron_h1 display-5 py-5 page-header">
-          Wecome back, {this.state.admin.first_name}!
+          Wecome back, {this.props.auth.user.firstName}!
         </span>
 
         {results}
@@ -157,11 +311,17 @@ class AdminIndex extends Component {
 // export default AdminIndex;
 
 AdminIndex.propTypes = {
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
+  getUsers: PropTypes.func.isRequired,
+  setAdmin: PropTypes.func.isRequired,
+  setLead: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
   auth: state.auth
 });
 
-export default connect(mapStateToProps)(AdminIndex);
+export default connect(
+  mapStateToProps,
+  { getUsers, getCurrentUser, setAdmin, setLead }
+)(AdminIndex);

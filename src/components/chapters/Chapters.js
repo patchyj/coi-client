@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Moment from "react-moment";
 
 class Chapters extends Component {
   constructor(props) {
@@ -12,9 +13,9 @@ class Chapters extends Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     axios
-      .get("/chapters")
+      .get("/api/chapters")
       .then(res => {
         this.setState({
           chapters: res.data
@@ -42,10 +43,14 @@ class Chapters extends Component {
               return (
                 <tr key={key}>
                   <td>
-                    <Link to={`/chapters/${chapter.id}`}>{chapter.city}</Link>
+                    <Link to={`/chapters/${chapter._id}`}>{chapter.city}</Link>
                   </td>
                   <td>{chapter.country.name}</td>
-                  <td>{chapter.formed}</td>
+                  <td>
+                    <Moment format="D MMM YYYY" withtitle="true">
+                      {chapter.date}
+                    </Moment>
+                  </td>
                   <td>{chapter.members.length}</td>
                 </tr>
               );

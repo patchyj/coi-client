@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import axios from "axios";
+import { createProject } from "../../actions/projectActions";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
 class ProjectProposal extends Component {
   constructor() {
@@ -29,10 +31,7 @@ class ProjectProposal extends Component {
       businesscase: this.state.businesscase
     };
 
-    axios
-      .post("/projects", newProject)
-      .then(res => this.props.history.push("/projects"))
-      .catch(err => console.log(err));
+    this.props.createProject(newProject, this.props.history);
   }
 
   render() {
@@ -116,4 +115,18 @@ class ProjectProposal extends Component {
   }
 }
 
-export default ProjectProposal;
+ProjectProposal.propTypes = {
+  projects: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  projects: state.projects,
+  auth: state.auth
+});
+
+export default connect(
+  mapStateToProps,
+  {
+    createProject
+  }
+)(ProjectProposal);

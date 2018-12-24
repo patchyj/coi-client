@@ -112,10 +112,12 @@ class App extends Component {
             <Route exact path="/chapters" component={Chapters} />
             <Route exact path="/chapters/:id" component={Chapter} />
             {/* POSTS */}
-            <Route exact path="/posts" component={Posts} />
-            <Route exact path="/posts/new" component={NewPost} />
-            <Route exact path="/posts/:id" component={Post} />
-            <Route exact path="/posts/:id/edit" component={EditPost} />
+            <Switch>
+              <PrivateRoute exact path="/posts" component={Posts} />
+              <PrivateRoute exact path="/posts/new" component={NewPost} />
+              <PrivateRoute exact path="/posts/:id" component={Post} />
+              <PrivateRoute exact path="/posts/:id/edit" component={EditPost} />
+            </Switch>
             {/* PRIVATE USERS */}
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />

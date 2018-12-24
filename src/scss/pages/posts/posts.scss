@@ -18,6 +18,13 @@
     left: 100px;
     z-index: -998;
   }
+  .container-fluid {
+    background: white;
+
+    .row .row {
+      border: 1px solid rgba($main-red, 0.5);
+    }
+  }
   .jumbotron {
     margin-top: 400px;
     padding: 0;

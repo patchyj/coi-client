@@ -16,6 +16,10 @@
       );
       color: $main-white !important;
 
+      h1 {
+        font-family: "Raleway-Thin";
+      }
+
       h1,
       a {
         color: $main-white !important;
@@ -78,7 +82,7 @@
       }
       a:not(.dowelldogood),
       a:not(.reach-out),
-      a:not(.eventBrite-link),
+      a:not(.eventTile),
       button {
         border: 1px solid $main-red;
         background: $main-white;
@@ -200,16 +204,31 @@
     height: 800px;
     overflow: scroll;
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto auto;
     grid-gap: 10px;
 
-    a {
+    .eventTile {
       text-align: left;
       border: 1px solid lighten($main-red, 20%) !important;
       background: #fff !important;
+      padding: 15px;
+      color: $main-grey;
 
       & > div {
         padding: 10px !important;
+      }
+
+      a {
+        padding: 0 !important;
+        border: 0 !important;
+        background: none !important;
+        color: $main-blue !important;
+        transition: 0.2s;
+
+        &:hover {
+          text-decoration: underline !important;
+          color: darken($main-blue, 30%) !important;
+        }
       }
 
       &:hover {
@@ -442,7 +461,7 @@
     font-size: 4rem;
   }
   .eventBrite-container {
-    grid-template-columns: auto auto !important;
+    grid-template-columns: auto !important;
   }
 }
 

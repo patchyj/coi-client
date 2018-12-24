@@ -80,7 +80,7 @@ class Posts extends Component {
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </p>
         </div>
-        <div className="container-fluid bg-main-white">
+        <div className="container-fluid">
           <div className="jumbotron">
             <h6 className="display-4-5 p-5">
               <Link to="/posts/new">Have something to share?</Link>

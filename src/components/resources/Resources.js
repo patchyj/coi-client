@@ -188,6 +188,7 @@ class Resources extends Component {
           </div>
         </div>
         <div className="container-fluid py-5">
+          <h1 className="display-4 text-center pb-3">Your Toolkit</h1>
           <div className="container">
             {/* NAV */}
             <nav>

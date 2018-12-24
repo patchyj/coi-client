@@ -29,17 +29,20 @@ class EventbriteAPI extends Component {
   render() {
     let events;
     if (this.state.events.length > 0) {
+      console.log(this.state.events[0]);
       events = this.state.events
         .map((event, key) => {
+          const location = event.start.timezone.split("/");
+          const locationStr = `${String(location[1]).replace(/_/g, " ")}, ${
+            location[0]
+          }`;
           return (
-            <a
-              key={key}
-              target="_blank"
-              rel="noopener noreferrer"
-              href={event.url}
-            >
+            <div className="eventTile" key={key}>
               <div className="row">
-                <p>{event.name.text}</p>
+                <h5>{event.name.text}</h5>
+              </div>
+              <div className="row">
+                <h6>{locationStr}</h6>
               </div>
               <div className="row">
                 <small>
@@ -48,7 +51,18 @@ class EventbriteAPI extends Component {
                   </Moment>
                 </small>
               </div>
-            </a>
+
+              <div className="row">
+                <a
+                  key={key}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={event.url}
+                >
+                  <h6>See more</h6>
+                </a>
+              </div>
+            </div>
           );
         })
         .reverse();
@@ -73,20 +87,6 @@ class MailingForm extends Component {
   render() {
     return (
       <form className="card card-body">
-        {/*<div className="form-group">
-          <input
-            onChange={this.onChange.bind(this)}
-            className="form-control form-control-lg"
-            type="email"
-            placeholder="Enter your email"
-            name="email"
-          />
-          <input type="submit" className="btn" />
-          <br />
-          <small>
-            We promise not to share your email with any third parties
-          </small>
-        </div>*/}
         <a
           href="https://circleofyi.us13.list-manage.com/subscribe/post?u=6ddfb2318958e6bd7e6d9f028&id=d82e567ec0"
           target="_blank"
@@ -255,83 +255,9 @@ class Landing extends Component {
             </div>
           </div>
         </div>
-        <div className="container-fluid section section-red more-videos">
-          <h1 className="display-5">More videos</h1>
-          <div
-            id="carouselExampleIndicators"
-            className="carousel slide col-md-8 offset-md-2"
-            data-ride="carousel"
-          >
-            <ol className="carousel-indicators">
-              <li
-                data-target="#carouselExampleIndicators"
-                data-slide-to="0"
-                className="active"
-              />
-              <li data-target="#carouselExampleIndicators" data-slide-to="1" />
-              <li data-target="#carouselExampleIndicators" data-slide-to="2" />
-              <li data-target="#carouselExampleIndicators" data-slide-to="3" />
-              <li data-target="#carouselExampleIndicators" data-slide-to="4" />
-              <li data-target="#carouselExampleIndicators" data-slide-to="5" />
-              <li data-target="#carouselExampleIndicators" data-slide-to="6" />
-              <li data-target="#carouselExampleIndicators" data-slide-to="7" />
-              <li data-target="#carouselExampleIndicators" data-slide-to="8" />
-              <li data-target="#carouselExampleIndicators" data-slide-to="9" />
-            </ol>
-            <div className="carousel-inner">
-              <div className="carousel-item active">
-                <YouTubeEmbed src="https://www.youtube.com/embed/B3WbQa_H4QM" />
-              </div>
-              <div className="carousel-item">
-                <YouTubeEmbed src="https://www.youtube.com/embed/r47ac_6I7-Y" />
-              </div>
-              <div className="carousel-item">
-                <YouTubeEmbed src="https://www.youtube.com/embed/_gpJzy5hDfE" />
-              </div>
-              <div className="carousel-item">
-                <YouTubeEmbed src="https://www.youtube.com/embed/OD-9Mre-ycY" />
-              </div>
-              <div className="carousel-item">
-                <YouTubeEmbed src="https://www.youtube.com/embed/VJ2SapCw4Vs" />
-              </div>
-              <div className="carousel-item">
-                <YouTubeEmbed src="https://www.youtube.com/embed/O9vR7jUJq1w" />
-              </div>
-              <div className="carousel-item">
-                <YouTubeEmbed src="https://www.youtube.com/embed/T2NIHXKIKhw" />
-              </div>
-              <div className="carousel-item">
-                <YouTubeEmbed src="https://www.youtube.com/embed/sr9toTw725c" />
-              </div>
-              <div className="carousel-item">
-                <YouTubeEmbed src="https://www.youtube.com/embed/N2xf_yn-R0Y" />
-              </div>
-              <div className="carousel-item">
-                <YouTubeEmbed src="https://www.youtube.com/embed/r47ac_6I7-Y" />
-              </div>
-            </div>
-            <a
-              className="carousel-control-prev"
-              href="#carouselExampleIndicators"
-              role="button"
-              data-slide="prev"
-            >
-              <span className="carousel-control-prev-icon" aria-hidden="true" />
-              <span className="sr-only">Previous</span>
-            </a>
-            <a
-              className="carousel-control-next"
-              href="#carouselExampleIndicators"
-              role="button"
-              data-slide="next"
-            >
-              <span className="carousel-control-next-icon" aria-hidden="true" />
-              <span className="sr-only">Next</span>
-            </a>
-          </div>
-        </div>
+
         {/* Social media */}
-        <div className="container-fluid section section-white">
+        <div className="container-fluid section section-red">
           <h1 className="display-4 py-5">Social Media</h1>
           <div className="row">
             <div className="col-md-4">
@@ -345,31 +271,6 @@ class Landing extends Component {
             <div className="col-md-8">
               <h1 className="display-5">Events</h1>
               <EventbriteAPI />
-            </div>
-          </div>
-        </div>
-
-        {/* Mailing list */}
-        <div className="container-fluid section section-red">
-          <div className="jumbotron text-left">
-            <div className="row">
-              <div className="col-md-6">
-                <h1 className="display-4 py-5">Want to know more?</h1>
-                <h6 className="display-5">
-                  <a
-                    href="https://circleofyi.us13.list-manage.com/subscribe/post?u=6ddfb2318958e6bd7e6d9f028&id=d82e567ec0"
-                    target="_blank"
-                    className="btn"
-                    rel="noopener noreferrer"
-                  >
-                    Join our mailing list
-                  </a>
-                </h6>
-                <div className="collapse mt-4" id="mailingList" />
-              </div>
-              <div className="col-md-6">
-                <div className="mailing" />
-              </div>
             </div>
           </div>
         </div>
@@ -474,6 +375,104 @@ class Landing extends Component {
           <h1 className="display-4">Our Global Hubs</h1>
           <div id="map" className="container" />
         </div>
+
+        {/* YouTube Videos */}
+        <div className="container-fluid section section-white more-videos">
+          <h1 className="display-5">More videos</h1>
+          <div
+            id="carouselExampleIndicators"
+            className="carousel slide col-md-8 offset-md-2"
+            data-ride="carousel"
+          >
+            <ol className="carousel-indicators">
+              <li
+                data-target="#carouselExampleIndicators"
+                data-slide-to="0"
+                className="active"
+              />
+              <li data-target="#carouselExampleIndicators" data-slide-to="1" />
+              <li data-target="#carouselExampleIndicators" data-slide-to="2" />
+              <li data-target="#carouselExampleIndicators" data-slide-to="3" />
+              <li data-target="#carouselExampleIndicators" data-slide-to="4" />
+              <li data-target="#carouselExampleIndicators" data-slide-to="5" />
+              <li data-target="#carouselExampleIndicators" data-slide-to="6" />
+              <li data-target="#carouselExampleIndicators" data-slide-to="7" />
+              <li data-target="#carouselExampleIndicators" data-slide-to="8" />
+              <li data-target="#carouselExampleIndicators" data-slide-to="9" />
+            </ol>
+            <div className="carousel-inner">
+              <div className="carousel-item active">
+                <YouTubeEmbed src="https://www.youtube.com/embed/B3WbQa_H4QM" />
+              </div>
+              <div className="carousel-item">
+                <YouTubeEmbed src="https://www.youtube.com/embed/r47ac_6I7-Y" />
+              </div>
+              <div className="carousel-item">
+                <YouTubeEmbed src="https://www.youtube.com/embed/_gpJzy5hDfE" />
+              </div>
+              <div className="carousel-item">
+                <YouTubeEmbed src="https://www.youtube.com/embed/OD-9Mre-ycY" />
+              </div>
+              <div className="carousel-item">
+                <YouTubeEmbed src="https://www.youtube.com/embed/VJ2SapCw4Vs" />
+              </div>
+              <div className="carousel-item">
+                <YouTubeEmbed src="https://www.youtube.com/embed/O9vR7jUJq1w" />
+              </div>
+              <div className="carousel-item">
+                <YouTubeEmbed src="https://www.youtube.com/embed/T2NIHXKIKhw" />
+              </div>
+              <div className="carousel-item">
+                <YouTubeEmbed src="https://www.youtube.com/embed/sr9toTw725c" />
+              </div>
+              <div className="carousel-item">
+                <YouTubeEmbed src="https://www.youtube.com/embed/N2xf_yn-R0Y" />
+              </div>
+              <div className="carousel-item">
+                <YouTubeEmbed src="https://www.youtube.com/embed/r47ac_6I7-Y" />
+              </div>
+            </div>
+            <a
+              className="carousel-control-prev"
+              href="#carouselExampleIndicators"
+              role="button"
+              data-slide="prev"
+            >
+              <span className="carousel-control-prev-icon" aria-hidden="true" />
+              <span className="sr-only">Previous</span>
+            </a>
+            <a
+              className="carousel-control-next"
+              href="#carouselExampleIndicators"
+              role="button"
+              data-slide="next"
+            >
+              <span className="carousel-control-next-icon" aria-hidden="true" />
+              <span className="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+
+        {/* Social butterfly */}
+        <div className="container-fluid section section-red with-stripe">
+          <div className="jumbotron row text-left">
+            <div className="col-md-6">
+              <h1 className="display-4">
+                Social butterfly? <br /> Tell us a story
+              </h1>
+              <h6 className="display-5">
+                <Link to="/register" className="reach-out">
+                  Reach out
+                </Link>{" "}
+                to our community and see what the fuss is about
+              </h6>
+            </div>
+            <div className="col-md-6">
+              <div className="speech" />
+            </div>
+          </div>
+        </div>
+
         {/* Idea that can change the world */}
         <div className="container-fluid section section-white bulb-container">
           <div className="jumbotron">
@@ -495,25 +494,32 @@ class Landing extends Component {
             </div>
           </div>
         </div>
-        {/* Social butterfly */}
-        <div className="container-fluid section section-red with-stripe">
-          <div className="jumbotron row text-left">
-            <div className="col-md-6">
-              <h1 className="display-4">
-                Social butterfly? <br /> Tell us a story
-              </h1>
-              <h6 className="display-5">
-                <Link to="/register" className="reach-out">
-                  Reach out
-                </Link>{" "}
-                to our community and see what the fuss is about
-              </h6>
-            </div>
-            <div className="col-md-6">
-              <div className="speech" />
+
+        {/* Mailing list */}
+        <div className="container-fluid section section-red">
+          <div className="jumbotron text-left">
+            <div className="row">
+              <div className="col-md-6">
+                <h1 className="display-4 py-5">Want to know more?</h1>
+                <h6 className="display-5">
+                  <a
+                    href="https://circleofyi.us13.list-manage.com/subscribe/post?u=6ddfb2318958e6bd7e6d9f028&id=d82e567ec0"
+                    target="_blank"
+                    className="btn"
+                    rel="noopener noreferrer"
+                  >
+                    Join our mailing list
+                  </a>
+                </h6>
+                <div className="collapse mt-4" id="mailingList" />
+              </div>
+              <div className="col-md-6">
+                <div className="mailing" />
+              </div>
             </div>
           </div>
         </div>
+
         {/* Oil tanker */}
         <div className="container-fluid section section-white">
           <div className="jumbotron">

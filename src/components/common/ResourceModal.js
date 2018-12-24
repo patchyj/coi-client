@@ -8,8 +8,7 @@ class ResourceModal extends Component {
   }
   render() {
     const { id, resource, url } = this.props.data;
-    let uniqueID;
-    if (resource) resource.split(" ").join("");
+    resource.split(" ").join("");
     let display;
     if (typeof url === "string") {
       display = <img src={url} className="img-fluid" alt="" />;
@@ -26,11 +25,15 @@ class ResourceModal extends Component {
       });
 
       display = (
-        <div id={`${uniqueID}`} className="carousel slide" data-ride="carousel">
+        <div
+          id={`carousel${id}`}
+          className="carousel slide"
+          data-ride="carousel"
+        >
           <div className="carousel-inner">{slides}</div>
           <a
             className="carousel-control-prev"
-            href={`#${uniqueID}`} // need to be unique
+            href={`#carousel${id}`} // need to be unique
             role="button"
             data-slide="prev"
           >
@@ -39,7 +42,7 @@ class ResourceModal extends Component {
           </a>
           <a
             className="carousel-control-next"
-            href={`#${uniqueID}`} // need to be unique
+            href={`#carousel${id}`} // need to be unique
             role="button"
             data-slide="next"
           >

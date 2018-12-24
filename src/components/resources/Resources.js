@@ -4,6 +4,7 @@ import resources from "./FiveC";
 import timAndDavid from "../../img/roundup_team.png";
 import Carousel from "../common/Carousel";
 import projectLifecycle from "./slideshows/ProjectLifecycle";
+import uuidv1 from "uuid/v1";
 
 class ResourceTable extends Component {
   render() {
@@ -28,7 +29,7 @@ class ResourceTable extends Component {
             >
               {data.resource}
             </a>
-            <ResourceModal data={data} />
+            <ResourceModal data={data} id={uuidv1()} />
           </th>
           <td>{data.description}</td>
           <td className="text-center">{download}</td>

@@ -52,19 +52,20 @@ const LeadCheckBox = ({ role, onChange, dataName, id, city }) => {
   if (role === "lead") {
     leadInput = (
       <input
+        id={id}
         role={role}
         type="checkbox"
         aria-label="Checkbox for following text input"
         defaultChecked={true}
         onChange={onChange}
         data-name={dataName}
-        id={id}
         data-city={city}
       />
     );
   } else {
     leadInput = (
       <input
+        id={id}
         role={role}
         type="checkbox"
         aria-label="Checkbox for following text input"
@@ -118,18 +119,20 @@ class AdminIndex extends Component {
     if (role === "admin") {
       const res = window.confirm(
         `Are you sure you want to remove ${
-          e.target.attributes.name
+          e.target.attributes.name.value
         }'s admin priveleges?'`
       );
       if (res) {
         this.props.setAdmin(e.target.id, this.props.history);
-        window.location.reload();
+        // window.location.reload();
       } else {
-        window.location.reload();
+        // window.location.reload();
       }
     } else {
       const res = window.confirm(
-        `Are you sure you want to make ${e.target.attributes.name} an admin?`
+        `Are you sure you want to make ${
+          e.target.attributes.name.value
+        } an admin?`
       );
       if (res) {
         this.props.setAdmin(e.target.id, this.props.history);
@@ -151,9 +154,9 @@ class AdminIndex extends Component {
       );
       if (res) {
         this.props.setLead(e.target.id, this.props.history);
-        window.location.reload();
+        // window.location.reload();
       } else {
-        window.location.reload();
+        // window.location.reload();
       }
     } else {
       const res = window.confirm(
@@ -163,9 +166,9 @@ class AdminIndex extends Component {
       );
       if (res) {
         this.props.setLead(e.target.id, this.props.history);
-        window.location.reload();
+        // window.location.reload();
       } else {
-        window.location.reload();
+        // window.location.reload();
       }
     }
   }

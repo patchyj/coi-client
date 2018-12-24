@@ -89,6 +89,13 @@ if (localStorage.jwtToken) {
   }
 }
 
+setInterval(() => {
+  fetch("https://coi-node-api.herokuapp.com/api/projectss/test")
+    .then(res => res.json())
+    .then(json => console.log(json))
+    .catch(err => console.log(err));
+}, 300000);
+
 class App extends Component {
   render() {
     return (

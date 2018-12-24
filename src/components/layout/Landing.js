@@ -29,7 +29,6 @@ class EventbriteAPI extends Component {
   render() {
     let events;
     if (this.state.events.length > 0) {
-      console.log(this.state.events[0]);
       events = this.state.events
         .map((event, key) => {
           const location = event.start.timezone.split("/");

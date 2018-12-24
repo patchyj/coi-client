@@ -147,35 +147,39 @@ class Resources extends Component {
         </div>
         <div className="jumbotron jumbotron-fluid" id="bgTrigger">
           <div className="container py-5">
-            <p className="p-responsive">
-              Here we aim to arm you with the tools and techniques required to
-              be an effective social intrapreneur based on our own journey and
-              the journeys of other inspiring intrapreneurs from the Circle
-              network. Below you will find a whole bunch of useful templates you
-              can utilise to help you define, develop and deliver ideas which
-              aim to profitably-do-good; certainly we wish we had these kind of
-              tools at our disposal when we started our own journey! We will
-              look to constantly update these templates and add new ones so do
-              check in regularly.{" "}
-            </p>
-            <p className="p-responsive">
-              If you are earlier on in your journey, and are just conceiving an
-              idea, then please use the project submission form under the
-              "projects" tab so we can link you into your nearest Circle chapter
-              lead who can give you feedback and help you to both shape your
-              idea and take your first steps as a{" "}
-              <strong className="bold">social intrapreneur</strong>.{" "}
-            </p>
-            <p className="p-responsive">
-              We wish you every success with your journey; we'll be here to help
-              every step of the way{" "}
-            </p>
-            <p className="p-responsive">Tim, David and the Circle Team. </p>
-            <img
-              src={timAndDavid}
-              alt="The Circle Team"
-              className="circleTeam img-thumbnail"
-            />
+            <div className="col-md-10 offset-md-1 col-sm-12">
+              <p className="p-responsive text-justify">
+                Here we aim to arm you with the tools and techniques required to
+                be an effective social intrapreneur based on our own journey and
+                the journeys of other inspiring intrapreneurs from the Circle
+                network. Below you will find a whole bunch of useful templates
+                you can utilise to help you define, develop and deliver ideas
+                which aim to profitably-do-good; certainly we wish we had these
+                kind of tools at our disposal when we started our own journey!
+                We will look to constantly update these templates and add new
+                ones so do check in regularly.{" "}
+              </p>
+              <p className="p-responsive text-justify">
+                If you are earlier on in your journey, and are just conceiving
+                an idea, then please use the project submission form under the
+                "projects" tab so we can link you into your nearest Circle
+                chapter lead who can give you feedback and help you to both
+                shape your idea and take your first steps as a{" "}
+                <strong className="bold">social intrapreneur</strong>.{" "}
+              </p>
+              <p className="p-responsive text-justify">
+                We wish you every success with your journey; we'll be here to
+                help every step of the way{" "}
+              </p>
+              <p className="p-responsive text-justify">
+                Tim, David and the Circle Team.{" "}
+              </p>
+              <img
+                src={timAndDavid}
+                alt="The Circle Team"
+                className="circleTeam img-thumbnail"
+              />
+            </div>
           </div>
         </div>
         <div className="container-fluid py-5 bg-main-red">

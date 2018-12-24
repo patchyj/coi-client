@@ -38,9 +38,9 @@ class ProjectProposal extends Component {
     return (
       <div className="projects container-fluid">
         <div className="row">
-          <div className="col-md-6 text-center bg-main-grey p-5">
+          <div className="col-md-6 text-center bg-main-red-gradient p-5">
             <h1 className="display-2 mb-5">Have an idea?</h1>
-            <p className="display-4  mt-5">
+            <p className="display-4-5  mt-5">
               Lorem ipsum, dolor sit amet consectetur adipisicing elit.
               Laboriosam incidunt dolores magni quo voluptatibus expedita!
             </p>

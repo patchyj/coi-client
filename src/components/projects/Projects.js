@@ -65,7 +65,7 @@ class Projects extends Component {
             members of the Circle
           </p>
         </div>
-        <div className="container-fluid text-center bg-main-white-darken">
+        <div className="container-fluid text-center bg-main-red-gradient">
           <div className="container">
             <div className="row" style={{ margin: "auto" }}>
               {results}

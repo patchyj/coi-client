@@ -6,6 +6,11 @@
   background: #931924;
   color: whitesmoke; }
 
+.bg-main-red-gradient {
+  background: #dd3545;
+  background: linear-gradient(135deg, #dd3545 50%, #93246d);
+  color: whitesmoke !important; }
+
 .bg-main-white {
   background: whitesmoke; }
 

@@ -13,6 +13,12 @@ $main-blue: rgb(31, 75, 134);
   color: $main-white;
 }
 
+.bg-main-red-gradient {
+  background: $main-red;
+  background: linear-gradient(135deg, rgb(221, 53, 69) 50%, rgb(147, 36, 109));
+  color: $main-white !important;
+}
+
 .bg-main-white {
   background: $main-white;
 }

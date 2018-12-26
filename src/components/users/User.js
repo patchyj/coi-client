@@ -63,8 +63,6 @@ class User extends Component {
       date
     } = this.state.user;
 
-    console.log(this.state.user);
-
     const jumotronStyle = {
       background: `url(${bannerPic})`
     };

@@ -7,6 +7,7 @@ import {
   setAdmin,
   setLead
 } from "../../../actions/authAction";
+import { getProjects } from "../../../actions/projectActions";
 import PropTypes from "prop-types";
 import axios from "axios";
 import Moment from "react-moment";
@@ -136,9 +137,9 @@ class AdminIndex extends Component {
       );
       if (res) {
         this.props.setAdmin(e.target.id, this.props.history);
-        window.location.reload();
+        // window.location.reload();
       } else {
-        window.location.reload();
+        // window.location.reload();
       }
     }
   }
@@ -181,14 +182,17 @@ class AdminIndex extends Component {
 
     if (user.admin) {
       this.props.getUsers();
+      this.props.getProjects();
       this.props.getCurrentUser();
     }
   }
 
   render() {
     let results;
+    const { users } = this.props.auth;
+    const { projects } = this.props.projects;
 
-    if (this.props.auth.users.length !== 0) {
+    if (users.length !== 0 && projects.length !== 0) {
       results = (
         <table className="table table-sm table-hover text-center">
           <thead>
@@ -213,7 +217,14 @@ class AdminIndex extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.props.auth.users.map((user, i) => {
+            {users.map((user, i) => {
+              let userProjects = [];
+              projects.forEach(project => {
+                if (project.user._id === user._id) {
+                  userProjects.push(project);
+                }
+              });
+
               return (
                 <tr key={i}>
                   <td>
@@ -281,11 +292,7 @@ class AdminIndex extends Component {
                       />
                     )}
                   </td>
-                  <td>
-                    {user.projects == undefined || user.projects.length == 0
-                      ? "0"
-                      : "number"}
-                  </td>
+                  <td>{userProjects.length}</td>
                 </tr>
               );
             })}
@@ -316,15 +323,17 @@ class AdminIndex extends Component {
 AdminIndex.propTypes = {
   auth: PropTypes.object.isRequired,
   getUsers: PropTypes.func.isRequired,
+  getProjects: PropTypes.func.isRequired,
   setAdmin: PropTypes.func.isRequired,
   setLead: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
-  auth: state.auth
+  auth: state.auth,
+  projects: state.projects
 });
 
 export default connect(
   mapStateToProps,
-  { getUsers, getCurrentUser, setAdmin, setLead }
+  { getUsers, getCurrentUser, setAdmin, setLead, getProjects }
 )(AdminIndex);

@@ -20,7 +20,9 @@ class EventbriteAPI extends Component {
 
   async componentDidMount() {
     const response = await fetch(
-      `https://www.eventbriteapi.com/v3/users/me/owned_events/?token=${"JNM32ETYOWZBMVPRI5TU"}`
+      `https://www.eventbriteapi.com/v3/users/me/owned_events/?token=${
+        process.env.EVENTBRITE
+      }`
     );
     const json = await response.json();
     this.setState({ events: json.events });
@@ -172,7 +174,7 @@ class Landing extends Component {
     script.onload = function() {
       window.tomtom.L.map("map", {
         source: "vector",
-        key: "EXLLAn1majtQK1IlJ0Bw4NrZ4VO5vJKx",
+        key: process.env.EVENTBRITE,
         center: [51.5074, 0.1278],
         basePath: "/sdk",
         zoom: 2

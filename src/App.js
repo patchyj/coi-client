@@ -90,7 +90,7 @@ if (localStorage.jwtToken) {
 }
 
 setInterval(() => {
-  fetch("https://coi-node-api.herokuapp.com/api/projectss/test")
+  fetch("https://coi-node-api.herokuapp.com/api/projects/test")
     .then(res => res.json())
     .then(json => console.log(json))
     .catch(err => console.log(err));

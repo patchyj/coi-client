@@ -8,6 +8,7 @@ import { clearCurrentProfile } from "./actions/profileAction";
 // Auth
 import jwtDecode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
+import dotenv from "dotenv";
 
 // Bootstrap and jQuery
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -66,6 +67,7 @@ import LeadIndex from "./components/auth/lead/LeadIndex.js";
 import NotFound from "./components/not-found/NotFound";
 
 import "./css/App.css";
+dotenv.config();
 
 // Check for token
 if (localStorage.jwtToken) {

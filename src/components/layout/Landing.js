@@ -21,7 +21,7 @@ class EventbriteAPI extends Component {
   async componentDidMount() {
     const response = await fetch(
       `https://www.eventbriteapi.com/v3/users/me/owned_events/?token=${
-        process.env.EVENTBRITE
+        process.env.REACT_APP_EVENTBRITE
       }`
     );
     const json = await response.json();
@@ -30,43 +30,45 @@ class EventbriteAPI extends Component {
 
   render() {
     let events;
-    if (this.state.events.length > 0) {
-      events = this.state.events
-        .map((event, key) => {
-          const location = event.start.timezone.split("/");
-          const locationStr = `${String(location[1]).replace(/_/g, " ")}, ${
-            location[0]
-          }`;
-          return (
-            <div className="eventTile" key={key}>
-              <div className="row">
-                <h5>{event.name.text}</h5>
-              </div>
-              <div className="row">
-                <h6>{locationStr}</h6>
-              </div>
-              <div className="row">
-                <small>
-                  <Moment format="HH:mm D MMM YYYY" withtitle="true">
-                    {event.start.local}
-                  </Moment>
-                </small>
-              </div>
+    if (this.state.events) {
+      if (this.state.events.length > 0) {
+        events = this.state.events
+          .map((event, key) => {
+            const location = event.start.timezone.split("/");
+            const locationStr = `${String(location[1]).replace(/_/g, " ")}, ${
+              location[0]
+            }`;
+            return (
+              <div className="eventTile" key={key}>
+                <div className="row">
+                  <h5>{event.name.text}</h5>
+                </div>
+                <div className="row">
+                  <h6>{locationStr}</h6>
+                </div>
+                <div className="row">
+                  <small>
+                    <Moment format="HH:mm D MMM YYYY" withtitle="true">
+                      {event.start.local}
+                    </Moment>
+                  </small>
+                </div>
 
-              <div className="row">
-                <a
-                  key={key}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href={event.url}
-                >
-                  <h6>See more</h6>
-                </a>
+                <div className="row">
+                  <a
+                    key={key}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={event.url}
+                  >
+                    <h6>See more</h6>
+                  </a>
+                </div>
               </div>
-            </div>
-          );
-        })
-        .reverse();
+            );
+          })
+          .reverse();
+      }
     }
     return <div className="row eventBrite-container">{events}</div>;
   }
@@ -174,7 +176,7 @@ class Landing extends Component {
     script.onload = function() {
       window.tomtom.L.map("map", {
         source: "vector",
-        key: process.env.EVENTBRITE,
+        key: process.env.REACT_APP_TOMTOM,
         center: [51.5074, 0.1278],
         basePath: "/sdk",
         zoom: 2

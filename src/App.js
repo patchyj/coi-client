@@ -8,6 +8,7 @@ import { clearCurrentProfile } from "./actions/profileAction";
 // Auth
 import jwtDecode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
+// import webpack from "webpack";
 import dotenv from "dotenv";
 
 // Bootstrap and jQuery
@@ -67,7 +68,7 @@ import LeadIndex from "./components/auth/lead/LeadIndex.js";
 import NotFound from "./components/not-found/NotFound";
 
 import "./css/App.css";
-dotenv.config();
+// dotenv.config();
 
 // Check for token
 if (localStorage.jwtToken) {
@@ -97,6 +98,8 @@ setInterval(() => {
     .then(json => console.log(json))
     .catch(err => console.log(err));
 }, 300000);
+
+// console.log(process.env);
 
 class App extends Component {
   render() {

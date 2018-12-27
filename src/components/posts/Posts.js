@@ -86,24 +86,26 @@ class Posts extends Component {
               <Link to="/posts/new">Have something to share?</Link>
             </h6>
           </div>
-          <div className="row posts-row p-3 m-3">
-            <div className="col-md-10">{allPosts}</div>
-            <div className="col-md-2">
-              <div className="sidenav">
-                <nav className="nav flex-column">
-                  <a className="nav-link active" target="_blank" href="#">
-                    <i className="fab fa-twitter" />
-                  </a>
-                  <a className="nav-link" target="_blank" href="#">
-                    <i className="fab fa-linkedin" />
-                  </a>
-                  <a className="nav-link" target="_blank" href="#">
-                    <i className="fab fa-facebook" />
-                  </a>
-                  <a className="nav-link" target="_blank" href="#">
-                    <i className="fab fa-instagram" />
-                  </a>
-                </nav>
+          <div className="container">
+            <div className="row posts-row p-3 m-3">
+              <div className="col-md-10">{allPosts}</div>
+              <div className="col-md-2">
+                <div className="sidenav">
+                  <nav className="nav flex-column">
+                    <a className="nav-link active" target="_blank" href="#">
+                      <i className="fab fa-twitter" />
+                    </a>
+                    <a className="nav-link" target="_blank" href="#">
+                      <i className="fab fa-linkedin" />
+                    </a>
+                    <a className="nav-link" target="_blank" href="#">
+                      <i className="fab fa-facebook" />
+                    </a>
+                    <a className="nav-link" target="_blank" href="#">
+                      <i className="fab fa-instagram" />
+                    </a>
+                  </nav>
+                </div>
               </div>
             </div>
           </div>

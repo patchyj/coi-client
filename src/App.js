@@ -9,7 +9,7 @@ import { clearCurrentProfile } from "./actions/profileAction";
 import jwtDecode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 // import webpack from "webpack";
-import dotenv from "dotenv";
+// import dotenv from "dotenv";
 
 // Bootstrap and jQuery
 import "bootstrap/dist/css/bootstrap.min.css";

@@ -143,10 +143,8 @@ class FeedBackForm extends Component {
     };
 
     axios
-      .post("/api/users/feedback", {
-        feedback
-      })
-      .then(json => console.log(json))
+      .post("/api/users/feedback", feedback)
+      .then(res => console.log(res))
       .catch(err => console.log(err));
   }
 

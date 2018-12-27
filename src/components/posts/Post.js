@@ -5,6 +5,8 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Moment from "react-moment";
 import Comments from "../comments/Comments";
+import { Editor, convertFromRaw } from "draft-js";
+import { stateToHTML } from "draft-js-export-html";
 
 class Post extends Component {
   constructor(props) {
@@ -45,11 +47,20 @@ class Post extends Component {
     window.location.reload();
   }
 
+  createMarkup(html) {
+    return { __html: html };
+  }
+
   render() {
     const { post, comments } = this.props.posts;
     const { admin } = this.props.auth.user;
 
     let user, image;
+    let contentState;
+
+    if (Object.keys(post).length > 0) {
+      contentState = stateToHTML(convertFromRaw(JSON.parse(post.body)));
+    }
 
     if (post.user) {
       user = (
@@ -98,9 +109,11 @@ class Post extends Component {
           <div className="col-md-1 col-sm-12">{admin ? crudLinks : ""}</div>
         </div>
         <div className="row p-5">
-          <div className="col-md-8 col-sm-12 offset-md-2">
-            <p className="text-justify">{post.body}</p>
-          </div>
+          {contentState ? (
+            <div dangerouslySetInnerHTML={this.createMarkup(contentState)} />
+          ) : (
+            <div className="spinner" />
+          )}
         </div>
         <div className="container comments">
           <div className="row p-5">

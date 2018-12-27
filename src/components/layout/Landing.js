@@ -136,14 +136,13 @@ class FeedBackForm extends Component {
 
   onSubmit(e) {
     e.preventDefault();
-    const feedback = {
-      fullName: this.state.fullName,
-      email: this.state.email,
-      body: this.state.body
-    };
 
     axios
-      .post("/api/users/feedback", feedback)
+      .post("/api/users/feedback", {
+        fullName: this.state.fullName,
+        email: this.state.email,
+        body: this.state.body
+      })
       .then(res => console.log(res))
       .catch(err => console.log(err));
   }

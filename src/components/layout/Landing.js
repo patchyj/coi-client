@@ -8,6 +8,7 @@ import bgVideo from "../../img/circle_talks.mp4";
 import whitePaper from "../../img/Circle Whitepaper1.pdf";
 import { TwitterTimelineEmbed } from "react-twitter-embed";
 import uuid from "uuid/v1";
+import axios from "axios";
 
 class EventbriteAPI extends Component {
   constructor(props) {
@@ -118,8 +119,35 @@ class YouTubeEmbed extends Component {
 }
 
 class FeedBackForm extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      fullName: "",
+      email: "",
+      body: ""
+    };
+    this.onChange = this.onChange.bind(this);
+  }
+
+  onChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
+  }
+
   onSubmit(e) {
     e.preventDefault();
+    const feedback = {
+      fullName: this.state.fullName,
+      email: this.state.email,
+      body: this.state.body
+    };
+
+    axios
+      .post("/api/users/feedback", {
+        feedback
+      })
+      .then(json => console.log(json))
+      .catch(err => console.log(err));
   }
 
   render() {
@@ -132,6 +160,7 @@ class FeedBackForm extends Component {
               name="fullName"
               className="form-control"
               placeholder="Full name"
+              onChange={this.onChange}
             />
           </div>
           <div className="col-md-6 col-sm-12">
@@ -140,6 +169,7 @@ class FeedBackForm extends Component {
               name="email"
               className="form-control"
               placeholder="Email"
+              onChange={this.onChange}
             />
           </div>
         </div>
@@ -147,10 +177,11 @@ class FeedBackForm extends Component {
           <div className="col-md-12 col-sm-12">
             <textarea
               className="form-control"
-              name="feedback"
+              name="body"
               id=""
               rows="6"
               placeholder="Tell us your feedback"
+              onChange={this.onChange}
             />
           </div>
         </div>

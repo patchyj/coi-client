@@ -107,6 +107,8 @@
     color: $main-white;
     border-radius: 0;
     transition: 0.1s;
+    font-family: "Josefin Sans";
+
     &.active {
       color: lighten($main-grey, 30%);
       background: $main-white;

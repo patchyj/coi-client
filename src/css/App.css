@@ -78,6 +78,10 @@ table thead th {
   font-family: "Raleway-Thin";
   src: url("../fonts/raleway/Raleway-Thin.ttf"); }
 
+@font-face {
+  font-family: "Josefin Sans", sans-serif;
+  src: url("https://fonts.googleapis.com/css?family=Josefin+Sans"); }
+
 * {
   font-family: "Raleway-Light"; }
 
@@ -770,7 +774,8 @@ a.card:hover {
   background: #dd3545;
   color: #fafafa;
   border-radius: 0;
-  transition: 0.1s; }
+  transition: 0.1s;
+  font-family: "Josefin Sans"; }
   .resources .nav-item.active {
     color: #868686;
     background: #fafafa; }
@@ -1024,8 +1029,10 @@ a.card:hover {
 .posts .display-4-5 {
   text-align: center !important; }
 
-.posts .posts-row a:hover {
-  text-decoration: none; }
+.posts .posts-row {
+  margin-bottom: 0 !important; }
+  .posts .posts-row a:hover {
+    text-decoration: none; }
 
 .posts .sidenav {
   position: -webkit-sticky;

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { createPost } from "../../actions/postActions";
 import PropTypes from "prop-types";
+import axios from "axios";
 import { connect } from "react-redux";
 import {
   Editor,
@@ -11,6 +12,12 @@ import {
   convertFromRaw,
   convertToRaw
 } from "draft-js";
+import {
+  Image,
+  Video,
+  Transformation,
+  CloudinaryContext
+} from "cloudinary-react";
 
 class NewPost extends Component {
   constructor(props) {
@@ -24,7 +31,7 @@ class NewPost extends Component {
     };
 
     this.onChange = this.onChange.bind(this);
-
+    this.addPhoto = this.addPhoto.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     this.focus = () => this.refs.editor.focus();
@@ -77,8 +84,6 @@ class NewPost extends Component {
   onSubmit(e) {
     e.preventDefault();
 
-    console.log(this.state.editorState);
-
     const newPost = {
       title: this.state.title,
       tagline: this.state.tagline,
@@ -89,13 +94,28 @@ class NewPost extends Component {
       user: this.props.auth.user.id
     };
 
-    console.log(newPost);
-
     this.props.createPost(newPost, this.props.history);
   }
 
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
+  }
+
+  addPhoto(e) {
+    var formData = new FormData();
+
+    formData.append("file", e.target.files[0]);
+    formData.append("name", "test");
+
+    axios
+      .post("/api/posts/files", formData)
+      .then(res => {
+        let arr = [];
+        arr.push(res.data.url);
+        console.log(arr);
+        this.setState({ images: arr });
+      })
+      .catch(err => console.log(err));
   }
 
   render() {
@@ -114,6 +134,7 @@ class NewPost extends Component {
         className += " RichEditor-hidePlaceholder";
       }
     }
+
     return (
       <div className="newPost">
         <div className="jumbotron">
@@ -124,7 +145,7 @@ class NewPost extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-8 offset-md-2">
-              <form onSubmit={this.onSubmit}>
+              <form onSubmit={this.onSubmit} type="multipart/form-data">
                 <div className="form-group">
                   <label>Title</label>
                   <input
@@ -171,7 +192,12 @@ class NewPost extends Component {
                 </div>
                 <div className="form-group">
                   <label htmlFor="">Upload an image (not working yet)</label>
-                  <input type="file" className="form-control-file" />
+                  <input
+                    type="file"
+                    className="form-control-file"
+                    name="image"
+                    onChange={this.addPhoto}
+                  />
                 </div>
 
                 <input type="submit" value="Submit" />

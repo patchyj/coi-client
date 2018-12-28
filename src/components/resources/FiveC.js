@@ -18,7 +18,7 @@ import ruPilotReview from "./slideshows/roundupPilotReview";
 
 const resources = [
   {
-    name: "convert",
+    name: "Convert",
     data: [
       {
         id: uuid(),
@@ -47,7 +47,7 @@ const resources = [
     ]
   },
   {
-    name: "create",
+    name: "Create",
     data: [
       {
         id: uuid(),
@@ -76,7 +76,7 @@ const resources = [
     ]
   },
   {
-    name: "construct",
+    name: "Construct",
     data: [
       {
         id: uuid(),
@@ -97,7 +97,7 @@ const resources = [
     ]
   },
   {
-    name: "commit",
+    name: "Commit",
     data: [
       {
         id: uuid(),
@@ -118,7 +118,7 @@ const resources = [
     ]
   },
   {
-    name: "control",
+    name: "Control",
     data: [
       {
         id: uuid(),

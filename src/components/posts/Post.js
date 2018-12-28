@@ -84,7 +84,7 @@ class Post extends Component {
       image = <img className="img-fluid" src={post.images[0]} alt="" />;
     }
     return (
-      <div className="post container-fluid p-3">
+      <div className="post container p-3">
         <div className="row p-5">
           <div className="col-md-6 p-2 text-right">
             <h1>{post.title}</h1>
@@ -110,7 +110,10 @@ class Post extends Component {
         </div>
         <div className="row p-5">
           {contentState ? (
-            <div dangerouslySetInnerHTML={this.createMarkup(contentState)} />
+            <div
+              dangerouslySetInnerHTML={this.createMarkup(contentState)}
+              style={{ maxWidth: "100%" }}
+            />
           ) : (
             <div className="spinner" />
           )}

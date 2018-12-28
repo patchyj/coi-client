@@ -55,8 +55,7 @@ class Post extends Component {
     const { post, comments } = this.props.posts;
     const { admin } = this.props.auth.user;
 
-    let user, image;
-    let contentState;
+    let user, image, contentState;
 
     if (Object.keys(post).length > 0) {
       contentState = stateToHTML(convertFromRaw(JSON.parse(post.body)));

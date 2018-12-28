@@ -143,8 +143,15 @@ class FeedBackForm extends Component {
         email: this.state.email,
         body: this.state.body
       })
-      .then(res => console.log(res))
+      .then(res => {
+        console.log(res);
+      })
       .catch(err => console.log(err));
+    this.setState({
+      fullName: "",
+      email: "",
+      body: ""
+    });
   }
 
   render() {
@@ -158,6 +165,7 @@ class FeedBackForm extends Component {
               className="form-control"
               placeholder="Full name"
               onChange={this.onChange}
+              value={this.state.fullName}
             />
           </div>
           <div className="col-md-6 col-sm-12">
@@ -167,6 +175,7 @@ class FeedBackForm extends Component {
               className="form-control"
               placeholder="Email"
               onChange={this.onChange}
+              value={this.state.email}
             />
           </div>
         </div>
@@ -179,6 +188,7 @@ class FeedBackForm extends Component {
               rows="6"
               placeholder="Tell us your feedback"
               onChange={this.onChange}
+              value={this.state.body}
             />
           </div>
         </div>

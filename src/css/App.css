@@ -1,34 +1,34 @@
 .bg-main-red {
   background: #dd3545;
-  color: whitesmoke; }
+  color: #fafafa; }
 
 .bg-main-red-darken {
   background: #931924;
-  color: whitesmoke; }
+  color: #fafafa; }
 
 .bg-main-red-gradient {
   background: #dd3545;
   background: linear-gradient(135deg, #dd3545 50%, #93246d);
-  color: whitesmoke !important; }
+  color: #fafafa !important; }
 
 .bg-main-white {
-  background: whitesmoke; }
+  background: #fafafa; }
 
 .bg-main-white-darken {
-  background: gainsboro;
-  color: whitesmoke; }
+  background: #e1e1e1;
+  color: #fafafa; }
 
 .bg-main-grey {
   background: #393939;
-  color: whitesmoke; }
+  color: #fafafa; }
 
 .bg-main-grey-darken {
   background: #202020;
-  color: whitesmoke; }
+  color: #fafafa; }
 
 .thead-red {
   background: #a91c2a;
-  color: whitesmoke;
+  color: #fafafa;
   padding: 20px; }
 
 .display-4-5 {
@@ -191,7 +191,7 @@ table thead th {
   width: 100%;
   background: #dd3545;
   padding: 0.6em 1.1em;
-  color: whitesmoke;
+  color: #fafafa;
   transition: 0.2s; }
   .form-signin .btn-main-submit:hover {
     background: #931924; }
@@ -206,7 +206,7 @@ a:hover {
 
 .forgot-password .btn {
   background: #dd3545;
-  color: whitesmoke; }
+  color: #fafafa; }
   .forgot-password .btn:hover {
     background: #931924; }
 
@@ -218,7 +218,8 @@ a:hover {
   margin: 50px auto;
   text-align: center;
   -webkit-animation: spinner 1s infinite;
-          animation: spinner 1s infinite; }
+          animation: spinner 1s infinite;
+  padding: 3em 0 !important; }
 
 @-webkit-keyframes spinner {
   from {
@@ -246,20 +247,20 @@ a:hover {
   .landing .section.section-red {
     background: #dd3545;
     background: linear-gradient(135deg, #dd3545 50%, #93246d);
-    color: whitesmoke !important; }
+    color: #fafafa !important; }
     .landing .section.section-red h1 {
       font-family: "Raleway-Thin"; }
     .landing .section.section-red h1,
     .landing .section.section-red a {
-      color: whitesmoke !important; }
+      color: #fafafa !important; }
     .landing .section.section-red .btn {
       font-weight: bold;
       background: none;
-      border: 1px solid whitesmoke;
-      color: whitesmoke;
+      border: 1px solid #fafafa;
+      color: #fafafa;
       transition: 0.2s; }
       .landing .section.section-red .btn:hover {
-        background: whitesmoke;
+        background: #fafafa;
         color: #931924 !important; }
     .landing .section.section-red .card {
       background: none;
@@ -279,10 +280,10 @@ a:hover {
         .landing .section.section-red .card .form-control::placeholder {
           color: black; }
   .landing .section.section-white {
-    background: whitesmoke;
+    background: #fafafa;
     color: #dd3545; }
     .landing .section.section-white.with-stripe {
-      background: linear-gradient(135deg, #dd3545 68%, whitesmoke 69%, #dd3545 69%, #dd3545 80%, #dd3545 80%, #dd3545 100%); }
+      background: linear-gradient(135deg, #dd3545 68%, #fafafa 69%, #dd3545 69%, #dd3545 80%, #dd3545 80%, #dd3545 100%); }
     .landing .section.section-white .no-btn {
       color: #3c0a0f !important;
       border: 0 !important;
@@ -295,7 +296,7 @@ a:hover {
     .landing .section.section-white a:not(.eventTile),
     .landing .section.section-white button {
       border: 1px solid #dd3545;
-      background: whitesmoke;
+      background: #fafafa;
       color: #dd3545;
       transition: 0.2s;
       padding: 10px 15px;
@@ -310,9 +311,9 @@ a:hover {
       .landing .section.section-white a:not(.reach-out):hover,
       .landing .section.section-white a:not(.eventTile):hover,
       .landing .section.section-white button:hover {
-        border: 1px solid whitesmoke;
+        border: 1px solid #fafafa;
         background: #dd3545;
-        color: whitesmoke;
+        color: #fafafa;
         text-decoration: none; }
     .landing .section.section-white .dowelldogood {
       border: none !important;
@@ -364,14 +365,14 @@ a:hover {
   border: 0; }
 
 .landing form input[type="submit"] {
-  border: 1px solid whitesmoke;
+  border: 1px solid #fafafa;
   background: #dd3545;
-  color: whitesmoke;
+  color: #fafafa;
   transition: 0.2s;
   overflow: hidden; }
   .landing form input[type="submit"]:hover {
     border: 1px solid #dd3545;
-    background: whitesmoke;
+    background: #fafafa;
     color: #dd3545; }
 
 .landing .modal-dialog {
@@ -617,7 +618,7 @@ a:hover {
   width: 100%;
   padding: 15px;
   background: #dd3545;
-  color: whitesmoke;
+  color: #fafafa;
   cursor: pointer;
   transition: 0.2s; }
   .projects form input[type="submit"]:hover {
@@ -643,7 +644,7 @@ a.card:hover {
 
 .projects .background-text {
   position: fixed;
-  color: whitesmoke;
+  color: #fafafa;
   -webkit-transform: translateY(-150%);
           transform: translateY(-150%);
   width: 65%;
@@ -679,10 +680,10 @@ a.card:hover {
   .project .crudLinks i {
     padding-top: 10px;
     padding-bottom: 10px;
-    color: #c2c2c2;
+    color: #c7c7c7;
     transition: 0.2s; }
     .project .crudLinks i:hover {
-      color: #5c5c5c; }
+      color: #616161; }
 
 .resources .background {
   background: url("../img/books.jpeg");
@@ -697,7 +698,7 @@ a.card:hover {
 
 .resources .background-text {
   position: fixed;
-  color: whitesmoke;
+  color: #fafafa;
   width: 65%;
   left: 100px;
   z-index: -998; }
@@ -767,15 +768,15 @@ a.card:hover {
 
 .resources .nav-item {
   background: #dd3545;
-  color: whitesmoke;
+  color: #fafafa;
   border-radius: 0;
   transition: 0.1s; }
   .resources .nav-item.active {
     color: #868686;
-    background: whitesmoke; }
+    background: #fafafa; }
     .resources .nav-item.active:hover {
-      background: #c2c2c2;
-      color: whitesmoke;
+      background: #c7c7c7;
+      color: #fafafa;
       border: 0; }
   .resources .nav-item:hover {
     background: #931924;
@@ -793,16 +794,16 @@ a.card:hover {
     height: 200px;
     background: #931924 !important; }
   .chapter .jumbotron a {
-    color: whitesmoke; }
+    color: #fafafa; }
     .chapter .jumbotron a:hover {
-      color: #c2c2c2;
+      color: #c7c7c7;
       text-decoration: none; }
 
 .chapter .jumbotron_h1 {
   position: absolute;
   -webkit-transform: translateY(-100%);
           transform: translateY(-100%);
-  color: whitesmoke;
+  color: #fafafa;
   padding: 3rem; }
 
 .chapter table {
@@ -825,7 +826,7 @@ a.card:hover {
 
 .chapters .background-text {
   position: fixed;
-  color: whitesmoke;
+  color: #fafafa;
   -webkit-transform: translateY(-150%);
           transform: translateY(-150%);
   width: 65%;
@@ -904,7 +905,7 @@ a.card:hover {
   margin: 0; }
 
 .dashboard .profile_pic_container {
-  border: 5px solid whitesmoke;
+  border: 5px solid #fafafa;
   position: absolute;
   right: 50px;
   -webkit-transform: translateY(80%) scale(0.9);
@@ -978,7 +979,7 @@ a.card:hover {
     .post .comments form input[type="submit"]:hover {
       background: #dd3545;
       border: 1px solid #931924;
-      color: whitesmoke; }
+      color: #fafafa; }
     .post .comments form input[type="submit"]:focus {
       box-shadow: none;
       outline: none;
@@ -1004,7 +1005,7 @@ a.card:hover {
 
 .posts .background-text {
   position: fixed;
-  color: whitesmoke;
+  color: #fafafa;
   -webkit-transform: translateY(-150%);
           transform: translateY(-150%);
   width: 65%;
@@ -1032,7 +1033,7 @@ a.card:hover {
   text-align: center;
   top: 40px;
   background: none;
-  color: whitesmoke;
+  color: #fafafa;
   padding: 50px;
   font-size: 20px;
   border-radius: 10px; }
@@ -1064,7 +1065,7 @@ a.card:hover {
     .editPost form input[type="submit"]:hover {
       background: #1f4b86;
       border: 1px solid #0c1d33;
-      color: whitesmoke; }
+      color: #fafafa; }
 
 .admin .jumbotron {
   height: 300px;
@@ -1078,6 +1079,6 @@ a.card:hover {
   position: absolute;
   -webkit-transform: translateY(-150%);
           transform: translateY(-150%);
-  color: whitesmoke;
+  color: #fafafa;
   padding: 3rem;
   font-size: 3em; }

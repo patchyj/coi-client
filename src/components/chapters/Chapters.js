@@ -59,7 +59,11 @@ class Chapters extends Component {
         </table>
       );
     } else {
-      results = <div className="spinner" />;
+      results = (
+        <div className="py-5">
+          <div className="spinner" />
+        </div>
+      );
     }
 
     return (

@@ -1,4 +1,5 @@
 import axios from "axios";
+// Change the port depending on what the Node ENV is
 if (process.env.NODE_ENV === "development") {
   axios.defaults.baseURL = "http://localhost:8080";
 } else if (process.env.NODE_ENV === "production") {

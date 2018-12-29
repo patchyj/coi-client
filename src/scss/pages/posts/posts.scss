@@ -62,9 +62,10 @@
     top: 40px;
     background: none;
     color: $main-white;
-    padding: 50px;
+    padding: 50px 0;
     font-size: 20px;
     border-radius: 10px;
+    box-sizing: border-box;
 
     a {
       color: rgb(221, 53, 69);

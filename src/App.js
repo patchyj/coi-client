@@ -55,6 +55,7 @@ import Resources from "./components/resources/Resources.js";
 import Projects from "./components/projects/Projects.js";
 import ProjectProposal from "./components/projects/ProjectProposal.js";
 import Project from "./components/projects/Project.js";
+import EditProject from "./components/projects/EditProject.js";
 // ------- profile -------
 // import Profile from "./components/profile/Profile.js";
 // ------- admin -------
@@ -174,6 +175,7 @@ class App extends Component {
                 component={ProjectProposal}
               />
               <Route exact path="/projects/:id" component={Project} />
+              <Route exact path="/projects/:id/edit" component={EditProject} />
             </Switch>
             <Route exact path="/not-found" component={NotFound} />
             <Footer />

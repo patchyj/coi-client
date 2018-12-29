@@ -84,7 +84,12 @@ class Project extends Component {
       result = <div className="spinner" />;
     }
 
-    return <div className="project container py-5">{result}</div>;
+    return (
+      <div className="project container py-5">
+        <h1 className="display-4 text-center">Edit</h1>
+        {result}
+      </div>
+    );
   }
 }
 

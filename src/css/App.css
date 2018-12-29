@@ -993,9 +993,10 @@ a.card:hover {
   top: 40px;
   background: none;
   color: #fafafa;
-  padding: 50px;
+  padding: 50px 0;
   font-size: 20px;
-  border-radius: 10px; }
+  border-radius: 10px;
+  box-sizing: border-box; }
   .posts .sidenav a {
     color: #dd3545;
     transition: 0.2s ease; }

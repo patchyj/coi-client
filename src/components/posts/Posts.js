@@ -88,7 +88,7 @@ class Posts extends Component {
             </h6>
           </div>
           <div className="row posts-row p-3 m-3">
-            <div className="col-md-2 col-sm-12">
+            <div className="col-md-3 col-sm-12">
               <div className="sidenav" style={{ padding: 0 }}>
                 <TwitterTimelineEmbed
                   sourceType="URL"
@@ -98,7 +98,7 @@ class Posts extends Component {
               </div>
             </div>
             <div className="col-md-8 col-sm-12">{allPosts}</div>
-            <div className="col-md-2 col-sm-12">
+            <div className="col-md-1 col-sm-12">
               <div className="sidenav">
                 <nav className="nav flex-column">
                   <a className="nav-link active" target="_blank" href="#">

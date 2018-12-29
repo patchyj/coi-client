@@ -54,19 +54,19 @@ class Projects extends Component {
           </p>
         </div>
         <div className="jumbotron text-center">
-          <h6 className="display-4-5">
+          <h6 className="display-4-5 py-5">
             Have an idea of your own?{" "}
             <Link to="/projects/new">Tell us about it</Link>
           </h6>
         </div>
-        <div className="container-fluid jumbotron-2 bg-main-white py-2">
+        <div className="container-fluid jumbotron-2 bg-main-white py-5">
           <p className="display-4-5 mb-0 p-5">
-            Need inspiration? Browse through the proposals submitted by other
-            members of the Circle
+            Need inspiration? Browse through the proposals
+            <br /> submitted by other members of the Circle
           </p>
         </div>
         <div className="container-fluid text-center bg-main-red-gradient">
-          <div className="container">
+          <div className="container pt-5">
             <div className="row" style={{ margin: "auto" }}>
               {results}
             </div>

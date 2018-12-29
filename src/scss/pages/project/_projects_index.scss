@@ -28,6 +28,21 @@ a.card {
 
   .jumbotron {
     margin-top: 400px;
+    background: linear-gradient(
+      135deg,
+      rgb(221, 53, 69) 50%,
+      rgb(147, 36, 109)
+    );
+    color: white;
+
+    a {
+      color: rgb(170, 170, 170);
+      transition: 0.2s ease;
+
+      &:hover {
+        color: rgb(61, 61, 61);
+      }
+    }
   }
   .display-4-5 {
     text-align: center !important;

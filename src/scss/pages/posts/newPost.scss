@@ -31,6 +31,26 @@
         border: 1px solid darken($main-blue, 20%);
         color: $main-white;
       }
+
+      &:disabled {
+        animation: uploading 2s infinite ease-in-out;
+        color: white;
+      }
     }
+  }
+  .ql-container {
+    min-height: 250px;
+  }
+}
+
+@keyframes uploading {
+  0% {
+    background: rgb(153, 101, 176);
+  }
+  50% {
+    background: rgb(51, 75, 148);
+  }
+  100% {
+    background: rgb(153, 101, 176);
   }
 }

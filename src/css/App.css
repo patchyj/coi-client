@@ -85,6 +85,9 @@ table thead th {
 * {
   font-family: "Raleway-Light"; }
 
+.ql-container {
+  font-size: 17px; }
+
 .navbar {
   padding: 0 0.5em;
   background: #dd3545 !important;
@@ -587,7 +590,14 @@ a.card:hover {
   z-index: -998; }
 
 .projects .jumbotron {
-  margin-top: 400px; }
+  margin-top: 400px;
+  background: linear-gradient(135deg, #dd3545 50%, #93246d);
+  color: white; }
+  .projects .jumbotron a {
+    color: #aaaaaa;
+    transition: 0.2s ease; }
+    .projects .jumbotron a:hover {
+      color: #3d3d3d; }
 
 .projects .display-4-5 {
   text-align: center !important; }
@@ -1020,6 +1030,31 @@ a.card:hover {
       background: #1f4b86;
       border: 1px solid #0c1d33;
       color: #fafafa; }
+    .newPost form input[type="submit"]:disabled,
+    .editPost form input[type="submit"]:disabled {
+      -webkit-animation: uploading 2s infinite ease-in-out;
+              animation: uploading 2s infinite ease-in-out;
+      color: white; }
+
+.newPost .ql-container,
+.editPost .ql-container {
+  min-height: 250px; }
+
+@-webkit-keyframes uploading {
+  0% {
+    background: #9965b0; }
+  50% {
+    background: #334b94; }
+  100% {
+    background: #9965b0; } }
+
+@keyframes uploading {
+  0% {
+    background: #9965b0; }
+  50% {
+    background: #334b94; }
+  100% {
+    background: #9965b0; } }
 
 .admin .jumbotron {
   height: 300px;

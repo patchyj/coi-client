@@ -14,7 +14,8 @@ class NewPost extends Component {
       title: "",
       tagline: "",
       images: [],
-      body: ""
+      body: "",
+      ready: true
     };
 
     this.onChange = this.onChange.bind(this);
@@ -50,14 +51,14 @@ class NewPost extends Component {
 
     formData.append("file", e.target.files[0]);
     formData.append("name", "test");
+    this.setState({ ready: false });
 
     axios
       .post("/api/posts/files", formData)
       .then(res => {
         let arr = [];
         arr.push(res.data.url);
-        console.log(arr);
-        this.setState({ images: arr });
+        this.setState({ images: arr, ready: true });
       })
       .catch(err => console.log(err));
   }
@@ -109,8 +110,11 @@ class NewPost extends Component {
                     onChange={this.addPhoto}
                   />
                 </div>
-
-                <input type="submit" value="Submit" />
+                {this.state.ready ? (
+                  <input type="submit" value="Submit" />
+                ) : (
+                  <input type="submit" value="Uploading..." disabled />
+                )}
               </form>
             </div>
           </div>

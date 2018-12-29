@@ -1,6 +1,6 @@
-import React from 'react';
-import classnames from 'classnames';
-import PropTypes from 'prop-types';
+import React from "react";
+import classnames from "classnames";
+import PropTypes from "prop-types";
 
 const TextFieldGroup = ({
   name,
@@ -11,26 +11,28 @@ const TextFieldGroup = ({
   type,
   onChange,
   disabled,
-  autoComplete
+  autoComplete,
+  optional
 }) => {
   return (
     <div className="form-group">
       <input
-        type={ type }
-        className={ classnames('form-control form-control-lg', {
-          'is-invalid': error
+        type={type}
+        className={classnames("form-control form-control-lg", {
+          "is-invalid": error
         })}
-        placeholder={ placeholder }
-        name={ name }
-        value={ value }
-        onChange={ onChange }
-        autoComplete={ autoComplete }
-        disabled={ disabled }
+        placeholder={placeholder}
+        name={name}
+        value={value}
+        onChange={onChange}
+        autoComplete={autoComplete}
+        disabled={disabled}
       />
-      { info && <small className="form-text text-muted">{ info }</small> }
-      { error && (<div className="invalid-feedback">{ error }</div>)}
+      {optional && <small className="form-text text-muted">optional</small>}
+      {info && <small className="form-text text-muted">{info}</small>}
+      {error && <div className="invalid-feedback">{error}</div>}
     </div>
-  )
+  );
 };
 
 TextFieldGroup.propTypes = {
@@ -43,10 +45,10 @@ TextFieldGroup.propTypes = {
   onChange: PropTypes.func.isRequired,
   disabled: PropTypes.func,
   autoComplete: PropTypes.func
-}
+};
 
 TextFieldGroup.defaultProps = {
-  type: 'text'
-}
+  type: "text"
+};
 
 export default TextFieldGroup;

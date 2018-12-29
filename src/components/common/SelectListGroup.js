@@ -27,8 +27,11 @@ const SelectListGroup = ({
         onChange={onChange}
         autoComplete={autoComplete}
       >
-        <option defaultValue="0">Please choose a chapter</option>
+        <option defaultValue="0">
+          Please choose your nearest circle chapter
+        </option>
         {selectOptions}
+        <option value={"none"}>None of the above</option>
       </select>
       {info && <small className="form-text text-muted">{info}</small>}
       {error && <div className="invalid-feedback">{error}</div>}

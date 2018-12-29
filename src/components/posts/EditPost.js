@@ -3,6 +3,8 @@ import { getPost, editPost } from "../../actions/postActions";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import axios from "axios";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 class EditPost extends Component {
   constructor(props) {
@@ -11,11 +13,13 @@ class EditPost extends Component {
     this.state = {
       title: "",
       tagline: "",
-      body: "",
-      images: []
+      images: [],
+      body: ""
     };
 
     this.onChange = this.onChange.bind(this);
+    this.onChangeBody = this.onChangeBody.bind(this);
+    this.addPhoto = this.addPhoto.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
 
@@ -27,8 +31,7 @@ class EditPost extends Component {
       title: this.state.title,
       tagline: this.state.tagline,
       body: this.state.body,
-      images: this.state.images,
-      user: this.props.auth.user.id
+      images: this.state.images
     };
 
     this.props.editPost(updatedPost, match.params.id, history);
@@ -38,25 +41,35 @@ class EditPost extends Component {
     this.setState({ [e.target.name]: e.target.value });
   }
 
+  onChangeBody(value) {
+    this.setState({ body: value });
+  }
+
+  addPhoto(e) {
+    var formData = new FormData();
+
+    formData.append("file", e.target.files[0]);
+    formData.append("name", "test");
+
+    axios
+      .post("/api/posts/files", formData)
+      .then(res => {
+        let arr = [];
+        arr.push(res.data.url);
+        console.log(arr);
+        this.setState({ images: arr });
+      })
+      .catch(err => console.log(err));
+  }
+
   componentDidMount() {
     const { id } = this.props.match.params;
-    axios
-      .get(`/api/posts/${id}`)
-      .then(res => {
-        console.log(res.data);
-        this.setState({
-          title: res.data.title,
-          tagline: res.data.tagline,
-          body: res.data.body,
-          images: res.data.images
-        });
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    this.props.getPost(this.props.match.params.id);
   }
 
   render() {
+    const { post, comments } = this.props.posts;
+
     return (
       <div className="editPost">
         <div className="jumbotron-fluid">
@@ -76,7 +89,7 @@ class EditPost extends Component {
                     className="form-control"
                     placeholder="Enter a title for your post"
                     onChange={this.onChange}
-                    value={this.state.title}
+                    defaultValue={post.title}
                   />
                 </div>
                 <div className="form-group">
@@ -87,17 +100,15 @@ class EditPost extends Component {
                     className="form-control"
                     placeholder="Give your post a tagline"
                     onChange={this.onChange}
-                    value={this.state.tagline}
+                    defaultValue={post.tagline}
                   />
                 </div>
+
                 <div className="form-group">
-                  <textarea
-                    type="text"
-                    name="body"
-                    className="form-control"
-                    placeholder="Tell us something new"
-                    onChange={this.onChange}
-                    value={this.state.body}
+                  <ReactQuill
+                    className=""
+                    value={post.body}
+                    onChange={this.onChangeBody}
                   />
                 </div>
                 <div className="form-group">
@@ -114,6 +125,7 @@ class EditPost extends Component {
     );
   }
 }
+// Custom overrides for "code" style.
 
 EditPost.propTypes = {
   getPost: PropTypes.func.isRequired,

@@ -10,9 +10,9 @@ class ResourceTable extends Component {
   render() {
     const rows = this.props.data.map((data, key) => {
       let download;
-      if (typeof data.url === "string") {
+      if (typeof data.download === "string") {
         download = (
-          <a href={data.url} download>
+          <a href={data.download} download>
             <i className="fas fa-download" />
           </a>
         );
@@ -142,8 +142,9 @@ class Resources extends Component {
             <span className="display-4">Welcome to The Circle!</span>
           </h1>
           <p className="p-responsive introText">
-            Welcome to the inner Circle! You are joining a group of over 5000
-            inspiring leaders from around the world and we are here to help.{" "}
+            Welcome to the inner circle! You are joining a movement of over 5000
+            inspiring leaders around the world trying to make business a
+            <a href="">#forceforgood</a> by <a href="">#dowelldogood</a>{" "}
           </p>
         </div>
         <div className="jumbotron jumbotron-fluid" id="bgTrigger">

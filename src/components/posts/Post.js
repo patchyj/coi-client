@@ -5,8 +5,8 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Moment from "react-moment";
 import Comments from "../comments/Comments";
-import { Editor, convertFromRaw } from "draft-js";
-import { stateToHTML } from "draft-js-export-html";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 class Post extends Component {
   constructor(props) {
@@ -47,19 +47,11 @@ class Post extends Component {
     window.location.reload();
   }
 
-  createMarkup(html) {
-    return { __html: html };
-  }
-
   render() {
     const { post, comments } = this.props.posts;
     const { admin } = this.props.auth.user;
 
     let user, image, contentState;
-
-    if (Object.keys(post).length > 0) {
-      contentState = stateToHTML(convertFromRaw(JSON.parse(post.body)));
-    }
 
     if (post.user) {
       user = (
@@ -82,6 +74,11 @@ class Post extends Component {
     if (post.images) {
       image = <img className="img-fluid" src={post.images[0]} alt="" />;
     }
+
+    let modules = {
+      toolbar: false
+    };
+
     return (
       <div className="post container p-3">
         <div className="row p-5">
@@ -108,14 +105,7 @@ class Post extends Component {
           <div className="col-md-1 col-sm-12">{admin ? crudLinks : ""}</div>
         </div>
         <div className="row p-5">
-          {contentState ? (
-            <div
-              dangerouslySetInnerHTML={this.createMarkup(contentState)}
-              style={{ maxWidth: "100%" }}
-            />
-          ) : (
-            <div className="spinner" />
-          )}
+          <ReactQuill value={post.body} readOnly={true} modules={modules} />
         </div>
         <div className="container comments">
           <div className="row p-5">

@@ -70,6 +70,7 @@ export const editPost = (post, id, history) => dispatch => {
 
 export const deletePost = id => dispatch => {
   if (window.confirm("Are you sure? This can not be undone!")) {
+    console.log(axios.defaults);
     axios
       .delete(`/api/posts/${id}`)
       .then(res =>

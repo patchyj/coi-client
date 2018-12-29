@@ -31,7 +31,7 @@ class Posts extends Component {
               <div className="media">
                 <img
                   className="align-self-center mr-3"
-                  src={post.user ? post.user.profile_pic : ""}
+                  src={post.user ? post.user.profilePic : ""}
                   alt=""
                   style={{
                     width: "60px",

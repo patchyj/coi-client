@@ -77,7 +77,6 @@ class Register extends Component {
 
     // Action
     this.props.registerUser(newUser, this.props.history);
-    console.log(this.state);
   }
 
   render() {
@@ -124,14 +123,14 @@ class Register extends Component {
                   error={errors.lastName}
                 />
                 <TextFieldGroup
-                  placeholder="Ogranisation"
+                  placeholder="Organisation"
                   name="organisation"
                   value={this.state.organisation}
                   onChange={this.onChange}
                   error={errors.organisation}
                 />
                 <SelectListGroup
-                  placeholder="Choose your nearest chapter"
+                  placeholder="Please choose your nearest circle chapter"
                   name="chapter"
                   value={this.state.chapter}
                   onChange={this.onChange}
@@ -144,6 +143,7 @@ class Register extends Component {
                   value={this.state.twitterUrl}
                   onChange={this.onChange}
                   error={errors.twitterUrl}
+                  optional
                 />
                 <TextFieldGroup
                   placeholder="LinkedIn"
@@ -151,6 +151,7 @@ class Register extends Component {
                   value={this.state.linkedinUrl}
                   onChange={this.onChange}
                   error={errors.linkedinUrl}
+                  optional
                 />
                 <TextFieldGroup
                   placeholder="Email"

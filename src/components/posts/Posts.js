@@ -4,6 +4,7 @@ import { getPosts, deletePost } from "../../actions/postActions";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Moment from "react-moment";
+import { TwitterTimelineEmbed } from "react-twitter-embed";
 
 class Posts extends Component {
   componentDidMount() {
@@ -86,26 +87,33 @@ class Posts extends Component {
               <Link to="/posts/new">Have something to share?</Link>
             </h6>
           </div>
-          <div className="container">
-            <div className="row posts-row p-3 m-3">
-              <div className="col-md-10">{allPosts}</div>
-              <div className="col-md-2">
-                <div className="sidenav">
-                  <nav className="nav flex-column">
-                    <a className="nav-link active" target="_blank" href="#">
-                      <i className="fab fa-twitter" />
-                    </a>
-                    <a className="nav-link" target="_blank" href="#">
-                      <i className="fab fa-linkedin" />
-                    </a>
-                    <a className="nav-link" target="_blank" href="#">
-                      <i className="fab fa-facebook" />
-                    </a>
-                    <a className="nav-link" target="_blank" href="#">
-                      <i className="fab fa-instagram" />
-                    </a>
-                  </nav>
-                </div>
+          <div className="row posts-row p-3 m-3">
+            <div className="col-md-2 col-sm-12">
+              <div className="sidenav" style={{ padding: 0 }}>
+                <TwitterTimelineEmbed
+                  sourceType="URL"
+                  screenName="circleofyi"
+                  options={{ height: 800 }}
+                />
+              </div>
+            </div>
+            <div className="col-md-8 col-sm-12">{allPosts}</div>
+            <div className="col-md-2 col-sm-12">
+              <div className="sidenav">
+                <nav className="nav flex-column">
+                  <a className="nav-link active" target="_blank" href="#">
+                    <i className="fab fa-twitter" />
+                  </a>
+                  <a className="nav-link" target="_blank" href="#">
+                    <i className="fab fa-linkedin" />
+                  </a>
+                  <a className="nav-link" target="_blank" href="#">
+                    <i className="fab fa-facebook" />
+                  </a>
+                  <a className="nav-link" target="_blank" href="#">
+                    <i className="fab fa-instagram" />
+                  </a>
+                </nav>
               </div>
             </div>
           </div>

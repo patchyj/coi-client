@@ -951,14 +951,22 @@ a.card:hover {
   left: 100px;
   z-index: -998; }
 
+.posts .container,
 .posts .container-fluid {
   background: white; }
+  .posts .container .row .row,
   .posts .container-fluid .row .row {
     border: 1px solid rgba(221, 53, 69, 0.5); }
 
 .posts .jumbotron {
   margin-top: 400px;
-  padding: 0; }
+  padding: 0;
+  background: linear-gradient(135deg, #dd3545 50%, #93246d); }
+  .posts .jumbotron a {
+    color: white;
+    transition: 0.2s ease; }
+    .posts .jumbotron a:hover {
+      color: #8f8f8f; }
 
 .posts .display-4-5 {
   text-align: center !important; }
@@ -978,6 +986,11 @@ a.card:hover {
   padding: 50px;
   font-size: 20px;
   border-radius: 10px; }
+  .posts .sidenav a {
+    color: #dd3545;
+    transition: 0.2s ease; }
+    .posts .sidenav a:hover {
+      color: #93246d; }
 
 .newPost form,
 .editPost form {

@@ -18,6 +18,7 @@
     left: 100px;
     z-index: -998;
   }
+  .container,
   .container-fluid {
     background: white;
 
@@ -28,6 +29,20 @@
   .jumbotron {
     margin-top: 400px;
     padding: 0;
+    background: linear-gradient(
+      135deg,
+      rgb(221, 53, 69) 50%,
+      rgb(147, 36, 109)
+    );
+
+    a {
+      color: white;
+      transition: 0.2s ease;
+
+      &:hover {
+        color: rgb(143, 143, 143);
+      }
+    }
   }
   .display-4-5 {
     text-align: center !important;
@@ -50,5 +65,14 @@
     padding: 50px;
     font-size: 20px;
     border-radius: 10px;
+
+    a {
+      color: rgb(221, 53, 69);
+      transition: 0.2s ease;
+
+      &:hover {
+        color: rgb(147, 36, 109);
+      }
+    }
   }
 }

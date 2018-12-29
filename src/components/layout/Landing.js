@@ -1,9 +1,13 @@
+/*global google*/
+
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import Moment from "react-moment";
 import IFrameModal from "../common/IFrameModal";
+import GoogleApiWrapper from "./landingComponents/Map";
+
 import bgVideo from "../../img/circle_talks.mp4";
 import whitePaper from "../../img/Circle Whitepaper1.pdf";
 import { TwitterTimelineEmbed } from "react-twitter-embed";
@@ -205,21 +209,24 @@ class FeedBackForm extends Component {
 class Landing extends Component {
   componentDidMount() {
     if (this.props.auth.isAuthenticated) {
-      this.props.history.push("/dashboard");
+      this.props.history.push("/resources");
     }
-    const script = document.createElement("script");
-    script.src = process.env.PUBLIC_URL + "/sdk/tomtom.min.js";
-    document.body.appendChild(script);
-    script.async = true;
-    script.onload = function() {
-      window.tomtom.L.map("map", {
-        source: "vector",
-        key: process.env.REACT_APP_TOMTOM,
-        center: [51.5074, 0.1278],
-        basePath: "/sdk",
-        zoom: 2
-      });
-    };
+
+    // ============ TOMTOM MAP API START ============
+    // const script = document.createElement("script");
+    // script.src = process.env.PUBLIC_URL + "/sdk/tomtom.min.js";
+    // document.body.appendChild(script);
+    // script.async = true;
+    // script.onload = function() {
+    //   window.tomtom.L.map("map", {
+    //     source: "vector",
+    //     key: process.env.REACT_APP_TOMTOM,
+    //     center: [51.5074, 0.1278],
+    //     basePath: "/sdk",
+    //     zoom: 2
+    //   });
+    // };
+    // ============ TOMTOM MAP API END ============
   }
 
   render() {
@@ -414,7 +421,12 @@ class Landing extends Component {
         {/* Hubs */}
         <div className="container-fluid section section-red map-container">
           <h1 className="display-4">Our Global Hubs</h1>
-          <div id="map" className="container" />
+          {/*<div id="map" className="container" />*/}
+          <div className="row">
+            <div className="col-md-12">
+              <GoogleApiWrapper />
+            </div>
+          </div>
         </div>
 
         {/* YouTube Videos */}

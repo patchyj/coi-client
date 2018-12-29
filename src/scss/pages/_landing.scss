@@ -334,27 +334,31 @@
   transform: rotate(310deg) translate(-100px);
 }
 
-#map {
-  transform: translateX(-50%);
-  height: 400px;
-  margin: auto;
-  padding-left: 0;
+// #map {
+//   transform: translateX(-50%);
+//   height: 400px;
+//   margin: auto;
+//   padding-left: 0;
+//
+//   &:focus {
+//     outline: none !important;
+//   }
+//
+//   .leaflet-control-zoom {
+//     font-size: 4em;
+//     transform: translate(50%, 10px);
+//
+//     a {
+//       padding: 15px;
+//     }
+//   }
+//   .leaflet-control-attribution {
+//     display: none;
+//   }
+// }
 
-  &:focus {
-    outline: none !important;
-  }
-
-  .leaflet-control-zoom {
-    font-size: 4em;
-    transform: translate(50%, 10px);
-
-    a {
-      padding: 15px;
-    }
-  }
-  .leaflet-control-attribution {
-    display: none;
-  }
+.map-container {
+  height: 600px;
 }
 
 // Phones

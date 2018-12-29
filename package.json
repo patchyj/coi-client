@@ -16,6 +16,7 @@
     "draft-js": "^0.10.5",
     "draft-js-export-html": "^1.2.0",
     "faker": "^4.1.0",
+    "google-maps-react": "^2.0.2",
     "immutable": "^3.8.1",
     "jquery": "^3.3.1",
     "jwt-decode": "^2.2.0",

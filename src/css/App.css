@@ -454,22 +454,8 @@ a:hover {
   -webkit-transform: rotate(310deg) translate(-100px);
           transform: rotate(310deg) translate(-100px); }
 
-#map {
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-  height: 400px;
-  margin: auto;
-  padding-left: 0; }
-  #map:focus {
-    outline: none !important; }
-  #map .leaflet-control-zoom {
-    font-size: 4em;
-    -webkit-transform: translate(50%, 10px);
-            transform: translate(50%, 10px); }
-    #map .leaflet-control-zoom a {
-      padding: 15px; }
-  #map .leaflet-control-attribution {
-    display: none; }
+.map-container {
+  height: 600px; }
 
 @media only screen and (max-width: 420px) {
   .landing .section {

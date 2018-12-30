@@ -2,6 +2,7 @@
 import React, { Component } from "react";
 import { Map, GoogleApiWrapper, InfoWindow, Marker } from "google-maps-react";
 import axios from "axios";
+// import chapters and marker image
 import chapters from "./chapters";
 import markerLogo from "../../../img/logo.png";
 

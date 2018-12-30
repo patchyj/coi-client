@@ -374,6 +374,14 @@ a:hover {
 .landing .info-text {
   font-family: 1.4rem; }
 
+.landing .tonsOfResources {
+  border: 0 !important;
+  padding: 0 !important;
+  color: black !important; }
+  .landing .tonsOfResources:hover {
+    background: none !important;
+    text-decoration: underline !important; }
+
 .main-logo {
   background: url("../img/logo_v2.svg");
   background-position: center center;

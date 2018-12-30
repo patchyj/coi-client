@@ -211,22 +211,6 @@ class Landing extends Component {
     if (this.props.auth.isAuthenticated) {
       this.props.history.push("/resources");
     }
-
-    // ============ TOMTOM MAP API START ============
-    // const script = document.createElement("script");
-    // script.src = process.env.PUBLIC_URL + "/sdk/tomtom.min.js";
-    // document.body.appendChild(script);
-    // script.async = true;
-    // script.onload = function() {
-    //   window.tomtom.L.map("map", {
-    //     source: "vector",
-    //     key: process.env.REACT_APP_TOMTOM,
-    //     center: [51.5074, 0.1278],
-    //     basePath: "/sdk",
-    //     zoom: 2
-    //   });
-    // };
-    // ============ TOMTOM MAP API END ============
   }
 
   render() {
@@ -282,23 +266,32 @@ class Landing extends Component {
                   #dowelldogood
                 </a>
               </p>
-              <Link to="/register" className="btn mx-1 px-3 py-2">
+              <Link to="/register" className="btn mx-1 my-2 px-3 py-2">
                 Join Us
               </Link>
               <a
-                className="btn mx-1 px-3 py-2 middle-btn"
+                className="btn mx-1 my-2 px-3 py-2 middle-btn"
                 href={whitePaper}
                 download
               >
                 Download Our Report
               </a>
+              <br />
               <a
-                className="btn mx-1 px-3 py-2"
+                className="btn mx-1 my-2 px-3 py-2 middle-btn"
                 href="https://circleofyi.us13.list-manage.com/subscribe?u=6ddfb2318958e6bd7e6d9f028&id=04cc3e3074"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 100 Day Challenge
+              </a>
+              <a
+                href="https://circleofyi.us13.list-manage.com/subscribe/post?u=6ddfb2318958e6bd7e6d9f028&id=d82e567ec0"
+                target="_blank"
+                className="btn mx-1 my-2 px-3 py-2"
+                rel="noopener noreferrer"
+              >
+                Join our mailing list
               </a>
             </div>
           </div>
@@ -352,7 +345,7 @@ class Landing extends Component {
               <IFrameModal
                 id="barclaysModal"
                 title="Roundup"
-                url="https://www.youtube.com/embed/cszDgqSjSwA"
+                url="https://www.youtube.com/embed/d2Zp1OM2vzo"
               />
             </div>
             <div className="col-md-4 col-sm-12">
@@ -381,7 +374,7 @@ class Landing extends Component {
               <IFrameModal
                 id="O2Modal"
                 title="Connected Homeless"
-                url="https://www.youtube.com/embed/G3JAvO6YL8E"
+                url="https://www.youtube.com/embed/cszDgqSjSwA"
               />
             </div>
             <div className="col-md-4 col-sm-12">
@@ -514,8 +507,8 @@ class Landing extends Component {
                 Social butterfly? <br /> Tell us a story
               </h1>
               <h6 className="display-5">
-                <Link to="/register" className="reach-out">
-                  Reach out
+                <Link to="/register" className="tonsOfResources">
+                  <strong>Reach out</strong>
                 </Link>{" "}
                 to our community and see what the fuss is about
               </h6>
@@ -538,7 +531,11 @@ class Landing extends Component {
                   Have an idea that you think can change the world?
                 </h1>
                 <h6 className="display-5">
-                  <Link to="/register" className="no-btn">
+                  <Link
+                    to="/register"
+                    className="tonsOfResources"
+                    style={{ color: "blue" }}
+                  >
                     Become a member
                   </Link>{" "}
                   and tell us about it
@@ -585,7 +582,11 @@ class Landing extends Component {
                   Want to know how to steer the oil tanker?
                 </h1>
                 <h6 className="display-5">
-                  We have tons of resources to help people just like you!
+                  We have{" "}
+                  <Link to="/register" className="tonsOfResources">
+                    tons of resources
+                  </Link>{" "}
+                  to help people just like you!
                 </h6>
               </div>
             </div>

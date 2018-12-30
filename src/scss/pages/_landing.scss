@@ -242,6 +242,17 @@
   .info-text {
     font-family: 1.4rem;
   }
+
+  .tonsOfResources {
+    border: 0 !important;
+    padding: 0 !important;
+    color: black !important;
+
+    &:hover {
+      background: none !important;
+      text-decoration: underline !important;
+    }
+  }
 }
 
 .main-logo {

@@ -22,7 +22,7 @@ class Profile extends Component {
       lastName: "",
       email: "",
       organisation: "",
-      linkedIn: "",
+      linkedinUrl: "",
       twitterUrl: "",
       tagline: "",
       profilePic: "",
@@ -51,7 +51,7 @@ class Profile extends Component {
       lastName: this.state.lastName,
       email: this.state.email,
       organisation: this.state.organisation,
-      linkedIn: this.state.linkedIn,
+      linkedinUrl: this.state.linkedinUrl,
       twitterUrl: this.state.twitterUrl,
       profilePic: this.state.profilePic,
       bannerPic: this.state.bannerPic,
@@ -99,7 +99,7 @@ class Profile extends Component {
       organisation,
       admin,
       lead,
-      linkedIn,
+      linkedinUrl,
       twitterUrl,
       bannerPic,
       profilePic,
@@ -169,10 +169,10 @@ class Profile extends Component {
                           <input
                             placeholder="Add your LinkedIn URL"
                             type="text"
-                            name="linkedIn"
-                            value={linkedIn}
+                            name="linkedinUrl"
+                            value={linkedinUrl}
                             onChange={this.onChange}
-                            error={errors.linkedIn}
+                            error={errors.linkedinUrl}
                           />
                         </li>
 

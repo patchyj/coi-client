@@ -127,6 +127,23 @@ export const getCurrentUser = () => dispatch => {
     );
 };
 
+export const updateUser = (id, userDate) => dispatch => {
+  axios
+    .put(`/api/users/${id}`, userDate)
+    .then(res => {
+      dispatch({
+        type: SET_CURRENT_USER,
+        payload: res.data
+      });
+    })
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: {}
+      })
+    );
+};
+
 export const setAdmin = (id, history) => dispatch => {
   axios
     .get(`/api/users/${id}/admin`)

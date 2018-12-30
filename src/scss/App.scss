@@ -18,6 +18,7 @@
 @import "components/modal";
 @import "components/table";
 @import "components/spinner";
+@import "components/lists";
 
 @import "pages/landing";
 @import "pages/auth/login";
@@ -33,6 +34,7 @@
 @import "pages/posts/post";
 @import "pages/posts/posts";
 @import "pages/posts/newPost";
+@import "pages/profile/profile.scss";
 
 @import "themes/default";
 @import "themes/admin";

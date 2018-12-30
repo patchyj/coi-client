@@ -1,70 +1,294 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import TextFieldGroup from "../common/TextFieldGroup";
+import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
+import axios from "axios";
 // Redux
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
 // Actions
-import { getProfileByHandle } from '../../actions/profileAction';
+import { getCurrentUser, updateUser } from "../../actions/authAction";
 
-import Spinner from '../common/Spinner';
-
-// Profile Components
-import ProfileAbout from './ProfileAbout';
-import ProfileCreds from './ProfileCreds';
-import ProfileGithub from './ProfileGithub';
-import ProfileHeader from './ProfileHeader';
-
+import Spinner from "../common/Spinner";
 
 class Profile extends Component {
+  constructor(props) {
+    super(props);
 
-  componentDidMount(){
-    if (this.props.match.params.handle) {
-      this.props.getProfileByHandle(this.props.match.params.handle);
-    }
+    this.state = {
+      username: "",
+      firstName: "",
+      lastName: "",
+      email: "",
+      organisation: "",
+      linkedIn: "",
+      twitterUrl: "",
+      tagline: "",
+      profilePic: "",
+      bannerPic: "",
+      tagline: "",
+      bio: "",
+      chapter: {},
+      errors: {},
+      user: {}
+    };
+
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  onChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
+  }
+
+  onSubmit(e) {
+    e.preventDefault();
+
+    const userData = {
+      username: this.state.username,
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      email: this.state.email,
+      organisation: this.state.organisation,
+      linkedIn: this.state.linkedIn,
+      twitterUrl: this.state.twitterUrl,
+      profilePic: this.state.profilePic,
+      bannerPic: this.state.bannerPic,
+      tagline: this.state.tagline,
+      bio: this.state.bio
+    };
+
+    console.log(userData);
+    this.props.updateUser(this.props.auth._id, userData);
+    window.location.reload();
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.profile.profile === null && this.props.profile.loading) {
-      this.props.history.push('/not-found');
+    if (nextProps.auth.user.chapter) {
+      axios
+        .get(`/api/chapters/${nextProps.auth.user.chapter}`)
+        .then(res => {
+          this.setState({
+            chapter: res.data
+          });
+        })
+        .catch(err => {
+          this.setState({
+            errors: err
+          });
+        });
     }
+
+    const userValues = Object.entries(nextProps.auth.user);
+    userValues.forEach(prop => {
+      this.setState({ [prop[0]]: prop[1] });
+    });
   }
 
-  render(){
-    const { profile, loading } = this.props.profile;
-    let profileContent;
+  componentDidMount() {
+    this.props.getCurrentUser();
+  }
 
-    if (profile === null || loading) {
-      profileContent = <Spinner />
-    } else {
-      profileContent = (
-        <div className="">
-          <div className="row">
-            <div className="col-md-6">
-              <Link to='/Profiles' className="btn btn-light mb-3 float-left">Back to Profiles</Link>
-            </div>
-            <div className="col-md-6"></div>
-          </div>
-          <ProfileHeader profile={ profile }/>
-          <ProfileAbout profile={ profile }/>
-          <ProfileCreds
-            education={profile.education}
-            experience={profile.experience}
-          />
-          { profile.githubusername ? (
-            <ProfileGithub username={ profile.githubusername }/>
-          ) : null }
+  render() {
+    const {
+      username,
+      firstName,
+      lastName,
+      email,
+      organisation,
+      admin,
+      lead,
+      linkedIn,
+      twitterUrl,
+      bannerPic,
+      profilePic,
+      date,
+      tagline,
+      bio,
+      errors,
+      chapter
+    } = this.state;
 
-        </div>
-      )
-    }
-
-    return(
+    return (
       <div className="profile">
-        <div className="container">
+        <div
+          className="jumbotron-fluid "
+          style={{ background: `url(${bannerPic})` }}
+        >
+          <img src={profilePic} className="img-fluid profilePic" />
+        </div>
+        <div className="container-fluid ">
           <div className="row">
-            <div className="col-md-12">
-              { profileContent }
+            {/* LEFT */}
+            <div className="col-md-3 bg-main-red p-5 left">
+              <ul className="list-group list-group-flush">
+                <li className="list-group-item">Project Proposals</li>
+                <li className="list-group-item">Posts</li>
+              </ul>
+            </div>
+            {/* RIGHT */}
+            <div className="col-md-9 text-center right">
+              <div className="row">
+                <div className="col-md-10 offset-md-1 bg-main-white p-5 mt-2">
+                  <h1 className="form-inline display-4">
+                    <input
+                      className="nameInput"
+                      type="text"
+                      name="firstName"
+                      value={firstName}
+                      onChange={this.onChange}
+                      error={errors.firstName}
+                    />
+                    <input
+                      className="nameInput"
+                      type="text"
+                      name="lastName"
+                      value={lastName}
+                      onChange={this.onChange}
+                      error={errors.email}
+                    />
+                  </h1>
+
+                  <div className="row">
+                    <div className="col-md-5  bg-main-white text-left pt-3">
+                      <ul className="list-group list-group-flush">
+                        <li className="list-group-item my-2">
+                          <i className="fab fa-twitter px-2" />
+                          <input
+                            placeholder="Add your Twitter URL"
+                            type="text"
+                            name="twitterUrl"
+                            value={twitterUrl}
+                            onChange={this.onChange}
+                            error={errors.email}
+                          />
+                        </li>
+                        <li className="list-group-item my-2">
+                          <i className="fab fa-linkedin px-2" />
+                          <input
+                            placeholder="Add your LinkedIn URL"
+                            type="text"
+                            name="linkedIn"
+                            value={linkedIn}
+                            onChange={this.onChange}
+                            error={errors.linkedIn}
+                          />
+                        </li>
+
+                        <li className="list-group-item my-2">
+                          <i className="fas fa-envelope px-2" />
+                          <input
+                            placeholder="Add your Email"
+                            type="email"
+                            name="email"
+                            value={email}
+                            onChange={this.onChange}
+                            error={errors.email}
+                          />
+                        </li>
+                      </ul>
+                    </div>
+                    <div className="col-md-7  bg-main-white text-left pt-3">
+                      <div className="row">
+                        <h4 className="col-md-4">Chapter: </h4>
+                        <h4 className="col-md-8">
+                          {chapter ? (
+                            <Link
+                              className="col-md-8"
+                              to={`/chapters/${chapter._id}`}
+                            >
+                              {chapter.city}
+                            </Link>
+                          ) : (
+                            ""
+                          )}
+                          {admin ? <small>(admin)</small> : ""}
+                          {lead ? <small>(lead)</small> : ""}
+                        </h4>
+                      </div>
+                      <div className="form-inline my-1">
+                        <label className="col-md-4" htmlFor="username">
+                          Username:
+                        </label>
+
+                        <input
+                          className="form-control col-md-8"
+                          type="text"
+                          name="username"
+                          defaultValue={username}
+                          onChange={this.onChange}
+                          error={errors.username}
+                        />
+                      </div>
+                      <div className="form-inline my-1">
+                        <label className="col-md-4" htmlFor="email">
+                          Email:
+                        </label>
+
+                        <input
+                          className="form-control col-md-8"
+                          type="email"
+                          name="email"
+                          defaultValue={email}
+                          onChange={this.onChange}
+                          error={errors.email}
+                        />
+                      </div>
+                      <div className="form-inline my-1">
+                        <label className="col-md-4" htmlFor="organisation">
+                          Organisation:
+                        </label>
+
+                        <input
+                          className="form-control col-md-8"
+                          type="text"
+                          name="organisation"
+                          defaultValue={organisation}
+                          onChange={this.onChange}
+                          error={errors.organisation}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <br />
+                <div className="col-md-8 offset-md-2 bg-main-white mt-5 p-3 text-left">
+                  <div className="form-group mx-2">
+                    <label htmlFor="tagline">Tagline</label>
+                    <input
+                      placeholder="Sum yourself up in one sentence"
+                      className="form-control form-control-lg"
+                      type="text"
+                      name="tagline"
+                      defaultValue={tagline}
+                      onChange={this.onChange}
+                      error={errors.tagline}
+                    />
+                  </div>
+                </div>
+                <div className="col-md-8 offset-md-2 bg-main-white p-3 text-left">
+                  <div className="form-group mx-2">
+                    <label htmlFor="bio">Bio</label>
+                    <textarea
+                      className="form-control form-control-lg"
+                      name="bio"
+                      onChange={this.onChange}
+                      error={errors.bio}
+                      rows="20"
+                      value={bio}
+                    />
+                  </div>
+                </div>
+                <div className="col-md-8 offset-md-2 bg-main-white mb-5 p-3 text-left">
+                  <input
+                    type="submit"
+                    className="btn btn-primary"
+                    value="Save Changes"
+                    onClick={this.onSubmit}
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -74,12 +298,14 @@ class Profile extends Component {
 }
 
 Profile.propTypes = {
-  getProfileByHandle: PropTypes.func.isRequired,
-  profile: PropTypes.object.isRequired
-}
+  auth: PropTypes.object.isRequired
+};
 
 const mapStateToProps = state => ({
-  profile: state.profile
-})
+  auth: state.auth
+});
 
-export default connect(mapStateToProps, { getProfileByHandle } )(Profile);
+export default connect(
+  mapStateToProps,
+  { getCurrentUser, updateUser }
+)(Profile);

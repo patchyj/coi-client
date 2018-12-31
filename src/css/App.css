@@ -1114,8 +1114,25 @@ a.card:hover {
     transition: 0.2s ease; }
     .admin .chapterForm a:hover {
       color: #8f8f8f; }
-  .admin .chapterForm input {
-    width: 100% !important; }
+
+.admin input {
+  width: 100% !important; }
+
+.admin input[type="submit"] {
+  background: none;
+  border: 1px solid #1f4b86;
+  padding: 10px 10px;
+  color: #1f4b86;
+  transition: 0.2s;
+  width: 100%; }
+  .admin input[type="submit"]:hover {
+    background: #1f4b86;
+    border: 1px solid #0c1d33;
+    color: white; }
+  .admin input[type="submit"]:disabled {
+    -webkit-animation: uploading 2s infinite ease-in-out;
+            animation: uploading 2s infinite ease-in-out;
+    color: white; }
 
 .admin .autocomplete-dropdown-container {
   color: black !important; }

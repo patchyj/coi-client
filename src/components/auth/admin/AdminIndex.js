@@ -18,6 +18,8 @@ import {
   geocodeByPlaceId,
   getLatLng
 } from "react-places-autocomplete";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 const AdminCheckBox = ({ role, onChange, name, id }) => {
   let adminInput;
@@ -105,19 +107,24 @@ class AdminIndex extends Component {
       },
       isAdmin: false,
       address: "",
+      bannerPic: "",
+      twitterUrl: "",
+      ready: true,
       chapterName: {},
       chapterCoords: {},
       errors: {}
     };
 
     this.sortBy = this.sortBy.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    this.addPhoto = this.addPhoto.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleTwitterChange = this.handleTwitterChange.bind(this);
   }
 
-  // handleChange(value) {
-  //   this.setState({ text: value });
-  // }
+  handleTwitterChange(e) {
+    this.setState({ twitterUrl: e.target.value });
+  }
 
   sortBy(key) {
     this.setState({
@@ -225,11 +232,27 @@ class AdminIndex extends Component {
     }
   }
 
+  addPhoto(e) {
+    var formData = new FormData();
+
+    formData.append("file", e.target.files[0]);
+    formData.append("name", "test");
+    this.setState({ ready: false });
+
+    axios
+      .post("/api/posts/files", formData)
+      .then(res => {
+        this.setState({ bannerPic: res.data.url, ready: true });
+      })
+      .catch(err => console.log(err));
+  }
+
   onSubmit(e) {
     e.preventDefault();
     const newChapter = {
       city: this.state.chapterName.city,
       countryCode: this.state.chapterName.country,
+      coords: this.state.chapterCoords,
       twitterUrl: this.state.twitterUrl,
       bannerPic: this.state.bannerPic
     };
@@ -393,7 +416,7 @@ class AdminIndex extends Component {
           </a>
 
           <div className="collapse row" id="newChapterForm">
-            <div className="card card-body col-md-4 offset-md-4">
+            <div className="card card-body col-md-6 offset-md-3">
               <form onSubmit={this.onSubmit}>
                 <PlacesAutocomplete
                   value={this.state.address}
@@ -410,7 +433,7 @@ class AdminIndex extends Component {
                       <input
                         {...getInputProps({
                           placeholder: "Search Places ...",
-                          className: "location-search-input"
+                          className: "location-search-input p-2"
                         })}
                       />
                       <div className="autocomplete-dropdown-container">
@@ -439,12 +462,34 @@ class AdminIndex extends Component {
                   )}
                 </PlacesAutocomplete>
                 <input
-                  type="submit"
-                  className="btn bg-main-red my-2"
-                  style={{ width: "100%" }}
-                  value="Create Chapter"
-                  onClick={this.onSubmit}
+                  type="text"
+                  placeholder="Twitter URL"
+                  className="my-2 p-2"
+                  onChange={this.handleTwitterChange}
+                  value={this.state.twitterUrl}
                 />
+                <div className="form-group">
+                  <label htmlFor="" style={{ color: "black" }}>
+                    Upload an image
+                  </label>
+                  <input
+                    type="file"
+                    className="form-control-file"
+                    name="image"
+                    onChange={this.addPhoto}
+                    style={{ color: "black" }}
+                  />
+                </div>
+                {this.state.ready ? (
+                  <input
+                    type="submit"
+                    value="Submit"
+                    onClick={this.onSubmit}
+                    style={{ width: "100%" }}
+                  />
+                ) : (
+                  <input type="submit" value="Uploading..." disabled />
+                )}
               </form>
             </div>
           </div>

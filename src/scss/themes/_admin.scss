@@ -37,6 +37,26 @@
     width: 100% !important;
   }
 
+  input[type="submit"] {
+    background: none;
+    border: 1px solid $main-blue;
+    padding: 10px 10px;
+    color: $main-blue;
+    transition: 0.2s;
+    width: 100%;
+
+    &:hover {
+      background: $main-blue;
+      border: 1px solid darken($main-blue, 20%);
+      color: $main-white;
+    }
+
+    &:disabled {
+      animation: uploading 2s infinite ease-in-out;
+      color: white;
+    }
+  }
+
   .autocomplete-dropdown-container {
     color: black !important;
   }

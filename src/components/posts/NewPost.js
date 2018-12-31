@@ -102,7 +102,7 @@ class NewPost extends Component {
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="">Upload an image (not working yet)</label>
+                  <label htmlFor="">Upload an image</label>
                   <input
                     type="file"
                     className="form-control-file"

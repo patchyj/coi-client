@@ -122,8 +122,8 @@ class Chapter extends Component {
             <div className="col-md-3">
               <TwitterTimelineEmbed
                 sourceType="URL"
-                screenName={twitter_url}
-                options={{ height: 600 }}
+                screenName="circleofyi"
+                options={{ height: 800 }}
               />
             </div>
           </div>

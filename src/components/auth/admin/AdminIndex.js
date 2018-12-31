@@ -112,6 +112,7 @@ class AdminIndex extends Component {
 
     this.sortBy = this.sortBy.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   // handleChange(value) {
@@ -222,6 +223,18 @@ class AdminIndex extends Component {
       this.props.getProjects();
       this.props.getCurrentUser();
     }
+  }
+
+  onSubmit(e) {
+    e.preventDefault();
+    const newChapter = {
+      city: this.state.chapterName.city,
+      countryCode: this.state.chapterName.country,
+      twitterUrl: this.state.twitterUrl,
+      bannerPic: this.state.bannerPic
+    };
+
+    console.log(newChapter);
   }
 
   render() {
@@ -430,6 +443,7 @@ class AdminIndex extends Component {
                   className="btn bg-main-red my-2"
                   style={{ width: "100%" }}
                   value="Create Chapter"
+                  onClick={this.onSubmit}
                 />
               </form>
             </div>

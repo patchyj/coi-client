@@ -1104,3 +1104,18 @@ a.card:hover {
   color: white;
   padding: 3rem;
   font-size: 3em; }
+
+.admin .chapterForm {
+  padding: 0;
+  background: linear-gradient(135deg, #dd3545 50%, #93246d);
+  color: white; }
+  .admin .chapterForm a {
+    color: white;
+    transition: 0.2s ease; }
+    .admin .chapterForm a:hover {
+      color: #8f8f8f; }
+  .admin .chapterForm input {
+    width: 100% !important; }
+
+.admin .autocomplete-dropdown-container {
+  color: black !important; }

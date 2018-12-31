@@ -14,4 +14,30 @@
     padding: 3rem;
     font-size: 3em;
   }
+
+  .chapterForm {
+    padding: 0;
+    background: linear-gradient(
+      135deg,
+      rgb(221, 53, 69) 50%,
+      rgb(147, 36, 109)
+    );
+    color: white;
+
+    a {
+      color: white;
+      transition: 0.2s ease;
+
+      &:hover {
+        color: rgb(143, 143, 143);
+      }
+    }
+  }
+  input {
+    width: 100% !important;
+  }
+
+  .autocomplete-dropdown-container {
+    color: black !important;
+  }
 }

@@ -32,6 +32,7 @@ export default [
   slide8,
   slide9,
   slide10,
+  slide11,
   slide12,
   slide13,
   slide14,

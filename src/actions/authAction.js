@@ -1,5 +1,4 @@
 import axios from "axios";
-import faker from "faker";
 import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
 

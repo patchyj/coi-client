@@ -1,8 +1,8 @@
 import axios from "axios";
 // Change the port depending on what the Node ENV is
-if (process.env.NODE_ENV == "development") {
+if (process.env.NODE_ENV === "development") {
   axios.defaults.baseURL = "http://localhost:8080"; // make sure dev server is running
-} else if (process.env.NODE_ENV == "production") {
+} else if (process.env.NODE_ENV === "production") {
   axios.defaults.baseURL = process.env.REACT_APP_HEROKU_API;
 }
 

@@ -51,7 +51,7 @@ class Post extends Component {
     const { post, comments } = this.props.posts;
     const { admin } = this.props.auth.user;
 
-    let user, image, contentState;
+    let user, image;
 
     if (post.user) {
       user = (

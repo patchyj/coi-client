@@ -11,7 +11,6 @@ export default function(state = initialState, action) {
         ...state,
         chapters: action.payload
       };
-      return state;
     default:
       return state;
   }

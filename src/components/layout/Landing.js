@@ -1,5 +1,3 @@
-/*global google*/
-
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { PropTypes } from "prop-types";
@@ -76,34 +74,6 @@ class EventbriteAPI extends Component {
       }
     }
     return <div className="row eventBrite-container">{events}</div>;
-  }
-}
-
-class MailingForm extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      email: ""
-    };
-  }
-
-  onChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
-  }
-
-  render() {
-    return (
-      <form className="card card-body">
-        <a
-          href="https://circleofyi.us13.list-manage.com/subscribe/post?u=6ddfb2318958e6bd7e6d9f028&id=d82e567ec0"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Sign up to our newsletter
-        </a>
-      </form>
-    );
   }
 }
 

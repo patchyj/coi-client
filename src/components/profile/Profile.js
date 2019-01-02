@@ -1,16 +1,12 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import TextFieldGroup from "../common/TextFieldGroup";
-import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
 import axios from "axios";
 // Redux
 import { connect } from "react-redux";
 
 // Actions
 import { getCurrentUser, updateUser } from "../../actions/authAction";
-
-import Spinner from "../common/Spinner";
 
 class Profile extends Component {
   constructor(props) {
@@ -27,7 +23,6 @@ class Profile extends Component {
       tagline: "",
       profilePic: "",
       bannerPic: "",
-      tagline: "",
       bio: "",
       chapter: {},
       errors: {},
@@ -103,7 +98,6 @@ class Profile extends Component {
       twitterUrl,
       bannerPic,
       profilePic,
-      date,
       tagline,
       bio,
       errors,
@@ -116,7 +110,11 @@ class Profile extends Component {
           className="jumbotron-fluid "
           style={{ background: `url(${bannerPic})` }}
         >
-          <img src={profilePic} className="img-fluid profilePic" />
+          <img
+            src={profilePic}
+            className="img-fluid profilePic"
+            alt="profile image"
+          />
         </div>
         <div className="container-fluid ">
           <div className="row">

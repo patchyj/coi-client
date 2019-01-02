@@ -13,13 +13,7 @@ import axios from "axios";
 import Moment from "react-moment";
 // import LocationSearchInput from "../../chapters/NewChapterComponent";
 import PlacesAutocomplete from "react-places-autocomplete";
-import {
-  geocodeByAddress,
-  geocodeByPlaceId,
-  getLatLng
-} from "react-places-autocomplete";
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
+import { geocodeByAddress, getLatLng } from "react-places-autocomplete";
 
 const AdminCheckBox = ({ role, onChange, name, id }) => {
   let adminInput;
@@ -28,7 +22,6 @@ const AdminCheckBox = ({ role, onChange, name, id }) => {
       <input
         role={role}
         type="checkbox"
-        aria-label="Checkbox for following text input"
         defaultChecked={true}
         onChange={onChange}
         name={name}
@@ -41,7 +34,6 @@ const AdminCheckBox = ({ role, onChange, name, id }) => {
       <input
         role={role}
         type="checkbox"
-        aria-label="Checkbox for following text input"
         defaultChecked={false}
         onChange={onChange}
         name={name}
@@ -67,7 +59,6 @@ const LeadCheckBox = ({ role, onChange, dataName, id, city }) => {
         id={id}
         role={role}
         type="checkbox"
-        aria-label="Checkbox for following text input"
         defaultChecked={true}
         onChange={onChange}
         data-name={dataName}
@@ -81,7 +72,6 @@ const LeadCheckBox = ({ role, onChange, dataName, id, city }) => {
         id={id}
         role={role}
         type="checkbox"
-        aria-label="Checkbox for following text input"
         defaultChecked={false}
         onChange={onChange}
         data-name={dataName}

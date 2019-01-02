@@ -92,11 +92,9 @@ class Resources extends Component {
         400}`,
       bgText: `${Math.floor(bgTrigger.getBoundingClientRect().top * 0.45)}`
     });
-    const bgText = document.getElementById("bgText");
   };
 
   render() {
-    const { pageNumber, numPages } = this.state;
     const tabs = resources.map((resource, key) => {
       return (
         <a

@@ -46,9 +46,8 @@ class Chapter extends Component {
   }
 
   render() {
-    const { city, twitter_url, date, leads, bannerPic } = this.state.chapter;
+    const { city, twitterUrl, date, bannerPic } = this.state.chapter;
     const members = this.state.members.filter(member => member.lead === true);
-    console.log(this.state.members);
     let leadList;
     if (members) {
       leadList = members.map((member, key) => {

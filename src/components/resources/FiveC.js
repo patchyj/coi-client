@@ -19,7 +19,6 @@ import seniorApproach from "../../img/slides/commit/approaching a senior person.
 import pitchOutcomes from "../../img/slides/commit/Pitch Outcomes.jpg";
 // CONTROL
 import ruPilotReview from "./slideshows/roundupPilotReview";
-import ruPilotReviewDL from "../../img/slides/control/Barclays Roundup v2 .pptx";
 
 const resources = [
   {

@@ -4,6 +4,8 @@ import introToIntrapreneurship from "./slideshows/introToIntrapreneurship";
 import introToIntrapreneurshipDL from "../../img/slides/convert/Intrapreneurship Intro Slides .pptx";
 import socintDef from "../../img/slides/convert/Socint Definition.jpeg";
 import painPoints from "../../img/slides/convert/PainPoints.jpg";
+import readingList from "../../img/slides/convert/Recommended Reading List.jpg";
+import readingListDL from "../../img/slides/convert/Recommended Reading List.pdf";
 // CREATE
 import socintTriangle from "../../img/slides/create/Socint Triangle.jpeg";
 import elevatorPitching from "../../img/slides/create/Elevator Pitching.jpg";
@@ -46,6 +48,14 @@ const resources = [
           "6 key organisational hurdles intrapreneurs must overcome to deliver; useful to know what the difficult moments are from the start of the journey so you can plan for them! ",
         download: painPoints,
         url: painPoints
+      },
+      {
+        id: uuid(),
+        resource: "Recommended Reading List for new members",
+        description:
+          "Here are a list of some of our favourite articles and books on the topic of social intrapreneurship, or related topics, to get you started",
+        download: readingListDL,
+        url: readingList
       }
     ]
   },

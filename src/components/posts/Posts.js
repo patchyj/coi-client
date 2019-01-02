@@ -75,10 +75,13 @@ class Posts extends Component {
       <div className="posts">
         <div className="background" />
         <div className="background-text">
-          <h1 className="display-4">Posts</h1>
+          <h1 className="display-4">Wall</h1>
           <p className="p-responsive">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Together we are stronger. Remember you are never alone as a Circle
+            member; there are thousands of us around the world now! Please write
+            about your experiences as a social intrapreneur, ask each other (and
+            us) questions, meet each other (& us), share thoughts/ideas/comments
+            and compliments as we all look to change the world together
           </p>
         </div>
         <div className="container-fluid">

@@ -18,16 +18,14 @@ a.card {
     z-index: -999;
   }
   .background-text {
-    position: fixed;
     color: $main-white;
-    transform: translateY(-150%);
+    margin-top: 100px;
+    margin-left: 100px;
     width: 65%;
-    left: 100px;
-    z-index: -998;
   }
 
   .jumbotron {
-    margin-top: 400px;
+    margin-top: 70px;
     background: linear-gradient(
       135deg,
       rgb(221, 53, 69) 50%,
@@ -62,6 +60,20 @@ a.card {
       box-shadow: 0px 0px 20px -10px $main-red;
     }
 
+    a {
+      color: $main-red !important;
+      transition: 0.2s;
+
+      &:hover {
+        color: darken($main-red, 20%) !important;
+      }
+    }
+
+    .card-title,
+    .card-body {
+      color: $main-red !important;
+    }
+
     .card-body {
       &::before {
         content: "";
@@ -77,5 +89,13 @@ a.card {
         );
       }
     }
+  }
+}
+
+@media only screen and (max-width: 830px) {
+  .background-text {
+    width: 90% !important;
+    text-align: justify;
+    margin: auto !important;
   }
 }

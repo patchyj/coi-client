@@ -44,16 +44,17 @@ class Projects extends Component {
         <div className="background-text">
           <h1 className="display-4">Projects</h1>
           <p className="p-responsive">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
+            Supporting social intrapreneurs to create (and deliver) projects
+            inside organisations which aim to profitably-do-good is at the heart
+            of what the Circle is all about. Please use this section of the
+            website to review existing project proposals or send us an outline
+            of an idea you have using the link below. This will allow us to
+            mobilise our support structures to help you develop your idea.
+            Remember all ideas we support must have a business case and must
+            have clear social impact. Get your creative juices flowing...
           </p>
         </div>
-        <div className="jumbotron text-center">
+        <div className="jumbotron text-center" style={{ marginTop: "40px" }}>
           <h6 className="display-4-5 py-5">
             Have an idea of your own?{" "}
             <Link to="/projects/new">Tell us about it</Link>

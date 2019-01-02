@@ -11,18 +11,23 @@
     z-index: -999;
   }
   .background-text {
-    position: fixed;
     color: $main-white;
-    transform: translateY(-150%);
+    margin-top: 100px;
+    margin-left: 100px;
     width: 65%;
-    left: 100px;
-    z-index: -998;
   }
   .jumbotron {
-    margin-top: 400px;
     padding: 0;
   }
   .table {
     margin-bottom: 0;
+  }
+}
+
+@media only screen and (max-width: 830px) {
+  .background-text {
+    width: 90% !important;
+    text-align: justify;
+    margin: auto !important;
   }
 }

@@ -158,8 +158,8 @@ class Resources extends Component {
                 you can utilise to help you define, develop and deliver ideas
                 which aim to profitably-do-good; certainly we wish we had these
                 kind of tools at our disposal when we started our own journey!
-                We will look to constantly update these templates and add new
-                ones so do check in regularly.{" "}
+                We will look to regularly update these templates and add new
+                ones so do check in regularly{" "}
               </p>
               <p className="p-responsive text-justify">
                 If you are earlier on in your journey, and are just conceiving

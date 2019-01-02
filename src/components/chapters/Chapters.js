@@ -72,13 +72,18 @@ class Chapters extends Component {
         <div className="background-text">
           <h1 className="display-4">Chapters</h1>
           <p className="p-responsive">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
+            About 9 months after our launch in January 2016 we realised that the
+            demand for social intrapreneurship was truly global and yet we, were
+            only running events in our home city of London, UK. Therefore we
+            decided to launch Circle Chapters in strategic locations around the
+            world with inspiring leaders we had met along the way. We started in
+            Singapore in Nov 2016 and, by the end of 2017 we had 20 chapters
+            live around the world & we are still growing! Our chapter leads are
+            the heart of everything the Circle does and are there to help
+            create, and support, social intrapreneurs in their cities. Think you
+            have what it takes to become a Circle Chapter Lead? Drop an email
+            with your CV to{" "}
+            <a href="mailto:team@circleofyi.com">team@circleofyi.com</a>
           </p>
         </div>
         <div className="container-fluid bg-main-white">

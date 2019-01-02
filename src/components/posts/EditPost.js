@@ -14,7 +14,8 @@ class EditPost extends Component {
       title: "",
       tagline: "",
       images: [],
-      body: ""
+      body: "",
+      errors: {}
     };
 
     this.onChange = this.onChange.bind(this);
@@ -56,10 +57,9 @@ class EditPost extends Component {
       .then(res => {
         let arr = [];
         arr.push(res.data.url);
-        console.log(arr);
         this.setState({ images: arr });
       })
-      .catch(err => console.log(err));
+      .catch(errors => this.setState({ errors }));
   }
 
   componentDidMount() {

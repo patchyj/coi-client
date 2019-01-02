@@ -143,9 +143,7 @@ class AdminIndex extends Component {
       );
       if (res) {
         this.props.setAdmin(e.target.id, this.props.history);
-        // window.location.reload();
       } else {
-        // window.location.reload();
       }
     } else {
       const res = window.confirm(
@@ -155,15 +153,12 @@ class AdminIndex extends Component {
       );
       if (res) {
         this.props.setAdmin(e.target.id, this.props.history);
-        // window.location.reload();
       } else {
-        // window.location.reload();
       }
     }
   }
 
   setLeadClick(e) {
-    console.log(e.target.attributes);
     const role = e.target.attributes.role.value;
     if (role === "lead") {
       const res = window.confirm(
@@ -173,9 +168,7 @@ class AdminIndex extends Component {
       );
       if (res) {
         this.props.setLead(e.target.id, this.props.history);
-        // window.location.reload();
       } else {
-        // window.location.reload();
       }
     } else {
       const res = window.confirm(
@@ -185,9 +178,7 @@ class AdminIndex extends Component {
       );
       if (res) {
         this.props.setLead(e.target.id, this.props.history);
-        // window.location.reload();
       } else {
-        // window.location.reload();
       }
     }
   }
@@ -210,7 +201,7 @@ class AdminIndex extends Component {
     geocodeByAddress(address)
       .then(results => getLatLng(results[0]))
       .then(latLng => this.setState({ chapterCoords: latLng }))
-      .catch(error => console.error("Error", error));
+      .catch(error => this.setState({ error }));
   };
 
   componentDidMount() {
@@ -238,7 +229,7 @@ class AdminIndex extends Component {
       .then(res => {
         this.setState({ bannerPic: res.data.url, ready: true });
       })
-      .catch(err => console.log(err));
+      .catch(error => this.setState({ error }));
   }
 
   onSubmit(e) {
@@ -251,8 +242,6 @@ class AdminIndex extends Component {
       twitterUrl: this.state.twitterUrl,
       bannerPic: this.state.bannerPic
     };
-
-    console.log(newChapter);
 
     axios
       .post("/api/chapters", newChapter)

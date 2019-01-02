@@ -15,7 +15,6 @@ import {
 export const registerUser = (userData, history) => dispatch => {
   axios
     .post("/api/users/register", userData)
-    // .then(res => console.log(res))
     .then(res => {
       history.push("/login");
     })
@@ -98,7 +97,6 @@ export const getUsers = () => dispatch => {
         type: GET_USERS,
         payload: res.data
       });
-      // console.log(res.data);
     })
     .catch(err =>
       dispatch({
@@ -116,7 +114,6 @@ export const getCurrentUser = () => dispatch => {
         type: SET_CURRENT_USER,
         payload: res.data
       });
-      // console.log(res.data);
     })
     .catch(err =>
       dispatch({

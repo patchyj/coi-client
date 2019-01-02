@@ -94,10 +94,8 @@ setInterval(() => {
   fetch("https://coi-node-api.herokuapp.com/api/projects/test")
     .then(res => res.json())
     .then(json => json)
-    .catch(err => console.log(err));
+    .catch(err => err);
 }, 300000);
-
-// console.log(process.env);
 
 class App extends Component {
   render() {

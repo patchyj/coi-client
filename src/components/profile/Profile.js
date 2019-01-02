@@ -54,7 +54,6 @@ class Profile extends Component {
       bio: this.state.bio
     };
 
-    console.log(userData);
     this.props.updateUser(this.props.auth._id, userData);
     window.location.reload();
   }

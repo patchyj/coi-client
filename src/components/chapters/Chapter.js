@@ -62,7 +62,6 @@ class Chapter extends Component {
     } else {
       leadList = "";
     }
-    // console.log(leads);
     const { name } = this.state.country;
     return (
       <div className="chapter">

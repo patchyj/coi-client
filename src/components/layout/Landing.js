@@ -99,7 +99,9 @@ class FeedBackForm extends Component {
     this.state = {
       fullName: "",
       email: "",
-      body: ""
+      body: "",
+      success: null,
+      errors: {}
     };
     this.onChange = this.onChange.bind(this);
   }
@@ -118,9 +120,9 @@ class FeedBackForm extends Component {
         body: this.state.body
       })
       .then(res => {
-        console.log(res);
+        this.setState({ success: res.data });
       })
-      .catch(err => console.log(err));
+      .catch(errors => this.setState({ errors }));
     this.setState({
       fullName: "",
       email: "",

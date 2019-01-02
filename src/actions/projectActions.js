@@ -9,7 +9,6 @@ export const getProjects = () => dispatch => {
         type: GET_PROJECTS,
         payload: res.data
       });
-      // console.log(res.data);
     })
     .catch(err =>
       dispatch({

@@ -48,7 +48,6 @@ export class MapContainer extends Component {
     this.props.getChapters();
   }
   render() {
-    console.log(this.props);
     const { chapters } = this.props.chapters;
     if (chapters) {
       const markers = chapters.map((chapter, key) => {

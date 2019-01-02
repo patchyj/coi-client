@@ -10,7 +10,8 @@ class Comment extends Component {
 
     this.state = {
       show: false,
-      body: ""
+      body: "",
+      errors: {}
     };
     this.onChange = this.onChange.bind(this);
   }
@@ -33,7 +34,7 @@ class Comment extends Component {
     axios
       .post(`/subcomment`, newSubcomment)
       .then(res => window.location.reload())
-      .catch(err => console.log(err));
+      .catch(errors => this.setState({ errors }));
   }
 
   onChange(e) {

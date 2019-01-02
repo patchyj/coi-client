@@ -15,7 +15,8 @@ class NewPost extends Component {
       tagline: "",
       images: [],
       body: "",
-      ready: true
+      ready: true,
+      errors: {}
     };
 
     this.onChange = this.onChange.bind(this);
@@ -60,7 +61,7 @@ class NewPost extends Component {
         arr.push(res.data.url);
         this.setState({ images: arr, ready: true });
       })
-      .catch(err => console.log(err));
+      .catch(errors => this.setState({ errors }));
   }
 
   render() {

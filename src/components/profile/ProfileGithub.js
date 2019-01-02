@@ -11,7 +11,8 @@ class ProfileGithub extends Component {
       clientSecret: "2752a96c6bb3172136c3a178cbe79de904679136",
       count: 5,
       sort: "Created: asc",
-      repos: []
+      repos: [],
+      errors: {}
     };
   }
 
@@ -28,7 +29,7 @@ class ProfileGithub extends Component {
           this.setState({ repos: data });
         }
       })
-      .catch(err => console.log(err));
+      .catch(errors => this.setState({ errors }));
   }
 
   render() {

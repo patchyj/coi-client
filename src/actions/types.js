@@ -14,3 +14,5 @@ export const GET_POST = "GET_POST";
 // PROJECT ACTIONS
 export const GET_PROJECTS = "GET_PROJECTS";
 export const GET_PROJECT = "GET_PROJECT";
+// CHAPTER ACTIONS
+export const GET_CHAPTERS = "GET_CHAPTERS";

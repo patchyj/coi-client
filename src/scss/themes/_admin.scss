@@ -33,7 +33,7 @@
       }
     }
   }
-  input {
+  input:not(.setCheckboxes) {
     width: 100% !important;
   }
 

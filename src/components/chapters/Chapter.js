@@ -12,7 +12,6 @@ class Chapter extends Component {
       chapter: {},
       country: {},
       members: [],
-      leads: [],
       errors: {}
     };
   }
@@ -24,9 +23,19 @@ class Chapter extends Component {
       .then(res => {
         this.setState({
           chapter: res.data,
-          country: res.data.country,
-          members: res.data.members,
-          leads: res.data.leads
+          country: res.data.country
+        });
+      })
+      .catch(err => {
+        this.setState({
+          errors: err
+        });
+      });
+    axios
+      .get(`/api/chapters/${id}/members`)
+      .then(res => {
+        this.setState({
+          members: res.data
         });
       })
       .catch(err => {
@@ -38,14 +47,15 @@ class Chapter extends Component {
 
   render() {
     const { city, twitter_url, date, leads, bannerPic } = this.state.chapter;
-    console.log(this.state);
+    const members = this.state.members.filter(member => member.lead === true);
+    console.log(this.state.members);
     let leadList;
-    if (leads) {
-      leadList = leads.map((lead, key) => {
+    if (members) {
+      leadList = members.map((member, key) => {
         return (
           <div key={key}>
-            <Link to={`/users/${lead.id}`}>
-              {lead.first_name} {lead.last_name}
+            <Link to={`/users/${member._id}`}>
+              {member.firstName} {member.lastName}
             </Link>
           </div>
         );

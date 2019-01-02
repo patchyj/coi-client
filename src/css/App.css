@@ -1115,7 +1115,7 @@ a.card:hover {
     .admin .chapterForm a:hover {
       color: #8f8f8f; }
 
-.admin input {
+.admin input:not(.setCheckboxes) {
   width: 100% !important; }
 
 .admin input[type="submit"] {

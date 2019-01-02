@@ -45,13 +45,13 @@ class Chapters extends Component {
                   <td>
                     <Link to={`/chapters/${chapter._id}`}>{chapter.city}</Link>
                   </td>
-                  <td>{chapter.country.name}</td>
+                  <td>{chapter.country}</td>
                   <td>
                     <Moment format="D MMM YYYY" withtitle="true">
                       {chapter.date}
                     </Moment>
                   </td>
-                  <td>{chapter.members.length}</td>
+                  <td>{chapter.members > 0 ? chapter.members : "0"}</td>
                 </tr>
               );
             })}

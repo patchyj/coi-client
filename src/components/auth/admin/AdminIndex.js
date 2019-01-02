@@ -33,6 +33,7 @@ const AdminCheckBox = ({ role, onChange, name, id }) => {
         onChange={onChange}
         name={name}
         id={id}
+        className="setCheckboxes"
       />
     );
   } else {
@@ -45,6 +46,7 @@ const AdminCheckBox = ({ role, onChange, name, id }) => {
         onChange={onChange}
         name={name}
         id={id}
+        className="setCheckboxes"
       />
     );
   }
@@ -70,6 +72,7 @@ const LeadCheckBox = ({ role, onChange, dataName, id, city }) => {
         onChange={onChange}
         data-name={dataName}
         data-city={city}
+        className="setCheckboxes"
       />
     );
   } else {
@@ -83,6 +86,7 @@ const LeadCheckBox = ({ role, onChange, dataName, id, city }) => {
         onChange={onChange}
         data-name={dataName}
         data-city={city}
+        className="setCheckboxes"
       />
     );
   }
@@ -251,13 +255,19 @@ class AdminIndex extends Component {
     e.preventDefault();
     const newChapter = {
       city: this.state.chapterName.city,
-      countryCode: this.state.chapterName.country,
-      coords: this.state.chapterCoords,
+      country: this.state.chapterName.country,
+      lat: this.state.chapterCoords.lat,
+      lng: this.state.chapterCoords.lng,
       twitterUrl: this.state.twitterUrl,
       bannerPic: this.state.bannerPic
     };
 
     console.log(newChapter);
+
+    axios
+      .post("/api/chapters", newChapter)
+      .then(chapter => this.props.history.push(`/chapters`))
+      .catch(err => this.setState({ errors: err }));
   }
 
   render() {

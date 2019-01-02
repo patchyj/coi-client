@@ -594,6 +594,7 @@ a.card:hover {
 .projects .background-text {
   color: white;
   margin-top: 100px;
+  margin-bottom: 100px;
   margin-left: 100px;
   width: 65%; }
 
@@ -795,6 +796,7 @@ a.card:hover {
 .chapters .background-text {
   color: white;
   margin-top: 100px;
+  margin-bottom: 100px;
   margin-left: 100px;
   width: 65%; }
 
@@ -813,7 +815,7 @@ a.card:hover {
 .users .jumbotron .main-text {
   background: rgba(57, 57, 57, 0.8);
   color: white;
-  width: 600px;
+  max-width: 600px;
   padding: 2rem; }
   .users .jumbotron .main-text .tagline {
     position: relative;

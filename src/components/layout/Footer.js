@@ -36,7 +36,23 @@ export default () => {
         </a>
       </div>
       <div className="container text-center">
-        <p className="text-muted py-3 mt-3">Website created by Jack McGregor</p>
+        <p className="text-muted py-3 mt-3">
+          Website created by Jack McGregor <br />
+          <a
+            href="https://github.com/patchyj"
+            target="_blank"
+            style={{ padding: "10px" }}
+          >
+            <i className="fab fa-github" style={{ fontSize: "20px" }} />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/jack-mcgregor/"
+            target="_blank"
+            style={{ padding: "10px" }}
+          >
+            <i className="fab fa-linkedin" style={{ fontSize: "20px" }} />
+          </a>
+        </p>
         <p className="text-muted">
           <i className="far fa-copyright px-3" />
           2018 Circle of Intrapreneurs

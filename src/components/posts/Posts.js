@@ -107,6 +107,7 @@ class Posts extends Component {
                   <a
                     className="nav-link active"
                     target="_blank"
+                    rel="noopener noreferrer"
                     href="https://twitter.com/circleofyi?lang=en/"
                   >
                     <i className="fab fa-twitter" />
@@ -114,6 +115,7 @@ class Posts extends Component {
                   <a
                     className="nav-link"
                     target="_blank"
+                    rel="noopener noreferrer"
                     href="https://www.linkedin.com/company/circle-of-young-intrapreneurs//"
                   >
                     <i className="fab fa-linkedin" />
@@ -121,6 +123,7 @@ class Posts extends Component {
                   <a
                     className="nav-link"
                     target="_blank"
+                    rel="noopener noreferrer"
                     href="https://www.facebook.com/CircleOfYoungIntrapreneurs/"
                   >
                     <i className="fab fa-facebook" />
@@ -128,6 +131,7 @@ class Posts extends Component {
                   <a
                     className="nav-link"
                     target="_blank"
+                    rel="noopener noreferrer"
                     href="https://www.instagram.com/thecircleofyi/?hl=en"
                   >
                     <i className="fab fa-instagram" />
@@ -135,6 +139,7 @@ class Posts extends Component {
                   <a
                     className="nav-link"
                     target="_blank"
+                    rel="noopener noreferrer"
                     href="https://www.eventbrite.com/o/circle-of-young-intrapreneurs-17921353432"
                   >
                     <svg

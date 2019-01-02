@@ -119,13 +119,25 @@ class User extends Component {
                 </Moment>
               </h3>
               <div className="">
-                <a href={`http://twitter.com/${twitterUrl}`} target="_blank">
+                <a
+                  href={`http://twitter.com/${twitterUrl}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <i className="fab fa-twitter" />
                 </a>
-                <a href={`http://linkedin.com${linkedinUrl}`} target="_blank">
+                <a
+                  href={`http://linkedin.com${linkedinUrl}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <i className="fab fa-linkedin" />
                 </a>
-                <a href={`mailto:${email}`} target="_blank">
+                <a
+                  href={`mailto:${email}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <i className="fas fa-envelope" />
                 </a>
               </div>

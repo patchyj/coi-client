@@ -7,27 +7,35 @@ export default () => {
         <a
           href="https://www.facebook.com/CircleOfYoungIntrapreneurs/"
           target="_blank"
+          rel="noopener noreferrer"
         >
           <i className="fab fa-facebook" />
         </a>
-        <a href="https://twitter.com/circleofyi?lang=en/" target="_blank">
+        <a
+          href="https://twitter.com/circleofyi?lang=en/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <i className="fab fa-twitter" />
         </a>
         <a
           href="https://www.linkedin.com/company/circle-of-young-intrapreneurs//"
           target="_blank"
+          rel="noopener noreferrer"
         >
           <i className="fab fa-linkedin" />
         </a>
         <a
           href="https://www.instagram.com/thecircleofyi/?hl=en"
           target="_blank"
+          rel="noopener noreferrer"
         >
           <i className="fab fa-instagram" />
         </a>
         <a
           href="https://www.youtube.com/channel/UCtM8zWux6MF5CGAXcNqLuwg"
           target="_blank"
+          rel="noopener noreferrer"
         >
           <i className="fab fa-youtube" />
         </a>
@@ -41,6 +49,7 @@ export default () => {
           <a
             href="https://github.com/patchyj"
             target="_blank"
+            rel="noopener noreferrer"
             style={{ padding: "10px" }}
           >
             <i className="fab fa-github" style={{ fontSize: "20px" }} />
@@ -48,6 +57,7 @@ export default () => {
           <a
             href="https://www.linkedin.com/in/jack-mcgregor/"
             target="_blank"
+            rel="noopener noreferrer"
             style={{ padding: "10px" }}
           >
             <i className="fab fa-linkedin" style={{ fontSize: "20px" }} />

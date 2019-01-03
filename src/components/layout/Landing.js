@@ -386,7 +386,18 @@ class Landing extends Component {
         {/* Hubs */}
         <div className="container-fluid section section-red map-container">
           <h1 className="display-4">Our Global Hubs</h1>
-          {/*<div id="map" className="container" />*/}
+          <div className="row">
+            <div className="col-md-6 offset-md-3 py-3">
+              Think you've got what it takes to lead a Circle chapter? <br />
+              <a
+                href="mailto:team@circleofyi.com"
+                style={{ textDecoration: "underline" }}
+              >
+                Send us an email
+              </a>{" "}
+              with your CV!
+            </div>
+          </div>
           <div className="row">
             <div className="col-md-12">
               <GoogleApiWrapper />

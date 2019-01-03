@@ -469,7 +469,7 @@ a:hover {
           transform: rotate(310deg) translate(-100px); }
 
 .map-container {
-  height: 600px; }
+  height: 750px; }
 
 @media only screen and (max-width: 420px) {
   .landing .section {
@@ -1085,20 +1085,38 @@ a.card:hover {
   100% {
     background: #9965b0; } }
 
+.profile .container-fluid > .row {
+  margin-right: 0; }
+
 .profile .jumbotron-fluid {
   background: grey;
-  padding: 30px;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: cover !important;
   height: 300px;
   transition: 0.2s; }
   .profile .jumbotron-fluid:hover {
     -webkit-filter: brightness(0.5);
             filter: brightness(0.5); }
+    .profile .jumbotron-fluid:hover .image-upload {
+      color: white; }
+      .profile .jumbotron-fluid:hover .image-upload:hover {
+        color: #b6b6b6; }
+  .profile .jumbotron-fluid .image-upload {
+    color: transparent;
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    font-size: 2rem;
+    transition: 0.2s;
+    cursor: pointer; }
 
 .profile .profilePic {
   position: absolute;
   border-radius: 50%;
-  top: 80px;
-  left: 70px;
+  top: 0;
+  left: 0;
+  margin: 3em;
   width: 200px;
   height: 200px;
   -o-object-fit: cover;
@@ -1107,6 +1125,18 @@ a.card:hover {
   .profile .profilePic:hover {
     -webkit-filter: brightness(0.5);
             filter: brightness(0.5); }
+    .profile .profilePic:hover .image-upload {
+      color: white; }
+      .profile .profilePic:hover .image-upload:hover {
+        color: #b6b6b6; }
+  .profile .profilePic .image-upload {
+    color: transparent;
+    position: absolute;
+    right: 20%;
+    top: 65%;
+    font-size: 2rem;
+    transition: 0.2s;
+    cursor: pointer; }
 
 .profile .nameInput {
   border: 0; }
@@ -1116,6 +1146,21 @@ a.card:hover {
 .profile .textarea {
   border: 1px solid #b1b1b1;
   padding: 5px 10px; }
+
+.profile .cityName {
+  color: #dd3545;
+  transition: 0.2s; }
+  .profile .cityName:hover {
+    color: #a91c2a; }
+
+.profile .btn {
+  width: 100%;
+  padding: 15px;
+  background: #dd3545;
+  color: white;
+  transition: 0.2s; }
+  .profile .btn:hover {
+    background: #931924; }
 
 .admin .jumbotron {
   height: 300px;

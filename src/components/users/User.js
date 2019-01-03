@@ -85,7 +85,7 @@ class User extends Component {
                 return (
                   <tr key={i}>
                     <td>
-                      <Link to={`/projects/${project.id}`}>
+                      <Link to={`/projects/${project._id}`}>
                         {project.title}
                       </Link>
                     </td>

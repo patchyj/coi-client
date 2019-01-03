@@ -1,19 +1,45 @@
 .profile {
+  .container-fluid > .row {
+    margin-right: 0;
+  }
   .jumbotron-fluid {
     background: grey;
-    padding: 30px;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-size: cover !important;
+    // padding: 30px;
     height: 300px;
     transition: 0.2s;
 
     &:hover {
       filter: brightness(0.5);
+
+      .image-upload {
+        color: white;
+
+        &:hover {
+          color: rgb(182, 182, 182);
+        }
+      }
+    }
+
+    .image-upload {
+      // display: none;
+      color: transparent;
+      position: absolute;
+      right: 30px;
+      top: 30px;
+      font-size: 2rem;
+      transition: 0.2s;
+      cursor: pointer;
     }
   }
   .profilePic {
     position: absolute;
     border-radius: 50%;
-    top: 80px;
-    left: 70px;
+    top: 0;
+    left: 0;
+    margin: 3em;
     width: 200px;
     height: 200px;
     object-fit: cover;
@@ -21,6 +47,24 @@
 
     &:hover {
       filter: brightness(0.5);
+
+      .image-upload {
+        color: white;
+
+        &:hover {
+          color: rgb(182, 182, 182);
+        }
+      }
+    }
+
+    .image-upload {
+      color: transparent;
+      position: absolute;
+      right: 20%;
+      top: 65%;
+      font-size: 2rem;
+      transition: 0.2s;
+      cursor: pointer;
     }
   }
 
@@ -35,5 +79,26 @@
   .textarea {
     border: 1px solid #b1b1b1;
     padding: 5px 10px;
+  }
+
+  .cityName {
+    color: $main-red;
+    transition: 0.2s;
+
+    &:hover {
+      color: darken($main-red, 15%);
+    }
+  }
+
+  .btn {
+    width: 100%;
+    padding: 15px;
+    background: $main-red;
+    color: $main-white;
+    transition: 0.2s;
+
+    &:hover {
+      background: darken($main-red, 20%);
+    }
   }
 }

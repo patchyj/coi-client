@@ -108,19 +108,26 @@ class Profile extends Component {
         <div
           className="jumbotron-fluid "
           style={{ background: `url(${bannerPic})` }}
-        />
-        <img
-          src={profilePic}
-          className="img-fluid profilePic"
-          alt="profile image"
-        />
+        >
+          <i className="image-upload far fa-images" />
+        </div>
+        <div className="profilePic">
+          <img
+            src={profilePic}
+            className="img-fluid profilePic"
+            alt="profile image"
+          />
+          <i className="image-upload far fa-images" />
+        </div>
         <div className="container-fluid ">
           <div className="row">
             {/* LEFT */}
             <div className="col-md-3 bg-main-red p-5 left">
               <ul className="list-group list-group-flush">
-                <li className="list-group-item">Project Proposals</li>
-                <li className="list-group-item">Posts</li>
+                <li className="list-group-item display-4-5">
+                  Project Proposals
+                </li>
+                <li className="list-group-item display-4-5">Posts</li>
               </ul>
             </div>
             {/* RIGHT */}
@@ -191,7 +198,7 @@ class Profile extends Component {
                         <h4 className="col-md-8">
                           {chapter ? (
                             <Link
-                              className="col-md-8"
+                              className="col-md-8 cityName"
                               to={`/chapters/${chapter._id}`}
                             >
                               {chapter.city}
@@ -279,7 +286,7 @@ class Profile extends Component {
                 <div className="col-md-8 offset-md-2 bg-main-white mb-5 p-3 text-left">
                   <input
                     type="submit"
-                    className="btn btn-primary"
+                    className="btn"
                     value="Save Changes"
                     onClick={this.onSubmit}
                   />

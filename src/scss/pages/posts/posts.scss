@@ -50,6 +50,7 @@
   .posts-row {
     margin-bottom: 0 !important;
     a {
+      color: $main-red;
       &:hover {
         text-decoration: none;
       }

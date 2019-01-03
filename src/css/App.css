@@ -1009,8 +1009,10 @@ a.card:hover {
 
 .posts .posts-row {
   margin-bottom: 0 !important; }
-  .posts .posts-row a:hover {
-    text-decoration: none; }
+  .posts .posts-row a {
+    color: #dd3545; }
+    .posts .posts-row a:hover {
+      text-decoration: none; }
 
 .posts .sidenav {
   position: -webkit-sticky;
@@ -1085,15 +1087,26 @@ a.card:hover {
 
 .profile .jumbotron-fluid {
   background: grey;
-  padding: 30px; }
+  padding: 30px;
+  height: 300px;
+  transition: 0.2s; }
+  .profile .jumbotron-fluid:hover {
+    -webkit-filter: brightness(0.5);
+            filter: brightness(0.5); }
 
 .profile .profilePic {
+  position: absolute;
   border-radius: 50%;
-  margin-left: 20px;
+  top: 80px;
+  left: 70px;
   width: 200px;
   height: 200px;
   -o-object-fit: cover;
-     object-fit: cover; }
+     object-fit: cover;
+  transition: 0.2s; }
+  .profile .profilePic:hover {
+    -webkit-filter: brightness(0.5);
+            filter: brightness(0.5); }
 
 .profile .nameInput {
   border: 0; }

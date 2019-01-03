@@ -187,8 +187,19 @@ class Resources extends Component {
             <Carousel data={projectLifecycle} />
           </div>
         </div>
-        <div className="container-fluid py-5">
-          <h1 className="display-4 text-center pb-3">Your Toolkit</h1>
+        <div className="container-fluid pt-5">
+          <h1 className="display-4 text-center">Your Toolkit</h1>
+          <div className="row">
+            <small className="col-md-8 offset-md-2 my-5">
+              DISCLAIMER: [The Circle of Young Intrapreneurs] provides these
+              materials for not-for-profit use only. By downloading these
+              materials, you agree not to use the content for profit-making
+              purposes. If you would like to use these materials for a
+              profit-making purpose, such as in a corporate program, please
+              contact{" "}
+              <a href="mailtp:team@circleofyi.com">team@circleofyi.com.</a>
+            </small>
+          </div>
           <div className="container">
             {/* NAV */}
             <nav>

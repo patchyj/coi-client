@@ -108,13 +108,12 @@ class Profile extends Component {
         <div
           className="jumbotron-fluid "
           style={{ background: `url(${bannerPic})` }}
-        >
-          <img
-            src={profilePic}
-            className="img-fluid profilePic"
-            alt="profile image"
-          />
-        </div>
+        />
+        <img
+          src={profilePic}
+          className="img-fluid profilePic"
+          alt="profile image"
+        />
         <div className="container-fluid ">
           <div className="row">
             {/* LEFT */}

@@ -27,6 +27,7 @@ import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import ForgotPassword from "./components/auth/ForgotPassword.js";
 import PasswordReset from "./components/auth/PasswordReset.js";
+import Waiting from "./components/auth/Waiting.js";
 // ------- users -------
 import User from "./components/users/User.js";
 // ------- Profiles -------
@@ -107,8 +108,9 @@ class App extends Component {
             <Route exact path="/" component={Landing} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />
-            <Route exact path="/password_reset" component={PasswordReset} />
+            <Route exact path="/reset/:token" component={PasswordReset} />
             <Route exact path="/forgot_password" component={ForgotPassword} />
+            <Route exact path="/waiting" component={Waiting} />
 
             <Route exact path="/chapters" component={Chapters} />
             <Route exact path="/chapters/:id" component={Chapter} />

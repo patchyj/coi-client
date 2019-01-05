@@ -175,3 +175,17 @@ export const setLead = (id, history) => dispatch => {
       })
     );
 };
+
+export const resetPassword = (email, history) => dispatch => {
+  axios
+    .post("/api/users/forgot", email)
+    .then(res => {
+      history.push("/password_reset");
+    })
+    .catch(err => {
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      });
+    });
+};

@@ -103,6 +103,8 @@ class AdminIndex extends Component {
       address: "",
       bannerPic: "",
       twitterUrl: "",
+      facebookUrl: "",
+      linkedinUrl: "",
       ready: true,
       chapterName: {},
       chapterCoords: {},
@@ -113,11 +115,11 @@ class AdminIndex extends Component {
     this.addPhoto = this.addPhoto.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.handleTwitterChange = this.handleTwitterChange.bind(this);
+    this.handleSocialChange = this.handleSocialChange.bind(this);
   }
 
-  handleTwitterChange(e) {
-    this.setState({ twitterUrl: e.target.value });
+  handleSocialChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
   }
 
   sortBy(key) {
@@ -240,6 +242,8 @@ class AdminIndex extends Component {
       lat: this.state.chapterCoords.lat,
       lng: this.state.chapterCoords.lng,
       twitterUrl: this.state.twitterUrl,
+      facebookUrl: this.state.facebookUrl,
+      linkedinUrl: this.state.linkedinUrl,
       bannerPic: this.state.bannerPic
     };
 
@@ -454,8 +458,25 @@ class AdminIndex extends Component {
                   type="text"
                   placeholder="Twitter URL"
                   className="my-2 p-2"
-                  onChange={this.handleTwitterChange}
+                  onChange={this.handleSocialChange}
                   value={this.state.twitterUrl}
+                  name="twitterUrl"
+                />
+                <input
+                  type="text"
+                  placeholder="Facebook URL"
+                  className="my-2 p-2"
+                  onChange={this.handleSocialChange}
+                  value={this.state.facebookUrl}
+                  name="facebookUrl"
+                />
+                <input
+                  type="text"
+                  placeholder="LinkedIn URL"
+                  className="my-2 p-2"
+                  onChange={this.handleSocialChange}
+                  value={this.state.linkedinUrl}
+                  name="linkedinUrl"
                 />
                 <div className="form-group">
                   <label htmlFor="" style={{ color: "black" }}>

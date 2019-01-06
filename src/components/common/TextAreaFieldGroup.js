@@ -6,6 +6,8 @@ const TestAreaFieldGroup = ({
   name,
   placeholder,
   value,
+  rows,
+  cols,
   error,
   info,
   onChange,
@@ -22,6 +24,8 @@ const TestAreaFieldGroup = ({
         value={value}
         onChange={onChange}
         autoComplete={autoComplete}
+        cols={cols}
+        rows={rows}
       />
       {info && <small className="form-text text-muted">{info}</small>}
       {error && <div className="invalid-feedback">{error}</div>}
@@ -34,10 +38,11 @@ TestAreaFieldGroup.propTypes = {
   placeholder: PropTypes.string,
   value: PropTypes.string.isRequired,
   info: PropTypes.string,
+  rows: PropTypes.string,
+  cols: PropTypes.string,
   error: PropTypes.string,
   onChange: PropTypes.func.isRequired,
-  autoComplete: PropTypes.func,
-  options: PropTypes.array.isRequired
+  autoComplete: PropTypes.func
 };
 
 export default TestAreaFieldGroup;

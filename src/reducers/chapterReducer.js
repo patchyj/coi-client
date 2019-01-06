@@ -1,11 +1,27 @@
-import { GET_CHAPTERS } from "../actions/types";
+import {
+  GET_CHAPTER,
+  GET_CHAPTERS,
+  GET_CHAPTER_MEMBERS
+} from "../actions/types";
 
 const initialState = {
-  chapters: null
+  chapter: null,
+  chapters: null,
+  members: null
 };
 
 export default function(state = initialState, action) {
   switch (action.type) {
+    case GET_CHAPTER:
+      return {
+        ...state,
+        chapter: action.payload
+      };
+    case GET_CHAPTER_MEMBERS:
+      return {
+        ...state,
+        members: action.payload
+      };
     case GET_CHAPTERS:
       return {
         ...state,

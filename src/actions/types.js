@@ -15,4 +15,6 @@ export const GET_POST = "GET_POST";
 export const GET_PROJECTS = "GET_PROJECTS";
 export const GET_PROJECT = "GET_PROJECT";
 // CHAPTER ACTIONS
+export const GET_CHAPTER = "GET_CHAPTER";
 export const GET_CHAPTERS = "GET_CHAPTERS";
+export const GET_CHAPTER_MEMBERS = "GET_CHAPTER_MEMBERS";

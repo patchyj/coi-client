@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { createProject } from "../../actions/projectActions";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
 
 class ProjectProposal extends Component {
   constructor() {
@@ -10,7 +11,8 @@ class ProjectProposal extends Component {
       title: "",
       intro: "",
       impact: "",
-      businesscase: ""
+      businesscase: "",
+      errors: {}
     };
 
     this.onChange = this.onChange.bind(this);
@@ -19,6 +21,12 @@ class ProjectProposal extends Component {
 
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
+      this.setState({ errors: nextProps.errors });
+    }
   }
 
   onSubmit(e) {
@@ -35,9 +43,10 @@ class ProjectProposal extends Component {
   }
 
   render() {
+    const { errors } = this.state;
     return (
       <div className="projects container-fluid">
-        <div className="row">
+        <div className="row" style={{ marginRight: "0" }}>
           <div className="col-md-6 text-center bg-main-red-gradient p-5">
             <h1 className="display-2 mb-5">Have an idea?</h1>
             <p className="display-4-5  mt-5">
@@ -54,56 +63,56 @@ class ProjectProposal extends Component {
             <form onSubmit={this.onSubmit}>
               <div className="form-group">
                 <label className="label">Give a title for your proposal</label>
-                <textarea
-                  name="title"
-                  id=""
+                <TextAreaFieldGroup
+                  placeholder=""
                   cols="30"
                   rows="2"
-                  className="form-control"
-                  onChange={this.onChange}
+                  name="title"
                   value={this.state.title}
+                  onChange={this.onChange}
+                  error={errors.title}
                 />
               </div>
               <div className="form-group">
                 <label className="label">
                   Write a short introduction for your idea
                 </label>
-                <textarea
+                <TextAreaFieldGroup
+                  placeholder=""
                   name="intro"
-                  id=""
                   cols="30"
-                  rows="5"
-                  className="form-control"
-                  onChange={this.onChange}
+                  rows="3"
                   value={this.state.intro}
+                  onChange={this.onChange}
+                  error={errors.intro}
                 />
               </div>
               <div className="form-group">
                 <label className="label">
                   Give an overview of your proposal's impact here
                 </label>
-                <textarea
+                <TextAreaFieldGroup
+                  placeholder=""
                   name="impact"
-                  id=""
                   cols="30"
                   rows="5"
-                  className="form-control"
-                  onChange={this.onChange}
                   value={this.state.impact}
+                  onChange={this.onChange}
+                  error={errors.impact}
                 />
               </div>
               <div className="form-group">
                 <label className="label">
                   How would this be viewed from a businesscase point of view?
                 </label>
-                <textarea
+                <TextAreaFieldGroup
+                  placeholder=""
                   name="businesscase"
-                  id=""
                   cols="30"
                   rows="5"
-                  className="form-control"
-                  onChange={this.onChange}
                   value={this.state.businesscase}
+                  onChange={this.onChange}
+                  error={errors.businesscase}
                 />
               </div>
               <input type="submit" value="Submit your idea" className="" />
@@ -121,7 +130,8 @@ ProjectProposal.propTypes = {
 
 const mapStateToProps = state => ({
   projects: state.projects,
-  auth: state.auth
+  auth: state.auth,
+  errors: state.errors
 });
 
 export default connect(

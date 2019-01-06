@@ -29,19 +29,28 @@ class Chapters extends Component {
 
     if (this.state.chapters.length !== 0) {
       results = (
-        <table className="table table-striped table-sm table-hover text-center">
+        <table className="table table-hover text-center">
           <thead>
             <tr className="thead-red">
               <th>Chapter</th>
               <th>Country</th>
               <th>Formed</th>
+              <th>
+                <i className="fab fa-twitter" />
+              </th>
+              <th>
+                <i className="fab fa-facebook" />
+              </th>
+              <th>
+                <i className="fab fa-linkedin" />
+              </th>
               <th>Members</th>
             </tr>
           </thead>
           <tbody>
             {this.state.chapters.map((chapter, key) => {
               return (
-                <tr key={key}>
+                <tr key={key} style={{ borderBottom: "1px solid #eee" }}>
                   <td>
                     <Link to={`/chapters/${chapter._id}`}>{chapter.city}</Link>
                   </td>
@@ -50,6 +59,48 @@ class Chapters extends Component {
                     <Moment format="D MMM YYYY" withtitle="true">
                       {chapter.date}
                     </Moment>
+                  </td>
+                  <td>
+                    {chapter.twitterUrl ? (
+                      <a href={chapter.twitterUrl}>
+                        <i
+                          className="fab fa-twitter"
+                          style={{ color: "#f20031" }}
+                        />
+                      </a>
+                    ) : (
+                      <i className="fab fa-twitter" style={{ color: "#bbb" }} />
+                    )}
+                  </td>
+                  <td>
+                    {chapter.facebookUrl ? (
+                      <a href={chapter.facebookUrl}>
+                        <i
+                          className="fab fa-facebook"
+                          style={{ color: "#f20031" }}
+                        />
+                      </a>
+                    ) : (
+                      <i
+                        className="fab fa-facebook"
+                        style={{ color: "#bbb" }}
+                      />
+                    )}
+                  </td>
+                  <td>
+                    {chapter.linkedinUrl ? (
+                      <a href={chapter.linkedinUrl}>
+                        <i
+                          className="fab fa-linkedin"
+                          style={{ color: "#f20031" }}
+                        />
+                      </a>
+                    ) : (
+                      <i
+                        className="fab fa-linkedin"
+                        style={{ color: "#bbb" }}
+                      />
+                    )}
                   </td>
                   <td>{chapter.members > 0 ? chapter.members : "0"}</td>
                 </tr>

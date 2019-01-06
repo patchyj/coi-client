@@ -40,6 +40,14 @@
     padding: 3rem;
   }
 
+  .table-section {
+    padding-top: 0 !important;
+
+    .row [class~="col"] {
+      margin-left: 0 !important;
+    }
+  }
+
   table {
     filter: none;
   }

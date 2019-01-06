@@ -783,6 +783,11 @@ a.card:hover {
   color: white;
   padding: 3rem; }
 
+.chapter .table-section {
+  padding-top: 0 !important; }
+  .chapter .table-section .row [class~="col"] {
+    margin-left: 0 !important; }
+
 .chapter table {
   -webkit-filter: none;
           filter: none; }

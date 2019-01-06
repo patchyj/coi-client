@@ -127,9 +127,9 @@ class Chapter extends Component {
             </a>
           </div>
         </div>
-        <div className="container py-5">
+        <div className="container table-section pt-5">
           <div className="row">
-            <div className="col-md-9">
+            <div className="col-md-9" style={{ paddingLeft: "0" }}>
               <table className="table table-striped table-sm table-hover text-center">
                 <thead>
                   <tr className="thead-red">

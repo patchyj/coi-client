@@ -93,6 +93,40 @@ class Chapter extends Component {
             </div>
           </div>
         </div>
+        <div
+          className="jumbotron dash bg-main-red"
+          style={{ height: "auto", paddingTop: "0" }}
+        >
+          <div className="container text-center">
+            <a
+              href="https://www.facebook.com/CircleOfYoungIntrapreneurs/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ padding: "20px" }}
+            >
+              <i className="fab fa-facebook fa-2x" />
+            </a>
+            <a
+              href="https://twitter.com/circleofyi?lang=en/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ padding: "20px" }}
+            >
+              <i className="fab fa-twitter fa-2x" />
+            </a>
+            <a
+              href="https://www.linkedin.com/company/circle-of-young-intrapreneurs//"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ padding: "20px" }}
+            >
+              <i className="fab fa-linkedin fa-2x" />
+            </a>
+            <a href="mailto:team@circleofyi.com" style={{ padding: "20px" }}>
+              <i className="fas fa-envelope fa-2x" />
+            </a>
+          </div>
+        </div>
         <div className="container py-5">
           <div className="row">
             <div className="col-md-9">

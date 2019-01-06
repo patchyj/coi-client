@@ -34,7 +34,7 @@ class ForgotPassword extends Component {
     return (
       <div className="container py-5">
         <form
-          className="form-signin forgot-password col-sm-4 offset-sm-4 py-5"
+          className="form-signin forgot-password col-md-6 offset-md-3 col-sm-4 offset-sm-4 py-5"
           onSubmit={this.onSubmit}
         >
           <h1 className="h3 mb-3 font-weight-normal">Forgot your password?</h1>
@@ -54,7 +54,10 @@ class ForgotPassword extends Component {
               autoFocus
             />
           </div>
-          <button className="btn btn-lg btn-block" type="submit">
+          <button
+            className="btn btn-lg btn-block btn-main-submit"
+            type="submit"
+          >
             Send reset email
           </button>
           <ul className="list-group mt-4">

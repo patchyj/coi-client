@@ -110,7 +110,10 @@ class PasswordReset extends Component {
               required
             />
           </div>
-          <button className="btn btn-lg btn-primary btn-block" type="submit">
+          <button
+            className="btn btn-lg btn-block btn-main-submit"
+            type="submit"
+          >
             Sign in
           </button>
 

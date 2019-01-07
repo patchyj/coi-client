@@ -1,9 +1,9 @@
-import axios from "axios";
-import { GET_ERRORS, GET_PROJECTS, GET_PROJECT } from "./types";
+import axios from 'axios';
+import { GET_ERRORS, GET_PROJECTS, GET_PROJECT } from './types';
 
 export const getProjects = () => dispatch => {
   axios
-    .get("/api/projects")
+    .get('/api/projects')
     .then(res => {
       dispatch({
         type: GET_PROJECTS,
@@ -37,7 +37,7 @@ export const getProject = id => dispatch => {
 
 export const createProject = (newProject, history) => dispatch => {
   axios
-    .post("/api/projects", newProject)
+    .post('/api/projects', newProject)
     .then(res => {
       history.push(`/projects`);
     })
@@ -49,8 +49,20 @@ export const createProject = (newProject, history) => dispatch => {
     );
 };
 
+export const updateProject = (updatedProject, id, history) => dispatch => {
+  axios
+    .put(`/api/projects/${id}`, updatedProject)
+    .then(res => history.push('/projects'))
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
+
 export const deleteProject = id => dispatch => {
-  if (window.confirm("Are you sure? This can not be undone!")) {
+  if (window.confirm('Are you sure? This can not be undone!')) {
     axios
       .delete(`/api/projects/${id}`)
       .then(res =>

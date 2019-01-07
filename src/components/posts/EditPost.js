@@ -1,20 +1,20 @@
-import React, { Component } from "react";
-import { getPost, editPost } from "../../actions/postActions";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import axios from "axios";
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
+import React, { Component } from 'react';
+import { getPost, editPost } from '../../actions/postActions';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import axios from 'axios';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 class EditPost extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      title: "",
-      tagline: "",
+      title: '',
+      tagline: '',
       images: [],
-      body: "",
+      body: '',
       errors: {}
     };
 
@@ -49,11 +49,11 @@ class EditPost extends Component {
   addPhoto(e) {
     var formData = new FormData();
 
-    formData.append("file", e.target.files[0]);
-    formData.append("name", "test");
+    formData.append('file', e.target.files[0]);
+    formData.append('name', 'test');
 
     axios
-      .post("/api/posts/files", formData)
+      .post('/api/posts/files', formData)
       .then(res => {
         let arr = [];
         arr.push(res.data.url);
@@ -65,10 +65,19 @@ class EditPost extends Component {
   componentDidMount() {
     const { id } = this.props.match.params;
     this.props.getPost(id);
+    axios
+      .get(`/api/posts/${id}`)
+      .then(post => {
+        this.setState({
+          body: post.data.body
+        });
+      })
+      .catch(err => this.setState({ errors: err }));
   }
 
   render() {
     const { post, comments } = this.props.posts;
+    const { body } = this.state;
 
     return (
       <div className="editPost">
@@ -107,7 +116,7 @@ class EditPost extends Component {
                 <div className="form-group">
                   <ReactQuill
                     className=""
-                    value={post.body}
+                    value={body}
                     onChange={this.onChangeBody}
                   />
                 </div>

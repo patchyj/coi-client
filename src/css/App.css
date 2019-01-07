@@ -623,7 +623,7 @@ a.card:hover {
     color: #dd3545 !important;
     transition: 0.2s; }
     .projects .card a:hover {
-      color: #931924 !important; }
+      color: #3c0a0f !important; }
   .projects .card .card-title,
   .projects .card .card-body {
     color: #dd3545 !important; }
@@ -785,8 +785,6 @@ a.card:hover {
 
 .chapter .table-section {
   padding-top: 0 !important; }
-  .chapter .table-section .row [class~="col"] {
-    margin-left: 0 !important; }
 
 .chapter table {
   -webkit-filter: none;

@@ -1106,13 +1106,6 @@ a.card:hover {
   background-size: cover !important;
   height: 300px;
   transition: 0.2s; }
-  .profile .jumbotron-fluid:hover {
-    -webkit-filter: brightness(0.5);
-            filter: brightness(0.5); }
-    .profile .jumbotron-fluid:hover .image-upload {
-      color: white; }
-      .profile .jumbotron-fluid:hover .image-upload:hover {
-        color: #b6b6b6; }
   .profile .jumbotron-fluid .image-upload {
     color: transparent;
     position: absolute;
@@ -1133,13 +1126,6 @@ a.card:hover {
   -o-object-fit: cover;
      object-fit: cover;
   transition: 0.2s; }
-  .profile .profilePic:hover {
-    -webkit-filter: brightness(0.5);
-            filter: brightness(0.5); }
-    .profile .profilePic:hover .image-upload {
-      color: white; }
-      .profile .profilePic:hover .image-upload:hover {
-        color: #b6b6b6; }
   .profile .profilePic .image-upload {
     color: transparent;
     position: absolute;

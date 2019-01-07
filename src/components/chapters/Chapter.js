@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import axios from "axios";
-import { TwitterTimelineEmbed } from "react-twitter-embed";
-import Moment from "react-moment";
-import { PropTypes } from "prop-types";
-import { connect } from "react-redux";
-import { getChapter, getChapterMembers } from "../../actions/chapterActions";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { TwitterTimelineEmbed } from 'react-twitter-embed';
+import Moment from 'react-moment';
+import { PropTypes } from 'prop-types';
+import { connect } from 'react-redux';
+import { getChapter, getChapterMembers } from '../../actions/chapterActions';
 
 class Chapter extends Component {
   constructor(props) {
@@ -68,7 +68,7 @@ class Chapter extends Component {
           );
         });
       } else {
-        leadList = "";
+        leadList = '';
       }
 
       return (
@@ -103,41 +103,41 @@ class Chapter extends Component {
           </div>
           <div
             className="jumbotron dash bg-main-red"
-            style={{ height: "auto", paddingTop: "0" }}
+            style={{ height: 'auto', paddingTop: '0' }}
           >
-            <div className="container text-center">
+            <div className="container-fluid text-center">
               <a
                 href={chapter.facebookUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ padding: "20px" }}
+                style={{ padding: '20px' }}
               >
-                <i className="fab fa-facebook fa-2x" />
+                <i className="fab fa-facebook" style={{ fontSize: '25px' }} />
               </a>
               <a
                 href={chapter.twitterUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ padding: "20px" }}
+                style={{ padding: '20px' }}
               >
-                <i className="fab fa-twitter fa-2x" />
+                <i className="fab fa-twitter" style={{ fontSize: '25px' }} />
               </a>
               <a
                 href={chapter.linkedinUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ padding: "20px" }}
+                style={{ padding: '20px' }}
               >
-                <i className="fab fa-linkedin fa-2x" />
+                <i className="fab fa-linkedin" style={{ fontSize: '25px' }} />
               </a>
-              <a href="mailto:team@circleofyi.com" style={{ padding: "20px" }}>
-                <i className="fas fa-envelope fa-2x" />
+              <a href="mailto:team@circleofyi.com" style={{ padding: '20px' }}>
+                <i className="fas fa-envelope" style={{ fontSize: '25px' }} />
               </a>
             </div>
           </div>
-          <div className="container table-section pt-5">
-            <div className="row">
-              <div className="col-md-9" style={{ paddingLeft: "0" }}>
+          <div className="container-fluid table-section pt-5">
+            <div className="row" style={{ paddingLeft: '0', marginRight: '0' }}>
+              <div className="col-md-9" style={{ paddingRight: '0' }}>
                 <table className="table table-hover text-center">
                   <thead>
                     <tr className="thead-red">
@@ -151,7 +151,7 @@ class Chapter extends Component {
                   <tbody>
                     {this.state.members.map((member, i) => {
                       return (
-                        <tr key={i} style={{ borderBottom: "1px solid #eee" }}>
+                        <tr key={i} style={{ borderBottom: '1px solid #eee' }}>
                           <td>
                             <Link to={`/users/${member._id}`}>
                               {member.firstName} {member.lastName}
@@ -164,9 +164,9 @@ class Chapter extends Component {
                             </Moment>
                           </td>
                           <td>
-                            {member.projects ? member.projects.length : ""}
+                            {member.projects ? member.projects.length : ''}
                           </td>
-                          <td>{member.posts ? member.posts.length : ""}</td>
+                          <td>{member.posts ? member.posts.length : ''}</td>
                         </tr>
                       );
                     })}

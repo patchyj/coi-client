@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import axios from "axios";
-import Moment from "react-moment";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import Moment from 'react-moment';
 
 class User extends Component {
   constructor(props) {
@@ -44,6 +44,10 @@ class User extends Component {
     window.scrollTo(0, 0);
   }
 
+  truncate(string, n) {
+    return string.substr(0, n - 1) + (string.length > n ? '...' : '');
+  }
+
   render() {
     if (this.state.user) {
       const {
@@ -72,34 +76,36 @@ class User extends Component {
       let projectList;
 
       if (this.state.projects.length !== 0) {
-        projectList = (
-          <table className="table table-striped table-sm table-hover text-center">
-            <thead>
-              <tr className="thead-red">
-                <th>Title</th>
-                <th>Posted</th>
-              </tr>
-            </thead>
-            <tbody>
-              {this.state.projects.map((project, i) => {
-                return (
-                  <tr key={i}>
-                    <td>
-                      <Link to={`/projects/${project._id}`}>
-                        {project.title}
-                      </Link>
-                    </td>
-                    <td>
+        projectList = this.state.projects.map((project, i) => {
+          return (
+            <div className="card text-left">
+              <div className="card-header ">
+                <h3>
+                  <Link
+                    to={`/projects/${project._id}`}
+                    style={{ color: '#f20031' }}
+                  >
+                    {project.title}
+                  </Link>
+                </h3>
+              </div>
+              <div className="card-body">
+                <blockquote className="blockquote">
+                  <small>{this.truncate(project.intro, 200)}</small>
+                  <br />
+                  <footer className="blockquote-footer text-right">
+                    {' '}
+                    <cite title="Source Title">
                       <Moment format="D MMM YYYY" withtitle="true">
                         {project.date}
                       </Moment>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        );
+                    </cite>
+                  </footer>
+                </blockquote>
+              </div>
+            </div>
+          );
+        });
       } else {
         projectList = <div className="spinner" />;
       }
@@ -113,7 +119,7 @@ class User extends Component {
               </h1>
               <h5 className="py-3 tagline">{tagline}</h5>
               <h3 className="">
-                Member since{" "}
+                Member since{' '}
                 <Moment format="D MMM YYYY" withtitle="true">
                   {date}
                 </Moment>
@@ -127,7 +133,7 @@ class User extends Component {
                   <i className="fab fa-twitter" />
                 </a>
                 <a
-                  href={`http://linkedin.com${linkedinUrl}`}
+                  href={`http://linkedin.com/${linkedinUrl}`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -156,7 +162,7 @@ class User extends Component {
           <div className="jumbotron text-center">
             {this.state.projects.length !== 0
               ? projectList
-              : "No projects proposed"}
+              : 'No projects proposed'}
           </div>
         </div>
       );

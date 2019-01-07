@@ -1,23 +1,23 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import {
   getUsers,
   getCurrentUser,
   setAdmin,
   setLead
-} from "../../../actions/authAction";
-import { getProjects } from "../../../actions/projectActions";
-import PropTypes from "prop-types";
-import axios from "axios";
-import Moment from "react-moment";
+} from '../../../actions/authAction';
+import { getProjects } from '../../../actions/projectActions';
+import PropTypes from 'prop-types';
+import axios from 'axios';
+import Moment from 'react-moment';
 // import LocationSearchInput from "../../chapters/NewChapterComponent";
-import PlacesAutocomplete from "react-places-autocomplete";
-import { geocodeByAddress, getLatLng } from "react-places-autocomplete";
+import PlacesAutocomplete from 'react-places-autocomplete';
+import { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 
 const AdminCheckBox = ({ role, onChange, name, id }) => {
   let adminInput;
-  if (role === "admin") {
+  if (role === 'admin') {
     adminInput = (
       <input
         role={role}
@@ -53,7 +53,7 @@ const AdminCheckBox = ({ role, onChange, name, id }) => {
 
 const LeadCheckBox = ({ role, onChange, dataName, id, city }) => {
   let leadInput;
-  if (role === "lead") {
+  if (role === 'lead') {
     leadInput = (
       <input
         id={id}
@@ -97,14 +97,14 @@ class AdminIndex extends Component {
       admin: {},
       users: [],
       direction: {
-        chapter_id: "asc"
+        chapter_id: 'asc'
       },
       isAdmin: false,
-      address: "",
-      bannerPic: "",
-      twitterUrl: "",
-      facebookUrl: "",
-      linkedinUrl: "",
+      address: '',
+      bannerPic: '',
+      twitterUrl: '',
+      facebookUrl: '',
+      linkedinUrl: '',
       ready: true,
       chapterName: {},
       chapterCoords: {},
@@ -125,19 +125,19 @@ class AdminIndex extends Component {
   sortBy(key) {
     this.setState({
       users: this.state.users.sort((a, b) =>
-        this.state.direction[key] === "asc"
+        this.state.direction[key] === 'asc'
           ? parseInt(a[key], 10) - parseInt(b[key], 10)
           : parseInt(b[key], 10) - parseInt(a[key], 10)
       ),
       direction: {
-        [key]: this.state.direction[key] === "asc" ? "des" : "asc"
+        [key]: this.state.direction[key] === 'asc' ? 'des' : 'asc'
       }
     });
   }
 
   setAdminClick(e) {
     const role = e.target.attributes.role.value;
-    if (role === "admin") {
+    if (role === 'admin') {
       const res = window.confirm(
         `Are you sure you want to remove ${
           e.target.attributes.name.value
@@ -162,11 +162,11 @@ class AdminIndex extends Component {
 
   setLeadClick(e) {
     const role = e.target.attributes.role.value;
-    if (role === "lead") {
+    if (role === 'lead') {
       const res = window.confirm(
         `Are you sure you want to remove ${
-          e.target.attributes["data-name"].value
-        } as a lead of ${e.target.attributes["data-city"].value}?'`
+          e.target.attributes['data-name'].value
+        } as a lead of ${e.target.attributes['data-city'].value}?'`
       );
       if (res) {
         this.props.setLead(e.target.id, this.props.history);
@@ -175,8 +175,8 @@ class AdminIndex extends Component {
     } else {
       const res = window.confirm(
         `Are you sure you want to make ${
-          e.target.attributes["data-name"].value
-        } a lead of ${e.target.attributes["data-city"].value}?`
+          e.target.attributes['data-name'].value
+        } a lead of ${e.target.attributes['data-city'].value}?`
       );
       if (res) {
         this.props.setLead(e.target.id, this.props.history);
@@ -192,7 +192,7 @@ class AdminIndex extends Component {
   handleSelect = address => {
     geocodeByAddress(address)
       .then(results => {
-        let countryCode = results[0].formatted_address.split(",");
+        let countryCode = results[0].formatted_address.split(',');
         let chapter = {
           city: countryCode[0].trim(),
           country: countryCode[1].trim()
@@ -209,7 +209,7 @@ class AdminIndex extends Component {
   componentDidMount() {
     const { user } = this.props.auth;
     if (!user.admin) {
-      this.props.history.push("/profile");
+      this.props.history.push('/profile');
     }
 
     if (user.admin) {
@@ -222,12 +222,12 @@ class AdminIndex extends Component {
   addPhoto(e) {
     var formData = new FormData();
 
-    formData.append("file", e.target.files[0]);
-    formData.append("name", "test");
+    formData.append('file', e.target.files[0]);
+    formData.append('name', 'test');
     this.setState({ ready: false });
 
     axios
-      .post("/api/posts/files", formData)
+      .post('/api/posts/files', formData)
       .then(res => {
         this.setState({ bannerPic: res.data.url, ready: true });
       })
@@ -248,7 +248,7 @@ class AdminIndex extends Component {
     };
 
     axios
-      .post("/api/chapters", newChapter)
+      .post('/api/chapters', newChapter)
       .then(chapter => this.props.history.push(`/chapters`))
       .catch(err => this.setState({ errors: err }));
   }
@@ -264,13 +264,14 @@ class AdminIndex extends Component {
           <thead>
             <tr className="thead-red">
               <th>Member</th>
+              <th>Username</th>
               <th>Email</th>
               <th>
-                Chapter{" "}
+                Chapter{' '}
                 <i
                   className="fas fa-chevron-down"
-                  onClick={() => this.sortBy("chapter_id")}
-                  style={{ cursor: "pointer" }}
+                  onClick={() => this.sortBy('chapter_id')}
+                  style={{ cursor: 'pointer' }}
                 />
               </th>
               <th>Joined</th>
@@ -298,12 +299,13 @@ class AdminIndex extends Component {
                       {user.firstName} {user.lastName}
                     </Link>
                   </td>
+                  <td>{user.username}</td>
                   <td>{user.email}</td>
                   <td>
                     <Link
-                      to={`/chapters/${user.chapter ? user.chapter._id : ""}`}
+                      to={`/chapters/${user.chapter ? user.chapter._id : ''}`}
                     >
-                      {`${user.chapter ? user.chapter.city : ""}`}
+                      {`${user.chapter ? user.chapter.city : ''}`}
                     </Link>
                   </td>
                   <td>
@@ -317,13 +319,13 @@ class AdminIndex extends Component {
                       <a href={`http://linkedin.com${user.linkedinUrl}`}>
                         <i
                           className="fab fa-linkedin"
-                          style={{ color: "lime" }}
+                          style={{ color: 'lime' }}
                         />
                       </a>
                     ) : (
                       <i
                         className="fab fa-linkedin"
-                        style={{ color: "#aaa" }}
+                        style={{ color: '#aaa' }}
                       />
                     )}
                   </td>
@@ -332,11 +334,11 @@ class AdminIndex extends Component {
                       <a href={`http://twitter.com${user.twitterUrl}`}>
                         <i
                           className="fab fa-twitter"
-                          style={{ color: "lime" }}
+                          style={{ color: 'lime' }}
                         />
                       </a>
                     ) : (
-                      <i className="fab fa-twitter" style={{ color: "#aaa" }} />
+                      <i className="fab fa-twitter" style={{ color: '#aaa' }} />
                     )}
                   </td>
                   <td>
@@ -363,7 +365,7 @@ class AdminIndex extends Component {
                         onChange={this.setLeadClick.bind(this)}
                         dataName={`${user.firstName} ${user.lastName}`}
                         id={user._id}
-                        city={user.chapter ? user.chapter.city : ""}
+                        city={user.chapter ? user.chapter.city : ''}
                       />
                     ) : (
                       <LeadCheckBox
@@ -371,7 +373,7 @@ class AdminIndex extends Component {
                         onChange={this.setLeadClick.bind(this)}
                         dataName={`${user.firstName} ${user.lastName}`}
                         id={user._id}
-                        city={user.chapter ? user.chapter.city : ""}
+                        city={user.chapter ? user.chapter.city : ''}
                       />
                     )}
                   </td>
@@ -425,20 +427,20 @@ class AdminIndex extends Component {
                     <div>
                       <input
                         {...getInputProps({
-                          placeholder: "Search Places ...",
-                          className: "location-search-input p-2"
+                          placeholder: 'Search Places ...',
+                          className: 'location-search-input p-2'
                         })}
                       />
                       <div className="autocomplete-dropdown-container">
                         {loading && <div>Loading...</div>}
                         {suggestions.map(suggestion => {
                           const className = suggestion.active
-                            ? "suggestion-item--active"
-                            : "suggestion-item";
+                            ? 'suggestion-item--active'
+                            : 'suggestion-item';
                           // inline style for demonstration purpose
                           const style = suggestion.active
-                            ? { backgroundColor: "#fafafa", cursor: "pointer" }
-                            : { backgroundColor: "#ffffff", cursor: "pointer" };
+                            ? { backgroundColor: '#fafafa', cursor: 'pointer' }
+                            : { backgroundColor: '#ffffff', cursor: 'pointer' };
                           return (
                             <div
                               {...getSuggestionItemProps(suggestion, {
@@ -479,7 +481,7 @@ class AdminIndex extends Component {
                   name="linkedinUrl"
                 />
                 <div className="form-group">
-                  <label htmlFor="" style={{ color: "black" }}>
+                  <label htmlFor="" style={{ color: 'black' }}>
                     Upload an image
                   </label>
                   <input
@@ -487,7 +489,7 @@ class AdminIndex extends Component {
                     className="form-control-file"
                     name="image"
                     onChange={this.addPhoto}
-                    style={{ color: "black" }}
+                    style={{ color: 'black' }}
                   />
                 </div>
                 {this.state.ready ? (
@@ -495,7 +497,7 @@ class AdminIndex extends Component {
                     type="submit"
                     value="Submit"
                     onClick={this.onSubmit}
-                    style={{ width: "100%" }}
+                    style={{ width: '100%' }}
                   />
                 ) : (
                   <input type="submit" value="Uploading..." disabled />
@@ -504,8 +506,7 @@ class AdminIndex extends Component {
             </div>
           </div>
         </div>
-
-        {results}
+        <div className="table-container">{results}</div>
       </div>
     );
   }

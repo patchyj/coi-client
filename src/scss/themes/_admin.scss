@@ -33,6 +33,10 @@
       }
     }
   }
+
+  .table-container {
+    overflow-x: scroll;
+  }
   input:not(.setCheckboxes) {
     width: 100% !important;
   }

@@ -1,36 +1,53 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
-import axios from "axios";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import axios from 'axios';
 // Redux
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
 // Actions
-import { getCurrentUser, updateUser } from "../../actions/authAction";
+import { getCurrentUser, updateUser } from '../../actions/authAction';
 
 class Profile extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      username: "",
-      firstName: "",
-      lastName: "",
-      email: "",
-      organisation: "",
-      linkedinUrl: "",
-      twitterUrl: "",
-      tagline: "",
-      profilePic: "",
-      bannerPic: "",
-      bio: "",
+      username: '',
+      firstName: '',
+      lastName: '',
+      email: '',
+      organisation: '',
+      linkedinUrl: '',
+      twitterUrl: '',
+      tagline: '',
+      profilePic: '',
+      bannerPic: '',
+      bio: '',
       chapter: {},
       errors: {},
-      user: {}
+      user: {},
+      ready: true
     };
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.addPhoto = this.addPhoto.bind(this);
+  }
+
+  addPhoto(e, imageType) {
+    var formData = new FormData();
+
+    formData.append('file', e.target.files[0]);
+    formData.append('name', 'test');
+    this.setState({ ready: false });
+
+    axios
+      .post('/api/posts/files', formData)
+      .then(res => {
+        this.setState({ [imageType]: res.data.url, ready: true });
+      })
+      .catch(errors => this.setState({ errors }));
   }
 
   onChange(e) {
@@ -204,10 +221,10 @@ class Profile extends Component {
                               {chapter.city}
                             </Link>
                           ) : (
-                            ""
+                            ''
                           )}
-                          {admin ? <small>(admin)</small> : ""}
-                          {lead ? <small>(lead)</small> : ""}
+                          {admin ? <small>(admin)</small> : ''}
+                          {lead ? <small>(lead)</small> : ''}
                         </h4>
                       </div>
                       <div className="form-inline my-1">
@@ -252,6 +269,30 @@ class Profile extends Component {
                           error={errors.organisation}
                         />
                       </div>
+                    </div>
+                  </div>
+                  <div className="image-uploads text-center">
+                    <div className="form-inline py-3">
+                      <label htmlFor="" className="col-md-4">
+                        Banner Image
+                      </label>
+                      <input
+                        type="file"
+                        className="form-control-file col-md-8"
+                        name="bannerPic"
+                        onChange={e => this.addPhoto(e, 'bannerPic')}
+                      />
+                    </div>
+                    <div className="form-inline py-1">
+                      <label htmlFor="" className="col-md-4">
+                        Profie Image
+                      </label>
+                      <input
+                        type="file"
+                        className="form-control-file col-md-8"
+                        name="profilePic"
+                        onChange={e => this.addPhoto(e, 'profilePic')}
+                      />
                     </div>
                   </div>
                 </div>

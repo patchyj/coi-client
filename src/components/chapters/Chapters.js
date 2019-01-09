@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import axios from "axios";
-import Moment from "react-moment";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import Moment from 'react-moment';
 
 class Chapters extends Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class Chapters extends Component {
 
   componentDidMount() {
     axios
-      .get("/api/chapters")
+      .get('/api/chapters')
       .then(res => {
         this.setState({
           chapters: res.data
@@ -50,7 +50,7 @@ class Chapters extends Component {
           <tbody>
             {this.state.chapters.map((chapter, key) => {
               return (
-                <tr key={key} style={{ borderBottom: "1px solid #eee" }}>
+                <tr key={key} style={{ borderBottom: '1px solid #eee' }}>
                   <td>
                     <Link to={`/chapters/${chapter._id}`}>{chapter.city}</Link>
                   </td>
@@ -65,11 +65,11 @@ class Chapters extends Component {
                       <a href={chapter.twitterUrl}>
                         <i
                           className="fab fa-twitter"
-                          style={{ color: "#f20031" }}
+                          style={{ color: '#f20031' }}
                         />
                       </a>
                     ) : (
-                      <i className="fab fa-twitter" style={{ color: "#bbb" }} />
+                      <i className="fab fa-twitter" style={{ color: '#bbb' }} />
                     )}
                   </td>
                   <td>
@@ -77,13 +77,13 @@ class Chapters extends Component {
                       <a href={chapter.facebookUrl}>
                         <i
                           className="fab fa-facebook"
-                          style={{ color: "#f20031" }}
+                          style={{ color: '#f20031' }}
                         />
                       </a>
                     ) : (
                       <i
                         className="fab fa-facebook"
-                        style={{ color: "#bbb" }}
+                        style={{ color: '#bbb' }}
                       />
                     )}
                   </td>
@@ -92,17 +92,17 @@ class Chapters extends Component {
                       <a href={chapter.linkedinUrl}>
                         <i
                           className="fab fa-linkedin"
-                          style={{ color: "#f20031" }}
+                          style={{ color: '#f20031' }}
                         />
                       </a>
                     ) : (
                       <i
                         className="fab fa-linkedin"
-                        style={{ color: "#bbb" }}
+                        style={{ color: '#bbb' }}
                       />
                     )}
                   </td>
-                  <td>{chapter.members > 0 ? chapter.members : "0"}</td>
+                  <td>{chapter.members > 0 ? chapter.members : '0'}</td>
                 </tr>
               );
             })}
@@ -133,13 +133,13 @@ class Chapters extends Component {
             the heart of everything the Circle does and are there to help
             create, and support, social intrapreneurs in their cities. Think you
             have what it takes to become a Circle Chapter Lead? Drop an email
-            with your CV to{" "}
+            with your CV to{' '}
             <a href="mailto:team@circleofyi.com">team@circleofyi.com</a>
           </p>
         </div>
         <div className="container-fluid bg-main-white">
           <div className="jumbotron jumbotron-fluid bg-main-white">
-            {results}
+            <div className="table-container">{results}</div>
           </div>
         </div>
       </div>

@@ -1,19 +1,19 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { getPost, addComment, deletePost } from "../../actions/postActions";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import Moment from "react-moment";
-import Comments from "../comments/Comments";
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { getPost, addComment, deletePost } from '../../actions/postActions';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import Moment from 'react-moment';
+import Comments from '../comments/Comments';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 class Post extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      commentBody: "",
+      commentBody: '',
       comments: []
     };
   }
@@ -43,7 +43,7 @@ class Post extends Component {
   onDeleteClick(e) {
     const { id } = this.props.match.params;
     this.props.deletePost(id);
-    this.props.history.push("/posts");
+    this.props.history.push('/posts');
     window.location.reload();
   }
 
@@ -62,7 +62,7 @@ class Post extends Component {
     }
 
     const crudLinks = (
-      <div className="py-2">
+      <div className="py-2" style={{ position: 'absolute' }}>
         <Link to={`/posts/${post._id}/edit`}>
           <i className="fas fa-edit" />
         </Link>
@@ -81,8 +81,8 @@ class Post extends Component {
 
     return (
       <div className="post container p-3">
-        <div className="row p-5">
-          <div className="col-md-6 p-2 text-right">
+        <div className="row py-5">
+          <div className="col-md-6 py-2 text-right">
             <h1>{post.title}</h1>
             <h4 className="tagline">
               <span className="quote">"</span>
@@ -90,7 +90,7 @@ class Post extends Component {
             </h4>
             <div className="row">
               <div className="col-5 offset-2 text-left">
-                <p>{post.user ? user : ""}</p>
+                <p>{post.user ? user : ''}</p>
               </div>
               <div className="col-5 text-right">
                 <span className="text-muted">
@@ -101,15 +101,15 @@ class Post extends Component {
               </div>
             </div>
           </div>
-          <div className="col-md-5 col-sm-12">{post.images ? image : ""}</div>
-          <div className="col-md-1 col-sm-12">{admin ? crudLinks : ""}</div>
+          <div className="col-md-5 col-sm-12">{post.images ? image : ''}</div>
+          <div className="col-md-1 col-sm-12">{admin ? crudLinks : ''}</div>
         </div>
-        <div className="row p-5">
+        <div className="row py-5">
           <ReactQuill value={post.body} readOnly={true} modules={modules} />
         </div>
         <div className="container comments">
-          <div className="row p-5">
-            <div className="col-7 offset-2">
+          <div className="row py-5">
+            <div className="col-md-7 offset-md-2 col-sm-12">
               <h5 className="">Leave a comment</h5>
               <form className="py-3" onSubmit={this.onSubmit.bind(this)}>
                 <div className="form-group-row">

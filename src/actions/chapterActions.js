@@ -1,10 +1,10 @@
-import axios from "axios";
+import axios from 'axios';
 import {
   GET_ERRORS,
   GET_CHAPTER,
   GET_CHAPTER_MEMBERS,
   GET_CHAPTERS
-} from "./types";
+} from './types';
 
 export const getChapter = id => dispatch => {
   axios
@@ -42,7 +42,7 @@ export const getChapterMembers = id => dispatch => {
 
 export const getChapters = () => dispatch => {
   axios
-    .get("/api/chapters")
+    .get('/api/chapters')
     .then(res => {
       dispatch({
         type: GET_CHAPTERS,
@@ -55,4 +55,21 @@ export const getChapters = () => dispatch => {
         payload: {}
       })
     );
+};
+
+export const updateChapter = (id, updatedChapter) => dispatch => {
+  axios
+    .put(`/api/chapters/${id}`, updatedChapter)
+    .then(res => {
+      dispatch({
+        type: GET_CHAPTER,
+        payload: res.data
+      });
+    })
+    .catch(err => {
+      dispatch({
+        type: GET_ERRORS,
+        payload: {}
+      });
+    });
 };

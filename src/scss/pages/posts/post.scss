@@ -1,4 +1,7 @@
 .post {
+  .jumbotron {
+    background: url("../img/blog.jpeg");
+  }
   .tagline {
     .quote {
       color: #000;
@@ -12,8 +15,20 @@
     }
   }
   a {
+    color: $main-red;
+
     &:hover {
       text-decoration: none;
+    }
+  }
+  .fa-edit {
+    &:hover {
+      color: #222;
+    }
+  }
+  .fa-times {
+    &:hover {
+      color: red;
     }
   }
   button {
@@ -72,5 +87,11 @@
   }
   .ql-container.ql-snow {
     border: 0 !important;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .post {
+    padding: auto 10px !important;
   }
 }

@@ -1,20 +1,22 @@
-import React, { Component } from "react";
-import { createPost } from "../../actions/postActions";
-import PropTypes from "prop-types";
-import axios from "axios";
-import { connect } from "react-redux";
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
+import React, { Component } from 'react';
+import { createPost } from '../../actions/postActions';
+import PropTypes from 'prop-types';
+import axios from 'axios';
+import { connect } from 'react-redux';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+// import writingPic from '../../img/write.jpeg';
+import write from '../../img/write.jpeg';
 
 class NewPost extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      title: "",
-      tagline: "",
+      title: '',
+      tagline: '',
       images: [],
-      body: "",
+      body: '',
       ready: true,
       errors: {}
     };
@@ -50,12 +52,12 @@ class NewPost extends Component {
   addPhoto(e) {
     var formData = new FormData();
 
-    formData.append("file", e.target.files[0]);
-    formData.append("name", "test");
+    formData.append('file', e.target.files[0]);
+    formData.append('name', 'test');
     this.setState({ ready: false });
 
     axios
-      .post("/api/posts/files", formData)
+      .post('/api/posts/files', formData)
       .then(res => {
         let arr = [];
         arr.push(res.data.url);
@@ -69,7 +71,7 @@ class NewPost extends Component {
       <div className="newPost">
         <div className="jumbotron">
           <div className="container">
-            <h1 className="display-4">New Post</h1>
+            <h1 className="display-4 pt-5 mt-5">New Post</h1>
           </div>
         </div>
         <div className="container">

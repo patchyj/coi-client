@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { getPosts, deletePost } from "../../actions/postActions";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import Moment from "react-moment";
-import { TwitterTimelineEmbed } from "react-twitter-embed";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { getPosts, deletePost } from '../../actions/postActions';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import Moment from 'react-moment';
+import { TwitterTimelineEmbed } from 'react-twitter-embed';
 
 class Posts extends Component {
   componentDidMount() {
@@ -32,13 +32,13 @@ class Posts extends Component {
               <div className="media">
                 <img
                   className="align-self-center mr-3"
-                  src={post.user ? post.user.profilePic : ""}
+                  src={post.user ? post.user.profilePic : ''}
                   alt=""
                   style={{
-                    width: "60px",
-                    height: "60px",
-                    objectFit: "cover",
-                    borderRadius: "50%"
+                    width: '60px',
+                    height: '60px',
+                    objectFit: 'cover',
+                    borderRadius: '50%'
                   }}
                 />
                 <div className="media-body p-3">
@@ -48,20 +48,20 @@ class Posts extends Component {
                     </Link>
                   </span>
                   <p className="text-muted my-2">
-                    Posted{" "}
+                    Posted{' '}
                     <Moment format="D MMM YYYY" withtitle="true">
                       {post.created_at}
                     </Moment>
                   </p>
                   <p className="">
-                    <i className="text-muted far fa-comment-alt" />{" "}
+                    <i className="text-muted far fa-comment-alt" />{' '}
                     {post.comments ? `${post.comments.length}` : ``}
                   </p>
                 </div>
               </div>
             </div>
             <div className="col-4">
-              <Link to={`/posts/${post.id}`}>{post.images ? image : ""}</Link>
+              <Link to={`/posts/${post.id}`}>{post.images ? image : ''}</Link>
             </div>
           </div>
         );
@@ -74,7 +74,7 @@ class Posts extends Component {
     return (
       <div className="posts">
         <div className="background" />
-        <div className="background-text">
+        <div className="background-text container">
           <h1 className="display-4">Wall</h1>
           <p className="p-responsive">
             Together we are stronger. Remember you are never alone as a Circle
@@ -149,7 +149,7 @@ class Posts extends Component {
                       xmlns="http://www.w3.org/2000/svg"
                       data-reactid="25"
                       style={{
-                        transform: "translateX(-25px)"
+                        transform: 'translateX(-25px)'
                       }}
                     >
                       <g fill="none" fill-rule="evenodd">

@@ -1,22 +1,22 @@
 /*global google*/
-import React, { Component } from "react";
-import { Map, GoogleApiWrapper, InfoWindow, Marker } from "google-maps-react";
+import React, { Component } from 'react';
+import { Map, GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
 // Redux
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { getChapters } from "../../../actions/chapterActions";
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { getChapters } from '../../../actions/chapterActions';
 
-import axios from "axios";
+import axios from 'axios';
 // import chapters and marker image
-import chapters from "./chapters";
-import markerLogo from "../../../img/logo.png";
+import chapters from './chapters';
+import markerLogo from '../../../img/logo.png';
 
 const mapStyles = {
-  width: "100%",
-  height: "400px",
-  margin: "auto",
-  position: "relative",
-  border: "1px solid white"
+  width: '100%',
+  height: '400px',
+  margin: 'auto',
+  position: 'relative',
+  border: '1px solid white'
 };
 
 export class MapContainer extends Component {
@@ -65,108 +65,149 @@ export class MapContainer extends Component {
               anchor: new google.maps.Point(20, 20),
               scaledSize: new google.maps.Size(20, 20)
             }}
+            onClick={this.onMarkerClick}
           />
         );
       });
+      const windows = chapters.map((chapter, key) => {
+        return (
+          <InfoWindow
+            key={key}
+            marker={this.state.activeMarker}
+            visible={this.state.showingInfoWindow}
+          >
+            <div style={{ color: '#f20031' }}>
+              <h3>{this.state.selectedPlace.name}</h3>
+              <ul className="nav justify-content-center mb-3">
+                <li className="nav-item">
+                  <a className="nav-link" href={chapter.facebookUrl}>
+                    <i
+                      className="fab fa-facebook"
+                      style={{ color: '#f20031' }}
+                    />
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link" href={chapter.linkedinUrl}>
+                    <i
+                      className="fab fa-linkedin"
+                      style={{ color: '#f20031' }}
+                    />
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link" href={chapter.twitterUrl}>
+                    <i
+                      className="fab fa-twitter"
+                      style={{ color: '#f20031' }}
+                    />
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </InfoWindow>
+        );
+      });
+
       const mapOptions = [
         {
-          featureType: "administrative",
-          elementType: "geometry",
+          featureType: 'administrative',
+          elementType: 'geometry',
           stylers: [
             {
-              visibility: "off"
+              visibility: 'off'
             }
           ]
         },
         {
-          featureType: "administrative.land_parcel",
+          featureType: 'administrative.land_parcel',
           stylers: [
             {
-              visibility: "off"
+              visibility: 'off'
             }
           ]
         },
         {
-          featureType: "administrative.neighborhood",
+          featureType: 'administrative.neighborhood',
           stylers: [
             {
-              visibility: "off"
+              visibility: 'off'
             }
           ]
         },
         {
-          featureType: "landscape",
+          featureType: 'landscape',
           stylers: [
             {
-              color: "#fefefe"
+              color: '#fefefe'
             }
           ]
         },
         {
-          featureType: "poi",
+          featureType: 'poi',
           stylers: [
             {
-              visibility: "off"
+              visibility: 'off'
             }
           ]
         },
         {
-          featureType: "poi",
-          elementType: "labels.text",
+          featureType: 'poi',
+          elementType: 'labels.text',
           stylers: [
             {
-              visibility: "off"
+              visibility: 'off'
             }
           ]
         },
         {
-          featureType: "road",
+          featureType: 'road',
           stylers: [
             {
-              visibility: "off"
+              visibility: 'off'
             }
           ]
         },
         {
-          featureType: "road",
-          elementType: "labels",
+          featureType: 'road',
+          elementType: 'labels',
           stylers: [
             {
-              visibility: "off"
+              visibility: 'off'
             }
           ]
         },
         {
-          featureType: "road",
-          elementType: "labels.icon",
+          featureType: 'road',
+          elementType: 'labels.icon',
           stylers: [
             {
-              visibility: "off"
+              visibility: 'off'
             }
           ]
         },
         {
-          featureType: "transit",
+          featureType: 'transit',
           stylers: [
             {
-              visibility: "off"
+              visibility: 'off'
             }
           ]
         },
         {
-          featureType: "water",
+          featureType: 'water',
           stylers: [
             {
-              color: "#dd3545"
+              color: '#dd3545'
             }
           ]
         },
         {
-          featureType: "water",
-          elementType: "labels.text",
+          featureType: 'water',
+          elementType: 'labels.text',
           stylers: [
             {
-              visibility: "off"
+              visibility: 'off'
             }
           ]
         }
@@ -183,6 +224,7 @@ export class MapContainer extends Component {
           }}
         >
           {markers}
+          {windows}
         </Map>
       );
     } else {

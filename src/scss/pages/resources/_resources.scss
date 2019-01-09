@@ -11,7 +11,8 @@
     z-index: -999;
   }
   .background-text {
-    position: fixed;
+    margin-bottom: 100px;
+    margin-top: 100px;
     color: $main-white;
     width: 65%;
     left: 100px;
@@ -20,9 +21,7 @@
   .jumbotron-fluid {
     background: white;
   }
-  .jumbotron {
-    margin-top: 400px;
-  }
+
   .nav-item {
     width: 20%;
     text-align: center;
@@ -41,10 +40,12 @@
     }
   }
 
-  .circleTeam {
-    width: 300px;
+  .row .circleTeam {
+    height: 200px;
+    width: auto;
     text-align: center;
     border: 0;
+    object-fit: contain;
   }
 
   .table {
@@ -122,5 +123,21 @@
       background: darken($main-red, 20%);
       border: 0;
     }
+  }
+  .table-container {
+    overflow-x: scroll;
+
+    th,
+    td {
+      max-width: 200px;
+      overflow-wrap: break-word;
+    }
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .background-text {
+    margin-bottom: 50px;
+    margin-top: 50px;
   }
 }

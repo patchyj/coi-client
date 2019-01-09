@@ -1,5 +1,7 @@
 .project {
   .crudLinks {
+    z-index: 99999;
+
     i {
       padding-top: 10px;
       padding-bottom: 10px;
@@ -11,5 +13,19 @@
       }
     }
     transform: translateY(20px);
+
+    .fa-times {
+      &:hover {
+        color: red;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .crudLinks {
+    position: absolute;
+    right: 10px;
+    top: -50px;
   }
 }

@@ -269,32 +269,31 @@ class Profile extends Component {
                           error={errors.organisation}
                         />
                       </div>
+                      <div className="form-inline py-3">
+                        <label htmlFor="" className="col-md-4">
+                          Banner Image
+                        </label>
+                        <input
+                          type="file"
+                          className="form-control-file col-md-8"
+                          name="bannerPic"
+                          onChange={e => this.addPhoto(e, 'bannerPic')}
+                        />
+                      </div>
+                      <div className="form-inline py-1">
+                        <label htmlFor="" className="col-md-4">
+                          Profie Image
+                        </label>
+                        <input
+                          type="file"
+                          className="form-control-file col-md-8"
+                          name="profilePic"
+                          onChange={e => this.addPhoto(e, 'profilePic')}
+                        />
+                      </div>
                     </div>
                   </div>
-                  <div className="image-uploads text-center">
-                    <div className="form-inline py-3">
-                      <label htmlFor="" className="col-md-4">
-                        Banner Image
-                      </label>
-                      <input
-                        type="file"
-                        className="form-control-file col-md-8"
-                        name="bannerPic"
-                        onChange={e => this.addPhoto(e, 'bannerPic')}
-                      />
-                    </div>
-                    <div className="form-inline py-1">
-                      <label htmlFor="" className="col-md-4">
-                        Profie Image
-                      </label>
-                      <input
-                        type="file"
-                        className="form-control-file col-md-8"
-                        name="profilePic"
-                        onChange={e => this.addPhoto(e, 'profilePic')}
-                      />
-                    </div>
-                  </div>
+                  <div className="image-uploads text-center" />
                 </div>
                 <br />
                 <div className="col-md-8 offset-md-2 bg-main-white mt-5 p-3 text-left">

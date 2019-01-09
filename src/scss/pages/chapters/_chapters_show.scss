@@ -51,4 +51,44 @@
   table th {
     border-top: 0;
   }
+
+  .modal {
+    .modal-content {
+      border-radius: 0;
+      border: 0;
+
+      .modal-footer {
+        input[type="submit"] {
+          background-color: $main-red;
+          border-radius: 0;
+          color: $main-white;
+          padding: 10px 15px;
+
+          &:hover {
+            background-color: darken($main-red, 20%);
+          }
+
+          &:disabled {
+            animation: uploading 2s infinite ease-in-out;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+  .table-container {
+    overflow-x: scroll;
+  }
+}
+
+@keyframes uploading {
+  0% {
+    background: rgb(153, 101, 176);
+  }
+  50% {
+    background: rgb(51, 75, 148);
+  }
+  100% {
+    background: rgb(153, 101, 176);
+  }
 }

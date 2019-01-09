@@ -1,5 +1,11 @@
 .newPost,
 .editPost {
+  .jumbotron {
+    background: url("../img/write.jpeg") !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+  }
   form {
     padding: 3em 0;
 

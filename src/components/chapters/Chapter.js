@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useReducer } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { TwitterTimelineEmbed } from 'react-twitter-embed';
@@ -6,6 +6,7 @@ import Moment from 'react-moment';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { getChapter, getChapterMembers } from '../../actions/chapterActions';
+import EditChapter from './EditChapter';
 
 class Chapter extends Component {
   constructor(props) {
@@ -52,6 +53,7 @@ class Chapter extends Component {
 
   render() {
     const { chapter, members } = this.props.chapters;
+    const { user } = this.props.auth;
 
     if (chapter && members) {
       const leads = members.filter(member => member.lead === true);
@@ -64,6 +66,12 @@ class Chapter extends Component {
               <Link to={`/users/${lead._id}`}>
                 {lead.firstName} {lead.lastName}
               </Link>
+              <a href={`mailto:${lead.email}`}>
+                <i
+                  className="fas fa-envelope"
+                  style={{ fontSize: '20px', paddingLeft: '15px' }}
+                />
+              </a>
             </div>
           );
         });
@@ -101,6 +109,9 @@ class Chapter extends Component {
               </div>
             </div>
           </div>
+
+          {user.admin || user.lead ? <EditChapter chapter={chapter} /> : ''}
+
           <div
             className="jumbotron dash bg-main-red"
             style={{ height: 'auto', paddingTop: '0' }}
@@ -130,14 +141,14 @@ class Chapter extends Component {
               >
                 <i className="fab fa-linkedin" style={{ fontSize: '25px' }} />
               </a>
-              <a href="mailto:team@circleofyi.com" style={{ padding: '20px' }}>
-                <i className="fas fa-envelope" style={{ fontSize: '25px' }} />
-              </a>
             </div>
           </div>
           <div className="container-fluid table-section pt-5">
             <div className="row" style={{ paddingLeft: '0', marginRight: '0' }}>
-              <div className="col-md-9" style={{ paddingRight: '0' }}>
+              <div
+                className="col-md-9 table-container"
+                style={{ paddingRight: '0' }}
+              >
                 <table className="table table-hover text-center">
                   <thead>
                     <tr className="thead-red">

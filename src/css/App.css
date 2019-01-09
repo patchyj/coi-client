@@ -643,6 +643,7 @@ a.card:hover {
     margin: auto !important; } }
 
 .project .crudLinks {
+  z-index: 99999;
   -webkit-transform: translateY(20px);
           transform: translateY(20px); }
   .project .crudLinks i {
@@ -652,6 +653,14 @@ a.card:hover {
     transition: 0.2s; }
     .project .crudLinks i:hover {
       color: #666666; }
+  .project .crudLinks .fa-times:hover {
+    color: red; }
+
+@media only screen and (max-width: 767px) {
+  .crudLinks {
+    position: absolute;
+    right: 10px;
+    top: -50px; } }
 
 .resources .background {
   background: url("../img/books.jpeg");
@@ -665,7 +674,8 @@ a.card:hover {
   z-index: -999; }
 
 .resources .background-text {
-  position: fixed;
+  margin-bottom: 100px;
+  margin-top: 100px;
   color: white;
   width: 65%;
   left: 100px;
@@ -673,9 +683,6 @@ a.card:hover {
 
 .resources .jumbotron-fluid {
   background: white; }
-
-.resources .jumbotron {
-  margin-top: 400px; }
 
 .resources .nav-item {
   width: 20%;
@@ -689,10 +696,13 @@ a.card:hover {
   .resources .p-responsive .bold {
     font-weight: 600; }
 
-.resources .circleTeam {
-  width: 300px;
+.resources .row .circleTeam {
+  height: 200px;
+  width: auto;
   text-align: center;
-  border: 0; }
+  border: 0;
+  -o-object-fit: contain;
+     object-fit: contain; }
 
 .resources .table {
   font-weight: 600; }
@@ -751,6 +761,18 @@ a.card:hover {
     background: #931924;
     border: 0; }
 
+.resources .table-container {
+  overflow-x: scroll; }
+  .resources .table-container th,
+  .resources .table-container td {
+    max-width: 200px;
+    overflow-wrap: break-word; }
+
+@media only screen and (max-width: 575px) {
+  .background-text {
+    margin-bottom: 50px;
+    margin-top: 50px; } }
+
 .chapter .container {
   max-width: 1320px; }
 
@@ -793,6 +815,40 @@ a.card:hover {
 .chapter table th {
   border-top: 0; }
 
+.chapter .modal .modal-content {
+  border-radius: 0;
+  border: 0; }
+  .chapter .modal .modal-content .modal-footer input[type="submit"] {
+    background-color: #dd3545;
+    border-radius: 0;
+    color: white;
+    padding: 10px 15px; }
+    .chapter .modal .modal-content .modal-footer input[type="submit"]:hover {
+      background-color: #931924; }
+    .chapter .modal .modal-content .modal-footer input[type="submit"]:disabled {
+      -webkit-animation: uploading 2s infinite ease-in-out;
+              animation: uploading 2s infinite ease-in-out;
+      color: white; }
+
+.chapter .table-container {
+  overflow-x: scroll; }
+
+@-webkit-keyframes uploading {
+  0% {
+    background: #9965b0; }
+  50% {
+    background: #334b94; }
+  100% {
+    background: #9965b0; } }
+
+@keyframes uploading {
+  0% {
+    background: #9965b0; }
+  50% {
+    background: #334b94; }
+  100% {
+    background: #9965b0; } }
+
 .chapters .background {
   background: url("../img/map.png");
   background-repeat: no-repeat;
@@ -816,6 +872,9 @@ a.card:hover {
 
 .chapters .table {
   margin-bottom: 0; }
+
+.chapters .table-container {
+  overflow-x: scroll; }
 
 @media only screen and (max-width: 830px) {
   .background-text {
@@ -919,6 +978,9 @@ a.card:hover {
   .dashboard .social a:hover {
     color: #787878; }
 
+.post .jumbotron {
+  background: url("../img/blog.jpeg"); }
+
 .post .tagline .quote {
   color: #000;
   float: left;
@@ -929,8 +991,16 @@ a.card:hover {
   padding-right: 8px;
   padding-left: 3px; }
 
-.post a:hover {
-  text-decoration: none; }
+.post a {
+  color: #dd3545; }
+  .post a:hover {
+    text-decoration: none; }
+
+.post .fa-edit:hover {
+  color: #222; }
+
+.post .fa-times:hover {
+  color: red; }
 
 .post button {
   background: none;
@@ -978,6 +1048,10 @@ a.card:hover {
 .post .ql-container.ql-snow {
   border: 0 !important; }
 
+@media only screen and (max-width: 575px) {
+  .post {
+    padding: auto 10px !important; } }
+
 .posts .background {
   background: url("../img/blog.jpeg");
   background-repeat: no-repeat;
@@ -990,23 +1064,17 @@ a.card:hover {
   z-index: -999; }
 
 .posts .background-text {
-  position: fixed;
   color: white;
-  -webkit-transform: translateY(-150%);
-          transform: translateY(-150%);
-  width: 65%;
-  left: 100px;
-  z-index: -998; }
+  padding: 1.5em 0; }
 
-.posts .container,
+.posts .container:not(.background-text),
 .posts .container-fluid {
   background: white; }
-  .posts .container .row .row,
+  .posts .container:not(.background-text) .row .row,
   .posts .container-fluid .row .row {
     border: 1px solid rgba(221, 53, 69, 0.5); }
 
 .posts .jumbotron {
-  margin-top: 400px;
   padding: 0;
   background: linear-gradient(135deg, #dd3545 50%, #93246d); }
   .posts .jumbotron a {
@@ -1041,6 +1109,13 @@ a.card:hover {
     transition: 0.2s ease; }
     .posts .sidenav a:hover {
       color: #93246d; }
+
+.newPost .jumbotron,
+.editPost .jumbotron {
+  background: url("../img/write.jpeg") !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important; }
 
 .newPost form,
 .editPost form {
@@ -1079,14 +1154,6 @@ a.card:hover {
 .newPost .ql-container,
 .editPost .ql-container {
   min-height: 250px; }
-
-@-webkit-keyframes uploading {
-  0% {
-    background: #9965b0; }
-  50% {
-    background: #334b94; }
-  100% {
-    background: #9965b0; } }
 
 @keyframes uploading {
   0% {

@@ -1,5 +1,5 @@
-import axios from "axios";
-import { GET_ERRORS, GET_POSTS, GET_POST } from "./types";
+import axios from 'axios';
+import { GET_ERRORS, CLEAR_ERRORS, GET_POSTS, GET_POST } from './types';
 
 export const getPost = id => dispatch => {
   axios
@@ -8,6 +8,10 @@ export const getPost = id => dispatch => {
       dispatch({
         type: GET_POST,
         payload: res.data
+      });
+      dispatch({
+        type: CLEAR_ERRORS,
+        payload: {}
       });
     })
     .catch(err =>
@@ -20,7 +24,7 @@ export const getPost = id => dispatch => {
 
 export const getPosts = () => dispatch => {
   axios
-    .get("/api/posts")
+    .get('/api/posts')
     .then(res => {
       dispatch({
         type: GET_POSTS,
@@ -37,7 +41,7 @@ export const getPosts = () => dispatch => {
 
 export const createPost = (newPost, history) => dispatch => {
   axios
-    .post("/api/posts", newPost)
+    .post('/api/posts', newPost)
     .then(res => {
       history.push(`/posts`);
     })
@@ -68,7 +72,7 @@ export const editPost = (post, id, history) => dispatch => {
 };
 
 export const deletePost = id => dispatch => {
-  if (window.confirm("Are you sure? This can not be undone!")) {
+  if (window.confirm('Are you sure? This can not be undone!')) {
     axios
       .delete(`/api/posts/${id}`)
       .then(res =>
@@ -88,13 +92,13 @@ export const deletePost = id => dispatch => {
 
 export const addComment = (newComment, history) => dispatch => {
   axios
-    .post(`/api/posts/${newComment.post_id}/comments`, newComment)
+    .post(`/api/posts/comments/${newComment.post}`, newComment)
     .then(res => {
       dispatch({
-        type: GET_POSTS,
+        type: GET_POST,
         payload: res.data
       });
-      history.push(`/posts/${newComment.post_id}`);
+      history.push(`/posts/${newComment.post}`);
     })
     .catch(err =>
       dispatch({

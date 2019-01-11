@@ -1,20 +1,23 @@
-export const GET_ERRORS = "GET_ERRORS";
-export const SET_CURRENT_USER = "SET_CURRENT_USER";
-export const SET_ADMIN_USER = "SET_ADMIN_USER";
-export const SET_LEAD_USER = "SET_LEAD_USER";
-export const GET_USERS = "GET_USERS";
+// ERRORS
+export const GET_ERRORS = 'GET_ERRORS';
+export const CLEAR_ERRORS = 'CLEAR_ERRORS';
+// USERS
+export const SET_CURRENT_USER = 'SET_CURRENT_USER';
+export const SET_ADMIN_USER = 'SET_ADMIN_USER';
+export const SET_LEAD_USER = 'SET_LEAD_USER';
+export const GET_USERS = 'GET_USERS';
 // PROFILE ACTIONS
-export const GET_PROFILE = "GET_PROFILE";
-export const GET_PROFILES = "GET_PROFILES";
-export const PROFILE_LOADING = "PROFILE_LOADING";
-export const CLEAR_CURRENT_PROFILE = "CLEAR_CURRENT_PROFILE";
+export const GET_PROFILE = 'GET_PROFILE';
+export const GET_PROFILES = 'GET_PROFILES';
+export const PROFILE_LOADING = 'PROFILE_LOADING';
+export const CLEAR_CURRENT_PROFILE = 'CLEAR_CURRENT_PROFILE';
 // POST ACTIONS
-export const GET_POSTS = "GET_POSTS";
-export const GET_POST = "GET_POST";
+export const GET_POSTS = 'GET_POSTS';
+export const GET_POST = 'GET_POST';
 // PROJECT ACTIONS
-export const GET_PROJECTS = "GET_PROJECTS";
-export const GET_PROJECT = "GET_PROJECT";
+export const GET_PROJECTS = 'GET_PROJECTS';
+export const GET_PROJECT = 'GET_PROJECT';
 // CHAPTER ACTIONS
-export const GET_CHAPTER = "GET_CHAPTER";
-export const GET_CHAPTERS = "GET_CHAPTERS";
-export const GET_CHAPTER_MEMBERS = "GET_CHAPTER_MEMBERS";
+export const GET_CHAPTER = 'GET_CHAPTER';
+export const GET_CHAPTERS = 'GET_CHAPTERS';
+export const GET_CHAPTER_MEMBERS = 'GET_CHAPTER_MEMBERS';

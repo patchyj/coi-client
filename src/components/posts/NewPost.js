@@ -15,8 +15,8 @@ class NewPost extends Component {
     this.state = {
       title: '',
       tagline: '',
-      images: [],
       body: '',
+      images: [],
       ready: true,
       errors: {}
     };

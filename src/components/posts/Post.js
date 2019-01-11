@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { getPost, addComment, deletePost } from '../../actions/postActions';
+import { getCurrentUser } from '../../actions/authAction';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Moment from 'react-moment';
 import Comments from '../comments/Comments';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import axios from 'axios';
+import TestAreaFieldGroup from '../common/TextAreaFieldGroup';
 
 class Post extends Component {
   constructor(props) {
@@ -14,13 +17,40 @@ class Post extends Component {
 
     this.state = {
       commentBody: '',
-      comments: []
+      firstName: '',
+      lastName: '',
+      profilePic: '',
+      errors: {}
     };
   }
 
   componentDidMount() {
     this.props.getPost(this.props.match.params.id);
+    axios
+      .get(`/api/users/${this.props.auth.user.id}/comment`)
+      .then(res => {
+        this.setState({
+          firstName: res.data.firstName,
+          lastName: res.data.lastName,
+          profilePic: res.data.profilePic
+        });
+      })
+      .catch(err => this.setState({ errors: err }));
+
     window.scrollTo(0, 0);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { comments } = this.props.posts.post;
+    if (comments) {
+      if (nextProps.posts.comments.length > comments.length) {
+        this.setState({ commentBody: '' });
+        this.props.getPost(this.props.match.params.id);
+      }
+    }
+    if (nextProps.errors) {
+      this.setState({ errors: nextProps.errors });
+    }
   }
 
   onChange(e) {
@@ -29,15 +59,16 @@ class Post extends Component {
 
   onSubmit(e) {
     e.preventDefault();
+
     const newComment = {
       body: this.state.commentBody,
-      post_id: this.props.posts.post.id,
-      user_id: this.props.auth.user.user_id
+      post: this.props.posts.post._id,
+      user: this.props.auth.user.id,
+      authorName: `${this.state.firstName} ${this.state.lastName}`,
+      profilePic: this.state.profilePic
     };
+
     this.props.addComment(newComment, this.props.history);
-    // clear the form inputs
-    e.target.reset();
-    window.location.reload();
   }
 
   onDeleteClick(e) {
@@ -50,6 +81,7 @@ class Post extends Component {
   render() {
     const { post, comments } = this.props.posts;
     const { admin } = this.props.auth.user;
+    const { errors } = this.state;
 
     let user, image;
 
@@ -112,16 +144,20 @@ class Post extends Component {
             <div className="col-md-7 offset-md-2 col-sm-12">
               <h5 className="">Leave a comment</h5>
               <form className="py-3" onSubmit={this.onSubmit.bind(this)}>
-                <div className="form-group-row">
-                  <textarea
-                    className="form-action"
-                    name="commentBody"
-                    rows="2"
-                    value={this.state.currentBody}
-                    onChange={this.onChange.bind(this)}
-                  />
-                  <input type="submit" value="Submit" className="ml-auto" />
-                </div>
+                <TestAreaFieldGroup
+                  name="commentBody"
+                  rows="2"
+                  value={this.state.commentBody}
+                  onChange={this.onChange.bind(this)}
+                  error={errors.body}
+                  button={
+                    <input
+                      type="submit"
+                      value="Submit"
+                      className="ml-auto col-2"
+                    />
+                  }
+                />
               </form>
               <Comments comments={comments} auth={this.props.auth} />
             </div>
@@ -136,13 +172,15 @@ Post.propTypes = {
   getPost: PropTypes.func.isRequired,
   addComment: PropTypes.func.isRequired,
   deletePost: PropTypes.func.isRequired,
+  getCurrentUser: PropTypes.func.isRequired,
   posts: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
   posts: state.posts,
   auth: state.auth,
-  comments: state.comments
+  comments: state.comments,
+  errors: state.errors
 });
 
 export default connect(
@@ -150,6 +188,23 @@ export default connect(
   {
     getPost,
     addComment,
-    deletePost
+    deletePost,
+    getCurrentUser
   }
 )(Post);
+
+// <div className="form-group-row">
+// <textarea
+//   className="form-action"
+//   name="commentBody"
+//   rows="2"
+//   value={this.state.commentBody}
+//   onChange={this.onChange.bind(this)}
+// />
+// <input type="submit" value="Submit" className="ml-auto" />
+// </div>
+// {errors ? (
+// <div className="invalid-feedback">{errors.body}</div>
+// ) : (
+// ''
+// )}

@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import Comment from "./Comment.js";
+import React, { Component } from 'react';
+import Comment from './Comment.js';
 
 class Comments extends Component {
   constructor(props) {
@@ -22,7 +22,7 @@ class Comments extends Component {
       });
     }
 
-    return <div>{commentList.reverse()}</div>;
+    return <div>{commentList}</div>;
   }
 }
 

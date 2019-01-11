@@ -1012,23 +1012,30 @@ a.card:hover {
 
 .post .comments {
   border-top: 1px solid #d2d2d2; }
+  .post .comments img {
+    border-radius: 50%; }
   .post .comments form .form-group-row {
     box-shadow: none;
     outline: none; }
+  .post .comments form .invalid-feedback {
+    display: block; }
   .post .comments form textarea {
     width: 100%;
     transition: 0.2s;
-    letter-spacing: 2px; }
+    letter-spacing: 2px;
+    min-height: 40px;
+    border-radius: 0; }
     .post .comments form textarea:focus {
       box-shadow: none;
       outline: none;
-      background: #fef9fa; }
+      background: #f2f2f2; }
   .post .comments form input[type="submit"] {
     background: none;
     border: 1px solid #dd3545;
-    padding: 5px 10px;
+    padding: 0;
     color: #dd3545;
-    transition: 0.2s; }
+    transition: 0.2s;
+    min-height: 40px; }
     .post .comments form input[type="submit"]:hover {
       background: #dd3545;
       border: 1px solid #931924;

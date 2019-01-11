@@ -152,7 +152,7 @@ class Posts extends Component {
                         transform: 'translateX(-25px)'
                       }}
                     >
-                      <g fill="none" fill-rule="evenodd">
+                      <g fill="none" fillRule="evenodd">
                         <g id="new-logo/orange" fill="rgb(221, 53, 69)">
                           <g id="logo/new" transform="translate(.347)">
                             <path

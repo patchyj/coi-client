@@ -74,13 +74,19 @@ export class MapContainer extends Component {
           <InfoWindow
             key={key}
             marker={this.state.activeMarker}
+            onOpen={this.windowHasOpened}
+            onClose={this.windowHasClosed}
             visible={this.state.showingInfoWindow}
           >
             <div style={{ color: '#f20031' }}>
               <h3>{this.state.selectedPlace.name}</h3>
               <ul className="nav justify-content-center mb-3">
                 <li className="nav-item">
-                  <a className="nav-link" href={chapter.facebookUrl}>
+                  <a
+                    className="nav-link"
+                    href={chapter.facebookUrl}
+                    target="_blank"
+                  >
                     <i
                       className="fab fa-facebook"
                       style={{ color: '#f20031' }}
@@ -88,7 +94,11 @@ export class MapContainer extends Component {
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href={chapter.linkedinUrl}>
+                  <a
+                    className="nav-link"
+                    href={chapter.linkedinUrl}
+                    target="_blank"
+                  >
                     <i
                       className="fab fa-linkedin"
                       style={{ color: '#f20031' }}
@@ -96,7 +106,11 @@ export class MapContainer extends Component {
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href={chapter.twitterUrl}>
+                  <a
+                    className="nav-link"
+                    href={chapter.twitterUrl}
+                    target="_blank"
+                  >
                     <i
                       className="fab fa-twitter"
                       style={{ color: '#f20031' }}

@@ -1,6 +1,6 @@
-import React from "react";
-import classnames from "classnames";
-import PropTypes from "prop-types";
+import React from 'react';
+import classnames from 'classnames';
+import PropTypes from 'prop-types';
 
 const TestAreaFieldGroup = ({
   name,
@@ -11,13 +11,20 @@ const TestAreaFieldGroup = ({
   error,
   info,
   onChange,
-  autoComplete
+  autoComplete,
+  button
 }) => {
   return (
-    <div className="form-group">
+    <div
+      className={classnames('form-group ', {
+        row: button
+      })}
+    >
       <textarea
-        className={classnames("form-control form-control-lg", {
-          "is-invalid": error
+        className={classnames('form-control ', {
+          'form-control-lg': !button,
+          'is-invalid': error,
+          'col-10': button
         })}
         placeholder={placeholder}
         name={name}
@@ -27,6 +34,7 @@ const TestAreaFieldGroup = ({
         cols={cols}
         rows={rows}
       />
+      {button}
       {info && <small className="form-text text-muted">{info}</small>}
       {error && <div className="invalid-feedback">{error}</div>}
     </div>

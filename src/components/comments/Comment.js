@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import Moment from "react-moment";
-import NestedComment from "./NestedComment.js";
-import axios from "axios";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import Moment from 'react-moment';
+import NestedComment from './NestedComment.js';
+import axios from 'axios';
 
 class Comment extends Component {
   constructor(props) {
@@ -10,7 +10,7 @@ class Comment extends Component {
 
     this.state = {
       show: false,
-      body: "",
+      body: '',
       errors: {}
     };
     this.onChange = this.onChange.bind(this);
@@ -49,7 +49,7 @@ class Comment extends Component {
     const addComment = (
       <form
         className="py-3"
-        style={{ width: "100%" }}
+        style={{ width: '100%' }}
         onSubmit={this.onSubmit.bind(this)}
       >
         <div className="form-group-row">
@@ -65,20 +65,20 @@ class Comment extends Component {
       </form>
     );
 
-    const subCommentList = comment.comments
-      .map((comment, key) => {
-        return <NestedComment comment={comment} key={key} />;
-      })
-      .reverse();
+    // const subCommentList = comment.comments
+    //   .map((comment, key) => {
+    //     return <NestedComment comment={comment} key={key} />;
+    //   })
+    //   .reverse();
 
     return (
-      <div className="media p-1 m-2" style={{ fontSize: "14px" }}>
-        <Link to={`/users/${comment.user.id}`}>
+      <div className="media p-1 m-2" style={{ fontSize: '14px' }}>
+        <Link to={`/users/${comment.user}`}>
           <img
             className="align-self-start mr-3"
-            src={comment.user.profile_pic}
+            src={comment.profilePic}
             alt=""
-            style={{ width: "40px" }}
+            style={{ width: '40px' }}
           />
         </Link>
         <div className="media-body">
@@ -87,20 +87,17 @@ class Comment extends Component {
               {comment.body} <br />
             </div>
             <div className="col-6">
-              <Link to={`/users/${comment.user.id}`}>
-                {comment.user.first_name} {comment.user.last_name}
-              </Link>
+              <Link to={`/users/${comment.user}`}>{comment.authorName}</Link>
             </div>
             <div className="col-6 text-right">
               <span className="text-muted">
                 <Moment format="HH:mm D MMM YYYY" withtitle="true">
-                  {comment.created_at}
+                  {comment.date}
                 </Moment>
               </span>
             </div>
           </div>
-          <div className="row">{this.state.show ? addComment : ""}</div>
-          {subCommentList}
+          <div className="row">{this.state.show ? addComment : ''}</div>
         </div>
         <small className="text-muted">
           <i

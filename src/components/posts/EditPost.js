@@ -13,9 +13,10 @@ class EditPost extends Component {
     this.state = {
       title: '',
       tagline: '',
-      images: [],
       body: '',
-      errors: {}
+      images: [],
+      errors: {},
+      ready: true
     };
 
     this.onChange = this.onChange.bind(this);
@@ -51,13 +52,14 @@ class EditPost extends Component {
 
     formData.append('file', e.target.files[0]);
     formData.append('name', 'test');
+    this.setState({ ready: false });
 
     axios
       .post('/api/posts/files', formData)
       .then(res => {
         let arr = [];
         arr.push(res.data.url);
-        this.setState({ images: arr });
+        this.setState({ images: arr, ready: true });
       })
       .catch(errors => this.setState({ errors }));
   }
@@ -69,7 +71,10 @@ class EditPost extends Component {
       .get(`/api/posts/${id}`)
       .then(post => {
         this.setState({
-          body: post.data.body
+          title: post.data.title,
+          tagline: post.data.tagline,
+          body: post.data.body,
+          images: post.data.images
         });
       })
       .catch(err => this.setState({ errors: err }));
@@ -77,7 +82,7 @@ class EditPost extends Component {
 
   render() {
     const { post, comments } = this.props.posts;
-    const { body } = this.state;
+    const { title, tagline, body, images } = this.state;
 
     return (
       <div className="editPost">
@@ -98,7 +103,7 @@ class EditPost extends Component {
                     className="form-control"
                     placeholder="Enter a title for your post"
                     onChange={this.onChange}
-                    defaultValue={post.title}
+                    defaultValue={title}
                   />
                 </div>
                 <div className="form-group">
@@ -109,7 +114,7 @@ class EditPost extends Component {
                     className="form-control"
                     placeholder="Give your post a tagline"
                     onChange={this.onChange}
-                    defaultValue={post.tagline}
+                    defaultValue={tagline}
                   />
                 </div>
 
@@ -121,11 +126,19 @@ class EditPost extends Component {
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="">Upload an image (not working yet)</label>
-                  <input type="file" className="form-control-file" />
+                  <label htmlFor="">Upload an image</label>
+                  <input
+                    type="file"
+                    className="form-control-file"
+                    name="image"
+                    onChange={this.addPhoto}
+                  />
                 </div>
-
-                <input type="submit" value="Submit" />
+                {this.state.ready ? (
+                  <input type="submit" value="Submit" />
+                ) : (
+                  <input type="submit" value="Uploading..." disabled />
+                )}
               </form>
             </div>
           </div>

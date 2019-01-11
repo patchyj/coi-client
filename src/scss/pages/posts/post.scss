@@ -43,27 +43,37 @@
   .comments {
     border-top: 1px solid lighten($main-grey, 60%);
 
+    img {
+      border-radius: 50%;
+    }
+
     form {
       .form-group-row {
         box-shadow: none;
         outline: none;
       }
+      .invalid-feedback {
+        display: block;
+      }
       textarea {
         width: 100%;
         transition: 0.2s;
         letter-spacing: 2px;
+        min-height: 40px;
+        border-radius: 0;
         &:focus {
           box-shadow: none;
           outline: none;
-          background: lighten($main-red, 45%);
+          background: darken($main-white, 5%);
         }
       }
       input[type="submit"] {
         background: none;
         border: 1px solid $main-red;
-        padding: 5px 10px;
+        padding: 0;
         color: $main-red;
         transition: 0.2s;
+        min-height: 40px;
 
         &:hover {
           background: $main-red;

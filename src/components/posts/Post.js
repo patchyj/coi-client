@@ -137,7 +137,7 @@ class Post extends Component {
           <div className="col-md-1 col-sm-12">{admin ? crudLinks : ''}</div>
         </div>
         <div className="row py-5">
-          <ReactQuill value={post.body} readOnly={true} modules={modules} />
+          <ReactQuill value={post.body || ""} readOnly={true} modules={modules} />
         </div>
         <div className="container comments">
           <div className="row py-5">

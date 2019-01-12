@@ -78,7 +78,6 @@ class Comment extends Component {
             className="align-self-start mr-3"
             src={comment.profilePic}
             alt=""
-            style={{ width: '40px' }}
           />
         </Link>
         <div className="media-body">

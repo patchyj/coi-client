@@ -1013,7 +1013,11 @@ a.card:hover {
 .post .comments {
   border-top: 1px solid #d2d2d2; }
   .post .comments img {
-    border-radius: 50%; }
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    -o-object-fit: cover;
+       object-fit: cover; }
   .post .comments form .form-group-row {
     box-shadow: none;
     outline: none; }

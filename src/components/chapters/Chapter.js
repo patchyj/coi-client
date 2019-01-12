@@ -5,6 +5,8 @@ import { TwitterTimelineEmbed } from 'react-twitter-embed';
 import Moment from 'react-moment';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
+import { getPosts } from '../../actions/postActions';
+import { getProjects } from '../../actions/projectActions';
 import { getChapter, getChapterMembers } from '../../actions/chapterActions';
 import EditChapter from './EditChapter';
 
@@ -22,43 +24,32 @@ class Chapter extends Component {
 
   componentDidMount() {
     const id = this.props.match.params.id;
+    this.props.getPosts();
+    this.props.getProjects();
     this.props.getChapter(id);
     this.props.getChapterMembers(id);
-    // axios
-    //   .get(`/api/chapters/${id}`)
-    //   .then(res => {
-    //     this.setState({
-    //       chapter: res.data,
-    //       country: res.data.country
-    //     });
-    //   })
-    //   .catch(err => {
-    //     this.setState({
-    //       errors: err
-    //     });
-    //   });
-    // axios
-    //   .get(`/api/chapters/${id}/members`)
-    //   .then(res => {
-    //     this.setState({
-    //       members: res.data
-    //     });
-    //   })
-    //   .catch(err => {
-    //     this.setState({
-    //       errors: err
-    //     });
-    //   });
   }
 
   render() {
     const { chapter, members } = this.props.chapters;
+    const { posts } = this.props.posts;
+    const { projects } = this.props.projects;
     const { user } = this.props.auth;
+    let memberRows, leads, leadList, recipients;
 
+    const emailButton = {
+      position: 'absolute',
+      right: '30px',
+      top: '110px',
+      borderRadius: '50%',
+      background: '#f20031',
+      color: 'white'
+    };
+
+    // If Chapter and Memebers loads correctly
     if (chapter && members) {
-      const leads = members.filter(member => member.lead === true);
+      leads = members.filter(member => member.lead === true);
 
-      let leadList;
       if (leads) {
         leadList = leads.map((lead, key) => {
           return (
@@ -77,6 +68,49 @@ class Chapter extends Component {
         });
       } else {
         leadList = '';
+      }
+
+      if (members) {
+        recipients = members
+          .map(member => {
+            return member.email;
+          })
+          .join(',');
+
+        // Member Rows to go in the table
+        if (posts.length > 0 && projects.length > 0) {
+          memberRows = members.map((member, i) => {
+            const memberPosts = posts.filter(
+              post => post.user._id === member._id
+            );
+            const memberProjects = projects.filter(
+              project => project.user._id === member._id
+            );
+
+            return (
+              <tr key={i} style={{ borderBottom: '1px solid #eee' }}>
+                <td>
+                  <Link
+                    to={`/users/${member._id}`}
+                    style={{ color: '#f20031' }}
+                  >
+                    {member.firstName} {member.lastName}
+                  </Link>
+                </td>
+                <td>{member.organisation}</td>
+                <td>
+                  <Moment format="D MMM YYYY" withtitle="true">
+                    {member.date}
+                  </Moment>
+                </td>
+                <td>{memberProjects.length}</td>
+                <td>{memberPosts.length}</td>
+              </tr>
+            );
+          });
+        }
+      } else {
+        recipients = '';
       }
 
       return (
@@ -111,6 +145,18 @@ class Chapter extends Component {
           </div>
 
           {user.admin || user.lead ? <EditChapter chapter={chapter} /> : ''}
+
+          {user.lead ? (
+            <a
+              className="btn"
+              style={emailButton}
+              href={`mailto:${recipients}`}
+            >
+              <i className="fas fa-envelope" />
+            </a>
+          ) : (
+            ''
+          )}
 
           <div
             className="jumbotron dash bg-main-red"
@@ -159,29 +205,7 @@ class Chapter extends Component {
                       <th>Posts</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    {this.state.members.map((member, i) => {
-                      return (
-                        <tr key={i} style={{ borderBottom: '1px solid #eee' }}>
-                          <td>
-                            <Link to={`/users/${member._id}`}>
-                              {member.firstName} {member.lastName}
-                            </Link>
-                          </td>
-                          <td>{member.organisation}</td>
-                          <td>
-                            <Moment format="D MMM YYYY" withtitle="true">
-                              {member.date}
-                            </Moment>
-                          </td>
-                          <td>
-                            {member.projects ? member.projects.length : ''}
-                          </td>
-                          <td>{member.posts ? member.posts.length : ''}</td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
+                  <tbody>{memberRows}</tbody>
                 </table>
               </div>
               <div className="col-md-3">
@@ -202,19 +226,23 @@ class Chapter extends Component {
 }
 
 Chapter.propTypes = {
+  getPosts: PropTypes.func.isRequired,
+  chapters: PropTypes.object.isRequired,
   getChapter: PropTypes.func.isRequired,
-  getChapterMembers: PropTypes.func.isRequired,
-  chapters: PropTypes.object.isRequired
+  getProjects: PropTypes.func.isRequired,
+  getChapterMembers: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
   auth: state.auth,
   chapters: state.chapters,
   chapter: state.chapter,
-  members: state.members
+  members: state.members,
+  posts: state.posts,
+  projects: state.projects
 });
 
 export default connect(
   mapStateToProps,
-  { getChapter, getChapterMembers }
+  { getPosts, getChapter, getChapterMembers, getProjects }
 )(Chapter);

@@ -78,7 +78,8 @@ class EditChapterModal extends Component {
       right: '30px',
       top: '60px',
       borderRadius: '50%',
-      background: '#f20031'
+      background: '#f20031',
+      color: 'white'
     };
 
     const {
@@ -95,7 +96,7 @@ class EditChapterModal extends Component {
       <div>
         <button
           type="button"
-          className="btn btn-primary"
+          className="btn"
           data-toggle="modal"
           data-target="#editChapter"
           style={modalButton}

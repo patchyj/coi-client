@@ -12,8 +12,15 @@ class Posts extends Component {
     window.scrollTo(0, 0);
   }
 
+  onDeleteClick(e) {
+    const { id } = e.target;
+    this.props.deletePost(id);
+    window.location.reload();
+  }
+
   render() {
     const { posts } = this.props.posts;
+    const { user } = this.props.auth;
     let allPosts = [];
 
     if (posts.length !== 0) {
@@ -23,7 +30,27 @@ class Posts extends Component {
           image = <img className="img-fluid" src={post.images[0]} alt="" />;
         }
         return (
-          <div key={index} className="row posts-row p-3 m-3 ">
+          <div
+            key={index}
+            className="row posts-row p-3 m-3 "
+            style={{ position: 'relative' }}
+          >
+            {user.admin ? (
+              <i
+                className="fas fa-times"
+                style={{
+                  position: 'absolute',
+                  right: '5px',
+                  top: '5px',
+                  color: '#f20031'
+                }}
+                id={post._id}
+                onClick={e => this.onDeleteClick(e)}
+              />
+            ) : (
+              ''
+            )}
+
             <div className="col-8">
               <Link to={`/posts/${post._id}`}>
                 <h4 className="display-5">{post.title}</h4>
@@ -50,7 +77,7 @@ class Posts extends Component {
                   <p className="text-muted my-2">
                     Posted{' '}
                     <Moment format="D MMM YYYY" withtitle="true">
-                      {post.created_at}
+                      {post.date}
                     </Moment>
                   </p>
                   <p className="">
@@ -61,7 +88,7 @@ class Posts extends Component {
               </div>
             </div>
             <div className="col-4">
-              <Link to={`/posts/${post.id}`}>{post.images ? image : ''}</Link>
+              <Link to={`/posts/${post._id}`}>{post.images ? image : ''}</Link>
             </div>
           </div>
         );

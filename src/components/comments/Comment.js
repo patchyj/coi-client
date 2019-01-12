@@ -96,14 +96,7 @@ class Comment extends Component {
               </span>
             </div>
           </div>
-          <div className="row">{this.state.show ? addComment : ''}</div>
         </div>
-        <small className="text-muted">
-          <i
-            className="far fa-comment-alt"
-            onClick={this.toggleComment.bind(this)}
-          />
-        </small>
       </div>
     );
   }

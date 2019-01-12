@@ -9,7 +9,7 @@ import Comments from '../comments/Comments';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import axios from 'axios';
-import TestAreaFieldGroup from '../common/TextAreaFieldGroup';
+import TextAreaFieldGroup from '../common/TextAreaFieldGroup';
 
 class Post extends Component {
   constructor(props) {
@@ -83,7 +83,7 @@ class Post extends Component {
     const { admin } = this.props.auth.user;
     const { errors } = this.state;
 
-    let user, image;
+    let user, image, crudLinks;
 
     if (post.user) {
       user = (
@@ -91,17 +91,30 @@ class Post extends Component {
           {post.user.firstName} {post.user.lastName}
         </Link>
       );
-    }
 
-    const crudLinks = (
-      <div className="py-2" style={{ position: 'absolute' }}>
-        <Link to={`/posts/${post._id}/edit`}>
-          <i className="fas fa-edit" />
-        </Link>
-        <br />
-        <i onClick={this.onDeleteClick.bind(this)} className="fas fa-times" />
-      </div>
-    );
+      crudLinks = (
+        <div className="py-2" style={{ position: 'absolute' }}>
+          {/* IF AUTHOR */}
+          {post.user._id == this.props.auth.user.id ? (
+            <Link to={`/posts/${post._id}/edit`}>
+              <i className="fas fa-edit" />
+            </Link>
+          ) : (
+            ''
+          )}
+          <br />
+          {/* IF ADMIN OR AUTHOR */}
+          {post.user._id === this.props.auth.user._id || admin ? (
+            <i
+              onClick={this.onDeleteClick.bind(this)}
+              className="fas fa-times"
+            />
+          ) : (
+            ''
+          )}
+        </div>
+      );
+    }
 
     if (post.images) {
       image = <img className="img-fluid" src={post.images[0]} alt="" />;
@@ -134,7 +147,7 @@ class Post extends Component {
             </div>
           </div>
           <div className="col-md-5 col-sm-12">{post.images ? image : ''}</div>
-          <div className="col-md-1 col-sm-12">{admin ? crudLinks : ''}</div>
+          <div className="col-md-1 col-sm-12">{crudLinks}</div>
         </div>
         <div className="row py-5">
           <ReactQuill
@@ -148,7 +161,7 @@ class Post extends Component {
             <div className="col-md-7 offset-md-2 col-sm-12">
               <h5 className="">Leave a comment</h5>
               <form className="py-3" onSubmit={this.onSubmit.bind(this)}>
-                <TestAreaFieldGroup
+                <TextAreaFieldGroup
                   name="commentBody"
                   rows="2"
                   value={this.state.commentBody}

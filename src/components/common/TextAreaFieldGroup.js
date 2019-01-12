@@ -2,7 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
-const TestAreaFieldGroup = ({
+const TextAreaFieldGroup = ({
   name,
   placeholder,
   value,
@@ -41,7 +41,7 @@ const TestAreaFieldGroup = ({
   );
 };
 
-TestAreaFieldGroup.propTypes = {
+TextAreaFieldGroup.propTypes = {
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   value: PropTypes.string.isRequired,
@@ -53,4 +53,4 @@ TestAreaFieldGroup.propTypes = {
   autoComplete: PropTypes.func
 };
 
-export default TestAreaFieldGroup;
+export default TextAreaFieldGroup;

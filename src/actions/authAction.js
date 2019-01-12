@@ -127,6 +127,8 @@ export const updateUser = (id, userData) => dispatch => {
   axios
     .put(`/api/users/${id}`, userData)
     .then(res => {
+      console.log(res.data);
+
       dispatch({
         type: SET_CURRENT_USER,
         payload: res.data

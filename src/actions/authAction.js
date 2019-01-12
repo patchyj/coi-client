@@ -1,6 +1,6 @@
-import axios from "axios";
-import setAuthToken from "../utils/setAuthToken";
-import jwt_decode from "jwt-decode";
+import axios from 'axios';
+import setAuthToken from '../utils/setAuthToken';
+import jwt_decode from 'jwt-decode';
 
 import {
   GET_ERRORS,
@@ -8,15 +8,15 @@ import {
   SET_ADMIN_USER,
   SET_LEAD_USER,
   GET_USERS
-} from "./types";
+} from './types';
 
 // Register
 // Redux thunk allows us to use dispatch asyncronously
 export const registerUser = (userData, history) => dispatch => {
   axios
-    .post("/api/users/register", userData)
+    .post('/api/users/register', userData)
     .then(res => {
-      history.push("/login");
+      history.push('/login');
     })
     .catch(err =>
       dispatch({
@@ -29,12 +29,12 @@ export const registerUser = (userData, history) => dispatch => {
 // Login - get user token
 export const loginUser = userData => dispatch => {
   axios
-    .post("/api/users/login", userData)
+    .post('/api/users/login', userData)
     .then(res => {
       // Save to local storage
       const { token } = res.data;
       // set token to local storage, which only stores string
-      localStorage.setItem("jwtToken", token);
+      localStorage.setItem('jwtToken', token);
       // set token to auth header
       setAuthToken(token);
       // Decode token to get user data
@@ -81,17 +81,17 @@ export const setLeadUser = user => {
 // Log out user
 export const logoutUser = () => dispatch => {
   // Remove token from local storage
-  localStorage.removeItem("jwtToken");
+  localStorage.removeItem('jwtToken');
   // Remove auth header for future ressponses
   setAuthToken(false);
   // Set current user to empty object which will set isAuthenticated to false
   dispatch(setCurrentUser({}));
-  window.location.href = "/login";
+  window.location.href = '/login';
 };
 
 export const getUsers = () => dispatch => {
   axios
-    .get("/api/users")
+    .get('/api/users')
     .then(res => {
       dispatch({
         type: GET_USERS,
@@ -108,7 +108,7 @@ export const getUsers = () => dispatch => {
 
 export const getCurrentUser = () => dispatch => {
   axios
-    .get("/api/users/current")
+    .get('/api/users/current')
     .then(res => {
       dispatch({
         type: SET_CURRENT_USER,
@@ -123,9 +123,9 @@ export const getCurrentUser = () => dispatch => {
     );
 };
 
-export const updateUser = (id, userDate) => dispatch => {
+export const updateUser = (id, userData) => dispatch => {
   axios
-    .put(`/api/users/${id}`, userDate)
+    .put(`/api/users/${id}`, userData)
     .then(res => {
       dispatch({
         type: SET_CURRENT_USER,
@@ -178,9 +178,9 @@ export const setLead = (id, history) => dispatch => {
 
 export const resetPassword = (email, history) => dispatch => {
   axios
-    .post("/api/users/forgot", email)
+    .post('/api/users/forgot', email)
     .then(res => {
-      history.push("/password_reset");
+      history.push('/password_reset');
     })
     .catch(err => {
       dispatch({

@@ -341,6 +341,7 @@ class Profile extends Component {
 }
 
 Profile.propTypes = {
+  updateUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired
 };
 

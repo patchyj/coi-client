@@ -178,11 +178,11 @@ class Register extends Component {
                 />
                 <p className="text-muted my-4">
                   By click Register, you agree to the{' '}
-                  <a href={privacyPolicy} target="_blank">
+                  <a href={privacyPolicy} download>
                     Terms and Conditions
                   </a>{' '}
                   and{' '}
-                  <a href={privacyPolicy} target="_blank">
+                  <a href={privacyPolicy} download>
                     Privacy Policy
                   </a>
                 </p>

@@ -14,6 +14,8 @@ class Posts extends Component {
 
   onDeleteClick(e) {
     const { id } = e.target;
+    console.log(id);
+
     this.props.deletePost(id);
     window.location.reload();
   }

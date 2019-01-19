@@ -139,16 +139,9 @@ class Profile extends Component {
         <div className="container-fluid ">
           <div className="row">
             {/* LEFT */}
-            <div className="col-md-3 bg-main-red p-5 left">
-              <ul className="list-group list-group-flush">
-                <li className="list-group-item display-4-5">
-                  Project Proposals
-                </li>
-                <li className="list-group-item display-4-5">Posts</li>
-              </ul>
-            </div>
+            <div className="col-md-1 bg-main-red p-5 " />
             {/* RIGHT */}
-            <div className="col-md-9 text-center right">
+            <div className="col-md-10 text-center right">
               <div className="row">
                 <div className="col-md-10 offset-md-1 bg-main-white p-5 mt-2">
                   <h1 className="form-inline display-4">
@@ -333,6 +326,7 @@ class Profile extends Component {
                 </div>
               </div>
             </div>
+            <div className="col-md-1 bg-main-red p-5 " />
           </div>
         </div>
       </div>

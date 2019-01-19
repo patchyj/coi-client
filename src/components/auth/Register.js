@@ -138,7 +138,7 @@ class Register extends Component {
                   options={fillChapters}
                 />
                 <TextFieldGroup
-                  placeholder="Twitter"
+                  placeholder="Full Twitter URL"
                   name="twitterUrl"
                   value={this.state.twitterUrl}
                   onChange={this.onChange}
@@ -146,7 +146,7 @@ class Register extends Component {
                   optional
                 />
                 <TextFieldGroup
-                  placeholder="LinkedIn"
+                  placeholder="Full LinkedIn URL"
                   name="linkedinUrl"
                   value={this.state.linkedinUrl}
                   onChange={this.onChange}

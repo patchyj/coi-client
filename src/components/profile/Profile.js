@@ -72,7 +72,7 @@ class Profile extends Component {
     };
 
     this.props.updateUser(this.props.auth._id, userData);
-    window.location.reload();
+    // window.location.reload();
   }
 
   componentWillReceiveProps(nextProps) {

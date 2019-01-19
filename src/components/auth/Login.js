@@ -1,18 +1,18 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
-import { withRouter } from "react-router-dom"; // Helps redirecting
-import { connect } from "react-redux";
-import { loginUser } from "../../actions/authAction";
-import TextFieldGroup from "../common/TextFieldGroup";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom'; // Helps redirecting
+import { connect } from 'react-redux';
+import { loginUser } from '../../actions/authAction';
+import TextFieldGroup from '../common/TextFieldGroup';
 
 class Login extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      email: "",
-      password: "",
+      email: '',
+      password: '',
       errors: {}
     };
 
@@ -22,13 +22,13 @@ class Login extends Component {
 
   componentDidMount() {
     if (this.props.auth.isAuthenticated) {
-      this.props.history.push("/resources");
+      this.props.history.push('/resources');
     }
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.auth.isAuthenticated) {
-      this.props.history.push("/resources");
+      this.props.history.push('/resources');
     }
 
     if (nextProps.errors) {
@@ -87,10 +87,17 @@ class Login extends Component {
                 </button>
                 <ul className="list-group mt-4">
                   <li className="list-group-item">
-                    <Link to="/register">Join us</Link>
+                    <Link to="/register" style={{ color: 'rgb(242,0,49)' }}>
+                      Join us
+                    </Link>
                   </li>
                   <li className="list-group-item">
-                    <Link to="/forgot_password">Forgot your password?</Link>
+                    <Link
+                      to="/forgot_password"
+                      style={{ color: 'rgb(242,0,49)' }}
+                    >
+                      Forgot your password?
+                    </Link>
                   </li>
                 </ul>
               </form>

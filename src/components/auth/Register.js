@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import { registerUser } from '../../actions/authAction';
 import TextFieldGroup from '../common/TextFieldGroup';
 import SelectListGroup from '../common/SelectListGroup';
+import termsOfUse from '../../img/Terms of Use.pdf';
 import privacyPolicy from '../../img/Privacy Policy.pdf';
 
 class Register extends Component {
@@ -80,8 +81,6 @@ class Register extends Component {
 
   render() {
     const { errors, chapters } = this.state;
-
-    console.log(process.env.PUBLIC_URL);
 
     let fillChapters;
     if (chapters.length !== 0) {
@@ -180,7 +179,7 @@ class Register extends Component {
                 />
                 <p className="text-muted my-4">
                   By click Register, you agree to the{' '}
-                  <a href={privacyPolicy} download>
+                  <a href={termsOfUse} download>
                     Terms and Conditions
                   </a>{' '}
                   and{' '}
@@ -194,7 +193,9 @@ class Register extends Component {
 
                 <ul className="list-group mt-4">
                   <li className="list-group-item">
-                    <Link to="/login">Already a member? Sign in</Link>
+                    <Link to="/login" style={{ color: 'rgb(242,0,49)' }}>
+                      Already a member? Sign in
+                    </Link>
                   </li>
                 </ul>
               </form>

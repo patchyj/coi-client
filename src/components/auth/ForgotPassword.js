@@ -1,17 +1,17 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import axios from "axios";
-import PropTypes from "prop-types";
-import { withRouter } from "react-router-dom"; // Helps redirecting
-import { connect } from "react-redux";
-import { resetPassword } from "../../actions/authAction";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom'; // Helps redirecting
+import { connect } from 'react-redux';
+import { resetPassword } from '../../actions/authAction';
 
 class ForgotPassword extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      email: "",
+      email: '',
       errors: {}
     };
 
@@ -27,7 +27,7 @@ class ForgotPassword extends Component {
     e.preventDefault();
     console.log(this.state.email);
     this.props.resetPassword({ email: this.state.email });
-    this.props.history.push("/waiting");
+    this.props.history.push('/waiting');
   }
 
   render() {
@@ -62,10 +62,14 @@ class ForgotPassword extends Component {
           </button>
           <ul className="list-group mt-4">
             <li className="list-group-item">
-              <Link to="/register">Join us</Link>
+              <Link to="/register" style={{ color: 'rgb(242,0,49)' }}>
+                Join us
+              </Link>
             </li>
             <li className="list-group-item">
-              <Link to="/login">Login</Link>
+              <Link to="/login" style={{ color: 'rgb(242,0,49)' }}>
+                Login
+              </Link>
             </li>
           </ul>
         </form>

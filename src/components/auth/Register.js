@@ -81,6 +81,8 @@ class Register extends Component {
   render() {
     const { errors, chapters } = this.state;
 
+    console.log(process.env.PUBLIC_URL);
+
     let fillChapters;
     if (chapters.length !== 0) {
       fillChapters = chapters;

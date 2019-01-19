@@ -1,30 +1,31 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
-import axios from "axios";
-import { withRouter } from "react-router-dom";
-import { connect } from "react-redux";
-import { registerUser } from "../../actions/authAction";
-import TextFieldGroup from "../common/TextFieldGroup";
-import SelectListGroup from "../common/SelectListGroup";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import axios from 'axios';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { registerUser } from '../../actions/authAction';
+import TextFieldGroup from '../common/TextFieldGroup';
+import SelectListGroup from '../common/SelectListGroup';
+import privacyPolicy from '../../img/Privacy Policy.pdf';
 
 class Register extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      username: "",
-      firstName: "",
-      lastName: "",
-      organisation: "",
-      profilePic: "",
-      bannerPic: "",
-      chapter: "",
-      linkedinUrl: "",
-      twitterUrl: "",
-      email: "",
-      password: "",
-      password2: "",
+      username: '',
+      firstName: '',
+      lastName: '',
+      organisation: '',
+      profilePic: '',
+      bannerPic: '',
+      chapter: '',
+      linkedinUrl: '',
+      twitterUrl: '',
+      email: '',
+      password: '',
+      password2: '',
       errors: {},
       chapters: []
     };
@@ -35,13 +36,13 @@ class Register extends Component {
 
   componentDidMount() {
     axios
-      .get("/api/chapters")
+      .get('/api/chapters')
       .then(chapters => {
         this.setState({ chapters: chapters.data });
       })
       .catch(err => this.setState({ errors: err }));
     if (this.props.auth.isAuthenticated) {
-      this.props.history.push("/resources");
+      this.props.history.push('/resources');
     }
   }
 
@@ -84,7 +85,7 @@ class Register extends Component {
     if (chapters.length !== 0) {
       fillChapters = chapters;
     } else {
-      fillChapters = [{ city: "null", id: null }];
+      fillChapters = [{ city: 'null', id: null }];
     }
 
     return (
@@ -175,8 +176,18 @@ class Register extends Component {
                   onChange={this.onChange}
                   error={errors.password2}
                 />
+                <p className="text-muted my-4">
+                  By click Register, you agree to the{' '}
+                  <a href={privacyPolicy} target="_blank">
+                    Terms and Conditions
+                  </a>{' '}
+                  and{' '}
+                  <a href={privacyPolicy} target="_blank">
+                    Privacy Policy
+                  </a>
+                </p>
                 <button className="btn btn-main-submit" type="submit">
-                  Sign in
+                  Register
                 </button>
 
                 <ul className="list-group mt-4">

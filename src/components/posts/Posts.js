@@ -87,7 +87,7 @@ class Posts extends Component {
     return (
       <div className="posts">
         <div className="background" />
-        <div className="background-text container">
+        <div className="background-text container my-4">
           <h1 className="display-4">Wall</h1>
           <p className="p-responsive">
             Together we are stronger. Remember you are never alone as a Circle

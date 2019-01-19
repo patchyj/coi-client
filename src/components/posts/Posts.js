@@ -37,22 +37,6 @@ class Posts extends Component {
             className="row posts-row p-3 m-3 "
             style={{ position: 'relative' }}
           >
-            {user.admin ? (
-              <i
-                className="fas fa-times"
-                style={{
-                  position: 'absolute',
-                  right: '5px',
-                  top: '5px',
-                  color: '#f20031'
-                }}
-                id={post._id}
-                onClick={e => this.onDeleteClick(e)}
-              />
-            ) : (
-              ''
-            )}
-
             <div className="col-8">
               <Link to={`/posts/${post._id}`}>
                 <h4 className="display-5">{post.title}</h4>

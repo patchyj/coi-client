@@ -316,7 +316,7 @@ class AdminIndex extends Component {
                   <td>{user.organisation}</td>
                   <td>
                     {user.linkedinUrl ? (
-                      <a href={`http://linkedin.com${user.linkedinUrl}`}>
+                      <a href={`${user.linkedinUrl}`}>
                         <i
                           className="fab fa-linkedin"
                           style={{ color: 'lime' }}
@@ -331,7 +331,7 @@ class AdminIndex extends Component {
                   </td>
                   <td>
                     {user.twitterUrl ? (
-                      <a href={`http://twitter.com${user.twitterUrl}`}>
+                      <a href={`${user.twitterUrl}`}>
                         <i
                           className="fab fa-twitter"
                           style={{ color: 'lime' }}

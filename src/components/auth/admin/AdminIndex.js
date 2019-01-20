@@ -286,9 +286,13 @@ class AdminIndex extends Component {
           <tbody>
             {users.map((user, i) => {
               let userProjects = [];
+              console.log(user);
+
               projects.forEach(project => {
-                if (project.user._id === user._id) {
-                  userProjects.push(project);
+                if (project.user) {
+                  if (project.user._id === user._id) {
+                    userProjects.push(project);
+                  }
                 }
               });
 

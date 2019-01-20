@@ -112,6 +112,12 @@ table thead th {
       transition: 0.2s; }
       .footer a i:hover {
         color: white; }
+  .footer .privacy a {
+    color: #70726f !important;
+    font-size: 16px !important;
+    transition: 0.2s; }
+    .footer .privacy a:hover {
+      color: white !important; }
 
 .form-signin .col-md-5 {
   line-height: 2.6rem !important; }

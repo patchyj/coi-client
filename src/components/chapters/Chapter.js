@@ -70,7 +70,7 @@ class Chapter extends Component {
         leadList = '';
       }
 
-      if (members) {
+      if (members.length > 0) {
         recipients = members
           .map(member => {
             return member.email;
@@ -78,37 +78,24 @@ class Chapter extends Component {
           .join(',');
 
         // Member Rows to go in the table
-        if (posts.length > 0 && projects.length > 0) {
-          memberRows = members.map((member, i) => {
-            const memberPosts = posts.filter(
-              post => post.user._id === member._id
-            );
-            const memberProjects = projects.filter(
-              project => project.user._id === member._id
-            );
-
-            return (
-              <tr key={i} style={{ borderBottom: '1px solid #eee' }}>
-                <td>
-                  <Link
-                    to={`/users/${member._id}`}
-                    style={{ color: '#f20031' }}
-                  >
-                    {member.firstName} {member.lastName}
-                  </Link>
-                </td>
-                <td>{member.organisation}</td>
-                <td>
-                  <Moment format="D MMM YYYY" withtitle="true">
-                    {member.date}
-                  </Moment>
-                </td>
-                <td>{memberProjects.length}</td>
-                <td>{memberPosts.length}</td>
-              </tr>
-            );
-          });
-        }
+        memberRows = members.map((member, i) => {
+          return (
+            <tr key={i} style={{ borderBottom: '1px solid #eee' }}>
+              <td>
+                <Link to={`/users/${member._id}`} style={{ color: '#f20031' }}>
+                  {member.firstName} {member.lastName}
+                </Link>
+              </td>
+              <td>{member.username}</td>
+              <td>{member.organisation}</td>
+              <td>
+                <Moment format="D MMM YYYY" withtitle="true">
+                  {member.date}
+                </Moment>
+              </td>
+            </tr>
+          );
+        });
       } else {
         recipients = '';
       }
@@ -199,10 +186,9 @@ class Chapter extends Component {
                   <thead>
                     <tr className="thead-red">
                       <th>Name</th>
+                      <th>Username</th>
                       <th>Organisation</th>
                       <th>Joined</th>
-                      <th>Projects</th>
-                      <th>Posts</th>
                     </tr>
                   </thead>
                   <tbody>{memberRows}</tbody>

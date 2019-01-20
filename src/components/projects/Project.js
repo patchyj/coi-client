@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { getProject, deleteProject } from "../../actions/projectActions";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { getProject, deleteProject } from '../../actions/projectActions';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 class Project extends Component {
   componentDidMount() {
@@ -12,24 +12,13 @@ class Project extends Component {
   deleteProject(e) {
     const id = this.props.match.params.id;
     this.props.deleteProject(id);
-    this.props.history.push("/projects");
+    this.props.history.push('/projects');
     window.location.reload();
   }
 
   render() {
-    let result;
-    let author;
+    let result, author, crudLinks;
     const { project } = this.props.projects;
-
-    const crudLinks = (
-      <div className="crudLinks">
-        <Link to={`/projects/${project._id}/edit`} className="">
-          <i className="fas fa-edit" />
-        </Link>
-        <br />
-        <i onClick={this.deleteProject.bind(this)} className="fas fa-times" />
-      </div>
-    );
 
     if (project) {
       if (project.user) {
@@ -38,6 +27,26 @@ class Project extends Component {
             {project.user.firstName} {project.user.lastName}
           </Link>
         );
+
+        let deleteBtn = (
+          <i onClick={this.deleteProject.bind(this)} className="fas fa-times" />
+        );
+
+        let editBtn = (
+          <Link to={`/projects/${project._id}/edit`} className="">
+            <i className="fas fa-edit" />
+          </Link>
+        );
+
+        crudLinks = (
+          <div className="crudLinks">
+            {project.user ? editBtn : ''}
+            <br />
+            {project.user || this.props.auth.user.admin ? deleteBtn : ''}
+          </div>
+        );
+      } else {
+        crudLinks = '';
       }
       const { user } = project;
       result = (
@@ -52,12 +61,7 @@ class Project extends Component {
                 </div>
               </div>
             </div>
-            <div className="col-md-1">
-              {this.props.auth.user.admin ||
-              this.props.auth.user.id === user._id
-                ? crudLinks
-                : ""}
-            </div>
+            <div className="col-md-1">{crudLinks}</div>
           </div>
           <div className="row">
             <div className="col-md-8 offset-md-2">

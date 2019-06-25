@@ -277,7 +277,7 @@ class Landing extends Component {
               <h1 className="display-5">Twitter</h1>
               <TwitterTimelineEmbed
                 sourceType="URL"
-                screenName="circleofyi"
+                screenName="CircleofInt"
                 options={{ height: 800 }}
               />
             </div>

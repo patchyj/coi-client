@@ -17,15 +17,13 @@ class EventbriteAPI extends Component {
     super(props);
 
     this.state = {
-      events: []
+      events: [],
     };
   }
 
   async componentDidMount() {
     const response = await fetch(
-      `https://www.eventbriteapi.com/v3/users/me/owned_events/?token=${
-        process.env.REACT_APP_EVENTBRITE
-      }`
+      `https://www.eventbriteapi.com/v3/users/me/owned_events/?token=${process.env.REACT_APP_EVENTBRITE}`
     );
     const json = await response.json();
     this.setState({ events: json.events });
@@ -101,7 +99,7 @@ class FeedBackForm extends Component {
       email: "",
       body: "",
       success: null,
-      errors: {}
+      errors: {},
     };
     this.onChange = this.onChange.bind(this);
   }
@@ -117,16 +115,16 @@ class FeedBackForm extends Component {
       .post("/api/users/feedback", {
         fullName: this.state.fullName,
         email: this.state.email,
-        body: this.state.body
+        body: this.state.body,
       })
-      .then(res => {
+      .then((res) => {
         this.setState({ success: res.data });
       })
-      .catch(errors => this.setState({ errors }));
+      .catch((errors) => this.setState({ errors }));
     this.setState({
       fullName: "",
       email: "",
-      body: ""
+      body: "",
     });
   }
 
@@ -238,9 +236,14 @@ class Landing extends Component {
                   #dowelldogood
                 </a>
               </p>
-              <Link to="/register" className="btn mx-1 my-2 px-3 py-2">
-                Join Us
-              </Link>
+              <a
+                href="https://circleofyi.us13.list-manage.com/subscribe/post?u=6ddfb2318958e6bd7e6d9f028&id=d82e567ec0"
+                target="_blank"
+                className="btn mx-1 my-2 px-3 py-2"
+                rel="noopener noreferrer"
+              >
+                Join
+              </a>
               <a
                 className="btn mx-1 my-2 px-3 py-2 middle-btn"
                 href={whitePaper}
@@ -256,14 +259,6 @@ class Landing extends Component {
                 rel="noopener noreferrer"
               >
                 100 Day Challenge
-              </a>
-              <a
-                href="https://circleofyi.us13.list-manage.com/subscribe/post?u=6ddfb2318958e6bd7e6d9f028&id=d82e567ec0"
-                target="_blank"
-                className="btn mx-1 my-2 px-3 py-2"
-                rel="noopener noreferrer"
-              >
-                Join Our Mailling List
               </a>
             </div>
           </div>
@@ -591,11 +586,11 @@ class Landing extends Component {
 }
 
 Landing.propTypes = {
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = state => ({
-  auth: state.auth
+const mapStateToProps = (state) => ({
+  auth: state.auth,
 });
 
 export default connect(mapStateToProps)(Landing);

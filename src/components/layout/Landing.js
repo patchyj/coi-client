@@ -242,7 +242,7 @@ class Landing extends Component {
                 className="btn mx-1 my-2 px-3 py-2"
                 rel="noopener noreferrer"
               >
-                Join
+                Join the movement
               </a>
               <a
                 className="btn mx-1 my-2 px-3 py-2 middle-btn"
